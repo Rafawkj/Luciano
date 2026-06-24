@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa Mental - Anatomia da Folha</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(ellipse at center, #0d2b0d 0%, #051405 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #e8f5e9;
+  }
+
+  header {
+    text-align: center;
+    padding: 30px 20px 10px;
+  }
+
+  header h1 {
+    font-size: 2.4rem;
+    color: #a5d6a7;
+    text-shadow: 0 0 20px #4caf5088, 0 2px 8px #000a;
+    letter-spacing: 2px;
+  }
+
+  header p {
+    color: #81c784;
+    font-size: 1rem;
+    margin-top: 6px;
+    opacity: 0.8;
+  }
+
+  /* ── MINDMAP CANVAS ── */
+  #mindmap-container {
+    width: 100%;
+    overflow: auto;
+    padding: 20px 0 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+  svg#mm {
+    display: block;
+    overflow: visible;
+  }
+
+  /* nodes */
+  .node-center circle { fill: #1b5e20; stroke: #69f0ae; stroke-width: 3; filter: drop-shadow(0 0 16px #00e67688); }
+  .node-center text   { fill: #ccff90; font-size: 15px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+
+  .node-main circle   { fill: #2e7d32; stroke: #66bb6a; stroke-width: 2.5; filter: drop-shadow(0 0 10px #4caf5066); cursor: pointer; transition: all .25s; }
+  .node-main:hover circle { fill: #388e3c; filter: drop-shadow(0 0 18px #69f0ae99); }
+  .node-main text     { fill: #e8f5e9; font-size: 12px; font-weight: 600; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+
+  .node-sub rect      { fill: #1a3d1a; stroke: #4caf50; stroke-width: 1.5; rx: 10; cursor: pointer; transition: all .25s; }
+  .node-sub:hover rect { fill: #2e7d32; filter: drop-shadow(0 0 10px #69f0ae88); }
+  .node-sub text      { fill: #c8e6c9; font-size: 11px; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+
+  .node-leaf rect     { fill: #0f2710; stroke: #388e3c; stroke-width: 1; rx: 8; cursor: pointer; transition: all .25s; }
+  .node-leaf:hover rect { fill: #1b5e20; filter: drop-shadow(0 0 8px #4caf5066); }
+  .node-leaf text     { fill: #a5d6a7; font-size: 10px; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+
+  /* edges */
+  .edge-main { stroke: #388e3c; stroke-width: 2.5; fill: none; opacity: 0.7; }
+  .edge-sub  { stroke: #2e7d32; stroke-width: 1.8; fill: none; opacity: 0.6; }
+  .edge-leaf { stroke: #1b5e20; stroke-width: 1.2; fill: none; opacity: 0.5; }
+
+  /* ── PANELS ── */
+  #info-panel {
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(90vw, 680px);
+    max-height: 85vh;
+    overflow-y: auto;
+    background: linear-gradient(145deg, #0a1f0a, #142814);
+    border: 2px solid #4caf50;
+    border-radius: 18px;
+    padding: 32px 28px 24px;
+    z-index: 1000;
+    box-shadow: 0 0 60px #00e67644, 0 8px 40px #000c;
+  }
+
+  #info-panel h2 {
+    color: #69f0ae;
+    font-size: 1.5rem;
+    margin-bottom: 14px;
+    border-bottom: 1px solid #2e7d32;
+    padding-bottom: 10px;
+  }
+
+  #info-panel .panel-body {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  #info-panel .panel-img {
+    flex: 0 0 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #388e3c;
+    background: #0d2b0d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+  }
+
+  #info-panel .panel-img svg {
+    width: 180px;
+    height: 150px;
+  }
+
+  #info-panel .panel-text {
+    flex: 1 1 280px;
+    color: #c8e6c9;
+    line-height: 1.65;
+    font-size: .95rem;
+  }
+
+  #info-panel .panel-text ul {
+    padding-left: 18px;
+    margin-top: 8px;
+  }
+
+  #info-panel .panel-text li {
+    margin-bottom: 6px;
+  }
+
+  #info-panel .panel-text strong {
+    color: #69f0ae;
+  }
+
+  #info-panel .tag {
+    display: inline-block;
+    background: #1b5e20;
+    color: #a5d6a7;
+    font-size: .8rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid #4caf50;
+    margin: 4px 4px 0 0;
+  }
+
+  #close-btn {
+    position: absolute; top: 14px; right: 16px;
+    background: none; border: 2px solid #4caf50;
+    color: #69f0ae; font-size: 1.3rem; cursor: pointer;
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .2s;
+  }
+  #close-btn:hover { background: #2e7d32; }
+
+  #overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: #00000088;
+    z-index: 999;
+    backdrop-filter: blur(4px);
+  }
+
+  /* ── LEGEND ── */
+  #legend {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 12px; padding: 12px 20px 30px;
+  }
+
+  .legend-item {
+    display: flex; align-items: center; gap: 8px;
+    color: #81c784; font-size: .85rem;
+  }
+
+  .legend-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid currentColor;
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #0a1f0a; }
+  ::-webkit-scrollbar-thumb { background: #2e7d32; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🌿 Anatomia da Folha</h1>
+  <p>Clique nos nós para explorar cada estrutura em detalhes</p>
+</header>
+
+<div id="legend">
+  <div class="legend-item"><div class="legend-dot" style="color:#66bb6a;background:#2e7d32"></div> Tema principal</div>
+  <div class="legend-item"><div class="legend-dot" style="color:#4caf50;background:#1a3d1a"></div> Subtópico</div>
+  <div class="legend-item"><div class="legend-dot" style="color:#388e3c;background:#0f2710"></div> Detalhe</div>
+</div>
+
+<div id="mindmap-container">
+  <svg id="mm" width="1400" height="1100" viewBox="-700 -550 1400 1100"></svg>
+</div>
+
+<div id="overlay" onclick="closePanel()"></div>
+<div id="info-panel">
+  <button id="close-btn" onclick="closePanel()">✕</button>
+  <h2 id="panel-title"></h2>
+  <div class="panel-body">
+    <div class="panel-img" id="panel-img"></div>
+    <div class="panel-text" id="panel-text"></div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   DATA
+   ========================================================= */
+const CENTER = { id:'root', label:'FOLHA', r:72 };
+
+const MAIN_NODES = [
+  { id:'morfo',  label:'Morfologia\ne Funções',  angle:-90,  r:62, color:'#1b5e20', stroke:'#66bb6a' },
+  { id:'histo',  label:'Histologia\nFoliar',     angle:-18,  r:62, color:'#1b5e20', stroke:'#66bb6a' },
+  { id:'adapt',  label:'Modificações\ne Adaptações', angle:54, r:62, color:'#1b5e20', stroke:'#66bb6a' },
+  { id:'cond',   label:'Tecidos de\nCondução',   angle:126,  r:62, color:'#1b5e20', stroke:'#66bb6a' },
+  { id:'vena',   label:'Venação',                angle:198,  r:62, color:'#1b5e20', stroke:'#66bb6a' },
+];
+
+const SUB_NODES = [
+  // Morfologia
+  { id:'func',   parent:'morfo', label:'Funções\nPrincipais',      angle:-135, dist:210, rw:80, rh:26 },
+  { id:'struct', parent:'morfo', label:'Estrutura\nExterna',       angle:-65,  dist:210, rw:80, rh:26 },
+
+  // Histologia
+  { id:'epid',   parent:'histo', label:'Epiderme',                 angle:-18,  dist:220, rw:76, rh:26 },
+  { id:'meso',   parent:'histo', label:'Mesófilo',                 angle:30,   dist:220, rw:76, rh:26 },
+
+  // Adaptações
+  { id:'adapt1', parent:'adapt', label:'Espinhos\nFoliares',       angle:30,   dist:210, rw:84, rh:26 },
+  { id:'adapt2', parent:'adapt', label:'Brácteas\ne Catáfilos',    angle:80,   dist:210, rw:84, rh:26 },
+  { id:'adapt3', parent:'adapt', label:'Gavinhas e\nTricomas',     angle:130,  dist:210, rw:84, rh:26 },
+
+  // Condução
+  { id:'xile',   parent:'cond',  label:'Xilema',                   angle:160,  dist:215, rw:72, rh:26 },
+  { id:'floe',   parent:'cond',  label:'Floema',                   angle:100,  dist:215, rw:72, rh:26 },
+
+  // Venação
+  { id:'mono',   parent:'vena',  label:'Monocotiledôneas\n(paralela)', angle:230, dist:220, rw:100, rh:26 },
+  { id:'eudi',   parent:'vena',  label:'Eudicotiledôneas\n(reticulada)', angle:170, dist:220, rw:108, rh:26 },
+];
+
+const LEAF_NODES = [
+  // func
+  { id:'fot',  parent:'func',  label:'Fotossíntese',   angle:-155, dist:140, rw:80, rh:22 },
+  { id:'res',  parent:'func',  label:'Respiração',     angle:-115, dist:140, rw:76, rh:22 },
+  { id:'eva',  parent:'func',  label:'Evapotrans-\npiração', angle:-75, dist:140, rw:76, rh:22 },
+
+  // struct
+  { id:'lim',  parent:'struct', label:'Limbo',         angle:-40,  dist:140, rw:62, rh:22 },
+  { id:'pec',  parent:'struct', label:'Pecíolo',       angle:-5,   dist:140, rw:62, rh:22 },
+  { id:'bai',  parent:'struct', label:'Bainha',        angle:30,   dist:140, rw:62, rh:22 },
+
+  // epid
+  { id:'cut',  parent:'epid',  label:'Cutícula',       angle:5,    dist:140, rw:70, rh:22 },
+  { id:'esto', parent:'epid',  label:'Estômatos',      angle:40,   dist:140, rw:70, rh:22 },
+
+  // meso
+  { id:'pal',  parent:'meso',  label:'Paliçádico',     angle:30,   dist:140, rw:72, rh:22 },
+  { id:'lac',  parent:'meso',  label:'Lacunoso',       angle:65,   dist:140, rw:72, rh:22 },
+];
+
+/* =========================================================
+   PANEL CONTENT
+   ========================================================= */
+const PANELS = {
+  root: {
+    title: 'Folha — Órgão Vegetativo',
+    tags: ['Angiospermas','Fotossíntese','Órgão laminar'],
+    text: `A <strong>folha</strong> é o principal órgão especializado na fotossíntese das plantas com flor (angiospermas). É um órgão laminar, clorofilado e de crescimento determinado, atuando em conjunto com raiz e caule na manutenção do vegetal.`,
+    img: 'leaf_full'
+  },
+  morfo: {
+    title: 'Morfologia e Funções',
+    tags: ['Estrutura','Forma','Crescimento determinado'],
+    text: `A folha possui crescimento determinado e é adaptada para maximizar a captação de luz. Suas funções incluem:<ul><li><strong>Fotossíntese</strong></li><li><strong>Respiração celular</strong></li><li><strong>Transpiração</strong> (controle hídrico e térmico)</li></ul>`,
+    img: 'morfo'
+  },
+  histo: {
+    title: 'Histologia Foliar',
+    tags: ['Tecidos','Células','Organização interna'],
+    text: `A estrutura interna da folha (mesófilo) organiza-se para maximizar a eficiência metabólica. Composta por epiderme, mesófilo clorofiliano e feixes vasculares nas nervuras.`,
+    img: 'histo'
+  },
+  adapt: {
+    title: 'Modificações e Adaptações',
+    tags: ['Evolução','Ambiente','Função especializada'],
+    text: `As folhas podem sofrer modificações estruturais para funções além da nutrição: proteção, atração de polinizadores, reserva de nutrientes e fixação a suportes.`,
+    img: 'adapt'
+  },
+  cond: {
+    title: 'Tecidos de Condução',
+    tags: ['Xilema','Floema','Nervuras'],
+    text: `Localizados nas nervuras, são responsáveis pelo transporte de substâncias:<ul><li><strong>Xilema:</strong> conduz seiva bruta (água + sais) da raiz até a folha</li><li><strong>Floema:</strong> distribui seiva elaborada (fotossintatos) para o resto da planta</li></ul>`,
+    img: 'cond'
+  },
+  vena: {
+    title: 'Venação Foliar',
+    tags: ['Nervuras','Feixes vasculares','Classificação'],
+    text: `O padrão de nervuras diferencia os grupos de angiospermas:<ul><li><strong>Monocotiledôneas:</strong> nervuras paralelas (paralelinérveas)</li><li><strong>Eudicotiledôneas:</strong> nervuras reticuladas / ramificadas (peninérveas)</li></ul>`,
+    img: 'vena'
+  },
+  func: {
+    title: 'Funções Principais da Folha',
+    tags: ['Fotossíntese','Respiração','Transpiração'],
+    text: `<ul><li><strong>Fotossíntese:</strong> converte energia luminosa em química (glicose)</li><li><strong>Respiração:</strong> troca de O₂ e CO₂ com o ambiente</li><li><strong>Evapotranspiração:</strong> liberação de vapor d'água, auxilia na ascensão da seiva bruta e no controle térmico</li></ul>`,
+    img: 'func'
+  },
+  struct: {
+    title: 'Estrutura Externa da Folha',
+    tags: ['Limbo','Pecíolo','Bainha'],
+    text: `Uma folha <strong>completa</strong> possui:<ul><li><strong>Limbo:</strong> região laminar, principal local de fotossíntese</li><li><strong>Pecíolo:</strong> haste de sustentação que liga o limbo ao caule</li><li><strong>Bainha:</strong> base que envolve o caule</li></ul>Folhas sem pecíolo são chamadas <strong>sésseis</strong>. Podem ocorrer ainda estípulas.`,
+    img: 'struct'
+  },
+  epid: {
+    title: 'Epiderme',
+    tags: ['Cutícula','Estômatos','Proteção'],
+    text: `<ul><li>Geralmente <strong>uniestratificada</strong> e aclorofilada (permite passagem de luz)</li><li>Coberta por <strong>cutícula</strong> (camada de cera) que reduz perda de água</li><li>Contém <strong>estômatos</strong> e eventualmente tricomas e hidatódios</li></ul>`,
+    img: 'epid'
+  },
+  meso: {
+    title: 'Mesófilo (Parênquima Clorofiliano)',
+    tags: ['Paliçádico','Lacunoso','Cloroplastos'],
+    text: `Localizado entre as epidermes, divide-se em:<ul><li><strong>Paliçádico:</strong> células cilíndricas justapostas, ricas em cloroplastos, na face superior para absorção máxima de luz</li><li><strong>Lacunoso:</strong> células arredondadas com grandes espaços (lacunas) que facilitam a circulação de gases</li></ul>`,
+    img: 'meso'
+  },
+  adapt1: {
+    title: 'Espinhos Foliares',
+    tags: ['Cactos','Adaptação','Xerofilismo'],
+    text: `Redução da superfície foliar para evitar perda excessiva de água por transpiração. Muito comum em plantas de ambientes áridos como os <strong>cactos</strong>. As folhas transformam-se em espinhos, e o caule assume a fotossíntese.`,
+    img: 'espinho'
+  },
+  adapt2: {
+    title: 'Brácteas e Catáfilos',
+    tags: ['Polinização','Reserva','Bulbo'],
+    text: `<ul><li><strong>Brácteas:</strong> folhas coloridas na base das flores que atraem agentes polinizadores (ex.: bougainvillea)</li><li><strong>Catáfilos:</strong> folhas modificadas para reserva de nutrientes em bulbos (alho, cebola)</li></ul>`,
+    img: 'bract'
+  },
+  adapt3: {
+    title: 'Gavinhas, Tricomas e Hidatódios',
+    tags: ['Fixação','Secreção','Gutação'],
+    text: `<ul><li><strong>Gavinhas foliares:</strong> estruturas de fixação para suportes</li><li><strong>Tricomas glandulares:</strong> liberam substâncias (óleos, resinas)</li><li><strong>Tricomas protetores:</strong> isolamento térmico e proteção</li><li><strong>Hidatódios:</strong> eliminam excesso de água líquida pelas bordas (gutação/sudação)</li></ul>`,
+    img: 'trico'
+  },
+  xile: {
+    title: 'Xilema',
+    tags: ['Seiva bruta','Água','Sais minerais'],
+    text: `O <strong>xilema</strong> é o tecido condutor de seiva bruta (água + sais minerais dissolvidos). Nas folhas, está localizado na face superior das nervuras. O fluxo ocorre da raiz → caule → folha, movido pela transpiração foliar (tensão-coesão).`,
+    img: 'xilema'
+  },
+  floe: {
+    title: 'Floema',
+    tags: ['Seiva elaborada','Fotossintatos','Distribuição'],
+    text: `O <strong>floema</strong> distribui a seiva elaborada (açúcares e outros fotossintatos produzidos na fotossíntese) para todos os órgãos da planta. Nas nervuras, situa-se na face inferior (voltada para o mesófilo lacunoso).`,
+    img: 'floema'
+  },
+  mono: {
+    title: 'Venação Paralela (Monocotiledôneas)',
+    tags: ['Paralelinérvea','Gramíneas','Monocot'],
+    text: `As <strong>monocotiledôneas</strong> apresentam nervuras paralelas (paralelinérveas), onde os feixes vasculares correm paralelamente do pecíolo até o ápice da folha. Exemplos: milho, trigo, bambu, palmeiras, orquídeas.`,
+    img: 'mono'
+  },
+  eudi: {
+    title: 'Venação Reticulada (Eudicotiledôneas)',
+    tags: ['Reticulada','Peninérvea','Eudicot'],
+    text: `As <strong>eudicotiledôneas</strong> apresentam nervuras reticuladas (peninérveas ou palminérveas), com uma nervura principal que se ramifica em nervuras secundárias e terciárias, formando uma rede. Exemplos: feijão, rosa, carvalho, tomate.`,
+    img: 'eudi'
+  },
+  fot: {
+    title: 'Fotossíntese',
+    tags: ['Clorofila','Luz solar','Glicose','CO₂'],
+    text: `Processo pelo qual a planta converte energia luminosa em energia química armazenada em moléculas de glicose:<br><br><strong>6CO₂ + 6H₂O + luz → C₆H₁₂O₆ + 6O₂</strong><br><br>Ocorre nos <strong>cloroplastos</strong>, principalmente no mesófilo paliçádico.`,
+    img: 'foto'
+  },
+  res: {
+    title: 'Respiração',
+    tags: ['Trocas gasosas','Estômatos','O₂','CO₂'],
+    text: `As trocas de O₂ e CO₂ com o ambiente ocorrem principalmente pelos <strong>estômatos</strong>. Durante o dia, o CO₂ é consumido pela fotossíntese; à noite, só ocorre respiração celular, com liberação de CO₂.`,
+    img: 'respi'
+  },
+  eva: {
+    title: 'Evapotranspiração',
+    tags: ['Vapor d\'água','Transpiração','Seiva bruta'],
+    text: `A liberação de vapor d'água pelas folhas (principalmente pelos estômatos) cria uma força de tensão que puxa a coluna de água no xilema para cima (fluxo xilemático). Também regula a temperatura foliar.`,
+    img: 'evapo'
+  },
+  lim: {
+    title: 'Limbo',
+    tags: ['Lâmina foliar','Fotossíntese','Superfície'],
+    text: `O <strong>limbo</strong> é a parte laminar (plana) da folha, com grande área superficial para captar luz. É onde ocorre a maior parte da fotossíntese. Pode ter formas variadas: inteira, lobada, composta, etc.`,
+    img: 'limbo'
+  },
+  pec: {
+    title: 'Pecíolo',
+    tags: ['Haste','Suporte','Orientação'],
+    text: `O <strong>pecíolo</strong> é a haste cilíndrica que conecta o limbo ao caule. Permite que a folha se oriente para captar mais luz. Folhas sem pecíolo são chamadas <strong>sésseis</strong>.`,
+    img: 'peciolo'
+  },
+  bai: {
+    title: 'Bainha',
+    tags: ['Base foliar','Caule','Proteção'],
+    text: `A <strong>bainha</strong> é a base da folha que envolve parcial ou totalmente o caule. É especialmente desenvolvida em monocotiledôneas (ex.: milho, bambu). Pode proteger gemas axilares.`,
+    img: 'bainha'
+  },
+  cut: {
+    title: 'Cutícula',
+    tags: ['Cera','Impermeabilização','Proteção hídrica'],
+    text: `A <strong>cutícula</strong> é uma camada de substâncias cerosas (cutina + ceras) depositada sobre a epiderme. Reduz significativamente a perda de água por transpiração cuticular. Mais espessa em plantas de ambientes áridos (xerófitas).`,
+    img: 'cuticula'
+  },
+  esto: {
+    title: 'Estômatos',
+    tags: ['Células-guarda','Ostíolo','Trocas gasosas'],
+    text: `Os <strong>estômatos</strong> são poros formados por duas <strong>células-guarda</strong> clorofiladas. Controlam a abertura do <strong>ostíolo</strong> (poro central) regulando trocas gasosas e transpiração. Presentes principalmente na face inferior (abaxial) da folha.`,
+    img: 'estomato'
+  },
+  pal: {
+    title: 'Parênquima Paliçádico',
+    tags: ['Cloroplastos','Absorção de luz','Face adaxial'],
+    text: `Células <strong>cilíndricas</strong>, alongadas e justapostas, com alta concentração de cloroplastos. Localizado na face superior (adaxial) da folha para maximizar a absorção da luz solar. Principal sítio de fotossíntese.`,
+    img: 'palicadico'
+  },
+  lac: {
+    title: 'Parênquima Lacunoso',
+    tags: ['Espaços aéreos','Difusão gasosa','Face abaxial'],
+    text: `Células <strong>arredondadas</strong> com grandes espaços intercelulares (lacunas). Localizado na face inferior (abaxial) da folha. As lacunas facilitam a circulação e difusão de CO₂ e O₂ entre as células e os estômatos.`,
+    img: 'lacunoso'
+  }
+};
+
+/* =========================================================
+   SVG ILLUSTRATIONS (inline)
+   ========================================================= */
+const SVGS = {
+  leaf_full: `<svg viewBox="0 0 180 150"><defs><radialGradient id="lg"><stop offset="0%" stop-color="#66bb6a"/><stop offset="100%" stop-color="#1b5e20"/></radialGradient></defs><ellipse cx="90" cy="70" rx="70" ry="55" fill="url(#lg)" opacity=".9"/><line x1="90" y1="20" x2="90" y2="125" stroke="#a5d6a7" stroke-width="2"/><line x1="90" y1="55" x2="55" y2="35" stroke="#a5d6a7" stroke-width="1.2"/><line x1="90" y1="70" x2="45" y2="60" stroke="#a5d6a7" stroke-width="1.2"/><line x1="90" y1="85" x2="50" y2="85" stroke="#a5d6a7" stroke-width="1.2"/><line x1="90" y1="55" x2="125" y2="35" stroke="#a5d6a7" stroke-width="1.2"/><line x1="90" y1="70" x2="135" y2="60" stroke="#a5d6a7" stroke-width="1.2"/><line x1="90" y1="85" x2="130" y2="85" stroke="#a5d6a7" stroke-width="1.2"/><line x1="90" y1="125" x2="90" y2="145" stroke="#4caf50" stroke-width="3"/></svg>`,
+
+  morfo: `<svg viewBox="0 0 180 150"><ellipse cx="90" cy="65" rx="65" ry="50" fill="#1b5e20" stroke="#66bb6a" stroke-width="2"/><line x1="90" y1="18" x2="90" y2="115" stroke="#a5d6a7" stroke-width="2"/><line x1="90" y1="50" x2="50" y2="35" stroke="#81c784" stroke-width="1.2"/><line x1="90" y1="65" x2="40" y2="60" stroke="#81c784" stroke-width="1.2"/><line x1="90" y1="50" x2="130" y2="35" stroke="#81c784" stroke-width="1.2"/><line x1="90" y1="65" x2="140" y2="60" stroke="#81c784" stroke-width="1.2"/><rect x="60" y="115" width="60" height="8" rx="4" fill="#2e7d32"/><rect x="75" y="123" width="30" height="22" rx="3" fill="#2e7d32"/><text x="90" y="135" fill="#a5d6a7" font-size="7" text-anchor="middle">PECÍOLO</text></svg>`,
+
+  histo: `<svg viewBox="0 0 180 150"><rect x="10" y="10" width="160" height="130" rx="8" fill="#0d2b0d" stroke="#388e3c" stroke-width="1.5"/><rect x="10" y="10" width="160" height="20" rx="4" fill="#1b5e20"/><text x="90" y="24" fill="#ccff90" font-size="8" text-anchor="middle">EPIDERME SUPERIOR</text><rect x="20" y="32" width="140" height="35" fill="#2e7d32" opacity=".7"/><text x="90" y="53" fill="#e8f5e9" font-size="8" text-anchor="middle">Parênquima Paliçádico</text><rect x="20" y="68" width="140" height="40" fill="#1a3d1a"/><text x="90" y="92" fill="#a5d6a7" font-size="8" text-anchor="middle">Parênquima Lacunoso</text><ellipse cx="55" cy="80" rx="14" ry="10" fill="#2e7d32" stroke="#4caf50" stroke-width="1"/><ellipse cx="90" cy="85" rx="12" ry="9" fill="#2e7d32" stroke="#4caf50" stroke-width="1"/><ellipse cx="125" cy="78" rx="13" ry="9" fill="#2e7d32" stroke="#4caf50" stroke-width="1"/><rect x="10" y="109" width="160" height="18" rx="4" fill="#1b5e20"/><text x="90" y="121" fill="#ccff90" font-size="8" text-anchor="middle">EPIDERME INFERIOR + ESTÔMATOS</text><ellipse cx="70" cy="128" rx="6" ry="4" fill="#0d2b0d" stroke="#69f0ae" stroke-width="1.2"/><ellipse cx="110" cy="128" rx="6" ry="4" fill="#0d2b0d" stroke="#69f0ae" stroke-width="1.2"/></svg>`,
+
+  adapt: `<svg viewBox="0 0 180 150"><circle cx="40" cy="75" r="28" fill="#1b5e20" stroke="#4caf50" stroke-width="1.5"/><line x1="40" y1="47" x2="40" y2="30" stroke="#66bb6a" stroke-width="2"/><line x1="15" y1="60" x2="2" y2="50" stroke="#66bb6a" stroke-width="2"/><line x1="65" y1="60" x2="78" y2="50" stroke="#66bb6a" stroke-width="2"/><text x="40" y="79" fill="#ccff90" font-size="7" text-anchor="middle">Cacto</text><ellipse cx="130" cy="60" rx="35" ry="22" fill="#e91e63" stroke="#4caf50" stroke-width="1"/><text x="130" y="63" fill="#fff" font-size="7" text-anchor="middle">Bráctea</text><rect x="95" y="85" width="70" height="30" rx="6" fill="#1b5e20" stroke="#66bb6a" stroke-width="1.5"/><ellipse cx="110" cy="100" rx="10" ry="10" fill="#c8e6c9"/><ellipse cx="130" cy="100" rx="10" ry="10" fill="#c8e6c9"/><ellipse cx="150" cy="100" rx="10" ry="10" fill="#c8e6c9"/><text x="130" y="125" fill="#a5d6a7" font-size="7" text-anchor="middle">Catáfilo (bulbo)</text></svg>`,
+
+  cond: `<svg viewBox="0 0 180 150"><rect x="20" y="20" width="140" height="110" rx="8" fill="#0d2b0d" stroke="#388e3c" stroke-width="1.5"/><rect x="30" y="40" width="60" height="70" rx="6" fill="#1565c0" stroke="#42a5f5" stroke-width="1.5"/><text x="60" y="78" fill="#e3f2fd" font-size="8" text-anchor="middle">XILEMA</text><text x="60" y="88" fill="#90caf9" font-size="7" text-anchor="middle">↑ seiva bruta</text><rect x="100" y="40" width="50" height="70" rx="6" fill="#1b5e20" stroke="#66bb6a" stroke-width="1.5"/><text x="125" y="78" fill="#c8e6c9" font-size="8" text-anchor="middle">FLOEMA</text><text x="125" y="88" fill="#81c784" font-size="7" text-anchor="middle">↓ seiva elab.</text><text x="90" y="30" fill="#a5d6a7" font-size="9" text-anchor="middle">Nervura / Feixe Vascular</text></svg>`,
+
+  vena: `<svg viewBox="0 0 180 150"><ellipse cx="50" cy="75" rx="35" ry="55" fill="#1b5e20" stroke="#66bb6a" stroke-width="1.5"/><line x1="50" y1="22" x2="50" y2="128" stroke="#a5d6a7" stroke-width="2"/><line x1="28" y1="30" x2="72" y2="30" stroke="#a5d6a7" stroke-width="1.2"/><line x1="22" y1="50" x2="78" y2="50" stroke="#a5d6a7" stroke-width="1.2"/><line x1="18" y1="70" x2="82" y2="70" stroke="#a5d6a7" stroke-width="1.2"/><line x1="22" y1="90" x2="78" y2="90" stroke="#a5d6a7" stroke-width="1.2"/><line x1="28" y1="110" x2="72" y2="110" stroke="#a5d6a7" stroke-width="1.2"/><text x="50" y="143" fill="#81c784" font-size="7.5" text-anchor="middle">Paralela (Mono)</text><ellipse cx="135" cy="72" rx="38" ry="55" fill="#1b5e20" stroke="#4caf50" stroke-width="1.5"/><line x1="135" y1="20" x2="135" y2="124" stroke="#a5d6a7" stroke-width="2"/><line x1="135" y1="45" x2="108" y2="38" stroke="#a5d6a7" stroke-width="1"/><line x1="135" y1="60" x2="100" y2="58" stroke="#a5d6a7" stroke-width="1"/><line x1="135" y1="75" x2="100" y2="80" stroke="#a5d6a7" stroke-width="1"/><line x1="135" y1="45" x2="162" y2="38" stroke="#a5d6a7" stroke-width="1"/><line x1="135" y1="60" x2="168" y2="58" stroke="#a5d6a7" stroke-width="1"/><line x1="135" y1="75" x2="168" y2="80" stroke="#a5d6a7" stroke-width="1"/><line x1="100" y1="58" x2="96" y2="48" stroke="#81c784" stroke-width=".8"/><line x1="100" y1="58" x2="94" y2="70" stroke="#81c784" stroke-width=".8"/><text x="135" y="143" fill="#81c784" font-size="7.5" text-anchor="middle">Reticulada (Eudi)</text></svg>`,
+
+  func: `<svg viewBox="0 0 180 150"><circle cx="90" cy="30" r="20" fill="#ffee58" opacity=".9"/><path d="M90 50 Q60 75 50 110 Q70 130 90 125 Q110 130 130 110 Q120 75 90 50Z" fill="#2e7d32" stroke="#66bb6a" stroke-width="1.5"/><line x1="90" y1="87" x2="90" y2="125" stroke="#a5d6a7" stroke-width="2"/><line x1="90" y1="87" x2="60" y2="70" stroke="#a5d6a7" stroke-width="1.2"/><line x1="90" y1="87" x2="120" y2="70" stroke="#a5d6a7" stroke-width="1.2"/><text x="90" y="32" fill="#1b5e20" font-size="9" text-anchor="middle" font-weight="bold">☀</text><text x="40" y="145" fill="#81c784" font-size="7" text-anchor="middle">CO₂+H₂O</text><text x="140" y="145" fill="#81c784" font-size="7" text-anchor="middle">O₂+Glicose</text></svg>`,
+
+  struct: `<svg viewBox="0 0 180 150"><ellipse cx="90" cy="55" rx="65" ry="42" fill="#2e7d32" stroke="#66bb6a" stroke-width="2"/><text x="90" y="57" fill="#ccff90" font-size="10" text-anchor="middle" font-weight="bold">LIMBO</text><rect x="80" y="97" width="20" height="30" rx="5" fill="#388e3c" stroke="#66bb6a" stroke-width="1.5"/><text x="90" y="116" fill="#e8f5e9" font-size="8" text-anchor="middle">Pecíolo</text><rect x="65" y="127" width="50" height="16" rx="6" fill="#1b5e20" stroke="#4caf50" stroke-width="1.5"/><text x="90" y="138" fill="#a5d6a7" font-size="8" text-anchor="middle">Bainha</text><line x1="90" y1="13" x2="90" y2="55" stroke="#a5d6a7" stroke-width="1.5" stroke-dasharray="4,3"/><line x1="35" y1="40" x2="65" y2="25" stroke="#81c784" stroke-width="1.2"/><line x1="25" y1="55" x2="55" y2="48" stroke="#81c784" stroke-width="1.2"/><line x1="145" y1="40" x2="115" y2="25" stroke="#81c784" stroke-width="1.2"/><line x1="155" y1="55" x2="125" y2="48" stroke="#81c784" stroke-width="1.2"/></svg>`,
+
+  epid: `<svg viewBox="0 0 180 150"><rect x="10" y="15" width="160" height="30" rx="5" fill="#1b5e20" stroke="#66bb6a" stroke-width="2"/><text x="90" y="32" fill="#ccff90" font-size="9" text-anchor="middle">EPIDERME</text><rect x="10" y="10" width="160" height="8" rx="3" fill="#66bb6a" opacity=".7"/><text x="90" y="16.5" fill="#0d2b0d" font-size="7" text-anchor="middle">CUTÍCULA (cera)</text><rect x="10" y="50" width="160" height="85" rx="5" fill="#0d2b0d" stroke="#388e3c" stroke-width="1"/><text x="90" y="68" fill="#a5d6a7" font-size="7.5" text-anchor="middle">Mesófilo</text><ellipse cx="55" cy="132" rx="14" ry="6" fill="#0d2b0d" stroke="#69f0ae" stroke-width="2"/><ellipse cx="55" cy="132" rx="6" ry="5" fill="none" stroke="#69f0ae" stroke-width="1.5"/><text x="55" y="145" fill="#69f0ae" font-size="7" text-anchor="middle">ostíolo</text><ellipse cx="130" cy="132" rx="14" ry="6" fill="#0d2b0d" stroke="#69f0ae" stroke-width="2"/><ellipse cx="130" cy="132" rx="6" ry="5" fill="none" stroke="#69f0ae" stroke-width="1.5"/><text x="130" y="145" fill="#69f0ae" font-size="7" text-anchor="middle">estômato</text></svg>`,
+
+  meso: `<svg viewBox="0 0 180 150"><rect x="10" y="8" width="160" height="65" rx="5" fill="#2e7d32" opacity=".8" stroke="#66bb6a" stroke-width="1.5"/><text x="90" y="20" fill="#ccff90" font-size="8" text-anchor="middle">Paliçádico (face superior)</text><rect x="20" y="25" width="18" height="40" rx="4" fill="#388e3c" stroke="#a5d6a7" stroke-width="1"/><rect x="44" y="25" width="18" height="40" rx="4" fill="#388e3c" stroke="#a5d6a7" stroke-width="1"/><rect x="68" y="25" width="18" height="40" rx="4" fill="#388e3c" stroke="#a5d6a7" stroke-width="1"/><rect x="92" y="25" width="18" height="40" rx="4" fill="#388e3c" stroke="#a5d6a7" stroke-width="1"/><rect x="116" y="25" width="18" height="40" rx="4" fill="#388e3c" stroke="#a5d6a7" stroke-width="1"/><rect x="140" y="25" width="18" height="40" rx="4" fill="#388e3c" stroke="#a5d6a7" stroke-width="1"/><rect x="10" y="80" width="160" height="62" rx="5" fill="#1a3d1a" stroke="#4caf50" stroke-width="1.5"/><text x="90" y="93" fill="#a5d6a7" font-size="8" text-anchor="middle">Lacunoso (face inferior)</text><ellipse cx="40" cy="112" rx="18" ry="14" fill="#1b5e20" stroke="#4caf50" stroke-width="1"/><ellipse cx="80" cy="117" rx="16" ry="12" fill="#1b5e20" stroke="#4caf50" stroke-width="1"/><ellipse cx="118" cy="110" rx="17" ry="13" fill="#1b5e20" stroke="#4caf50" stroke-width="1"/><ellipse cx="155" cy="115" rx="14" ry="12" fill="#1b5e20" stroke="#4caf50" stroke-width="1"/></svg>`,
+
+  espinho: `<svg viewBox="0 0 180 150"><circle cx="90" cy="80" r="50" fill="#2e7d32" stroke="#66bb6a" stroke-width="2"/><text x="90" y="83" fill="#ccff90" font-size="9" text-anchor="middle">Cacto</text><line x1="90" y1="30" x2="90" y2="10" stroke="#a5d6a7" stroke-width="2"/><path d="M87 10 L90 2 L93 10Z" fill="#a5d6a7"/><line x1="40" y1="55" x2="20" y2="40" stroke="#a5d6a7" stroke-width="2"/><path d="M18 37 L21 45 L26 39Z" fill="#a5d6a7"/><line x1="140" y1="55" x2="160" y2="40" stroke="#a5d6a7" stroke-width="2"/><path d="M162 37 L159 45 L154 39Z" fill="#a5d6a7"/><text x="90" y="145" fill="#81c784" font-size="8" text-anchor="middle">Folhas → Espinhos (xerofilismo)</text></svg>`,
+
+  bract: `<svg viewBox="0 0 180 150"><ellipse cx="90" cy="60" rx="55" ry="30" fill="#e91e63" opacity=".85"/><text x="90" y="63" fill="#fff" font-size="9" text-anchor="middle">Bráctea colorida</text><circle cx="90" cy="60" r="10" fill="#ffee58"/><ellipse cx="50" cy="110" rx="28" ry="18" fill="#c8e6c9" stroke="#81c784" stroke-width="1.5"/><ellipse cx="90" cy="120" rx="28" ry="18" fill="#c8e6c9" stroke="#81c784" stroke-width="1.5"/><ellipse cx="130" cy="110" rx="28" ry="18" fill="#c8e6c9" stroke="#81c784" stroke-width="1.5"/><text x="90" y="143" fill="#81c784" font-size="7.5" text-anchor="middle">Catáfilos (cebola/alho)</text></svg>`,
+
+  trico: `<svg viewBox="0 0 180 150"><rect x="10" y="50" width="160" height="35" rx="5" fill="#1b5e20" stroke="#66bb6a" stroke-width="1.5"/><text x="90" y="70" fill="#ccff90" font-size="8" text-anchor="middle">Epiderme Foliar</text><line x1="35" y1="50" x2="35" y2="30" stroke="#81c784" stroke-width="2"/><circle cx="35" cy="27" r="5" fill="#a5d6a7"/><line x1="70" y1="50" x2="70" y2="20" stroke="#81c784" stroke-width="2"/><circle cx="70" cy="17" r="5" fill="#69f0ae"/><line x1="110" y1="50" x2="110" y2="25" stroke="#81c784" stroke-width="2"/><circle cx="110" cy="22" r="5" fill="#a5d6a7"/><line x1="145" y1="50" x2="145" y2="15" stroke="#81c784" stroke-width="2"/><circle cx="145" cy="12" r="5" fill="#69f0ae"/><text x="90" y="40" fill="#81c784" font-size="7" text-anchor="middle">Tricomas</text><ellipse cx="55" cy="95" rx="18" ry="8" fill="#0d2b0d" stroke="#69f0ae" stroke-width="1.5"/><circle cx="45" cy="95" r="5" fill="#1b5e20" stroke="#69f0ae" stroke-width="1"/><circle cx="65" cy="95" r="5" fill="#1b5e20" stroke="#69f0ae" stroke-width="1"/><text x="55" y="113" fill="#69f0ae" font-size="7" text-anchor="middle">Estômato</text><circle cx="140" cy="90" r="12" fill="#1565c0" opacity=".7"/><path d="M140 90 Q148 100 155 102 Q162 104 165 110" stroke="#90caf9" stroke-width="2" fill="none"/><text x="148" y="120" fill="#90caf9" font-size="7" text-anchor="middle">Gutação</text><text x="148" y="130" fill="#90caf9" font-size="7" text-anchor="middle">(hidatódio)</text></svg>`,
+
+  xilema: `<svg viewBox="0 0 180 150"><rect x="50" y="10" width="80" height="130" rx="8" fill="#1565c0" stroke="#42a5f5" stroke-width="2"/><text x="90" y="30" fill="#e3f2fd" font-size="9" text-anchor="middle" font-weight="bold">XILEMA</text><rect x="70" y="40" width="40" height="12" rx="3" fill="#0d47a1"/><rect x="70" y="58" width="40" height="12" rx="3" fill="#0d47a1"/><rect x="70" y="76" width="40" height="12" rx="3" fill="#0d47a1"/><rect x="70" y="94" width="40" height="12" rx="3" fill="#0d47a1"/><text x="90" y="49" fill="#90caf9" font-size="7" text-anchor="middle">Traqueíde</text><text x="90" y="67" fill="#90caf9" font-size="7" text-anchor="middle">Vaso</text><text x="90" y="85" fill="#90caf9" font-size="7" text-anchor="middle">Traqueíde</text><text x="90" y="103" fill="#90caf9" font-size="7" text-anchor="middle">Vaso</text><text x="90" y="125" fill="#bbdefb" font-size="7.5" text-anchor="middle">↑ Seiva Bruta</text><text x="90" y="136" fill="#bbdefb" font-size="7" text-anchor="middle">(H₂O + sais)</text></svg>`,
+
+  floema: `<svg viewBox="0 0 180 150"><rect x="50" y="10" width="80" height="130" rx="8" fill="#1b5e20" stroke="#66bb6a" stroke-width="2"/><text x="90" y="30" fill="#ccff90" font-size="9" text-anchor="middle" font-weight="bold">FLOEMA</text><ellipse cx="90" cy="60" rx="25" ry="15" fill="#2e7d32" stroke="#a5d6a7" stroke-width="1"/><ellipse cx="90" cy="90" rx="25" ry="15" fill="#2e7d32" stroke="#a5d6a7" stroke-width="1"/><text x="90" y="63" fill="#c8e6c9" font-size="7" text-anchor="middle">Célula crivada</text><text x="90" y="93" fill="#c8e6c9" font-size="7" text-anchor="middle">Célula crivada</text><text x="90" y="125" fill="#a5d6a7" font-size="7.5" text-anchor="middle">↓ Seiva Elaborada</text><text x="90" y="136" fill="#a5d6a7" font-size="7" text-anchor="middle">(açúcares)</text></svg>`,
+
+  mono: `<svg viewBox="0 0 180 150"><ellipse cx="90" cy="72" rx="60" ry="62" fill="#2e7d32" stroke="#66bb6a" stroke-width="2"/><line x1="90" y1="12" x2="90" y2="132" stroke="#a5d6a7" stroke-width="2"/><line x1="70" y1="12" x2="70" y2="132" stroke="#81c784" stroke-width="1.2"/><line x1="110" y1="12" x2="110" y2="132" stroke="#81c784" stroke-width="1.2"/><line x1="55" y1="20" x2="55" y2="124" stroke="#66bb6a" stroke-width=".9"/><line x1="125" y1="20" x2="125" y2="124" stroke="#66bb6a" stroke-width=".9"/><text x="90" y="148" fill="#81c784" font-size="7.5" text-anchor="middle">Nervuras Paralelas</text></svg>`,
+
+  eudi: `<svg viewBox="0 0 180 150"><ellipse cx="90" cy="72" rx="62" ry="60" fill="#2e7d32" stroke="#4caf50" stroke-width="2"/><line x1="90" y1="14" x2="90" y2="130" stroke="#a5d6a7" stroke-width="2.5"/><line x1="90" y1="40" x2="50" y2="30" stroke="#81c784" stroke-width="1.3"/><line x1="90" y1="55" x2="38" y2="52" stroke="#81c784" stroke-width="1.3"/><line x1="90" y1="70" x2="40" y2="72" stroke="#81c784" stroke-width="1.3"/><line x1="90" y1="85" x2="45" y2="95" stroke="#81c784" stroke-width="1.3"/><line x1="90" y1="40" x2="130" y2="30" stroke="#81c784" stroke-width="1.3"/><line x1="90" y1="55" x2="142" y2="52" stroke="#81c784" stroke-width="1.3"/><line x1="90" y1="70" x2="140" y2="72" stroke="#81c784" stroke-width="1.3"/><line x1="90" y1="85" x2="135" y2="95" stroke="#81c784" stroke-width="1.3"/><line x1="50" y1="30" x2="42" y2="22" stroke="#66bb6a" stroke-width=".9"/><line x1="50" y1="30" x2="38" y2="38" stroke="#66bb6a" stroke-width=".9"/><line x1="38" y1="52" x2="28" y2="46" stroke="#66bb6a" stroke-width=".9"/><line x1="38" y1="52" x2="26" y2="60" stroke="#66bb6a" stroke-width=".9"/><text x="90" y="148" fill="#81c784" font-size="7.5" text-anchor="middle">Nervuras Reticuladas</text></svg>`,
+
+  foto: `<svg viewBox="0 0 180 150"><circle cx="90" cy="30" r="22" fill="#ffee58" opacity=".95"/><text x="90" y="34" fill="#1b5e20" font-size="14" text-anchor="middle">☀</text><path d="M90 52 L70 90 L110 90 Z" fill="#66bb6a" opacity=".4"/><rect x="55" y="90" width="70" height="45" rx="8" fill="#2e7d32" stroke="#66bb6a" stroke-width="1.5"/><ellipse cx="78" cy="107" rx="14" ry="10" fill="#1b5e20" stroke="#a5d6a7" stroke-width="1"/><ellipse cx="105" cy="107" rx="14" ry="10" fill="#1b5e20" stroke="#a5d6a7" stroke-width="1"/><text x="90" y="128" fill="#ccff90" font-size="7" text-anchor="middle">6CO₂+6H₂O → C₆H₁₂O₆+6O₂</text></svg>`,
+
+  respi: `<svg viewBox="0 0 180 150"><rect x="10" y="40" width="160" height="90" rx="8" fill="#0d2b0d" stroke="#388e3c" stroke-width="1.5"/><ellipse cx="55" cy="105" rx="14" ry="6" fill="#0d2b0d" stroke="#69f0ae" stroke-width="2"/><circle cx="45" cy="105" r="5" fill="#1b5e20" stroke="#69f0ae" stroke-width="1.2"/><circle cx="65" cy="105" r="5" fill="#1b5e20" stroke="#69f0ae" stroke-width="1.2"/><ellipse cx="125" cy="105" rx="14" ry="6" fill="#0d2b0d" stroke="#69f0ae" stroke-width="2"/><circle cx="115" cy="105" r="5" fill="#1b5e20" stroke="#69f0ae" stroke-width="1.2"/><circle cx="135" cy="105" r="5" fill="#1b5e20" stroke="#69f0ae" stroke-width="1.2"/><text x="55" y="120" fill="#69f0ae" font-size="7" text-anchor="middle">O₂ entra</text><text x="125" y="120" fill="#69f0ae" font-size="7" text-anchor="middle">CO₂ sai</text><text x="90" y="65" fill="#a5d6a7" font-size="8.5" text-anchor="middle">Trocas Gasosas</text><text x="90" y="80" fill="#81c784" font-size="7.5" text-anchor="middle">via Estômatos</text></svg>`,
+
+  evapo: `<svg viewBox="0 0 180 150"><ellipse cx="90" cy="110" rx="65" ry="32" fill="#2e7d32" stroke="#66bb6a" stroke-width="1.5"/><text x="90" y="113" fill="#ccff90" font-size="8" text-anchor="middle">Folha</text><path d="M60 95 Q55 65 50 30" stroke="#90caf9" stroke-width="2" fill="none" stroke-dasharray="5,3"/><circle cx="50" cy="27" r="5" fill="#90caf9" opacity=".7"/><path d="M90 93 Q90 58 92 20" stroke="#90caf9" stroke-width="2" fill="none" stroke-dasharray="5,3"/><circle cx="92" cy="17" r="5" fill="#90caf9" opacity=".7"/><path d="M120 95 Q125 65 130 30" stroke="#90caf9" stroke-width="2" fill="none" stroke-dasharray="5,3"/><circle cx="130" cy="27" r="5" fill="#90caf9" opacity=".7"/><text x="90" y="15" fill="#90caf9" font-size="8" text-anchor="middle">Vapor d'água (H₂O)</text></svg>`,
+
+  limbo: `<svg viewBox="0 0 180 150"><ellipse cx="90" cy="68" rx="75" ry="55" fill="#2e7d32" stroke="#66bb6a" stroke-width="2.5"/><line x1="90" y1="15" x2="90" y2="122" stroke="#a5d6a7" stroke-width="2.5"/><line x1="90" y1="45" x2="45" y2="32" stroke="#81c784" stroke-width="1.2"/><line x1="90" y1="60" x2="30" y2="55" stroke="#81c784" stroke-width="1.2"/><line x1="90" y1="75" x2="32" y2="78" stroke="#81c784" stroke-width="1.2"/><line x1="90" y1="90" x2="42" y2="98" stroke="#81c784" stroke-width="1.2"/><line x1="90" y1="45" x2="135" y2="32" stroke="#81c784" stroke-width="1.2"/><line x1="90" y1="60" x2="150" y2="55" stroke="#81c784" stroke-width="1.2"/><line x1="90" y1="75" x2="148" y2="78" stroke="#81c784" stroke-width="1.2"/><line x1="90" y1="90" x2="138" y2="98" stroke="#81c784" stroke-width="1.2"/><text x="90" y="143" fill="#81c784" font-size="8" text-anchor="middle">Limbo — região laminar</text></svg>`,
+
+  peciolo: `<svg viewBox="0 0 180 150"><ellipse cx="90" cy="40" rx="60" ry="30" fill="#2e7d32" stroke="#66bb6a" stroke-width="1.5"/><rect x="82" y="70" width="16" height="55" rx="6" fill="#388e3c" stroke="#66bb6a" stroke-width="2"/><text x="90" y="100" fill="#ccff90" font-size="9" text-anchor="middle">Pecíolo</text><rect x="55" y="125" width="70" height="18" rx="6" fill="#1b5e20" stroke="#4caf50" stroke-width="1.5"/><text x="90" y="137" fill="#a5d6a7" font-size="8" text-anchor="middle">Caule</text></svg>`,
+
+  bainha: `<svg viewBox="0 0 180 150"><rect x="70" y="10" width="40" height="130" rx="8" fill="#388e3c" stroke="#66bb6a" stroke-width="2"/><text x="90" y="75" fill="#ccff90" font-size="9" text-anchor="middle" transform="rotate(-90,90,75)">CAULE</text><rect x="30" y="70" width="120" height="40" rx="10" fill="#1b5e20" stroke="#4caf50" stroke-width="2" opacity=".85"/><text x="90" y="93" fill="#a5d6a7" font-size="9" text-anchor="middle">BAINHA</text><ellipse cx="90" cy="35" rx="55" ry="25" fill="#2e7d32" stroke="#66bb6a" stroke-width="1.5" opacity=".8"/><text x="90" y="38" fill="#ccff90" font-size="8" text-anchor="middle">Limbo</text></svg>`,
+
+  cuticula: `<svg viewBox="0 0 180 150"><rect x="10" y="10" width="160" height="16" rx="4" fill="#ffee58" opacity=".8"/><text x="90" y="21" fill="#1b5e20" font-size="7.5" text-anchor="middle" font-weight="bold">CUTÍCULA (cera / cutina)</text><rect x="10" y="28" width="160" height="30" rx="4" fill="#1b5e20" stroke="#66bb6a" stroke-width="1.5"/><text x="90" y="45" fill="#ccff90" font-size="8" text-anchor="middle">Epiderme</text><rect x="10" y="62" width="160" height="75" rx="4" fill="#0d2b0d" stroke="#388e3c" stroke-width="1"/><text x="90" y="100" fill="#81c784" font-size="8" text-anchor="middle">Mesófilo</text><line x1="170" y1="4" x2="170" y2="28" stroke="#ffee58" stroke-width="2" marker-end="url(#arr)"/><text x="130" y="8" fill="#ffee58" font-size="7">↓ bloqueia H₂O</text></svg>`,
+
+  estomato: `<svg viewBox="0 0 180 150"><rect x="10" y="10" width="160" height="130" rx="8" fill="#0d2b0d" stroke="#388e3c" stroke-width="1.5"/><text x="90" y="28" fill="#a5d6a7" font-size="9" text-anchor="middle">Epiderme — Vista Superior</text><ellipse cx="90" cy="85" rx="38" ry="22" fill="#1b5e20" stroke="#69f0ae" stroke-width="2.5"/><ellipse cx="90" cy="85" rx="16" ry="10" fill="#0d2b0d"/><ellipse cx="70" cy="85" rx="20" ry="14" fill="#2e7d32" stroke="#66bb6a" stroke-width="1.5"/><ellipse cx="110" cy="85" rx="20" ry="14" fill="#2e7d32" stroke="#66bb6a" stroke-width="1.5"/><text x="70" y="88" fill="#ccff90" font-size="7" text-anchor="middle">Cél-guarda</text><text x="110" y="88" fill="#ccff90" font-size="7" text-anchor="middle">Cél-guarda</text><text x="90" y="88" fill="#69f0ae" font-size="6.5" text-anchor="middle">ostíolo</text><text x="90" y="130" fill="#81c784" font-size="7.5" text-anchor="middle">Células-guarda controlam abertura</text></svg>`,
+
+  palicadico: `<svg viewBox="0 0 180 150"><rect x="10" y="10" width="160" height="130" rx="8" fill="#0d2b0d" stroke="#388e3c" stroke-width="1.5"/><text x="90" y="25" fill="#a5d6a7" font-size="8.5" text-anchor="middle">Parênquima Paliçádico</text><rect x="20" y="32" width="22" height="80" rx="5" fill="#2e7d32" stroke="#66bb6a" stroke-width="1.2"/><rect x="46" y="32" width="22" height="80" rx="5" fill="#2e7d32" stroke="#66bb6a" stroke-width="1.2"/><rect x="72" y="32" width="22" height="80" rx="5" fill="#2e7d32" stroke="#66bb6a" stroke-width="1.2"/><rect x="98" y="32" width="22" height="80" rx="5" fill="#2e7d32" stroke="#66bb6a" stroke-width="1.2"/><rect x="124" y="32" width="22" height="80" rx="5" fill="#2e7d32" stroke="#66bb6a" stroke-width="1.2"/><circle cx="31" cy="50" r="5" fill="#69f0ae" opacity=".8"/><circle cx="31" cy="68" r="5" fill="#69f0ae" opacity=".8"/><circle cx="57" cy="50" r="5" fill="#69f0ae" opacity=".8"/><circle cx="57" cy="68" r="5" fill="#69f0ae" opacity=".8"/><circle cx="83" cy="50" r="5" fill="#69f0ae" opacity=".8"/><circle cx="83" cy="68" r="5" fill="#69f0ae" opacity=".8"/><text x="90" y="128" fill="#81c784" font-size="7.5" text-anchor="middle">Ricas em cloroplastos (verde)</text></svg>`,
+
+  lacunoso: `<svg viewBox="0 0 180 150"><rect x="10" y="10" width="160" height="130" rx="8" fill="#0d2b0d" stroke="#388e3c" stroke-width="1.5"/><text x="90" y="25" fill="#a5d6a7" font-size="8.5" text-anchor="middle">Parênquima Lacunoso</text><ellipse cx="40" cy="65" rx="22" ry="18" fill="#1b5e20" stroke="#4caf50" stroke-width="1.2"/><ellipse cx="90" cy="55" rx="20" ry="16" fill="#1b5e20" stroke="#4caf50" stroke-width="1.2"/><ellipse cx="140" cy="65" rx="20" ry="17" fill="#1b5e20" stroke="#4caf50" stroke-width="1.2"/><ellipse cx="65" cy="95" rx="20" ry="17" fill="#1b5e20" stroke="#4caf50" stroke-width="1.2"/><ellipse cx="118" cy="93" rx="22" ry="16" fill="#1b5e20" stroke="#4caf50" stroke-width="1.2"/><text x="90" y="128" fill="#81c784" font-size="7.5" text-anchor="middle">Grandes espaços → difusão de gases</text></svg>`
+};
+
+/* =========================================================
+   LAYOUT CALCULATION
+   ========================================================= */
+const DEG = Math.PI / 180;
+const W = 1400, H = 1100;
+
+function pos(cx, cy, angle, dist) {
+  return { x: cx + Math.cos(angle * DEG) * dist, y: cy + Math.sin(angle * DEG) * dist };
+}
+
+// Compute positions
+const mainDist = 270;
+const mainPositions = {};
+MAIN_NODES.forEach(n => {
+  const p = pos(0, 0, n.angle, mainDist);
+  mainPositions[n.id] = { x: p.x, y: p.y, angle: n.angle };
+});
+
+const subPositions = {};
+SUB_NODES.forEach(n => {
+  const parent = mainPositions[n.parent];
+  const p = pos(parent.x, parent.y, n.angle, n.dist);
+  subPositions[n.id] = { x: p.x, y: p.y };
+});
+
+const leafPositions = {};
+LEAF_NODES.forEach(n => {
+  const parent = subPositions[n.parent];
+  const p = pos(parent.x, parent.y, n.angle, n.dist);
+  leafPositions[n.id] = { x: p.x, y: p.y };
+});
+
+/* =========================================================
+   SVG RENDERING
+   ========================================================= */
+const svg = document.getElementById('mm');
+
+function mkEl(tag, attrs) {
+  const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+  return el;
+}
+
+function cubicPath(x1, y1, x2, y2) {
+  const dx = (x2 - x1) * 0.45;
+  return `M${x1},${y1} C${x1+dx},${y1} ${x2-dx},${y2} ${x2},${y2}`;
+}
+
+function drawEdge(x1, y1, x2, y2, cls) {
+  svg.insertBefore(mkEl('path', { d: cubicPath(x1, y1, x2, y2), class: cls }), svg.firstChild);
+}
+
+function wrapText(svgEl, text, x, y, fs, color) {
+  const lines = text.split('\n');
+  const lineH = fs * 1.25;
+  const startY = y - (lines.length - 1) * lineH / 2;
+  lines.forEach((line, i) => {
+    const t = mkEl('text', { x, y: startY + i * lineH, fill: color, 'font-size': fs, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'pointer-events': 'none' });
+    t.textContent = line;
+    svgEl.appendChild(t);
+  });
+}
+
+function drawCenterNode() {
+  const g = mkEl('g', { class: 'node-center', cursor: 'pointer' });
+  g.addEventListener('click', () => openPanel('root'));
+
+  // Outer glow ring
+  g.appendChild(mkEl('circle', { cx: 0, cy: 0, r: 85, fill: 'none', stroke: '#69f0ae', 'stroke-width': '1', opacity: '0.3' }));
+  g.appendChild(mkEl('circle', { cx: 0, cy: 0, r: CENTER.r, fill: '#1b5e20', stroke: '#69f0ae', 'stroke-width': '3' }));
+
+  // Leaf icon
+  const leaf = mkEl('path', { d: 'M0,-30 Q25,-10 20,20 Q0,35 -20,20 Q-25,-10 0,-30Z', fill: '#69f0ae', opacity: '.35' });
+  g.appendChild(leaf);
+
+  wrapText(g, 'FOLHA', 0, -8, 15, '#ccff90');
+  wrapText(g, 'Angiospermas', 0, 14, 9, '#a5d6a7');
+  svg.appendChild(g);
+}
+
+function drawMainNode(n, px, py) {
+  const g = mkEl('g', { class: 'node-main', cursor: 'pointer' });
+  g.addEventListener('click', () => openPanel(n.id));
+  drawEdge(0, 0, px, py, 'edge-main');
+
+  g.appendChild(mkEl('circle', { cx: px, cy: py, r: n.r, fill: n.color, stroke: n.stroke, 'stroke-width': '2.5' }));
+  const lines = n.label.split('\n');
+  lines.forEach((line, i) => {
+    const t = mkEl('text', { x: px, y: py + (i - (lines.length - 1) / 2) * 14, fill: '#e8f5e9', 'font-size': 12, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'pointer-events': 'none', 'font-weight': '600' });
+    t.textContent = line;
+    g.appendChild(t);
+  });
+  svg.appendChild(g);
+}
+
+function drawSubNode(n, px, py, sx, sy) {
+  const g = mkEl('g', { class: 'node-sub', cursor: 'pointer' });
+  g.addEventListener('click', () => openPanel(n.id));
+  drawEdge(px, py, sx, sy, 'edge-sub');
+
+  const rect = mkEl('rect', { x: sx - n.rw, y: sy - n.rh, width: n.rw * 2, height: n.rh * 2, rx: 10, fill: '#1a3d1a', stroke: '#4caf50', 'stroke-width': '1.5' });
+  g.appendChild(rect);
+  const lines = n.label.split('\n');
+  lines.forEach((line, i) => {
+    const t = mkEl('text', { x: sx, y: sy + (i - (lines.length - 1) / 2) * 13, fill: '#c8e6c9', 'font-size': 11, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'pointer-events': 'none', 'font-weight': '600' });
+    t.textContent = line;
+    g.appendChild(t);
+  });
+  svg.appendChild(g);
+}
+
+function drawLeafNode(n, px, py, lx, ly) {
+  const g = mkEl('g', { class: 'node-leaf', cursor: 'pointer' });
+  g.addEventListener('click', () => openPanel(n.id));
+  drawEdge(px, py, lx, ly, 'edge-leaf');
+
+  const rect = mkEl('rect', { x: lx - n.rw, y: ly - n.rh, width: n.rw * 2, height: n.rh * 2, rx: 8, fill: '#0f2710', stroke: '#388e3c', 'stroke-width': '1' });
+  g.appendChild(rect);
+  const lines = n.label.split('\n');
+  lines.forEach((line, i) => {
+    const t = mkEl('text', { x: lx, y: ly + (i - (lines.length - 1) / 2) * 12, fill: '#a5d6a7', 'font-size': 10, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'pointer-events': 'none' });
+    t.textContent = line;
+    g.appendChild(t);
+  });
+  svg.appendChild(g);
+}
+
+/* ── Build ── */
+// edges first (insert before everything), then nodes
+drawCenterNode();
+
+MAIN_NODES.forEach(n => {
+  const {x, y} = mainPositions[n.id];
+  drawMainNode(n, x, y);
+});
+
+SUB_NODES.forEach(n => {
+  const parent = mainPositions[n.parent];
+  const {x, y} = subPositions[n.id];
+  drawSubNode(n, parent.x, parent.y, x, y);
+});
+
+LEAF_NODES.forEach(n => {
+  const parent = subPositions[n.parent];
+  const {x, y} = leafPositions[n.id];
+  drawLeafNode(n, parent.x, parent.y, x, y);
+});
+
+/* =========================================================
+   PANEL
+   ========================================================= */
+function openPanel(id) {
+  const data = PANELS[id];
+  if (!data) return;
+
+  document.getElementById('panel-title').textContent = data.title;
+  document.getElementById('panel-text').innerHTML =
+    `${data.text}<br><br>${data.tags.map(t => `<span class="tag">${t}</span>`).join('')}`;
+
+  const imgDiv = document.getElementById('panel-img');
+  imgDiv.innerHTML = SVGS[data.img] || SVGS['leaf_full'];
+
+  document.getElementById('info-panel').style.display = 'block';
+  document.getElementById('overlay').style.display = 'block';
+}
+
+function closePanel() {
+  document.getElementById('info-panel').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+
+/* =========================================================
+   ANIMATED PARTICLES (subtle floating dots)
+   ========================================================= */
+(function particles(){
+  const canvas = document.createElement('canvas');
+  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;opacity:.35';
+  document.body.prepend(canvas);
+  const ctx = canvas.getContext('2d');
+  let pts = [];
+  function resize(){
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+    pts = Array.from({length: 60}, () => ({
+      x: Math.random()*innerWidth, y: Math.random()*innerHeight,
+      r: Math.random()*2+.5, dx: (Math.random()-.5)*.4, dy: (Math.random()-.5)*.4,
+      a: Math.random()
+    }));
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  function frame(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pts.forEach(p=>{
+      p.x+=p.dx; p.y+=p.dy;
+      if(p.x<0)p.x=canvas.width; if(p.x>canvas.width)p.x=0;
+      if(p.y<0)p.y=canvas.height; if(p.y>canvas.height)p.y=0;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(76,175,80,${p.a})`; ctx.fill();
+    });
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+</script>
+</body>
+</html>
