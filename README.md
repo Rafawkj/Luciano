@@ -25,7 +25,7 @@ tremeluzentes, cheia de cantos para descobrir e fragmentos de história espalhad
 | **Espaço** (morcego) | Subir batendo asas                          |
 | **T**            | Transformar entre vampiro ↔ morcego              |
 | **Mouse**        | Girar a câmera                                    |
-| **ESC**          | Liberar / prender o cursor do mouse              |
+| **ESC**          | Abrir / fechar o **menu de opções** (pausa o jogo) |
 
 ### 🏃 Parkour (forma vampiro)
 
@@ -107,6 +107,7 @@ O clima é construído por vários detalhes trabalhando juntos:
 ├── scripts/
 │   ├── player.gd            # Movimento, câmera, voo e transformação (+ juice)
 │   ├── hud.gd               # HUD: forma atual, barra de voo e pulo duplo
+│   ├── menu.gd              # Menu de opções (gráficos, volumes, sensibilidade)
 │   ├── audio_ambiente.gd    # Som ambiente gerado por código (vento, sino, piano)
 │   ├── janela_alta.gd       # Gatilho que detecta quando você chega à janela alta
 │   ├── village_builder.gd   # Monta a vila por código (casas, poço, cemitério...)
@@ -140,6 +141,13 @@ O clima é construído por vários detalhes trabalhando juntos:
 - **`scripts/hud.gd`** — Interface na tela (canto superior esquerdo): forma
   atual, barra de **tempo de voo** (fica vermelha quando acaba) e estado do
   **pulo duplo**. Os widgets são criados por código.
+
+- **`scripts/menu.gd`** — Menu de opções (abre com **ESC**, pausa o jogo):
+  - **Qualidade gráfica** (Baixa / Média / Alta) — desliga glow, névoa
+    volumétrica e sombras e reduz a escala de renderização no nível Baixa, para
+    rodar bem em PCs mais fracos.
+  - **Volume geral** e **volume ambiente** (buses de áudio separados).
+  - **Sensibilidade do mouse**, e botões **Voltar**/**Sair**.
 
 - **`scripts/audio_ambiente.gd`** — Som ambiente **sintetizado por código**
   (sem arquivos): vento contínuo, um sino distante de tempos em tempos e um

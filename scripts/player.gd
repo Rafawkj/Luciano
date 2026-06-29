@@ -51,7 +51,7 @@ const TEMPO_MAXIMO_VOO := 5.0
 const QUEDA_PLANANDO := 0.25
 
 # --- Câmera ---
-const SENSIBILIDADE_MOUSE := 0.0028
+var sensibilidade_mouse := 0.0028  # ajustável pelo menu de opções
 const FOV_BASE := 75.0
 const FOV_VELOCIDADE := 90.0
 
@@ -110,16 +110,11 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	# Girar a câmera com o mouse.
 	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * SENSIBILIDADE_MOUSE)
-		pivo_camera.rotate_x(-event.relative.y * SENSIBILIDADE_MOUSE)
+		rotate_y(-event.relative.x * sensibilidade_mouse)
+		pivo_camera.rotate_x(-event.relative.y * sensibilidade_mouse)
 		pivo_camera.rotation.x = clamp(pivo_camera.rotation.x, deg_to_rad(-65), deg_to_rad(40))
 
-	# ESC: solta/prende o mouse.
-	if event.is_action_pressed("ui_cancel"):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	# (ESC abre o menu de opções — tratado em menu.gd.)
 
 	# T: transformar.
 	if event.is_action_pressed("transformar"):
@@ -391,3 +386,7 @@ func fracao_voo() -> float:
 func pulo_duplo_disponivel() -> bool:
 	# Verdadeiro só quando está no ar e ainda tem o segundo pulo.
 	return pulo_duplo_ok and not is_on_floor()
+
+func definir_sensibilidade(v: float) -> void:
+	# Chamado pelo menu de opções.
+	sensibilidade_mouse = v

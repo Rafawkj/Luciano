@@ -24,9 +24,19 @@ var player_piano: AudioStreamPlayer3D
 
 
 func _ready() -> void:
+	_criar_bus_ambiente()
 	_criar_vento()
 	_criar_sino()
 	_criar_piano()
+
+
+# Cria um bus de áudio "Ambiente" para o menu poder ajustar só estes sons.
+func _criar_bus_ambiente() -> void:
+	if AudioServer.get_bus_index("Ambiente") == -1:
+		AudioServer.add_bus()
+		var idx := AudioServer.get_bus_count() - 1
+		AudioServer.set_bus_name(idx, "Ambiente")
+		AudioServer.set_bus_send(idx, "Master")
 
 
 # ============================================================================
@@ -37,6 +47,7 @@ func _criar_vento() -> void:
 	player_vento = AudioStreamPlayer.new()
 	player_vento.stream = _wav(_gerar_vento(), true)
 	player_vento.volume_db = -16.0
+	player_vento.bus = "Ambiente"
 	add_child(player_vento)
 	player_vento.play()
 
@@ -64,6 +75,7 @@ func _criar_sino() -> void:
 	player_sino = AudioStreamPlayer.new()
 	player_sino.stream = _wav(_gerar_sino(), false)
 	player_sino.volume_db = -9.0
+	player_sino.bus = "Ambiente"
 	add_child(player_sino)
 
 	var t := Timer.new()
@@ -106,6 +118,7 @@ func _criar_piano() -> void:
 	player_piano.volume_db = -2.0
 	player_piano.max_distance = 45.0
 	player_piano.unit_size = 12.0
+	player_piano.bus = "Ambiente"
 	player_piano.position = Vector3(0, 3, -46)  # dentro do salão do castelo
 	add_child(player_piano)
 
