@@ -4,9 +4,13 @@ Protótipo jogável de um mini mundo aberto *dark fantasy* medieval.
 O protagonista é um **vampiro** que pode alternar entre a **forma humanoide** e a
 **forma de morcego** (que voa por tempo limitado).
 
-> ⚠️ Este é apenas o **primeiro protótipo jogável** — a base do projeto.
-> Ainda não é o jogo completo: usa formas geométricas simples no lugar de
-> modelos 3D, para focar na jogabilidade.
+O foco do jogo é **exploração** e **imersão na atmosfera dark fantasy**: uma vila
+silenciosa e enevoada (Covado das Sombras), iluminada só pelo luar e por tochas
+tremeluzentes, cheia de cantos para descobrir e fragmentos de história espalhados.
+
+> ⚠️ Este é um **protótipo** — a base do projeto. Ainda não é o jogo completo:
+> usa formas geométricas simples no lugar de modelos 3D, para focar na
+> jogabilidade e na ambientação.
 
 ---
 
@@ -24,11 +28,30 @@ O protagonista é um **vampiro** que pode alternar entre a **forma humanoide** e
 **Forma morcego:** segure **Espaço** para voar. Você tem ~5 segundos de voo;
 o "tanque" recarrega assim que você toca o chão de novo.
 
-### 🎯 Objetivo de teste
+### 🎯 O que fazer
 
-Há uma pequena **vila medieval** com casas e uma **torre**. No alto da torre existe
-uma **janela com sacada** que o pulo do vampiro **não alcança**. Vire morcego (**T**)
-e **voe (Espaço)** até a sacada — ao chegar, uma mensagem aparece na tela. 🦇
+**Explore a vila** de Covado das Sombras: ande pelas ruas, espie a praça com o
+**poço**, o **cemitério** com lápides tortas, a **capela em ruínas** com sua vela
+acesa, as **árvores mortas** e o **portão** de entrada. Ao se aproximar de cada
+lugar marcante, um **texto de lore** aparece no topo da tela.
+
+No alto da **torre** existe uma **janela com sacada** que o pulo do vampiro **não
+alcança**. Vire morcego (**T**) e **voe (Espaço)** até a sacada — ao chegar, uma
+mensagem especial aparece na tela. 🦇
+
+---
+
+## 🌒 Atmosfera & exploração (a "vibe" dark fantasy)
+
+O clima é construído por vários detalhes trabalhando juntos:
+
+- **Luar frio** (luz direcional azulada) + **lua** brilhante no céu.
+- **Tochas e velas** com luz quente que **tremula** (`scripts/tocha.gd`).
+- **Névoa volumétrica** e *bloom/glow* fazem as janelas e chamas brilharem no escuro.
+- **Pontos de interesse** (`scripts/ponto_de_interesse.gd`): áreas invisíveis que
+  exibem textos de história quando você se aproxima — recompensando a exploração.
+- A vila inteira é **gerada por código** (`scripts/village_builder.gd`), o que
+  facilita aumentá-la: basta adicionar coordenadas nas listas do script.
 
 ---
 
@@ -39,12 +62,15 @@ e **voe (Espaço)** até a sacada — ao chegar, uma mensagem aparece na tela. �
 ├── project.godot        # Configuração do projeto + mapa de teclas (Input Map)
 ├── icon.svg             # Ícone do projeto
 ├── scenes/
-│   ├── world.tscn       # CENA PRINCIPAL: terreno, luz, céu, vila, jogador e HUD
+│   ├── world.tscn       # CENA PRINCIPAL: terreno, luar, lua, névoa, vila e HUD
 │   ├── player.tscn      # O personagem (vampiro/morcego) + câmera em 3ª pessoa
-│   └── village.tscn     # Vila medieval: casas, torre e a janela alta com sacada
+│   └── village.tscn     # A torre (com a janela alta) + o Construtor da vila
 ├── scripts/
-│   ├── player.gd        # Toda a lógica: movimento, câmera, voo e transformação
-│   └── janela_alta.gd   # Gatilho que detecta quando você chega à janela alta
+│   ├── player.gd            # Movimento, câmera, voo e transformação
+│   ├── janela_alta.gd       # Gatilho que detecta quando você chega à janela alta
+│   ├── village_builder.gd   # Monta a vila por código (casas, poço, cemitério...)
+│   ├── tocha.gd             # Faz a luz das tochas/velas tremular
+│   └── ponto_de_interesse.gd # Mostra textos de lore ao explorar
 └── assets/              # (vazia) Para modelos, texturas e sons futuros
 ```
 
@@ -55,24 +81,34 @@ e **voe (Espaço)** até a sacada — ao chegar, uma mensagem aparece na tela. �
   `pular`, `correr`, `transformar` ligados às teclas).
 
 - **`scenes/world.tscn`** — O "mundo". Contém:
-  - `Chao` — um terreno plano (60×60) com **colisão**, feito de um `StaticBody3D`.
-  - `Pilar1/2/3` — pilares (também com colisão) que servem de referência visual
-    para você perceber o movimento.
-  - `LuzDirecional` — iluminação tipo "luar".
-  - `WorldEnvironment` — céu noturno e uma névoa leve para o clima sombrio.
-  - `Vila` — uma instância de `village.tscn` (casas, torre e a janela alta).
+  - `Chao` — um terreno plano (120×120) com **colisão**, feito de um `StaticBody3D`.
+  - `LuzDirecional` — o luar (luz azulada vinda de cima).
+  - `Lua` — uma esfera brilhante (emissiva) no céu.
+  - `WorldEnvironment` — céu noturno, névoa volumétrica e *glow* para o clima sombrio.
+  - `Vila` — uma instância de `village.tscn`.
   - `Player` — uma instância da cena do personagem.
-  - `HUD` — um `CanvasLayer` com um rótulo de texto na tela (instruções e mensagens).
+  - `HUD` — um `CanvasLayer` com um rótulo de texto na tela (instruções e lore).
 
-- **`scenes/village.tscn`** — A vila medieval:
-  - `Casa1..4` — casas (paredes + telhado) com **colisão**.
-  - `Torre` — uma torre de pedra alta. No topo ficam a `JanelaPainel` (a janela
-    que brilha), o `Balcao` (sacada com colisão onde você pousa) e o
-    `GatilhoJanela` (uma `Area3D` que detecta a chegada do jogador).
+- **`scenes/village.tscn`** — A vila:
+  - `Torre` — torre de pedra alta. No topo ficam a `JanelaPainel` (a janela que
+    brilha), o `Balcao` (sacada com colisão onde você pousa) e o `GatilhoJanela`
+    (uma `Area3D` que detecta a chegada do jogador).
+  - `Construtor` — um nó com o script `village_builder.gd`, que cria todo o
+    resto da vila (casas, poço, portão, cemitério, capela, árvores e tochas).
 
 - **`scripts/janela_alta.gd`** — Detecta quando o jogador entra na sacada da
   janela alta e mostra uma mensagem na tela. Como o pulo não alcança aquela
   altura, só dá para chegar **voando como morcego**.
+
+- **`scripts/village_builder.gd`** — Constrói a vila inteira por código a partir
+  de listas de posições. Cada peça (casa, tocha, poço, túmulo, árvore, capela,
+  ponto de interesse) tem sua própria função, fácil de ler e ajustar.
+
+- **`scripts/tocha.gd`** — Colocado nas luzes das tochas/velas; faz o brilho
+  oscilar para imitar uma chama.
+
+- **`scripts/ponto_de_interesse.gd`** — Mostra um texto de lore no HUD quando o
+  jogador entra na área; some quando ele se afasta.
 
 - **`scenes/player.tscn`** — O personagem. Sua árvore de nós:
   - `Player` (`CharacterBody3D`) — o corpo físico com colisão (uma cápsula).

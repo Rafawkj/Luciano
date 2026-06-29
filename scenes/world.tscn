@@ -1,24 +1,35 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0vampireworld01"]
+[gd_scene load_steps=11 format=3 uid="uid://c0vampireworld01"]
 
 [ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" path="res://scenes/village.tscn" id="2_village"]
 
 [sub_resource type="StandardMaterial3D" id="mat_chao"]
-albedo_color = Color(0.13, 0.14, 0.11, 1)
-roughness = 0.95
+albedo_color = Color(0.1, 0.11, 0.09, 1)
+roughness = 0.97
 
 [sub_resource type="BoxMesh" id="mesh_chao"]
 material = SubResource("mat_chao")
-size = Vector3(60, 1, 60)
+size = Vector3(120, 1, 120)
 
 [sub_resource type="BoxShape3D" id="shape_chao"]
-size = Vector3(60, 1, 60)
+size = Vector3(120, 1, 120)
+
+[sub_resource type="StandardMaterial3D" id="mat_lua"]
+albedo_color = Color(0.9, 0.9, 0.95, 1)
+emission_enabled = true
+emission = Color(0.8, 0.83, 0.95, 1)
+emission_energy_multiplier = 2.5
+
+[sub_resource type="SphereMesh" id="mesh_lua"]
+material = SubResource("mat_lua")
+radius = 6.0
+height = 12.0
 
 [sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
-sky_top_color = Color(0.04, 0.04, 0.09, 1)
-sky_horizon_color = Color(0.12, 0.1, 0.16, 1)
-ground_horizon_color = Color(0.08, 0.07, 0.1, 1)
-ground_bottom_color = Color(0.03, 0.03, 0.05, 1)
+sky_top_color = Color(0.03, 0.03, 0.07, 1)
+sky_horizon_color = Color(0.1, 0.09, 0.14, 1)
+ground_horizon_color = Color(0.06, 0.05, 0.08, 1)
+ground_bottom_color = Color(0.02, 0.02, 0.04, 1)
 
 [sub_resource type="Sky" id="sky"]
 sky_material = SubResource("sky_mat")
@@ -26,12 +37,22 @@ sky_material = SubResource("sky_mat")
 [sub_resource type="Environment" id="env"]
 background_mode = 2
 sky = SubResource("sky")
+tonemap_mode = 3
 ambient_light_source = 3
-ambient_light_color = Color(0.3, 0.3, 0.4, 1)
-ambient_light_energy = 0.4
+ambient_light_color = Color(0.26, 0.28, 0.4, 1)
+ambient_light_energy = 0.35
 fog_enabled = true
-fog_light_color = Color(0.1, 0.1, 0.16, 1)
-fog_density = 0.012
+fog_light_color = Color(0.09, 0.1, 0.16, 1)
+fog_density = 0.014
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+volumetric_fog_albedo = Color(0.5, 0.52, 0.65, 1)
+volumetric_fog_emission = Color(0.015, 0.015, 0.03, 1)
+glow_enabled = true
+glow_intensity = 0.9
+glow_strength = 1.0
+glow_bloom = 0.15
+glow_hdr_threshold = 0.85
 
 [node name="World" type="Node3D"]
 
@@ -40,9 +61,14 @@ environment = SubResource("env")
 
 [node name="LuzDirecional" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866, -0.25, 0.433, 0, 0.866, 0.5, -0.5, -0.433, 0.75, 0, 12, 0)
-light_color = Color(0.7, 0.72, 0.9, 1)
-light_energy = 0.7
+light_color = Color(0.62, 0.66, 0.9, 1)
+light_energy = 0.55
 shadow_enabled = true
+
+[node name="Lua" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 52, -72)
+mesh = SubResource("mesh_lua")
+cast_shadow = 0
 
 [node name="Chao" type="StaticBody3D" parent="."]
 
@@ -63,10 +89,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="MensagemLabel" type="Label" parent="HUD" groups=["hud_mensagem"]]
 anchor_right = 1.0
-offset_top = 20.0
-offset_bottom = 70.0
+offset_top = 24.0
+offset_bottom = 92.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9, 0.88, 0.82, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 22
-text = "Vire morcego (T) e voe (Espaço) ate a janela alta da torre!"
+text = "Explore a vila de Covado das Sombras. Vire morcego (T) e voe (Espaco) ate a janela alta da torre."
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
