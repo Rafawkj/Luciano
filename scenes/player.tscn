@@ -61,17 +61,28 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
 mesh = SubResource("mesh_morcego_corpo")
 
-[node name="AsaEsquerda" type="MeshInstance3D" parent="ModeloMorcego"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 1.0, 0)
+[node name="PivoAsaEsq" type="Node3D" parent="ModeloMorcego"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+
+[node name="Asa" type="MeshInstance3D" parent="ModeloMorcego/PivoAsaEsq"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0, 0)
 mesh = SubResource("mesh_asa")
 
-[node name="AsaDireita" type="MeshInstance3D" parent="ModeloMorcego"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.0, 0)
+[node name="PivoAsaDir" type="Node3D" parent="ModeloMorcego"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+
+[node name="Asa" type="MeshInstance3D" parent="ModeloMorcego/PivoAsaDir"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0, 0)
 mesh = SubResource("mesh_asa")
 
 [node name="PivoCamera" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+transform = Transform3D(1, 0, 0, 0, 0.99, -0.139, 0, 0.139, 0.99, 0, 1.6, 0)
 
-[node name="Camera3D" type="Camera3D" parent="PivoCamera"]
-transform = Transform3D(1, 0, 0, 0, 0.978, -0.208, 0, 0.208, 0.978, 0, 0.7, 5.5)
+[node name="SpringArm3D" type="SpringArm3D" parent="PivoCamera"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+spring_length = 5.5
+margin = 0.2
+
+[node name="Camera3D" type="Camera3D" parent="PivoCamera/SpringArm3D"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 fov = 75.0

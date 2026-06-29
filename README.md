@@ -159,7 +159,10 @@ O clima é construído por vários detalhes trabalhando juntos:
 - **`scripts/player.gd`** — O cérebro do personagem, bastante comentado:
   - Parkour fluido na forma vampiro: aceleração/atrito, pulo duplo, wall slide,
     wall jump, pulo variável, coyote time, jump buffer e gravidade assimétrica.
-  - Câmera girando com o mouse, com *FOV kick* em alta velocidade.
+  - Câmera em `SpringArm3D` (não atravessa telhados/paredes) com *FOV kick*.
+  - **Feel & juice**: squash & stretch ao pular/aterrissar, poeira na
+    aterrissagem, faíscas + flash de luz ao transformar, o modelo virando na
+    direção do movimento e o morcego batendo as asas.
   - Transformação ao apertar **T**.
   - Voo (com aceleração) por tempo limitado na forma morcego.
 
