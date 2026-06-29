@@ -1,0 +1,7 @@
+# Pasta gerada automaticamente pelo Godot (cache de importação, etc.)
+.godot/
+
+# Arquivos exportados / builds
+/build/
+/export/
+*.tmp
