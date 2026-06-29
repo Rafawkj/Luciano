@@ -24,6 +24,12 @@ O protagonista é um **vampiro** que pode alternar entre a **forma humanoide** e
 **Forma morcego:** segure **Espaço** para voar. Você tem ~5 segundos de voo;
 o "tanque" recarrega assim que você toca o chão de novo.
 
+### 🎯 Objetivo de teste
+
+Há uma pequena **vila medieval** com casas e uma **torre**. No alto da torre existe
+uma **janela com sacada** que o pulo do vampiro **não alcança**. Vire morcego (**T**)
+e **voe (Espaço)** até a sacada — ao chegar, uma mensagem aparece na tela. 🦇
+
 ---
 
 ## 📁 Estrutura do projeto
@@ -33,10 +39,12 @@ o "tanque" recarrega assim que você toca o chão de novo.
 ├── project.godot        # Configuração do projeto + mapa de teclas (Input Map)
 ├── icon.svg             # Ícone do projeto
 ├── scenes/
-│   ├── world.tscn       # CENA PRINCIPAL: terreno, luz, céu e o jogador
-│   └── player.tscn      # O personagem (vampiro/morcego) + câmera em 3ª pessoa
+│   ├── world.tscn       # CENA PRINCIPAL: terreno, luz, céu, vila, jogador e HUD
+│   ├── player.tscn      # O personagem (vampiro/morcego) + câmera em 3ª pessoa
+│   └── village.tscn     # Vila medieval: casas, torre e a janela alta com sacada
 ├── scripts/
-│   └── player.gd        # Toda a lógica: movimento, câmera, voo e transformação
+│   ├── player.gd        # Toda a lógica: movimento, câmera, voo e transformação
+│   └── janela_alta.gd   # Gatilho que detecta quando você chega à janela alta
 └── assets/              # (vazia) Para modelos, texturas e sons futuros
 ```
 
@@ -52,7 +60,19 @@ o "tanque" recarrega assim que você toca o chão de novo.
     para você perceber o movimento.
   - `LuzDirecional` — iluminação tipo "luar".
   - `WorldEnvironment` — céu noturno e uma névoa leve para o clima sombrio.
+  - `Vila` — uma instância de `village.tscn` (casas, torre e a janela alta).
   - `Player` — uma instância da cena do personagem.
+  - `HUD` — um `CanvasLayer` com um rótulo de texto na tela (instruções e mensagens).
+
+- **`scenes/village.tscn`** — A vila medieval:
+  - `Casa1..4` — casas (paredes + telhado) com **colisão**.
+  - `Torre` — uma torre de pedra alta. No topo ficam a `JanelaPainel` (a janela
+    que brilha), o `Balcao` (sacada com colisão onde você pousa) e o
+    `GatilhoJanela` (uma `Area3D` que detecta a chegada do jogador).
+
+- **`scripts/janela_alta.gd`** — Detecta quando o jogador entra na sacada da
+  janela alta e mostra uma mensagem na tela. Como o pulo não alcança aquela
+  altura, só dá para chegar **voando como morcego**.
 
 - **`scenes/player.tscn`** — O personagem. Sua árvore de nós:
   - `Player` (`CharacterBody3D`) — o corpo físico com colisão (uma cápsula).
