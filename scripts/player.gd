@@ -375,3 +375,19 @@ func _alternar_forma() -> void:
 func _atualizar_visual() -> void:
 	modelo_vampiro.visible = (forma_atual == Forma.VAMPIRO)
 	modelo_morcego.visible = (forma_atual == Forma.MORCEGO)
+
+
+# ============================================================================
+# CONSULTAS PARA O HUD (lê o estado do jogador sem expor variáveis cruas)
+# ============================================================================
+
+func eh_morcego() -> bool:
+	return forma_atual == Forma.MORCEGO
+
+func fracao_voo() -> float:
+	# Quanto resta do "tanque" de voo, de 0.0 a 1.0.
+	return clampf(tempo_voo_restante / TEMPO_MAXIMO_VOO, 0.0, 1.0)
+
+func pulo_duplo_disponivel() -> bool:
+	# Verdadeiro só quando está no ar e ainda tem o segundo pulo.
+	return pulo_duplo_ok and not is_on_floor()

@@ -105,7 +105,9 @@ O clima é construído por vários detalhes trabalhando juntos:
 │   ├── player.tscn      # O personagem (vampiro/morcego) + câmera em 3ª pessoa
 │   └── village.tscn     # A torre (com a janela alta) + o Construtor da vila
 ├── scripts/
-│   ├── player.gd            # Movimento, câmera, voo e transformação
+│   ├── player.gd            # Movimento, câmera, voo e transformação (+ juice)
+│   ├── hud.gd               # HUD: forma atual, barra de voo e pulo duplo
+│   ├── audio_ambiente.gd    # Som ambiente gerado por código (vento, sino, piano)
 │   ├── janela_alta.gd       # Gatilho que detecta quando você chega à janela alta
 │   ├── village_builder.gd   # Monta a vila por código (casas, poço, cemitério...)
 │   ├── tocha.gd             # Faz a luz das tochas/velas tremular
@@ -134,6 +136,15 @@ O clima é construído por vários detalhes trabalhando juntos:
     (uma `Area3D` que detecta a chegada do jogador).
   - `Construtor` — um nó com o script `village_builder.gd`, que cria todo o
     resto da vila (casas, poço, portão, cemitério, capela, árvores e tochas).
+
+- **`scripts/hud.gd`** — Interface na tela (canto superior esquerdo): forma
+  atual, barra de **tempo de voo** (fica vermelha quando acaba) e estado do
+  **pulo duplo**. Os widgets são criados por código.
+
+- **`scripts/audio_ambiente.gd`** — Som ambiente **sintetizado por código**
+  (sem arquivos): vento contínuo, um sino distante de tempos em tempos e um
+  **piano solitário** no salão de baile (áudio 3D — só se ouve por perto). Para
+  usar sons reais depois, é só atribuir um `.ogg`/`.wav` ao `.stream` dos players.
 
 - **`scripts/janela_alta.gd`** — Detecta quando o jogador entra na sacada da
   janela alta e mostra uma mensagem na tela. Como o pulo não alcança aquela
