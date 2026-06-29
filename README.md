@@ -35,6 +35,16 @@ o "tanque" recarrega assim que você toca o chão de novo.
 acesa, as **árvores mortas** e o **portão** de entrada. Ao se aproximar de cada
 lugar marcante, um **texto de lore** aparece no topo da tela.
 
+Procure também os lugares de **beleza triste** — a sensação de que este mundo já
+foi lindo antes da tragédia:
+
+- 🌼 **Jardim das Lamentações** — um jardim morto onde só restaram flores brancas.
+- 🗿 **Estátua que chora água escura** — no centro do jardim, chorando há anos.
+- 📖 **Biblioteca antiga** — sem teto, iluminada por um feixe de luar.
+- 🕯️ **Salão de baile vazio** — no castelo arruinado, onde só o luar dança.
+- 🌉 **Ponte quebrada sobre o rio de névoa** — partida ao meio.
+- 🗼 **Torre com vista para todo o vale** — alcançável apenas voando.
+
 No alto da **torre** existe uma **janela com sacada** que o pulo do vampiro **não
 alcança**. Vire morcego (**T**) e **voe (Espaço)** até a sacada — ao chegar, uma
 mensagem especial aparece na tela. 🦇
@@ -102,7 +112,8 @@ O clima é construído por vários detalhes trabalhando juntos:
 
 - **`scripts/village_builder.gd`** — Constrói a vila inteira por código a partir
   de listas de posições. Cada peça (casa, tocha, poço, túmulo, árvore, capela,
-  ponto de interesse) tem sua própria função, fácil de ler e ajustar.
+  jardim, estátua, biblioteca, salão de baile, ponte de névoa, ponto de
+  interesse) tem sua própria função, fácil de ler e ajustar.
 
 - **`scripts/tocha.gd`** — Colocado nas luzes das tochas/velas; faz o brilho
   oscilar para imitar uma chama.

@@ -24,6 +24,11 @@ var mat_telhado: StandardMaterial3D   # telhado vermelho escuro
 var mat_pedra: StandardMaterial3D     # pedra (poço, túmulos, capela)
 var mat_janela: StandardMaterial3D    # janela/chama iluminada (emissiva)
 var mat_tronco: StandardMaterial3D    # árvores mortas
+var mat_marmore: StandardMaterial3D   # mármore pálido (estátua, salão, colunas)
+var mat_flor: StandardMaterial3D      # flores brancas que brilham fracamente
+var mat_agua_escura: StandardMaterial3D  # lágrimas e poça de água escura
+var mat_nevoa: StandardMaterial3D     # névoa do rio e feixe de luar (translúcida)
+var mats_livros: Array = []           # cores variadas dos livros da biblioteca
 
 
 func _ready() -> void:
@@ -32,6 +37,11 @@ func _ready() -> void:
 	_construir_praca_e_portao()
 	_construir_cemiterio()
 	_espalhar_arvores_mortas()
+	# --- Lugares de "beleza triste" (este mundo já foi lindo) ---
+	_construir_jardim_e_estatua()
+	_construir_biblioteca()
+	_construir_castelo_e_salao()
+	_construir_rio_e_ponte()
 	_criar_pontos_de_interesse()
 
 
@@ -47,6 +57,29 @@ func _criar_materiais() -> void:
 	mat_tronco = _novo_material(Color(0.12, 0.1, 0.09))
 	# Janela/chama: material que EMITE luz própria (brilha no escuro).
 	mat_janela = _novo_material(Color(1.0, 0.78, 0.4), 0.6, true, 3.0)
+
+	# Mármore pálido e liso (estátua, colunas e piso do salão de baile).
+	mat_marmore = _novo_material(Color(0.82, 0.82, 0.86), 0.25)
+	# Flores brancas que captam o luar e brilham de leve.
+	mat_flor = _novo_material(Color(0.95, 0.96, 1.0), 0.5, true, 1.2)
+	# Água escura: lisa, quase preta, com um leve brilho frio para se ver à noite.
+	mat_agua_escura = _novo_material(Color(0.02, 0.02, 0.05), 0.05, true, 0.4)
+	# Névoa translúcida e luminosa (rio de névoa e feixe de luar).
+	mat_nevoa = StandardMaterial3D.new()
+	mat_nevoa.albedo_color = Color(0.7, 0.73, 0.85, 0.18)
+	mat_nevoa.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	mat_nevoa.emission_enabled = true
+	mat_nevoa.emission = Color(0.4, 0.42, 0.55)
+	mat_nevoa.emission_energy_multiplier = 0.6
+	mat_nevoa.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	# Cores sóbrias para as lombadas dos livros da biblioteca.
+	mats_livros = [
+		_novo_material(Color(0.35, 0.12, 0.12)),
+		_novo_material(Color(0.15, 0.2, 0.28)),
+		_novo_material(Color(0.2, 0.18, 0.1)),
+		_novo_material(Color(0.12, 0.22, 0.16)),
+		_novo_material(Color(0.25, 0.2, 0.28)),
+	]
 
 
 func _novo_material(cor: Color, rugosidade := 0.95, emissivo := false, energia := 1.0) -> StandardMaterial3D:
@@ -326,17 +359,277 @@ func _criar_arvore_morta(pos: Vector3) -> void:
 
 
 # ============================================================================
+# JARDIM MORTO COM FLORES BRANCAS + ESTÁTUA CHORANDO ÁGUA ESCURA
+# ============================================================================
+
+func _construir_jardim_e_estatua() -> void:
+	var centro := Vector3(34, 0, 6)
+
+	# Muretas baixas de pedra cercam o jardim (aberto ao sul, pela vila).
+	var cerca := StaticBody3D.new()
+	cerca.position = centro
+	add_child(cerca)
+	_caixa_solida(cerca, Vector3(16, 0.6, 0.4), Vector3(0, 0.3, -8), mat_pedra)  # norte
+	_caixa_solida(cerca, Vector3(0.4, 0.6, 16), Vector3(-8, 0.3, 0), mat_pedra)  # oeste
+	_caixa_solida(cerca, Vector3(0.4, 0.6, 16), Vector3(8, 0.3, 0), mat_pedra)   # leste
+
+	# Flores brancas em grade, deixando o centro livre para a estátua.
+	for fx in range(-6, 7, 2):
+		for fz in range(-6, 7, 2):
+			if abs(fx) <= 2 and abs(fz) <= 2:
+				continue
+			var p := centro + Vector3(fx + randf_range(-0.4, 0.4), 0, fz + randf_range(-0.4, 0.4))
+			_criar_flor_branca(p)
+
+	_criar_estatua_chorando(centro)
+	# Uma árvore morta no canto reforça o "jardim que já foi belo".
+	_criar_arvore_morta(centro + Vector3(6, 0, -6))
+
+
+func _criar_flor_branca(pos: Vector3) -> void:
+	var flor := Node3D.new()
+	flor.position = pos
+	add_child(flor)
+
+	var caule := CylinderMesh.new()
+	caule.top_radius = 0.02
+	caule.bottom_radius = 0.03
+	caule.height = 0.5
+	caule.material = mat_tronco
+	_malha(flor, caule, Vector3(0, 0.25, 0))
+
+	var petalas := SphereMesh.new()
+	petalas.radius = 0.12
+	petalas.height = 0.24
+	petalas.material = mat_flor
+	_malha(flor, petalas, Vector3(0, 0.55, 0))
+
+
+func _criar_estatua_chorando(centro: Vector3) -> void:
+	var estatua := StaticBody3D.new()
+	estatua.position = centro
+	add_child(estatua)
+
+	# Pedestal e figura de mármore (corpo + cabeça) que olha para baixo.
+	_caixa_solida(estatua, Vector3(1.6, 0.6, 1.6), Vector3(0, 0.3, 0), mat_pedra)
+	var corpo := CapsuleMesh.new()
+	corpo.radius = 0.35
+	corpo.height = 1.8
+	corpo.material = mat_marmore
+	_malha(estatua, corpo, Vector3(0, 1.5, 0))
+	var cabeca := SphereMesh.new()
+	cabeca.radius = 0.28
+	cabeca.height = 0.56
+	cabeca.material = mat_marmore
+	_malha(estatua, cabeca, Vector3(0, 2.45, 0.05))
+
+	# Lágrimas de água escura escorrendo do rosto até uma poça no pedestal.
+	_malha(estatua, _malha_caixa(Vector3(0.05, 1.5, 0.05), mat_agua_escura), Vector3(0.1, 1.7, 0.27))
+	_malha(estatua, _malha_caixa(Vector3(0.05, 1.5, 0.05), mat_agua_escura), Vector3(-0.1, 1.7, 0.27))
+	var poca := CylinderMesh.new()
+	poca.top_radius = 0.7
+	poca.bottom_radius = 0.7
+	poca.height = 0.05
+	poca.material = mat_agua_escura
+	_malha(estatua, poca, Vector3(0, 0.63, 0.1))
+
+
+# ============================================================================
+# BIBLIOTECA ANTIGA ILUMINADA PELA LUA (sem teto, com feixe de luar)
+# ============================================================================
+
+func _construir_biblioteca() -> void:
+	var centro := Vector3(-34, 0, 16)
+	var sala := StaticBody3D.new()
+	sala.position = centro
+	add_child(sala)
+
+	# Paredes de pedra sem teto, abertas pela frente (face +Z) para entrar.
+	_caixa_solida(sala, Vector3(12, 5, 0.6), Vector3(0, 2.5, -5), mat_pedra)
+	_caixa_solida(sala, Vector3(0.6, 5, 10), Vector3(-6, 2.5, 0), mat_pedra)
+	_caixa_solida(sala, Vector3(0.6, 5, 10), Vector3(6, 2.5, 0), mat_pedra)
+
+	# Estantes encostadas nas paredes laterais e ao fundo.
+	for zz in [-3.0, 0.0, 3.0]:
+		_criar_estante(centro + Vector3(-5.0, 0, zz), 90.0)
+		_criar_estante(centro + Vector3(5.0, 0, zz), 90.0)
+	_criar_estante(centro + Vector3(-2.5, 0, -4.3), 0.0)
+	_criar_estante(centro + Vector3(2.5, 0, -4.3), 0.0)
+
+	# FEIXE DE LUAR: um holofote pálido vindo do alto, como se a lua entrasse
+	# pelo teto desabado. Acompanha um cilindro translúcido (a "coluna de luz").
+	var luar := SpotLight3D.new()
+	luar.position = centro + Vector3(0, 9, 0)
+	luar.rotation_degrees = Vector3(-90, 0, 0)
+	luar.light_color = Color(0.7, 0.76, 0.98)
+	luar.light_energy = 6.0
+	luar.spot_range = 16.0
+	luar.spot_angle = 28.0
+	add_child(luar)
+
+	var feixe := CylinderMesh.new()
+	feixe.top_radius = 0.6
+	feixe.bottom_radius = 2.6
+	feixe.height = 9.0
+	feixe.material = mat_nevoa
+	_malha(sala, feixe, Vector3(0, 4.5, 0))
+
+
+func _criar_estante(pos: Vector3, graus: float) -> void:
+	var estante := StaticBody3D.new()
+	estante.position = pos
+	estante.rotation_degrees = Vector3(0, graus, 0)
+	add_child(estante)
+
+	# Corpo de madeira da estante.
+	_caixa_solida(estante, Vector3(1.8, 3.2, 0.4), Vector3(0, 1.6, 0), mat_madeira)
+	# Fileiras de livros coloridos em três prateleiras.
+	for prateleira in range(3):
+		var y := 0.7 + prateleira * 0.9
+		for k in range(6):
+			var cor: Material = mats_livros[(k + prateleira) % mats_livros.size()]
+			var livro := _malha_caixa(Vector3(0.22, 0.5, 0.3), cor)
+			_malha(estante, livro, Vector3(-0.65 + k * 0.26, y, 0.06))
+
+
+# ============================================================================
+# CASTELO ARRUINADO COM SALÃO DE BAILE VAZIO
+# ============================================================================
+
+func _construir_castelo_e_salao() -> void:
+	var centro := Vector3(0, 0, -46)
+	var salao := StaticBody3D.new()
+	salao.position = centro
+	add_child(salao)
+
+	# Piso de mármore liso e paredes parciais (o salão está aberto/arruinado).
+	_caixa_solida(salao, Vector3(20, 0.4, 16), Vector3(0, 0.2, 0), mat_marmore)
+	_caixa_solida(salao, Vector3(20, 7, 0.8), Vector3(0, 3.5, -8), mat_pedra)   # fundo
+	_caixa_solida(salao, Vector3(0.8, 7, 16), Vector3(-10, 3.5, 0), mat_pedra)  # esquerda
+	_caixa_solida(salao, Vector3(0.8, 7, 16), Vector3(10, 3.5, 0), mat_pedra)   # direita
+
+	# Duas fileiras de colunas de mármore.
+	for cx in [-6.0, 6.0]:
+		for cz in [-5.0, 0.0, 5.0]:
+			_criar_coluna(centro + Vector3(cx, 0, cz))
+
+	# Um lustre quebrado pendurado, tombado de lado.
+	_criar_lustre(centro + Vector3(0, 6, 0))
+
+	# Luar frio e suave preenchendo o salão vazio.
+	var luz := OmniLight3D.new()
+	luz.position = centro + Vector3(0, 5, 3)
+	luz.light_color = Color(0.6, 0.66, 0.92)
+	luz.omni_range = 22.0
+	luz.light_energy = 1.3
+	add_child(luz)
+
+
+func _criar_coluna(pos: Vector3) -> void:
+	var coluna := StaticBody3D.new()
+	coluna.position = pos
+	add_child(coluna)
+
+	var fuste := CylinderMesh.new()
+	fuste.top_radius = 0.5
+	fuste.bottom_radius = 0.6
+	fuste.height = 6.0
+	fuste.material = mat_marmore
+	var visual := MeshInstance3D.new()
+	visual.mesh = fuste
+	visual.position = Vector3(0, 3, 0)
+	coluna.add_child(visual)
+
+	var colisao := CollisionShape3D.new()
+	var forma := CylinderShape3D.new()
+	forma.radius = 0.6
+	forma.height = 6.0
+	colisao.shape = forma
+	colisao.position = Vector3(0, 3, 0)
+	coluna.add_child(colisao)
+
+	# Base e capitel de pedra.
+	_malha(coluna, _malha_caixa(Vector3(1.4, 0.4, 1.4), mat_pedra), Vector3(0, 0.2, 0))
+	_malha(coluna, _malha_caixa(Vector3(1.4, 0.4, 1.4), mat_pedra), Vector3(0, 6.0, 0))
+
+
+func _criar_lustre(pos: Vector3) -> void:
+	var lustre := Node3D.new()
+	lustre.position = pos
+	add_child(lustre)
+
+	# Aro de metal/madeira, inclinado como se estivesse caindo.
+	var aro := TorusMesh.new()
+	aro.inner_radius = 1.0
+	aro.outer_radius = 1.3
+	aro.material = mat_madeira
+	_malha(lustre, aro, Vector3.ZERO, Vector3(0, 0, 18))
+
+	# Algumas velas ainda acesas sobre o aro.
+	for a in range(5):
+		var ang := a * TAU / 5.0
+		var vela := _malha_caixa(Vector3(0.1, 0.4, 0.1), mat_janela)
+		_malha(lustre, vela, Vector3(sin(ang) * 1.15, 0.25, cos(ang) * 1.15))
+
+	var luz := OmniLight3D.new()
+	luz.light_color = Color(1.0, 0.7, 0.35)
+	luz.omni_range = 9.0
+	luz.set_script(ScriptTocha)
+	lustre.add_child(luz)
+
+
+# ============================================================================
+# RIO DE NÉVOA + PONTE QUEBRADA
+# ============================================================================
+
+func _construir_rio_e_ponte() -> void:
+	# Rio de névoa: uma faixa baixa, translúcida e luminosa cortando o vale.
+	var rio := MeshInstance3D.new()
+	rio.mesh = _malha_caixa(Vector3(32, 0.4, 7), mat_nevoa)
+	rio.position = Vector3(0, 0.25, -30)
+	add_child(rio)
+
+	_criar_ponte_quebrada(Vector3(0, 0, -30))
+
+
+func _criar_ponte_quebrada(centro: Vector3) -> void:
+	# Dois pilares de pedra erguem-se da névoa.
+	for px in [-5.0, 5.0]:
+		var pilar := StaticBody3D.new()
+		pilar.position = centro + Vector3(px, 0, 0)
+		add_child(pilar)
+		_caixa_solida(pilar, Vector3(1.2, 4.0, 1.2), Vector3(0, 2.0, 0), mat_pedra)
+
+	# Dois meios-tabuleiros inclinados sobem das margens, mas NÃO se encontram:
+	# a ponte está quebrada no meio. São apenas visuais (cenário por cima).
+	var deck_esq := _malha_caixa(Vector3(7, 0.5, 3), mat_pedra)
+	_malha(self, deck_esq, centro + Vector3(-4.0, 3.2, 0), Vector3(0, 0, -14))
+	var deck_dir := _malha_caixa(Vector3(7, 0.5, 3), mat_pedra)
+	_malha(self, deck_dir, centro + Vector3(4.0, 3.2, 0), Vector3(0, 0, 14))
+
+	# Parapeitos quebrados sobre cada metade.
+	_malha(self, _malha_caixa(Vector3(7, 0.6, 0.25), mat_pedra), centro + Vector3(-4.0, 4.0, 1.4), Vector3(0, 0, -14))
+	_malha(self, _malha_caixa(Vector3(7, 0.6, 0.25), mat_pedra), centro + Vector3(4.0, 4.0, 1.4), Vector3(0, 0, 14))
+
+
+# ============================================================================
 # PONTOS DE INTERESSE (textos de lore para a EXPLORAÇÃO)
 # ============================================================================
 
 func _criar_pontos_de_interesse() -> void:
 	# Cada item é [posição, texto]. O texto aparece no HUD ao se aproximar.
 	var pontos := [
-		[Vector3(0, 1.5, 29), "Vila de Côvado das Sombras. Os portões estão abertos... mas ninguem veio recebê-lo."],
+		[Vector3(0, 1.5, 29), "Vila de Côvado das Sombras. Os portões estão abertos... mas ninguém veio recebê-lo."],
 		[Vector3(0, 1.5, 9), "O poço seco. No fundo, apenas escuridão — e um cheiro antigo de ferro."],
 		[Vector3(-22, 1.5, -11), "Cemitério da vila. As lápides são recentes demais para uma vila tão silenciosa."],
 		[Vector3(-31, 1.5, -11), "Capela em ruínas. Uma única vela ainda arde no altar. Quem a acendeu?"],
 		[Vector3(0, 1.5, -13), "A velha torre. A única janela acesa fica no alto, longe demais para mãos humanas. Talvez asas alcancem... (vire morcego com T e voe com Espaço)"],
+		# Lugares de beleza triste
+		[Vector3(34, 1.5, 6), "Jardim das Lamentações. As flores brancas ainda florescem — as únicas que sobraram vivas em todo o vale."],
+		[Vector3(34, 1.5, 0), "Uma estátua de mármore chora água escura, sem parar, há anos. Dizem que ela chora por todos os que partiram."],
+		[Vector3(-34, 1.5, 19), "A velha biblioteca perdeu o teto, mas não o silêncio. A lua entra pela abertura e lê as páginas que ninguém mais lê."],
+		[Vector3(0, 1.5, -39), "O salão de baile do castelo. Aqui houve música, risos e luzes. Agora só o luar dança entre as colunas."],
+		[Vector3(0, 1.5, -27), "A ponte sobre o rio de névoa, partida ao meio. Quem quiser alcançar o outro lado... precisa de asas."],
 	]
 	for ponto in pontos:
 		_criar_ponto_interesse(ponto[0], ponto[1])

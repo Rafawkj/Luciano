@@ -10,7 +10,7 @@
 extends Area3D
 
 # Mensagem exibida ao alcançar a janela. Editável no Inspetor.
-@export var mensagem: String = "Você alcançou a janela alta da torre! 🦇 Só dá pra chegar voando como morcego."
+@export var mensagem: String = "Do alto da torre, todo o vale se abre diante de você: a vila, o jardim, a biblioteca, o salão silencioso. Tudo isto já foi belo. 🦇"
 
 # Garante que a mensagem só apareça uma vez.
 var ja_alcancada: bool = false
