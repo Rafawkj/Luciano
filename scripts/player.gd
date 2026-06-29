@@ -1,63 +1,85 @@
 # player.gd
 # ----------------------------------------------------------------------------
-# Script do PERSONAGEM PRINCIPAL: um vampiro que pode virar morcego.
+# Script do PERSONAGEM PRINCIPAL: um vampiro ágil que pode virar morcego.
 #
-# Este script controla:
-#   - Movimento em 3ª pessoa (andar / correr / pular) na forma VAMPIRO.
-#   - Câmera que segue o personagem (girando com o mouse).
-#   - Transformação entre VAMPIRO e MORCEGO ao apertar uma tecla (T).
-#   - Voo por tempo limitado na forma MORCEGO.
+# A movimentação foi pensada para PARKOUR fluido (pular entre telhados):
+#   - Aceleração/atrito suaves (nada de parar/arrancar "seco").
+#   - Pulo duplo, wall slide (deslizar na parede) e wall jump (pulo de parede).
+#   - Coyote time (pular um instante depois de sair da borda) e
+#     jump buffer (registrar o pulo um instante antes de aterrissar).
+#   - Pulo variável (segura = mais alto; solta = mais baixo).
+#   - Gravidade assimétrica (cai mais rápido do que sobe — sensação melhor).
+#   - "FOV kick": o campo de visão abre um pouco em alta velocidade.
 #
-# Ele fica preso a um nó do tipo CharacterBody3D (corpo com física e colisão).
+# Na forma de morcego, voa por tempo limitado (recarrega ao tocar o chão).
 # ----------------------------------------------------------------------------
 
 extends CharacterBody3D
 
 
 # ============================================================================
-# CONFIGURAÇÕES (você pode ajustar esses números para mudar a "sensação" do jogo)
+# CONFIGURAÇÕES (ajuste à vontade para mudar a "sensação")
 # ============================================================================
 
-# --- Movimento como VAMPIRO ---
-const VELOCIDADE_ANDAR := 4.0      # velocidade andando
-const VELOCIDADE_CORRER := 8.0     # velocidade segurando "correr" (Shift)
-const FORCA_PULO := 6.0            # quão forte é o pulo
+# --- Movimento no chão / ar (forma vampiro) ---
+const VELOCIDADE_ANDAR := 5.0
+const VELOCIDADE_CORRER := 9.5
+const ACEL_CHAO := 60.0      # quão rápido atinge a velocidade desejada no chão
+const ATRITO_CHAO := 75.0    # quão rápido freia ao soltar as teclas
+const ACEL_AR := 28.0        # controle no ar (importante para o parkour)
 
-# --- Voo como MORCEGO ---
-const VELOCIDADE_VOO := 10.0       # velocidade horizontal voando
-const VELOCIDADE_SUBIDA := 6.0     # quão rápido sobe ao segurar "pular" (Espaço)
-const TEMPO_MAXIMO_VOO := 5.0      # quantos segundos de voo cabem no "tanque"
-const QUEDA_PLANANDO := 0.30       # fração da gravidade ao planar (0 = não cai)
+# --- Pulo ---
+const FORCA_PULO := 9.0
+const FORCA_PULO_DUPLO := 8.0
+const GRAV_SUBINDO := 18.0   # gravidade enquanto sobe
+const GRAV_CAINDO := 26.0    # gravidade ao cair (maior = queda mais "gostosa")
+const CORTE_PULO := 0.45     # ao soltar o botão subindo, corta a subida
+const TEMPO_COIOTE := 0.12   # janela para pular após sair de uma borda
+const BUFFER_PULO := 0.12    # janela para "guardar" o pulo antes de aterrissar
+
+# --- Parede (deslizar e pular da parede) ---
+const FATOR_DESLIZE_PAREDE := 0.35  # (referência) o quanto a parede segura a queda
+const VEL_MAX_DESLIZE := 4.0        # velocidade máxima de queda ao deslizar
+const FORCA_PULO_PAREDE := 9.0      # parte vertical do pulo de parede
+const IMPULSO_PAREDE := 8.0         # empurrão para LONGE da parede
+const LOCKOUT_PAREDE := 0.12        # breve trava de controle após o wall jump
+
+# --- Voo (forma morcego) ---
+const VELOCIDADE_VOO := 12.0
+const ACEL_VOO := 30.0
+const VELOCIDADE_SUBIDA := 7.0
+const TEMPO_MAXIMO_VOO := 5.0
+const QUEDA_PLANANDO := 0.25
 
 # --- Câmera ---
-const SENSIBILIDADE_MOUSE := 0.003 # quão rápido a câmera gira com o mouse
+const SENSIBILIDADE_MOUSE := 0.0028
+const FOV_BASE := 75.0
+const FOV_VELOCIDADE := 90.0  # abertura da câmera em alta velocidade
 
 
 # ============================================================================
-# ESTADO INTERNO (variáveis que mudam durante o jogo)
+# ESTADO INTERNO
 # ============================================================================
 
-# As duas formas possíveis do personagem.
 enum Forma { VAMPIRO, MORCEGO }
-
-# Em qual forma o personagem está agora. Começa como VAMPIRO.
 var forma_atual: int = Forma.VAMPIRO
-
-# Quanto tempo de voo (em segundos) ainda resta. Recarrega ao tocar o chão.
 var tempo_voo_restante: float = TEMPO_MAXIMO_VOO
 
-# Gravidade lida das configurações do projeto (padrão 9.8).
-var gravidade: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+# Temporizadores e flags do parkour.
+var coiote: float = 0.0          # tempo restante de "coyote time"
+var buffer: float = 0.0          # tempo restante do pulo "guardado"
+var lockout: float = 0.0         # trava de controle horizontal (após wall jump)
+var pulo_duplo_ok: bool = true   # ainda tem o segundo pulo disponível?
 
 
 # ============================================================================
-# REFERÊNCIAS A OUTROS NÓS (filhos deste personagem na cena)
-# O "@onready" pega o nó assim que a cena estiver pronta.
+# REFERÊNCIAS A OUTROS NÓS
 # ============================================================================
 
-@onready var pivo_camera: Node3D = $PivoCamera        # gira a câmera para cima/baixo
-@onready var modelo_vampiro: Node3D = $ModeloVampiro  # malha visível como vampiro
-@onready var modelo_morcego: Node3D = $ModeloMorcego  # malha visível como morcego
+@onready var pivo_camera: Node3D = $PivoCamera
+@onready var camera: Camera3D = $PivoCamera/Camera3D
+@onready var modelo_vampiro: Node3D = $ModeloVampiro
+@onready var modelo_morcego: Node3D = $ModeloMorcego
 
 
 # ============================================================================
@@ -65,105 +87,151 @@ var gravidade: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 # ============================================================================
 
 func _ready() -> void:
-	# Esconde o cursor e o prende na janela, para a câmera funcionar como em um
-	# jogo em 3ª pessoa. (Aperte ESC durante o jogo para liberar o mouse.)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	camera.fov = FOV_BASE
 	_atualizar_visual()
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	# --- Girar a câmera com o mouse ---
+	# Girar a câmera com o mouse.
 	if event is InputEventMouseMotion:
-		# Mover o mouse na horizontal gira o corpo inteiro (esquerda/direita).
 		rotate_y(-event.relative.x * SENSIBILIDADE_MOUSE)
-		# Mover na vertical inclina só a câmera (olhar para cima/baixo).
 		pivo_camera.rotate_x(-event.relative.y * SENSIBILIDADE_MOUSE)
-		# Trava o ângulo vertical para não dar "cambalhota".
-		pivo_camera.rotation.x = clamp(pivo_camera.rotation.x, deg_to_rad(-70), deg_to_rad(45))
+		pivo_camera.rotation.x = clamp(pivo_camera.rotation.x, deg_to_rad(-65), deg_to_rad(40))
 
-	# --- ESC: alterna entre prender e liberar o mouse (útil para testar) ---
+	# ESC: solta/prende o mouse (útil para testar).
 	if event.is_action_pressed("ui_cancel"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-	# --- T: transformar entre vampiro e morcego ---
+	# T: transformar.
 	if event.is_action_pressed("transformar"):
 		_alternar_forma()
 
 
 func _physics_process(delta: float) -> void:
-	# Decide qual lógica de movimento usar conforme a forma atual.
 	if forma_atual == Forma.VAMPIRO:
 		_mover_como_vampiro(delta)
 	else:
 		_mover_como_morcego(delta)
 
-	# Aplica de fato o movimento e resolve as colisões com o terreno.
 	move_and_slide()
 
-	# Sempre que tocar o chão, recarrega o "tanque" de voo.
+	# Recarrega o voo ao tocar o chão.
 	if is_on_floor():
 		tempo_voo_restante = TEMPO_MAXIMO_VOO
 
+	_atualizar_fov(delta)
+
 
 # ============================================================================
-# MOVIMENTO: FORMA VAMPIRO (andar, correr, pular)
+# MOVIMENTO: FORMA VAMPIRO (parkour)
 # ============================================================================
 
 func _mover_como_vampiro(delta: float) -> void:
-	# Gravidade: enquanto não está no chão, é puxado para baixo.
-	if not is_on_floor():
-		velocity.y -= gravidade * delta
+	var no_chao := is_on_floor()
+	var na_parede := is_on_wall_only()  # encostando na parede e NÃO no chão
 
-	# Pulo: só funciona se estiver no chão.
-	if Input.is_action_just_pressed("pular") and is_on_floor():
-		velocity.y = FORCA_PULO
-
-	# Lê as teclas WASD e transforma em uma direção no espaço 3D.
-	# get_vector devolve um Vector2 já normalizado (esquerda/direita, frente/trás).
-	var entrada := Input.get_vector("mover_esquerda", "mover_direita", "mover_frente", "mover_tras")
-	# Converte a direção para o referencial do personagem (para onde ele olha).
-	var direcao := (transform.basis * Vector3(entrada.x, 0.0, entrada.y)).normalized()
-
-	# Anda ou corre, dependendo se a tecla "correr" está pressionada.
-	var velocidade := VELOCIDADE_CORRER if Input.is_action_pressed("correr") else VELOCIDADE_ANDAR
-
-	if direcao != Vector3.ZERO:
-		velocity.x = direcao.x * velocidade
-		velocity.z = direcao.z * velocidade
+	# --- Atualiza os temporizadores ---
+	if no_chao:
+		coiote = TEMPO_COIOTE
+		pulo_duplo_ok = true
 	else:
-		# Sem teclas: freia suavemente até parar.
-		velocity.x = move_toward(velocity.x, 0.0, velocidade)
-		velocity.z = move_toward(velocity.z, 0.0, velocidade)
+		coiote = maxf(coiote - delta, 0.0)
+
+	if Input.is_action_just_pressed("pular"):
+		buffer = BUFFER_PULO
+	else:
+		buffer = maxf(buffer - delta, 0.0)
+
+	lockout = maxf(lockout - delta, 0.0)
+
+	# --- Direção desejada (relativa a para onde o personagem olha) ---
+	var entrada := Input.get_vector("mover_esquerda", "mover_direita", "mover_frente", "mover_tras")
+	var direcao := (transform.basis * Vector3(entrada.x, 0.0, entrada.y)).normalized()
+	var correndo := Input.is_action_pressed("correr")
+	var velocidade_alvo := VELOCIDADE_CORRER if correndo else VELOCIDADE_ANDAR
+
+	# --- Gravidade (assimétrica) + deslizar na parede ---
+	var deslizando := na_parede and not no_chao and velocity.y < 0.0 and direcao != Vector3.ZERO
+	if not no_chao:
+		var g := GRAV_SUBINDO if velocity.y > 0.0 else GRAV_CAINDO
+		velocity.y -= g * delta
+		if deslizando:
+			# Segura a queda: desliza devagar pela parede.
+			velocity.y = maxf(velocity.y, -VEL_MAX_DESLIZE)
+
+	# --- Movimento horizontal com aceleração/atrito ---
+	# (Pulado logo após um wall jump, para o impulso "viajar".)
+	if lockout == 0.0:
+		var alvo := direcao * velocidade_alvo
+		var taxa: float
+		if direcao != Vector3.ZERO:
+			taxa = ACEL_CHAO if no_chao else ACEL_AR
+		else:
+			taxa = ATRITO_CHAO if no_chao else ACEL_AR
+		velocity.x = move_toward(velocity.x, alvo.x, taxa * delta)
+		velocity.z = move_toward(velocity.z, alvo.z, taxa * delta)
+
+	# --- Pulos (usando o pulo guardado no buffer) ---
+	if buffer > 0.0:
+		if coiote > 0.0:
+			# Pulo normal (no chão ou logo após sair da borda).
+			velocity.y = FORCA_PULO
+			buffer = 0.0
+			coiote = 0.0
+		elif na_parede:
+			# Wall jump: empurra para longe da parede e para cima.
+			var normal := get_wall_normal()
+			velocity.x = normal.x * IMPULSO_PAREDE
+			velocity.z = normal.z * IMPULSO_PAREDE
+			velocity.y = FORCA_PULO_PAREDE
+			buffer = 0.0
+			lockout = LOCKOUT_PAREDE
+			pulo_duplo_ok = true  # ganha o pulo duplo de volta após wall jump
+		elif pulo_duplo_ok:
+			# Pulo duplo no ar.
+			velocity.y = FORCA_PULO_DUPLO
+			pulo_duplo_ok = false
+			buffer = 0.0
+
+	# --- Pulo variável: soltar o botão subindo encurta o pulo ---
+	if Input.is_action_just_released("pular") and velocity.y > 0.0:
+		velocity.y *= CORTE_PULO
 
 
 # ============================================================================
-# MOVIMENTO: FORMA MORCEGO (voar por tempo limitado)
+# MOVIMENTO: FORMA MORCEGO (voo fluido por tempo limitado)
 # ============================================================================
 
 func _mover_como_morcego(delta: float) -> void:
-	# Segurar "pular" (Espaço) faz o morcego subir, enquanto houver tempo de voo.
-	var batendo_asas := Input.is_action_pressed("pular") and tempo_voo_restante > 0.0
-
-	if batendo_asas:
-		velocity.y = VELOCIDADE_SUBIDA
-		tempo_voo_restante -= delta  # gasta o "tanque" de voo
-	else:
-		# Sem bater asas (ou tanque vazio): plana, caindo bem devagar.
-		velocity.y -= gravidade * QUEDA_PLANANDO * delta
-
-	# Movimento horizontal, mais rápido que o do vampiro.
+	# Movimento horizontal com aceleração (vira/acelera de forma suave).
 	var entrada := Input.get_vector("mover_esquerda", "mover_direita", "mover_frente", "mover_tras")
 	var direcao := (transform.basis * Vector3(entrada.x, 0.0, entrada.y)).normalized()
+	var alvo := direcao * VELOCIDADE_VOO
+	velocity.x = move_toward(velocity.x, alvo.x, ACEL_VOO * delta)
+	velocity.z = move_toward(velocity.z, alvo.z, ACEL_VOO * delta)
 
-	if direcao != Vector3.ZERO:
-		velocity.x = direcao.x * VELOCIDADE_VOO
-		velocity.z = direcao.z * VELOCIDADE_VOO
+	# Segurar "pular" sobe enquanto houver tempo de voo; senão plana.
+	var batendo_asas := Input.is_action_pressed("pular") and tempo_voo_restante > 0.0
+	if batendo_asas:
+		velocity.y = move_toward(velocity.y, VELOCIDADE_SUBIDA, ACEL_VOO * delta)
+		tempo_voo_restante -= delta
 	else:
-		velocity.x = move_toward(velocity.x, 0.0, VELOCIDADE_VOO)
-		velocity.z = move_toward(velocity.z, 0.0, VELOCIDADE_VOO)
+		velocity.y -= (GRAV_CAINDO * QUEDA_PLANANDO) * delta
+
+
+# ============================================================================
+# CÂMERA: abrir o FOV em alta velocidade (sensação de velocidade)
+# ============================================================================
+
+func _atualizar_fov(delta: float) -> void:
+	var vel_horizontal := Vector2(velocity.x, velocity.z).length()
+	var t := clampf(vel_horizontal / VELOCIDADE_CORRER, 0.0, 1.3)
+	var alvo := lerpf(FOV_BASE, FOV_VELOCIDADE, t)
+	camera.fov = lerpf(camera.fov, alvo, delta * 6.0)
 
 
 # ============================================================================
@@ -171,15 +239,15 @@ func _mover_como_morcego(delta: float) -> void:
 # ============================================================================
 
 func _alternar_forma() -> void:
-	# Troca de forma: vampiro vira morcego e vice-versa.
 	if forma_atual == Forma.VAMPIRO:
 		forma_atual = Forma.MORCEGO
 	else:
 		forma_atual = Forma.VAMPIRO
+		# Ao voltar a vampiro no ar, deixa o pulo duplo disponível.
+		pulo_duplo_ok = true
 	_atualizar_visual()
 
 
 func _atualizar_visual() -> void:
-	# Mostra apenas a malha da forma atual e esconde a outra.
 	modelo_vampiro.visible = (forma_atual == Forma.VAMPIRO)
 	modelo_morcego.visible = (forma_atual == Forma.MORCEGO)

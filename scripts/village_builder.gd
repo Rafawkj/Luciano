@@ -34,6 +34,7 @@ var mats_livros: Array = []           # cores variadas dos livros da biblioteca
 func _ready() -> void:
 	_criar_materiais()
 	_construir_casas()
+	_construir_parkour()
 	_construir_praca_e_portao()
 	_construir_cemiterio()
 	_espalhar_arvores_mortas()
@@ -171,12 +172,20 @@ func _criar_casa(pos: Vector3, graus: float) -> void:
 	casa.rotation_degrees = Vector3(0, graus, 0)
 	add_child(casa)
 
-	# Paredes (caixa sólida) e telhado em forma de prisma.
-	_caixa_solida(casa, Vector3(5, 3.2, 5), Vector3(0, 1.6, 0), mat_parede)
+	# Paredes (caixa sólida). Beiral em y=3.0, baixo o bastante para subir
+	# com pulo duplo / wall jump (parkour).
+	_caixa_solida(casa, Vector3(5, 3.0, 5), Vector3(0, 1.5, 0), mat_parede)
+
+	# Telhado em forma de prisma — COM colisão, para poder andar sobre ele.
+	# A inclinação (~37°) é menor que o ângulo máximo de chão, então é "pisável".
 	var telhado := PrismMesh.new()
 	telhado.size = Vector3(5.8, 2.2, 5.8)
 	telhado.material = mat_telhado
-	_malha(casa, telhado, Vector3(0, 4.3, 0))
+	_malha(casa, telhado, Vector3(0, 4.1, 0))
+	var colisao_telhado := CollisionShape3D.new()
+	colisao_telhado.shape = telhado.create_convex_shape()
+	colisao_telhado.position = Vector3(0, 4.1, 0)
+	casa.add_child(colisao_telhado)
 
 	# Porta escura e duas janelas iluminadas na frente (face +Z local).
 	_malha(casa, _malha_caixa(Vector3(1.2, 2.0, 0.15), mat_madeira), Vector3(0, 1.0, 2.55))
@@ -211,6 +220,46 @@ func _criar_tocha(pos: Vector3) -> void:
 	luz.omni_range = 10.0
 	luz.set_script(ScriptTocha)
 	base.add_child(luz)
+
+
+# ============================================================================
+# CIRCUITO DE PARKOUR (caixotes, toldos e passarela entre os telhados)
+# ============================================================================
+
+func _construir_parkour() -> void:
+	# Degraus de caixotes para subir da rua até o telhado da casa do leste.
+	_criar_caixote(Vector3(5.5, 0.0, 18.0), 1.4)
+	_criar_caixote(Vector3(6.7, 0.0, 16.7), 1.4)
+	_criar_caixote(Vector3(6.7, 1.4, 16.7), 1.2)  # empilhado sobre o anterior
+
+	# Um "toldo" de madeira ao lado da casa, logo abaixo do beiral (3.0).
+	_criar_plataforma(Vector3(8.2, 2.5, 16.0), Vector3(3, 0.3, 3))
+
+	# Passarela ligando os telhados dos dois lados da rua de entrada.
+	_criar_plataforma(Vector3(0, 3.3, 18.5), Vector3(20, 0.3, 1.4))
+
+	# Caixotes soltos espalhados, como apoios extras pela vila.
+	_criar_caixote(Vector3(-6.0, 0.0, 12.0), 1.3)
+	_criar_caixote(Vector3(15.5, 0.0, -1.0), 1.4)
+	_criar_caixote(Vector3(15.5, 1.4, -1.0), 1.1)
+	_criar_caixote(Vector3(-15.5, 0.0, 1.0), 1.4)
+
+
+func _criar_caixote(pos: Vector3, lado: float) -> void:
+	# Um caixote cúbico de madeira. "pos" é a base (o caixote sobe a partir dela).
+	var caixote := StaticBody3D.new()
+	caixote.position = pos
+	caixote.rotation_degrees = Vector3(0, randf_range(-12.0, 12.0), 0)  # leve giro
+	add_child(caixote)
+	_caixa_solida(caixote, Vector3(lado, lado, lado), Vector3(0, lado * 0.5, 0), mat_madeira)
+
+
+func _criar_plataforma(pos: Vector3, tamanho: Vector3) -> void:
+	# Uma plataforma/passarela de madeira (centro no "pos").
+	var plataforma := StaticBody3D.new()
+	plataforma.position = pos
+	add_child(plataforma)
+	_caixa_solida(plataforma, tamanho, Vector3.ZERO, mat_madeira)
 
 
 # ============================================================================

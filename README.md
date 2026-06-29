@@ -20,10 +20,25 @@ tremeluzentes, cheia de cantos para descobrir e fragmentos de história espalhad
 |------------------|--------------------------------------------------|
 | **W A S D**      | Andar                                            |
 | **Shift**        | Correr (segurando, na forma vampiro)             |
-| **Espaço**       | Pular (vampiro) / Subir batendo asas (morcego)   |
+| **Espaço**       | Pular — aperte de novo no ar para o **pulo duplo** |
+| **Espaço** (na parede) | **Pulo de parede** (impulsiona para longe e para cima) |
+| **Espaço** (morcego) | Subir batendo asas                          |
 | **T**            | Transformar entre vampiro ↔ morcego              |
 | **Mouse**        | Girar a câmera                                    |
 | **ESC**          | Liberar / prender o cursor do mouse              |
+
+### 🏃 Parkour (forma vampiro)
+
+A movimentação foi feita para ser **fluida** e divertida de encadear:
+
+- **Pulo duplo** — aperte Espaço uma segunda vez no ar.
+- **Wall slide** — encoste numa parede caindo (segurando a direção contra ela)
+  para **deslizar devagar**.
+- **Wall jump** — aperte Espaço enquanto desliza para saltar da parede.
+- **Pulo variável** — segure Espaço para pular mais alto; solte para pular baixo.
+- **Coyote time** e **jump buffer** deixam os pulos mais perdoados/precisos.
+- **Telhados pisáveis**: suba pelos **caixotes** e **toldos**, corra pelos
+  telhados e atravesse a **passarela** entre as casas da rua de entrada.
 
 **Forma morcego:** segure **Espaço** para voar. Você tem ~5 segundos de voo;
 o "tanque" recarrega assim que você toca o chão de novo.
@@ -128,10 +143,11 @@ O clima é construído por vários detalhes trabalhando juntos:
   - `PivoCamera` → `Camera3D` — a câmera em 3ª pessoa que segue e gira com o mouse.
 
 - **`scripts/player.gd`** — O cérebro do personagem, bastante comentado:
-  - Movimento (andar / correr / pular) na forma vampiro.
-  - Câmera girando com o mouse.
+  - Parkour fluido na forma vampiro: aceleração/atrito, pulo duplo, wall slide,
+    wall jump, pulo variável, coyote time, jump buffer e gravidade assimétrica.
+  - Câmera girando com o mouse, com *FOV kick* em alta velocidade.
   - Transformação ao apertar **T**.
-  - Voo por tempo limitado na forma morcego.
+  - Voo (com aceleração) por tempo limitado na forma morcego.
 
 ---
 
