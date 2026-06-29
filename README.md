@@ -38,7 +38,21 @@ A movimentação foi feita para ser **fluida** e divertida de encadear:
 - **Pulo variável** — segure Espaço para pular mais alto; solte para pular baixo.
 - **Coyote time** e **jump buffer** deixam os pulos mais perdoados/precisos.
 - **Telhados pisáveis**: suba pelos **caixotes** e **toldos**, corra pelos
-  telhados e atravesse a **passarela** entre as casas da rua de entrada.
+  telhados e atravesse as **passarelas** entre as casas.
+
+### 🦇 A Ascensão (parkour + voo combinados)
+
+A leste da entrada há uma **rota vertical** que mistura as duas formas:
+
+1. Suba a pé (vampiro) pelas plataformas e **wall jumps**.
+2. No topo do trecho a pé, o salto fica **alto e longe demais** — vire
+   **morcego (T)** e voe até a plataforma marcada por uma **luz azul**.
+3. **Pouse** (isso recarrega o voo) e aperte **T** para voltar a vampiro.
+4. Faça o parkour lá no alto e repita o salto de morcego até o **mirante**
+   mais alto do vale.
+
+As **luzes azuis-frias** sempre indicam "voe até aqui"; as luzes quentes são
+apenas tochas de ambientação.
 
 **Forma morcego:** segure **Espaço** para voar. Você tem ~5 segundos de voo;
 o "tanque" recarrega assim que você toca o chão de novo.

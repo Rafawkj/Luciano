@@ -35,6 +35,7 @@ func _ready() -> void:
 	_criar_materiais()
 	_construir_casas()
 	_construir_parkour()
+	_construir_parkour_aereo()
 	_construir_praca_e_portao()
 	_construir_cemiterio()
 	_espalhar_arvores_mortas()
@@ -147,8 +148,15 @@ func _construir_casas() -> void:
 		[Vector3(10, 0, -12), -75.0], [Vector3(-10, 0, -12), 75.0],
 		# Bairro a leste
 		[Vector3(22, 0, 3), -90.0], [Vector3(22, 0, -7), -90.0],
-		# Casa isolada a oeste
-		[Vector3(-22, 0, 4), 100.0],
+		# --- Ampliação da vila ---
+		# Casas que emolduram a entrada (mais telhados para o parkour)
+		[Vector3(16, 0, 24), -90.0], [Vector3(-16, 0, 24), 90.0],
+		[Vector3(-14, 0, 28), 90.0],
+		# Bairro oeste
+		[Vector3(-22, 0, 4), 100.0], [Vector3(-25, 0, 10), 80.0],
+		[Vector3(-26, 0, 18), 70.0], [Vector3(-20, 0, 22), 95.0],
+		# Casas ao norte (em direção à torre)
+		[Vector3(16, 0, -14), -100.0], [Vector3(-16, 0, -15), 100.0],
 	]
 	for casa in casas:
 		_criar_casa(casa[0], casa[1])
@@ -161,6 +169,8 @@ func _construir_casas() -> void:
 		Vector3(4, 0, -9), Vector3(-4, 0, -9),
 		Vector3(3, 0, -15), Vector3(-3, 0, -15),
 		Vector3(18, 0, -2), Vector3(-18, 0, 0),
+		Vector3(13, 0, 26), Vector3(-13, 0, 26),
+		Vector3(-23, 0, 14), Vector3(-23, 0, 20),
 	]
 	for pos in tochas:
 		_criar_tocha(pos)
@@ -244,6 +254,13 @@ func _construir_parkour() -> void:
 	_criar_caixote(Vector3(15.5, 1.4, -1.0), 1.1)
 	_criar_caixote(Vector3(-15.5, 0.0, 1.0), 1.4)
 
+	# Mais passarelas/vigas ligando telhados, deixando a vila bem "parkourável".
+	_criar_plataforma(Vector3(-9, 3.3, 18.5), Vector3(0.9, 0.25, 7))   # entre casas oeste
+	_criar_plataforma(Vector3(10.5, 3.3, 11), Vector3(0.9, 0.25, 8))   # liga rua leste
+	_criar_plataforma(Vector3(-13, 3.3, 26), Vector3(0.9, 0.25, 6))    # casas do sudoeste
+	_criar_caixote(Vector3(-24, 0.0, 14), 1.4)                          # apoio bairro oeste
+	_criar_caixote(Vector3(18.5, 0.0, -11), 1.4)                        # apoio ao norte
+
 
 func _criar_caixote(pos: Vector3, lado: float) -> void:
 	# Um caixote cúbico de madeira. "pos" é a base (o caixote sobe a partir dela).
@@ -260,6 +277,65 @@ func _criar_plataforma(pos: Vector3, tamanho: Vector3) -> void:
 	plataforma.position = pos
 	add_child(plataforma)
 	_caixa_solida(plataforma, tamanho, Vector3.ZERO, mat_madeira)
+
+
+# ============================================================================
+# ROTA DE ASCENSÃO (parkour aéreo)
+#
+# A ideia: você sobe a pé (vampiro) por plataformas e paredes, mas chega a
+# saltos ALTOS e LONGOS demais para pernas humanas. Aí você vira MORCEGO (T),
+# voa até a plataforma marcada por uma LUZ AZUL, POUSA (recarrega o voo) e
+# VOLTA a vampiro (T) para continuar o parkour lá no alto.
+# ============================================================================
+
+func _construir_parkour_aereo() -> void:
+	# --- Trecho 1: subida a pé, a partir dos telhados da entrada ---
+	_criar_plataforma(Vector3(17, 4.5, 27), Vector3(5, 0.4, 5))
+	_criar_plataforma(Vector3(21, 6.5, 30), Vector3(4, 0.4, 4))
+	_criar_plataforma(Vector3(25, 8.5, 28), Vector3(4, 0.4, 4))
+
+	# Paredes para wall jump, ganhando altura até o topo do trecho a pé.
+	_criar_parede_parkour(Vector3(27.5, 9.0, 28), Vector3(0.6, 6, 4))
+	_criar_parede_parkour(Vector3(24.0, 11.5, 30.5), Vector3(4, 6, 0.6))
+	_criar_plataforma(Vector3(25, 12.5, 28), Vector3(4, 0.4, 4))  # fim do trecho a pé
+
+	# --- SALTO DE MORCEGO 1 ---
+	# Alto (+6 m) e longe (~12 m): impossível a pé. Vire morcego, voe até a luz,
+	# pouse (recarrega o voo) e volte a vampiro para seguir.
+	_criar_plataforma_voo(Vector3(26, 18.5, 40), Vector3(6, 0.4, 6))
+
+	# --- Trecho 2: parkour de vampiro lá no alto (saltos curtos, possíveis) ---
+	_criar_plataforma(Vector3(31, 18.5, 42), Vector3(3.5, 0.4, 3.5))
+	_criar_plataforma(Vector3(30, 18.5, 47), Vector3(3.5, 0.4, 3.5))
+	_criar_plataforma(Vector3(25, 19.5, 49), Vector3(3.5, 0.4, 3.5))
+
+	# --- SALTO DE MORCEGO 2: até o mirante mais alto do vale ---
+	_criar_plataforma_voo(Vector3(26, 26, 44), Vector3(5, 0.4, 5))
+
+
+func _criar_parede_parkour(pos: Vector3, tamanho: Vector3) -> void:
+	# Uma parede de pedra usada para wall jump na subida.
+	var parede := StaticBody3D.new()
+	parede.position = pos
+	add_child(parede)
+	_caixa_solida(parede, tamanho, Vector3.ZERO, mat_pedra)
+
+
+func _criar_plataforma_voo(pos: Vector3, tamanho: Vector3) -> void:
+	# Plataforma alta marcada por um FAROL AZUL: o destino de um salto de morcego.
+	var plataforma := StaticBody3D.new()
+	plataforma.position = pos
+	add_child(plataforma)
+	_caixa_solida(plataforma, tamanho, Vector3.ZERO, mat_pedra)
+
+	# Pilar/farol emissivo no centro, para o jogador enxergar o destino de longe.
+	_malha(plataforma, _malha_caixa(Vector3(0.5, 1.4, 0.5), mat_janela), Vector3(0, tamanho.y * 0.5 + 0.7, 0))
+	var farol := OmniLight3D.new()
+	farol.position = Vector3(0, tamanho.y * 0.5 + 1.5, 0)
+	farol.light_color = Color(0.55, 0.75, 1.0)  # azul-frio: "voe até aqui"
+	farol.omni_range = 16.0
+	farol.light_energy = 3.0
+	plataforma.add_child(farol)
 
 
 # ============================================================================
@@ -679,6 +755,10 @@ func _criar_pontos_de_interesse() -> void:
 		[Vector3(-34, 1.5, 19), "A velha biblioteca perdeu o teto, mas não o silêncio. A lua entra pela abertura e lê as páginas que ninguém mais lê."],
 		[Vector3(0, 1.5, -39), "O salão de baile do castelo. Aqui houve música, risos e luzes. Agora só o luar dança entre as colunas."],
 		[Vector3(0, 1.5, -27), "A ponte sobre o rio de névoa, partida ao meio. Quem quiser alcançar o outro lado... precisa de asas."],
+		# Rota de ascensão (parkour + voo)
+		[Vector3(17, 5.5, 27), "A Ascensão começa aqui. Suba pelas plataformas e paredes — mas o último salto será alto demais para pernas humanas."],
+		[Vector3(25, 13.5, 28), "Daqui o abismo é grande demais. Vire MORCEGO (T), voe até a luz azul, POUSE e volte a vampiro (T) para continuar lá no alto."],
+		[Vector3(26, 27, 44), "O ponto mais alto do vale. Daqui se vê tudo o que um dia foi belo — e o silêncio que restou."],
 	]
 	for ponto in pontos:
 		_criar_ponto_interesse(ponto[0], ponto[1])
