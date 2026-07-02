@@ -27,7 +27,7 @@ A fórmula **orienta**, não decide: todo custo final passa por playtest. Distri
 |---|---|
 | Tartaruga infinita | Reciclagem de deck com penalidade cumulativa; hexes ricos no centro; Marcos exigem expansão |
 | Aggro incontestável | Retaliação; muralhas baratas; Guardiões; distância física ao Coração (mín. 4 rodadas de corrida) |
-| Combo OTK | Sem "pilha" de efeitos; máx. 3 fichas/rodada; dano em um Pulso auditado (teto de projeto: 12 num cenário perfeito) |
+| Combo OTK | Sem "pilha" de efeitos; máx. 3 fichas/rodada; dano em uma rodada auditado (teto de projeto: 12 num cenário perfeito) |
 | Ramp exponencial | Teto de estoque 10; comida apodrece; pilhagem nega produção |
 | Controle de remoção total | Remoções são posicionais/condicionais; nenhuma remoção neutra "destrua alvo" incondicional existe no set |
 | Mill/atrito | Deck recicla; fim por atrito é impossível por regra |
@@ -35,20 +35,20 @@ A fórmula **orienta**, não decide: todo custo final passa por playtest. Distri
 ## 4. Processo de balance (operação viva)
 
 - **Cadência:** hotfix semanal (só emergências: WR > 57% em alto MMR), patch mensal (ajustes finos), temporada trimestral (rotação de mapa da temporada + 1 mini-set).
-- **Ferramentas:** simulador headless (o Pulso determinístico permite MILHÕES de partidas bot×bot por noite — vantagem direta da ausência de RNG); telemetria de win rate por facção/matchup/MMR; densidade de decisão; taxa de concessão antes da rodada 6 (proxy de frustração).
+- **Ferramentas:** simulador headless (a resolução 100% determinística permite MILHÕES de partidas bot×bot por noite — vantagem direta da ausência de RNG); telemetria de win rate por facção/matchup/MMR; densidade de decisão; taxa de concessão antes da rodada 6 (proxy de frustração).
 - **Estilo de ajuste:** preferir **mudança de contexto** (tag, custo, posição na curva) a mudança de números de combate; nunca mais de 2 nerfs na mesma facção por patch (identidade > meta).
 - **Regra do espelho:** todo nerf publica junto o RACIOCÍNIO (nota de designer no cliente). Confiança da comunidade é ativo competitivo.
 
 ## 5. Watch-list inicial (herdada das revisões de fase)
 
 1. Retaliação favorece defesa ~15% — monitorar WR de arquétipos aggro no MMR alto.
-2. Tempestade como remoção telegrafada — monitorar taxa de "raio efetivo".
-3. Javali Teimoso vs decks de fazenda no early.
-4. Serpente de Vidro — tempo médio de revelação e feels-bad report.
-5. Engrenato: curva de fichas — risco de a facção ser fraca DEMAIS em MMR baixo e forte demais em MMR altíssimo (perfil "Faker-only"); pode exigir buff de acessibilidade (custo do Laboratório).
+2. Sangrentos: custo em VIDA do Coração — teto de 3❤/rodada pode precisar de ajuste contra aggro Fogo.
+3. Javali Teimoso (`Guloso`) vs Doces no early — a fraqueza estrutural deles não pode virar autoloss.
+4. Doces: dependência do clima — se Chuva/Seca estiverem em 40%+ dos decks do meta, ativar o plano B do Céu Limpo (Doc. cartas/04 §3).
+5. Humanos: taxa de inclusão como 2ª facção aliada (se > 70%, reprecificar as 6 vagas de aliança).
 
 ## 6. REVISÃO CRÍTICA (Fase 6 — balanceamento)
 - **Risco identificado:** simulador bot×bot pode otimizar para um meta que humanos não jogam. *Mitigação:* bots calibrados com replays humanos por MMR (ver Doc. 12-IA); decisões de nerf exigem DUAS fontes (sim + telemetria humana).
-- **Risco:** teto de dano 12/Pulso pode ser furado por expansões. *Mitigação:* o teto vira teste automatizado no pipeline de design de cartas (CI de game design: toda carta nova roda a suíte de cenários extremos antes de ir a playtest).
+- **Risco:** teto de dano 12/rodada pode ser furado por expansões. *Mitigação:* o teto vira teste automatizado no pipeline de design de cartas (CI de game design: toda carta nova roda a suíte de cenários extremos antes de ir a playtest).
 
 **Veredicto:** aprovado.

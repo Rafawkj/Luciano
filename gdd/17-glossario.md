@@ -1,69 +1,73 @@
 # TERRAVIVA — Glossário Completo
 
-> **Documento 17 · Fase 6**
+> **Documento 17** · v0.2
 
 ## Conceitos centrais
 - **Regente** — o jogador.
 - **Coração do Reino** — base de cada jogador; Vitalidade 25; emite 1 Chamado/rodada.
-- **Pulso** — fase automática determinística em que as entidades executam comportamentos (9 camadas fixas; Doc. 02 §3).
-- **Léxico Natural** — conjunto fechado de 16 tags e 10 leis universais de interação (Doc. 04).
-- **Aurora / Ações / Pulso / Crepúsculo** — as 4 fases da rodada.
+- **Aurora / Ações / Crepúsculo** — as 3 fases da rodada.
+- **Crepúsculo** — fase de contabilidade do fim da rodada (clima avança, fogo espalha, veneno pinga, crescimentos, Fome). Nenhuma criatura age nele.
+- **Léxico Natural** — conjunto fechado de 14 tags e 10 leis universais (Doc. 04).
+- **Instinto** — habilidade reativa de criatura com gatilho público (8 no set: Guardião, Sentinela, Contra-ataque, Colheita, Reparador, Médico, Fuga, Ímpeto).
 - **Ficha de Ação** — 1 de 3 por rodada: jogar carta, Ordem, Trabalhar ou Passar.
-- **Ordem** — comando manual a uma criatura (mover/atacar/ativa); suprime o comportamento dela neste Pulso.
+- **Ordem** — comando a uma criatura: mover (até VEL), atacar ou usar a ativa.
 - **Trabalhar** — criatura ociosa coleta 1 recurso do hex (fica `Exausta`).
 - **Duplo Horizonte** — compra: revela 2, escolhe 1, a outra vai ao fundo.
-- **Iniciativa** — quem age primeiro; alterna por rodada; desempata camadas do Pulso.
-- **Território** — hexes conectados ao seu Coração com presença sua; onde você joga cartas e produz.
-- **Hex selvagem** — hex neutro rico do mapa da temporada (+1 produção, +1 Influência/Aurora a quem controla).
+- **Iniciativa** — quem age primeiro; alterna por rodada.
+- **Território** — hexes conectados ao seu Coração com presença sua.
+- **Hex selvagem** — hex neutro rico do mapa da temporada (+1 produção; +1 Influência/Aurora).
 - **Influência** — trilha 0–15: destrava Herói (7) e Marcos (10+).
 - **Marcos de Domínio** — Abundância / Prosperidade / Equilíbrio; 3 = vitória alternativa.
-- **Condição de Lenda** — quest pública que libera o Herói do deck.
-- **Reciclagem** — embaralhar o descarte quando o deck acaba; custa −1 Vitalidade cumulativo.
-- **Mapa da temporada** — configuração trimestral dos hexes selvagens (rotação de meta).
+- **Condição de Lenda** — quest pública que libera o Herói.
+- **Reciclagem** — reembaralhar o descarte quando o deck acaba; −1 Vitalidade cumulativo.
+- **Aliança** — até 6 cartas de uma facção aliada no baralho (grafo no Doc. 08 §7).
+- **Mapa da temporada** — configuração trimestral dos hexes selvagens.
 
 ## Recursos
-- **Comida 🍎** — sustenta criaturas; apodrece acima de 6 no Crepúsculo.
+- **Comida 🍎** — sustenta criaturas; apodrece acima de 6 (exceção: Gelados).
 - **Matéria 🔨** — construções, terrenos, artefatos.
-- **Essência ✨** — eventos, clima, magia; a mais disputada.
-- **Fé / Pesquisa / Esporos / Sacrifício** — economias de facção (Ordem/Engrenato/Micelara/Cindral) derivadas dos recursos básicos.
+- **Essência ✨** — eventos, clima, maldições, habilidades.
+- **❤ (custo de sangue)** — Sangrentos pagam VIDA (máx. 3 do Coração/rodada).
+- **☠ Cadáver** — token deixado por criaturas mortas em hex `Profano`; combustível de Reerguer.
 - **Pilhagem** — terminar Ordem em hex produtivo inimigo: rouba 1 recurso e nega a próxima produção dele.
 
 ## Combate e estados
-- **Retaliação** — defensor corpo-a-corpo sobrevivente devolve ⌊ATQ/2⌋.
-- **Cercado** — sem hex livre adjacente no início do Pulso: −1 DEF.
+- **Retaliação** — defensor corpo-a-corpo sobrevivente devolve ⌊ATQ/2⌋ (ATQ cheio com Contra-ataque).
+- **Cercado** — sem hex livre adjacente na Aurora: −1 DEF.
 - **Empurrar(X)** — desloca X hexes; colisão = 1 dano a ambos.
-- **Exausta** — não retalia até o próximo turno.
-- **Atolado** — perde a próxima Ordem.
-- **Congelado** — `Molhado`+`Congelante`: perde o próximo Pulso.
-- **Envenenado** — 1 dano/Pulso por 2 Pulsos.
-- **Faminto** — Fome não paga: −1 ATQ e busca comida (qualquer fonte).
-- **Apavorado** — moral 0: comporta-se como Presa por 1 Pulso.
-- **Dormindo** — sem Pulso; cura 1; acorda com dano/Ordem.
-- **Domesticado** — próximo Pulso a favor do controlador do efeito.
+- **Exausta** — não retalia nem usa Instinto até o fim da rodada.
+- **Atolado / Grudado** — perde a próxima Ordem (pântano/Peso alto; caramelo e chiclete dos Doces).
+- **Congelado** — `Molhado`+`Congelante`: perde a próxima Ordem.
+- **Envenenado** — 1 dano/Crepúsculo por 2 rodadas.
+- **Faminto** — Fome não paga: −1 ATQ; pode comer plantações (qualquer dono).
 - **Chamado** — mini-ordem grátis do Coração (indisponível se ele sofreu dano na rodada).
 - **Despojo** — Artefato passa a quem abater o portador.
-- **Farejar** — revela ocultos (armadilhas, maldições, miragens) na área indicada.
-- **Miragem** — carta de Vesh jogada oculta por 1 com atributos falsos 1/0/1; revela pagando o custo real.
-- **Pavio(X)** — contagem regressiva pública de Cindral; fortalece a cada Pulso e explode em 0.
-- **Rito** — evento da Ordem anunciado 1 rodada antes de resolver.
-- **Estágios** — crescimento de `Enraizado` (broto→copa→ancião).
-- **Alicerce** — bônus de adjacência das construções de Pedravox.
-- **Correnteza** — arrasto direcional dos Lagos de Marévia no fim do Pulso.
+- **Farejar** — revela ocultos (Armadilhas, Maldições) na área indicada.
+
+## Mecânicas de facção
+- **Zero (Gelados)** — congelamento cirúrgico; `Adaptado(Frio)` patina no gelo.
+- **Glacê (Doces)** — escudo que absorve antes da VIDA; é `Doce` (atrai `Guloso`).
+- **Rush de Açúcar (Doces)** — +2 VEL por 1 rodada; depois `Exausta` (o crash).
+- **Reerguer X (Sangrentos)** — retorna do descarte pagando X sobre um Cadáver.
+- **Drenar X (Sangrentos)** — cura X ao causar dano (funciona em `Profano`).
+- **Estágios (Natureza)** — `Enraizado` cresce no Crepúsculo: broto → copa → ancião.
+- **Sacrifício (Fogo)** — queimar carta da mão = 1🔨 ou 1✨; criatura sacrificada = dano em área.
+- **Pavio(X) (Fogo)** — contagem pública; fortalece a cada Crepúsculo; explode em 0.
+- **Formação (Humanos)** — carta anunciada que ativa na sua próxima rodada com efeito maior.
+- **Milícia (Humanos)** — camponeses +1 ATQ com invasor em território seu.
 
 ## Atributos (criaturas)
-**ATQ** ataque · **DEF** redução fixa · **VIDA** pontos de vida · **VEL** hexes/Ordem · **ALC** alcance · **PESO** classe física 1–5 · **ENE** cargas de habilidade (recarrega 1/Aurora) · **INT** resistência a manipulação 1–5 · **MORAL** estado emocional (Exaltado/Normal/Apavorado) com gatilho de personalidade.
+**ATQ** ataque · **DEF** redução fixa · **VIDA** pontos de vida · **VEL** hexes/Ordem · **ALC** alcance · **PESO** classe física 1–5 · **ENE** cargas de ativa (recarrega 1/Aurora).
 
-## Comportamentos (10)
-Predador · Presa · Engenheiro · Coletor · Guardião · Nômade · Colônia · Enraizado · Curandeiro · Territorial (definições operacionais no Doc. 04 §2.1).
+## Tags naturais (14)
+Molhado · EmChamas · Inflamável · Congelante · Metálico · Venenoso · Fértil · Doce · Profano · Sagrado · Elevado · Cobertura · Oculto · Adaptado(X). Tags estruturais: Voador, Aquático, Escalador, Silvestre, Ígneo, Ossudo, Guloso, Raízes, Frágil, Murado, Fundada, Enraizado.
+**Precedência:** fontes permanentes > clima > efeitos temporários (Doc. 04).
 
-## Tags naturais (16)
-Molhado · EmChamas · Inflamável · Congelante · Metálico · Elétrico · Venenoso · Fértil · Úmido · Elevado · Cobertura · Oculto · Sagrado · Assombrado · Noturno · Adaptado(X) (Doc. 04 §1.1). Tags estruturais de carta: Voador, Aquático, Escalador, Subterrâneo, Silvestre, Ígneo, Raízes, Frágil, Murado, Fundada, Instável, Perigoso, Ressonante, Profundo, Escuro, Gelo, Árido, Quente.
-
-## Categorias de carta (14)
-Criatura · Herói · Construção · Terreno · Evento · Clima · Relíquia · Artefato · Maldição · Invocação · Companheiro · Totem · Armadilha · Tecnologia (Doc. 07).
+## Categorias de carta (11)
+Criatura · Herói · Construção · Terreno · Evento · Clima · Relíquia · Artefato · Maldição · Totem · Armadilha (Doc. 07).
 
 ## Competitivo
 - **Ligas** — Semente → Broto → Copa → Anciã → Raiz-Mundo.
-- **Conquista Dupla** — formato BO3 de torneio que premia vitórias por Domínio.
-- **Prever Pulso** — ferramenta de UI que simula a resolução fantasma do próximo Pulso.
+- **Conquista Dupla** — formato BO3 que premia vitórias por Domínio.
+- **Prever Crepúsculo** — UI que simula a contabilidade do fim da rodada.
 - **Códice do Regente** — compêndio in-game das leis do Léxico.

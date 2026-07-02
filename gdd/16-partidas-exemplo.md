@@ -1,43 +1,45 @@
 # TERRAVIVA — Partidas de Exemplo Comentadas
 
-> **Documento 16 · Fase 6 — Validação**
-> Duas partidas completas em notação de rodadas, escritas como um caster narraria. Cartas citadas pelo número do set (Docs. cartas/01–05).
+> **Documento 16 · Validação** · v0.2
+> Duas partidas completas em notação de rodadas, narradas como um caster faria. Cartas citadas pelo número do set (gdd/cartas/).
 
 ---
 
-## Partida 1 — Cindral (Rafa) × Verdelar (Lu) · "A corrida contra o jardim"
+## Partida 1 — Fogo (Rafa) × Doces (Lu) · "O caramelo e a fagulha"
 
 **Mapa da temporada:** Lago central (col. 5), 2 Ruínas selvagens (col. 4 e 6).
 
-- **R1** — Rafa (iniciativa): joga Diabrete de Cinza (#146) avançado e passa 1 ficha (banca 1🔨). Lu: Bosque Novo (#15) colado ao Coração e Ouriço-Pinha (#34) dentro. *Leitura: Cindral sinaliza corrida; Verdelar compra tempo com espinhos.*
-- **R2** — Lu (iniciativa): Salgueiro Vovô (#33) na Floresta + Verme-Arado (#14). Rafa: Falcão de Fagulha (#143) e Carvoeiro (#144). **Pulso:** Diabrete (Predador, só Peso 1) trava — não há presa válida; Salgueiro cresce p/ Copa. *Detalhe de regra: o Diabrete NÃO caça o Ouriço (Peso 1 vs Peso 1 é presa válida! — ele caça, MAS o Ouriço retaliará ATQ cheio; Rafa dá Ordem para segurá-lo e evita a troca ruim. Domar o instinto custa ficha: essência de Cindral bem jogado.)*
-- **R3** — Rafa: Incêndio Alastrante (#148) na Floresta de Lu: `EmChamas`! Lu, Reflexo: NÃO tem Céu Limpo na mão; responde jogando Chuva Mansa (#29) com a 2ª ficha — mas clima entra no fim da fase: o Pulso 3 ainda queima. **Pulso:** fogo espalha, Salgueiro (Inflamável) sofre 1 e o Bosque degrada 1 estágio; ENTÃO a Chuva chega: tudo `Molhado`. *Troca de golpes clássica Lei 2 × Lei 1.*
-- **R4–5** — Sob Chuva: o Verme-Arado deixa hexes `Fértil`; Lu recupera economia (Colheita Farta #28, 4🍎) e joga Trolde de Musgo (#35), que cura no `Molhado`. Rafa monta pressão: Touro de Magma (#145) — PAVIO 3 começa a contar; Salamandra-Forja repara atrás.
-- **R6** — Momento da partida: Rafa move o Touro (PAVIO 1, ATQ 6) para o corredor sul. Lu tem UMA resposta: Ordem no Trolde — "Muro de Ombros" fecha os 6 hexes adjacentes. O Touro não alcança o Coração. Rafa decide: paga 2✨ e reseta o pavio? Sem essência (gastou no Incêndio). **Pulso:** 💥 o Touro explode no muro — 4 de dano no Trolde (sobra com 3), zero no Coração. *A aposta de tempo de Cindral falhou por 1 hex.*
-- **R7–9** — Verdelar vira: Salgueiro Ancião puxa o Falcão do céu (galho-gancho) e o mata em retaliação de área; Crescimento Explosivo (#39) acelera uma Vinha Lançadora (#36) que passa a bombardear a Forja de Rafa (dano dobrado: Raízes × construção). Influência de Lu passa 10 (controla as 2 Ruínas + centro).
-- **R10** — Lu completa **Marco da Abundância** (12 hexes) e **da Prosperidade** (8 recursos na Aurora, graças aos `Fértil`). Rafa all-in no Coração: chega a 9 de dano total, mas o Pelotão verde segura.
-- **R11** — **Marco do Equilíbrio** completa na Aurora (5 criaturas intactas). **Vitória de Verdelar por Domínio.**
+- **R1** — Rafa (iniciativa): Diabrete de Cinza (#66, Ímpeto) já avança; Carvoeiro (#64) atrás. Lu: Campo de Açúcar (#24) colado ao Coração e Abelha de Açúcar (#21) polinizando. *Leitura: Fogo sinaliza corrida; Doces montam o boom.*
+- **R2** — Lu (iniciativa): Forno Real (#26) + Soldado de Biscoito (#17). Rafa: Falcão de Fagulha (#63) e Terra Queimada (#70) num Campo que Lu ia expandir. *Negação econômica na cara: o hex morreu para sempre.*
+- **R3** — Rafa voa o Falcão POR CIMA do Campo de Açúcar: `Inflamável` + passagem dele = `EmChamas`. Lu, Reflexo? Não tem. **Crepúsculo:** o fogo espalha para o segundo Campo de Açúcar (Lei 2 em dobro: açúcar carameliza). A economia doce arde.
+- **R4** — Lu respira e joga a virada clássica: **Chuva Mansa não é dela** — Doces não têm chuva! Em vez disso: Banho de Glacê (#29) para segurar o front e Golem de Caramelo (#19) no gargalo entre os lagos. Rafa tenta atravessar com o Diabrete: o Golem é Guardião — intercepta, e o Diabrete morre GRUDADO (deixa `EmChamas` no hex do Golem, que sofre no Crepúsculo — troca honesta).
+- **R5–6** — Rafa monta o relógio: Touro de Magma (#65), Pavio 3… 2. Lu joga a resposta que o set inteiro ensina: **Rush de Açúcar (#28) no Golem de Caramelo** — VEL 3 por uma rodada! O Golem alcança o Touro no meio do mapa e o Abraço Pegajoso (#19) faz o Touro **perder a Ordem de movimento**. Pavio 1 e o Touro está longe de tudo.
+- **R7** — Rafa decide: 2✨ para resetar o pavio ou deixar explodir no nada? Deixa explodir perto do Golem: 4 de dano — o Glacê 2 absorve metade. O Golem sobrevive com 2, `Exausto` do Rush (o crash chegou na pior hora... não: Lu CONTOU as rodadas — o crash caiu na rodada em que o Golem não precisava agir. Isso é maestria de Doces).
+- **R8–10** — Com o midgame de Rafa gasto, Lu prospera: Marzia (#16) entra (10🍎 de açúcar produzidos), Glacê em cadeia na Aurora, Pirulito Sentinela (#23) tranca as Ruínas. Influência 11.
+- **R11–12** — Rafa all-in de sacrifícios: Oferendas (#75) + Incêndio (#72) abrem 8 de dano no Coração doce, mas o deck dele encolheu — recicla com −2 de Vitalidade. Lu completa **Prosperidade** e **Abundância**.
+- **R13** — **Marco do Equilíbrio** fecha na Aurora (5 criaturas com Glacê intactas — o escudo conta como "sem dano"). **Vitória dos Doces por Domínio.**
 
-**Lições de design validadas:** corrida × jardim foi decidida por 3 decisões legíveis (segurar o Diabrete, o hex do Muro de Ombros, a essência gasta cedo demais), não por topdecks. Tempo total simulado: 17 min.
-
----
-
-## Partida 2 — Nictara (Ana) × Engrenato (Bea) · "O relógio contra a noite"
-
-- **R1–3** — Bea abre econômica: Laboratório (#117), Corvo-Relojoeiro (#113), descartes viram Pesquisa. Ana povoa as bordas: Clareira Sombria (#87), Pantera do Eclipse (#82) `Oculto`, Rato-Sombra (#85) começando a pilhar ✨ do Laboratório. *Nictara joga o early perfeito contra Engrenato: negar a economia da pesquisa.*
-- **R4** — Bea: Sentinela de Corda (#115) em modo torre cobrindo a mina. **Pulso:** a Sentinela (sem Ordem) atira sozinha no Rato revelado ao roubar — abatido. *Autômatos: caros de ficha, mas o modo torre pune pilhagem.*
-- **R5–6** — Ana: Lua Vermelha (#88). Mariposas-Lâmina (#84) empilham. Bea, jogada de campeonato: sabe que mariposas são "hipnotizadas por luz" (fraqueza impressa) e move o Autômato Aprendiz segurando uma… não — Engrenato não tem fonte de luz; em vez disso, Bea usa Rajada? (não tem). Ela ACEITA o dano e completa Para-Raios em Série (#119).
-- **R7** — Ana all-in sob a lua: Umbrak (#81) entra (4 abates de Pulso acumulados + Influência 7). Pantera + Umbrak destroçam o flanco: Coração de Bea a 11.
-- **R8** — Vira-virada: Bea completa a 2ª Tecnologia → **Mestre Cavilha (#111)** entra e dá comportamento **Guardião** a todos os autômatos. De repente o exército manual INTERCEPTA sozinho. Trituradora Rolante (#116) abre a muralha de esquina e empurra a Clareira… não — terreno não se empurra; ela abre a ROTA pela muralha de Ana.
-- **R9–10** — A caçada de Umbrak seca: sem presas de peso igual (autômatos Peso 3–5 e sem medo — moral inexistente: `Apavorado` não pega!). *Matchup de design: o terror de Nictara não morde máquinas — fraqueza estrutural honesta.* Ana tenta Marca do Faminto: inútil em autômato (sem Fome aplicável a quem não come — regra do Léxico).
-- **R11–12** — Tempestade natural do mapa? Não — Bea joga a própria agenda: com Para-Raios, autômatos atingidos por Enguia neutra de Ana GANHAM energia. O relógio de Engrenato assumiu: Trituradora chega ao Coração. **Vitória de Engrenato por Conquista na R13.**
-
-**Lições:** a partida inverteu DUAS vezes com informação 100% aberta; os dois heróis entraram por quests públicas que o oponente tentou atrasar; nenhum momento dependeu de sorte. Duração simulada: 19 min.
+**Lições validadas:** a fraqueza climática dos Doces não apareceu (Rafa não achou a Seca no Duplo Horizonte — e escolheu MAL na R6: pegou remoção em vez da Seca, decisão registrada); o jogo foi decidido por 3 decisões legíveis (a Terra Queimada da R2, o Rush defensivo, o crash calculado). 18 min.
 
 ---
 
-## REVISÃO CRÍTICA (Fase 6 — validação por exemplo)
-- Os dois walkthroughs exercitaram: 3 condições de vitória diferentes, 9 das 10 leis do Léxico, moral, pavio, tecnologias, heróis e clima — sem precisar de NENHUMA regra não documentada. (Duas quase-inconsistências encontradas ao escrever — "empurrar terreno" e "amaldiçoar autômato" — foram checadas: ambas já proibidas por regras existentes. Escrever partidas é teste de regras; recomenda-se manter esta prática a cada mini-set.)
-- Confirmado o valor narrativo do Pulso para casting: os momentos mais emocionantes das duas partidas aconteceram na fase automática, preparados nas fases manuais. É o nosso "drive do meio-campo".
+## Partida 2 — Sangrentos (Ana) × Humanos (Bea) · "A capela contra a cripta"
+
+- **R1–3** — Ana abre a máquina fúnebre: Cemitério Aconchegante (#40), Esqueletos Lanceiros (#32) de 1❤ pressionando cedo, Zumbi Lavrador (#33) colhendo ✨ no `Profano`. Bea responde livro-texto: Campos da Vila (#85), Camponês (#77), Engenheira Prudência (#80) já erguendo muralha no gargalo norte.
+- **R4** — Primeiro clash: Esqueletos quebram na muralha (Besteiro #79 atira das ameias). Mas Ana LUCRA: os mortos caem em alcance do Cemitério — 2 Cadáveres estocados. *A economia dela é a linha de frente dela.*
+- **R5** — Bea lê o jogo e faz A jogada da partida: **Capela do Vilarejo (#86) adjacente ao Cemitério de Ana.** `Sagrado` irradia: os Cadáveres do raio não podem ser consumidos e mortos-vivos que avançam por ali tomam 1/Crepúsculo. O motor de Reerguer engasga.
+- **R6–7** — Ana contorna: Viscondessa Carmim (#35) valsa (troca de posição) para o flanco sul SEM capela e Drena o Cão Pastor. Lua de Sangue (#42): `Profano` em tudo — MAS a Capela é `Fundada` e seu hex `Sagrado` resiste (Lei 8 empata onde a fonte é permanente; regra checada: fontes permanentes prevalecem sobre clima). Bea, Formação: **Parede de Escudos (#89) anunciada** — Ana VÊ e decide não bater nessa rodada. *Preparo funcionando: informação aberta gerou um turno de xadrez psicológico sem RNG.*
+- **R8** — Conde Vesperto (#31) entra (6 reerguidas). "Convite" puxa a Capelã Benta (#84) para fora da formação — e a corte cai em cima: Coração humano a 14.
+- **R9–10** — Bea vira com economia: Mercado (#87) converte o excedente, Cavaleiro da Vila (#78) carga de lança na Viúva Uivante, Capitã Odete (#76) entra (4 construções: muralha, capela, mercado, forno... quarteirão completo) dando Contra-ataque em área — de repente, trocar com Humanos é caro.
+- **R11–13** — A guerra de atrito: Ana paga em VIDA (3❤/rodada no teto) para manter pressão; Bea repara com Prudência e cura com a Capelã. O relógio decide: o Coração de Ana chega a 12 PELO PRÓPRIO CUSTO enquanto o de Bea está a 11 por ataques. Quem pisca primeiro?
+- **R14** — Bea fecha: Falcoeira (#83) revela o Convite Carmesim armado no Cavaleiro (ele NÃO ataca o Conde — maldição neutralizada por leitura), e a carga final da cavalaria + Milícia dos camponeses derruba as últimas defesas. **Vitória dos Humanos por Conquista na R15.**
+
+**Lições:** a partida inteira girou em `Sagrado`×`Profano` (Lei 8) sem uma única carta citar outra; o custo-em-VIDA dos Sangrentos criou um relógio dramático legível para espectadores; a Formação anunciada gerou blefe SEM informação oculta. 19 min.
+
+---
+
+## REVISÃO CRÍTICA (validação por exemplo)
+- Os dois walkthroughs exercitaram: as 3 condições de vitória (2 usadas, 1 ameaçada), 8 das 10 Leis, Instintos (Guardião, Sentinela, Contra-ataque, Colheita, Médico), Pavio, Glacê, Reerguer, Formação, Maldição e 4 dos 6 heróis — sem NENHUMA regra não documentada.
+- **Uma ambiguidade real encontrada e resolvida ao escrever:** clima `Profano` global × hex `Sagrado` permanente. Regra adicionada ao Léxico (Doc. 04): **fontes permanentes prevalecem sobre clima.** Escrever partidas é teste de regras; prática mantida a cada mini-set.
 
 **Veredicto:** aprovado.
