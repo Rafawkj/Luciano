@@ -39,7 +39,7 @@
 ---
 
 ## REVISÃO CRÍTICA (validação por exemplo)
-- Os dois walkthroughs exercitaram: as 3 condições de vitória (2 usadas, 1 ameaçada), 8 das 10 Leis, Instintos (Guardião, Sentinela, Contra-ataque, Colheita, Médico), Pavio, Glacê, Reerguer, Formação, Maldição e 4 dos 6 heróis — sem NENHUMA regra não documentada.
+- Os dois walkthroughs exercitaram: as 3 condições de vitória (2 usadas, 1 ameaçada), 8 das 10 Leis, Instintos (Guardião, Sentinela, Contra-ataque, Colheita, Médico), Pavio, Glacê, Reerguer, Formação, Maldição e 4 das 6 Lendas — sem NENHUMA regra não documentada.
 - **Uma ambiguidade real encontrada e resolvida ao escrever:** clima `Profano` global × hex `Sagrado` permanente. Regra adicionada ao Léxico (Doc. 04): **fontes permanentes prevalecem sobre clima.** Escrever partidas é teste de regras; prática mantida a cada mini-set.
 
 **Veredicto:** aprovado.

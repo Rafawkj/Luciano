@@ -1,6 +1,6 @@
 # TERRAVIVA — Game Design Document
 
-> **Card game estratégico de reinos vivos** · IP original · Documento mestre do estúdio · **v0.2**
+> **Card game estratégico de reinos vivos** · IP original · Documento mestre do estúdio · **v0.3**
 > *"Seu reino, suas ordens, um mundo que reage."*
 
 Jogo de cartas tático competitivo em tabuleiro de hexágonos: terrenos, clima e leis naturais públicas (o **Léxico**) no lugar de mana e de centenas de keywords. Universo, nomes, regras e cartas 100% originais.
@@ -26,9 +26,9 @@ Jogo de cartas tático competitivo em tabuleiro de hexágonos: terrenos, clima e
 | [04](04-lexico-natural-ia-criaturas.md) | **Léxico Natural** (14 tags, 10 leis) e **Instintos** (8 reações) |
 | [05](05-combate.md) | Combate determinístico |
 | [06](06-economia.md) | Economia territorial (Comida/Matéria/Essência + Influência) |
-| [07](07-categorias-de-cartas.md) | As 11 categorias de cartas |
-| [08](08-faccoes.md) | As 6 facções, alianças e matriz de contrajogo |
-| [cartas/](cartas/00-formato-e-indice.md) | **Set "Primeira Regência": 90 cartas (15 por facção)** |
+| [07](07-categorias-de-cartas.md) | As **5 categorias** de cartas: Tropas, Construções, Terrenos, Feitiços, Climas |
+| [08](08-faccoes.md) | As 6 facções, cartas neutras e matriz de contrajogo |
+| [cartas/](cartas/00-formato-e-indice.md) | **Set "Primeira Regência": 115 cartas (15 por facção + 25 neutras)** |
 | [10](10-balanceamento.md) | Balanceamento (anti power creep) |
 | [11](11-modos-progressao.md) | Modos de jogo; progressão 100% cosmética |
 | [12](12-ia-oponentes.md) | IA de oponentes (5 perfis, erros humanos deliberados) |
@@ -44,5 +44,6 @@ Jogo de cartas tático competitivo em tabuleiro de hexágonos: terrenos, clima e
 3. **Zero sorte de resolução** — sem dados, sem RNG de efeitos, sem fases autônomas: cada ação é uma decisão de um jogador; o mundo apenas **reage** (Instintos e Crepúsculo, sempre previsíveis).
 
 ## Histórico de direção
-- **v0.1** — 12 facções, fase automática de ecossistema ("Pulso do Reino"), 150 cartas.
-- **v0.2 (atual)** — Pulso removido (agência 100% do jogador; mundo reativo via Instintos + Crepúsculo); 6 facções (Gelados, Doces, Sangrentos, Natureza, Fogo, Humanos); 90 cartas. Decisões registradas nas revisões críticas de cada documento.
+- **v0.3 (atual)** — categorias reduzidas a 5 (**Tropas, Construções, Terrenos, Feitiços, Climas**); Heróis viram Tropas Lendárias; Artefatos/Totens cortados; +25 cartas neutras (set: 115).
+- **v0.2** — Pulso removido (agência 100% do jogador; mundo reativo via Instintos + Crepúsculo); 6 facções (Gelados, Doces, Sangrentos, Natureza, Fogo, Humanos); 90 cartas.
+- **v0.1** — 12 facções, fase automática de ecossistema ("Pulso do Reino"), 150 cartas. Decisões registradas nas revisões críticas de cada documento.

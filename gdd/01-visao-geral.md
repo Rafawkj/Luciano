@@ -48,8 +48,8 @@ Sem dados, sem efeitos aleatórios, sem fases automáticas: toda ação da parti
 - **Tabuleiro:** hexes 9×5; **Coração do Reino** (base, 25 de Vitalidade) em extremos opostos; hexes selvagens ricos no centro.
 - **Vitória:** destruir o Coração inimigo **ou** completar 3 **Marcos de Domínio** (vitória territorial do construtor).
 - **Rodada:** **Aurora** (produção + compra) → **Ações alternadas** (3 fichas por jogador) → **Crepúsculo** (efeitos de estado resolvem: fogo espalha, veneno pinga, plantas crescem — tudo previsível e impresso nas regras).
-- **Cartas:** Criaturas, Heróis, Construções, Terrenos, Eventos, Clima, Relíquias, Artefatos, Maldições, Totens, Armadilhas (Doc. 07).
-- **Baralho:** 40 cartas, máx. 2 cópias, 1 Herói com quest pública.
+- **Cartas — exatamente 5 categorias:** **Tropas, Construções, Terrenos, Feitiços e Climas** (Doc. 07).
+- **Baralho:** 40 cartas, máx. 2 cópias, 1 Tropa Lendária com quest pública, até 8 Neutras.
 - **Facções (6):** **Gelados · Doces · Sangrentos · Natureza · Fogo · Humanos** — cada uma muda estruturalmente a forma de jogar (Doc. 08).
 
 ## 6. Pilares de design (contrato inegociável)

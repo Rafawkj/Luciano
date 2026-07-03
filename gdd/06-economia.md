@@ -12,10 +12,10 @@ Sem mana. Todo recurso vem de um lugar físico do mapa e pode ser **disputado, r
 
 | Recurso | Produzido por | Gasta-se em | Personalidade |
 |---|---|---|---|
-| **Comida 🍎** | Campos, Florestas, pesca, Fazendas, Açúcar | Criaturas e `Fome` | O recurso da VIDA; estoca mal |
-| **Matéria 🔨** | Montanhas, Geleiras, Serrarias/Minas | Construções, Terrenos, Artefatos | O recurso da PERMANÊNCIA |
-| **Essência ✨** | Pântanos, Ruínas, hexes especiais | Eventos, Clima, Maldições, habilidades | O recurso do EXTRAORDINÁRIO; disputadíssimo |
-| **Influência 👑** | Trilha 0–15 (não se gasta): hexes selvagens, construções `Monumental`, excedentes | Destrava Herói (7) e Marcos (10+) | O placar do construtor |
+| **Comida 🍎** | Campos, Florestas, pesca, Fazendas, Açúcar | Tropas e `Fome` | O recurso da VIDA; estoca mal |
+| **Matéria 🔨** | Montanhas, Geleiras, Serrarias/Minas | Construções e Terrenos | O recurso da PERMANÊNCIA |
+| **Essência ✨** | Pântanos, Ruínas, hexes especiais | Feitiços, Climas, habilidades | O recurso do EXTRAORDINÁRIO; disputadíssimo |
+| **Influência 👑** | Trilha 0–15 (não se gasta): hexes selvagens, construções `Monumental`, excedentes | Destrava a Lenda (7) e Marcos (10+) | O placar do construtor |
 
 ## 3. Fluxo de produção (Aurora)
 

@@ -83,19 +83,19 @@ Nenhuma criatura se move ou ataca aqui. O Crepúsculo nunca decide nada: só exe
 |---|---|---|
 | Tamanho | 40 exatas | Consistência (Pilar 3) |
 | Cópias | Máx. 2 | Adaptação > repetição |
-| Heróis | Exatamente 1 (entra por quest pública + Influência 7) | Identidade sem loteria |
-| Facções | 1 facção; até 6 cartas de uma 2ª facção **aliada** (grafo de alianças no Doc. 08) | Identidade + espaço de tech |
+| Lendas | Exatamente 1 **Tropa Lendária** (entra por quest pública + Influência 7) | Identidade sem loteria |
+| Facções | 1 facção + até 8 cartas **Neutras** (cartas/05) | Identidade + espaço de tech |
 | Terrenos | Mínimo 5 cartas de Terreno | Todo deck participa da guerra de mapa |
 
 ## 8. Informação
 
-Ocultos: **mãos** e **Armadilhas** (custo pago às claras; máx. 2 armadas). Todo o resto é público — inclusive quests de Herói e contagens.
+Ocultos: **mãos** e **Feitiços ocultos** (Armadilhas/Maldições; custo pago às claras; máx. 2 armados). Todo o resto é público — inclusive quests de Lenda e contagens.
 
 ---
 
 ## 9. REVISÃO CRÍTICA (v0.2)
 
-1. **Sem a fase automática, de onde vem a interação fora do seu turno?** Dos **Instintos** (reativos, gatilho público), das Armadilhas, dos Eventos `Reflexo` e da alternância por ficha (ninguém fica 60 s assistindo). Testar em papel se 3 fichas alternadas bastam para sensação de "jogo vivo"; se não, avaliar 4 fichas.
+1. **Sem a fase automática, de onde vem a interação fora do seu turno?** Dos **Instintos** (reativos, gatilho público), das Armadilhas, dos Feitiços `Reflexo` e da alternância por ficha (ninguém fica 60 s assistindo). Testar em papel se 3 fichas alternadas bastam para sensação de "jogo vivo"; se não, avaliar 4 fichas.
 2. **Crepúsculo ainda é uma mini-fase automática — contradiz a mudança?** Não: é bookkeeping de efeitos que OS JOGADORES criaram (fogo que VOCÊ pôs, veneno que VOCÊ aplicou), padrão do gênero, sem movimento nem decisão. Mantido com esta fronteira escrita: **nenhuma criatura age no Crepúsculo, nunca.**
 3. **Marco do Equilíbrio** revalidado sem Pulso: segue exigindo 5+ criaturas em campo — inalterado.
 

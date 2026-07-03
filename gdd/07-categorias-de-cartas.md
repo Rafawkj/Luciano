@@ -1,40 +1,52 @@
-# TERRAVIVA — As 11 Categorias de Cartas
+# TERRAVIVA — As 5 Categorias de Cartas
 
-> **Documento 07 · Economia e Cartas** · v0.2
+> **Documento 07 · Economia e Cartas** · v0.3 — o jogo tem exatamente 5 categorias: **Tropas, Construções, Terrenos, Feitiços e Climas.** Nada além disso, nunca (regra de governança).
 
 ---
 
 ## 1. Tabela mestra
 
-| # | Categoria | Permanência | Mecânica exclusiva | Contrajogo nativo |
+| # | Categoria | Permanência | Mecânica central | Contrajogo nativo |
 |---|---|---|---|---|
-| 1 | **Criatura** | Mapa | Instintos + atributos (Docs. 04/05) | Combate, fome, terreno hostil |
-| 2 | **Herói** | Única, 1 por deck | Entra pela **Condição de Lenda** (quest pública) + Influência 7; 1 retorno possível por +3✨ | Sabotar a quest dele (ela é pública desde o turno 1) |
-| 3 | **Construção** | Mapa | Produz/afeta sem gastar fichas; `Fundada` opcional | Fogo, raízes, cerco, pilhagem |
-| 4 | **Terreno** | Permanente no hex | Transforma o mapa; define tags | Re-terraformação (com presença), degradação natural |
-| 5 | **Evento** | Instantâneo | `Reflexo` permite jogar fora do seu turno de ficha (1 por gatilho, gatilho impresso) | Custo em ✨; recursos abertos = previsibilidade |
-| 6 | **Clima** | Global, 2 rodadas | Substitui o anterior; afeta ambos | Sobrescrever; Céu Limpo |
-| 7 | **Relíquia** | Equipada no Coração | Modifica as regras do SEU reino; 1 ativa por vez | Pilhagem do hex do Coração; custo alto |
-| 8 | **Artefato** | Equipado em criatura | **Despojo**: quem abate o portador, leva | Matar o portador é risco/prêmio para ambos |
-| 9 | **Maldição** | Anexada a hex/criatura | Persiste oculta até o gatilho (marca visível, efeito oculto) | `Sagrado` bloqueia; purificação; ler o custo pago |
-| 10 | **Totem** | Mapa | Aura de raio 1 que **empilha** a cada Crepúsculo que sobrevive | Frágil (VIDA 1–3); prioridade de remoção clara |
-| 11 | **Armadilha** | Oculta em hex seu | Única informação totalmente oculta; dispara na condição impressa | Limite de 2 ocultos; `Farejar`; terraformar revela |
+| 1 | **Tropa** | Fica no mapa | Age por Ordens; Instintos reativos; atributos completos (Docs. 04/05) | Combate, fome, terreno hostil |
+| 2 | **Construção** | Fica no mapa | Produz/afeta **sem gastar fichas**; tem VIDA e DEF; não se move | Fogo, `Raízes`, cerco, pilhagem, Demolição |
+| 3 | **Terreno** | Permanente no hex | Transforma o mapa; define as tags do hex | Re-terraformação (com presença), degradação natural |
+| 4 | **Feitiço** | Instantâneo (ou colocado, conforme subtipo) | O único tipo com efeitos "de fora" do mapa | Custo em ✨; recursos abertos = previsibilidade |
+| 5 | **Clima** | Global, 2 rodadas | Substitui o anterior; afeta AMBOS os jogadores | Sobrescrever com outro clima; Céu Limpo |
 
-## 2. Regras transversais
+## 2. Subtipos (mecânicas, não categorias)
+
+**Tropa:**
+- **Lendária** — exatamente 1 por baralho; começa fora do deck e entra pela **Condição de Lenda** (quest pública visível aos dois jogadores desde o turno 1) + Influência 7; 1 retorno possível por +3✨.
+
+**Construção:**
+- **Muralha** — 3 segmentos; bloqueia movimento e ALC 1–2.
+- **Fundada** — não pode ser substituída por terraformação; só cai destruída.
+
+**Feitiço:**
+- **Reflexo** — jogável fora do seu turno de ficha, 1 por gatilho, gatilho impresso.
+- **Armadilha** — colocado oculto num hex seu (custo pago às claras); dispara na condição impressa.
+- **Maldição** — anexo oculto a hex/tropa (marca visível, efeito oculto); `Sagrado` bloqueia.
+- **Formação** — anunciado virado para cima; ativa na sua próxima rodada com efeito maior.
+- **Pavio(X)** — fica no mapa visível; conta regressiva pública; explode em 0.
+
+**Orçamento de ocultos:** máximo de **2 Feitiços ocultos** (Armadilhas + Maldições somados) por jogador. `Farejar` e terraformação revelam.
+
+## 3. Regras transversais
 
 - **Raridades:** Comum, Incomum, Rara, Lendária (máx. 1 cópia de Lendária). Raridade = complexidade, **nunca** poder bruto.
-- **Identidade de custo:** criaturas pendem para 🍎, permanentes de mapa para 🔨, o "extraordinário" (5, 6, 9) para ✨. Ler os recursos abertos do oponente = prever o que ele PODE fazer.
-- **Orçamento de ocultos:** máximo de **2 permanentes ocultos** por jogador (Maldições + Armadilhas somadas).
-- **Janela de Reflexo:** só Eventos `Reflexo` respondem; 1 por gatilho; sem pilha infinita.
+- **Identidade de custo:** Tropas pendem para 🍎, Construções/Terrenos para 🔨, Feitiços/Climas para ✨. Ler os recursos abertos do oponente = prever o que ele PODE fazer.
+- Regra editorial: **máx. 2 linhas de regra por carta** — o Léxico absorve o resto.
 
-## 3. Anatomia visual da carta
+## 4. Anatomia visual da carta
 
 ```
 ┌─────────────────────────┐
 │ CUSTO(ícones)      RARO │
 │      [ARTE 60%]         │
 │ NOME                    │
-│ Categoria · Facção      │
+│ Categoria (Subtipo)     │
+│ · Facção ·              │
 │ ⚔ATQ 🛡DEF ❤VIDA       │
 │ 👣VEL 🎯ALC ⚖PESO ⚡ENE │
 │ [INSTINTO] [TAGS]       │
@@ -42,13 +54,12 @@
 │ "flavor de 1 linha"     │
 └─────────────────────────┘
 ```
-Regra editorial: **máx. 2 linhas de regra por carta** — o Léxico absorve o resto.
 
 ---
 
-## 4. REVISÃO CRÍTICA (v0.2)
-1. Categorias 14 → 11: **Invocação** (era exceção de Fome sem sistema que a sustente), **Companheiro** e **Tecnologia** (pertenciam a facções cortadas) arquivadas para expansões.
-2. Set base concentra 80% das cartas em 6 categorias (Criatura, Terreno, Construção, Evento, Clima, Armadilha); as demais aparecem como assinaturas.
-3. Despojo de Artefato mantido — melhor gerador de decisão do design.
+## 5. REVISÃO CRÍTICA (v0.3)
+1. **11 → 5 categorias:** Herói virou Tropa Lendária; Evento virou Feitiço; Armadilha/Maldição viraram subtipos de Feitiço; Relíquia virou Construção; **Artefato e Totem foram cortados**. Mapa completo da migração em cartas/04-revisao-do-set.md.
+2. **O que se ganhou:** onboarding drasticamente mais simples (5 palavras ensinam o jogo inteiro), UI de coleção mais limpa, e a pergunta "que carta é essa?" sempre tem resposta de uma palavra.
+3. **O que se vigia:** subtipos de Feitiço carregam 5 mecânicas — o risco de virarem "categorias disfarçadas" é real. Trava: subtipo NUNCA aparece sozinho no set; toda mecânica de subtipo existe em ≥ 2 facções ou nas neutras.
 
 **Veredicto:** aprovado.

@@ -18,8 +18,8 @@
 
 ## 2. Plano de expansão (anos 1–3)
 
-- **Mini-sets trimestrais:** +5 cartas por facção (30); o primeiro estreia **Totens e Artefatos** (dívida assumida na revisão do set).
-- **Exp. 1 — "Estação das Crias":** estreia dos **Companheiros** + tema de filhotes/crescimento; ovos que chocam por condição.
+- **Mini-sets trimestrais:** +5 cartas por facção e +5 neutras (35), sempre dentro das 5 categorias fixas (Tropas, Construções, Terrenos, Feitiços, Climas).
+- **Exp. 1 — "Estação das Crias":** tema de filhotes e crescimento — Tropas-ovo que chocam por condição pública (dentro das 5 categorias; nenhuma categoria nova, nunca).
 - **Exp. 2 — "Marés Vivas":** 7ª facção (aquática — arquivada da v0.1: controle de fluxo e empurrões).
 - **Exp. 3 — "O Relógio Desperta":** 8ª facção (autômatos — arquivada da v0.1: máquinas sem Fome e sem Instinto).
 - **Regra de governança (inegociável):** cada expansão pode adicionar **no máx. 2 tags e 1 Instinto** ao Léxico — crescimento por combinação, não por vocabulário (anti-creep cognitivo). Rotação: formato "Estação" (últimos 2 anos) + "Perene" (tudo); cartas nunca são apagadas.

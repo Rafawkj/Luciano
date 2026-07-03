@@ -16,9 +16,9 @@
 - **Iniciativa** — quem age primeiro; alterna por rodada.
 - **Território** — hexes conectados ao seu Coração com presença sua.
 - **Hex selvagem** — hex neutro rico do mapa da temporada (+1 produção; +1 Influência/Aurora).
-- **Influência** — trilha 0–15: destrava Herói (7) e Marcos (10+).
+- **Influência** — trilha 0–15: destrava a Lenda (7) e Marcos (10+).
 - **Marcos de Domínio** — Abundância / Prosperidade / Equilíbrio; 3 = vitória alternativa.
-- **Condição de Lenda** — quest pública que libera o Herói.
+- **Condição de Lenda** — quest pública que libera a Tropa Lendária do baralho.
 - **Reciclagem** — reembaralhar o descarte quando o deck acaba; −1 Vitalidade cumulativo.
 - **Aliança** — até 6 cartas de uma facção aliada no baralho (grafo no Doc. 08 §7).
 - **Mapa da temporada** — configuração trimestral dos hexes selvagens.
@@ -41,8 +41,7 @@
 - **Envenenado** — 1 dano/Crepúsculo por 2 rodadas.
 - **Faminto** — Fome não paga: −1 ATQ; pode comer plantações (qualquer dono).
 - **Chamado** — mini-ordem grátis do Coração (indisponível se ele sofreu dano na rodada).
-- **Despojo** — Artefato passa a quem abater o portador.
-- **Farejar** — revela ocultos (Armadilhas, Maldições) na área indicada.
+- **Farejar** — revela Feitiços ocultos (Armadilhas, Maldições) na área indicada.
 
 ## Mecânicas de facção
 - **Zero (Gelados)** — congelamento cirúrgico; `Adaptado(Frio)` patina no gelo.
@@ -56,15 +55,16 @@
 - **Formação (Humanos)** — carta anunciada que ativa na sua próxima rodada com efeito maior.
 - **Milícia (Humanos)** — camponeses +1 ATQ com invasor em território seu.
 
-## Atributos (criaturas)
+## Atributos (tropas)
 **ATQ** ataque · **DEF** redução fixa · **VIDA** pontos de vida · **VEL** hexes/Ordem · **ALC** alcance · **PESO** classe física 1–5 · **ENE** cargas de ativa (recarrega 1/Aurora).
 
 ## Tags naturais (14)
 Molhado · EmChamas · Inflamável · Congelante · Metálico · Venenoso · Fértil · Doce · Profano · Sagrado · Elevado · Cobertura · Oculto · Adaptado(X). Tags estruturais: Voador, Aquático, Escalador, Silvestre, Ígneo, Ossudo, Guloso, Raízes, Frágil, Murado, Fundada, Enraizado.
 **Precedência:** fontes permanentes > clima > efeitos temporários (Doc. 04).
 
-## Categorias de carta (11)
-Criatura · Herói · Construção · Terreno · Evento · Clima · Relíquia · Artefato · Maldição · Totem · Armadilha (Doc. 07).
+## Categorias de carta (5)
+**Tropa** (subtipo: Lendária) · **Construção** (subtipos: Muralha, Fundada) · **Terreno** · **Feitiço** (subtipos: Reflexo, Armadilha, Maldição, Formação, Pavio) · **Clima** (Doc. 07).
+- **Neutras** — cartas sem facção, até 8 por baralho (cartas/05).
 
 ## Competitivo
 - **Ligas** — Semente → Broto → Copa → Anciã → Raiz-Mundo.

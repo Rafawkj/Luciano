@@ -5,7 +5,7 @@
 # GELADOS (15)
 
 #### 1. Vovó Amaruk, a Última Fogueira
-Herói · Gelados · L | Matriarca · Ursa · Gelo
+Tropa Lendária · Gelados · L | Matriarca · Ursa · Gelo
 **Condição de Lenda:** 6 hexes `Congelante` simultâneos (+ Influência 7)
 Invocação 3🍎 2✨ | ATQ 4 DEF 3 VIDA 12 VEL 2 ALC 1 PESO 5 ENE 3
 Instinto: Guardião | Tags: Adaptado(Frio), Elevado
@@ -15,7 +15,7 @@ Anim: tricota entre golpes; a fogueira flutua num lampião de gelo | Som: agulha
 "O inverno inteiro é dela. Você é convidado. Comporte-se."
 
 #### 2. Urso-Monólito
-Criatura · Gelados · R | Colosso · Ursídeo · Gelo
+Tropa · Gelados · R | Colosso · Ursídeo · Gelo
 4🍎 1🔨 | ATQ 5 DEF 3 VIDA 9 VEL 1 ALC 1 PESO 5 ENE 1
 Instinto: Sentinela | Tags: Adaptado(Frio)
 Passiva: hexes adjacentes ficam `Congelante` enquanto ele não se mover nesta rodada.
@@ -23,7 +23,7 @@ Anim: pelagem com geleira nas costas; pinguins-hóspedes | Som: passos = avalanc
 "Os mapas antigos o marcavam como montanha. Os novos também, por segurança."
 
 #### 3. Lebre-Flecha
-Criatura · Gelados · C | Batedora · Leporídeo · Gelo
+Tropa · Gelados · C | Batedora · Leporídeo · Gelo
 1🍎 | ATQ 2 DEF 0 VIDA 2 VEL 5 ALC 1 PESO 1 ENE 1
 Instinto: Fuga | Tags: Adaptado(Frio)
 Passiva: em hex `Congelante`, VEL 6 e não dispara Sentinelas (rápida demais).
@@ -31,7 +31,7 @@ Anim: borrão branco com pontas de orelha | Som: "fp-fp-fp" na neve
 "Entre o tiro e o alvo, ela já tomou café."
 
 #### 4. Wisp Boreal
-Criatura · Gelados · C | Elemental · Espírito · Gelo
+Tropa · Gelados · C | Elemental · Espírito · Gelo
 2✨ | ATQ 1 DEF 0 VIDA 2 VEL 3 ALC 2 PESO 1 ENE 3
 Instinto: — | Tags: Voador, Adaptado(Frio)
 Ativa (2⚡): sopro — o hex alvo fica `Congelante`; se o ocupante estiver `Molhado`, fica `Congelado` (Lei 3).
@@ -39,7 +39,7 @@ Anim: fita de aurora boreal com carinha | Som: cristais em arpejo descendente
 "Um pedacinho do céu do norte, em serviço."
 
 #### 5. Morsa Quebra-Gelo
-Criatura · Gelados · I | Rompedora · Pinípede · Gelo
+Tropa · Gelados · I | Rompedora · Pinípede · Gelo
 2🍎 1🔨 | ATQ 3 DEF 2 VIDA 6 VEL 1 ALC 1 PESO 4 ENE 1
 Instinto: Guardião | Tags: Aquático, Adaptado(Frio)
 Passiva: quebra Lago congelado à vontade (nada por baixo); quem estiver no gelo quebrado cai (Lei 3).
@@ -47,7 +47,7 @@ Anim: presas de britadeira, capacete de obra | Som: gelo estalando em sequência
 "O gelo é dela. Quem patina, patina com licença."
 
 #### 6. Coruja-das-Neves
-Criatura · Gelados · C | Vigia · Ave · Gelo
+Tropa · Gelados · C | Vigia · Ave · Gelo
 1🍎 1✨ | ATQ 2 DEF 0 VIDA 2 VEL 3 ALC 2 PESO 1 ENE 2
 Instinto: Ímpeto | Tags: Voador, Adaptado(Frio)
 Passiva: enxerga através de Nevasca e Neblina (ataques dela ignoram as restrições de ALC desses climas).
@@ -55,7 +55,7 @@ Anim: pousa sem deslocar um floco | Som: um único "hu" ensaiado
 "A nevasca é o corredor da casa dela."
 
 #### 7. Boneco de Neve Veterano
-Criatura · Gelados · C | Miliciano · Constructo · Gelo
+Tropa · Gelados · C | Miliciano · Constructo · Gelo
 2🔨 | ATQ 2 DEF 1 VIDA 4 VEL 1 ALC 1 PESO 3 ENE 0
 Instinto: Guardião | Tags: Adaptado(Frio)
 Passiva: em hex `Congelante`, reconstrói-se: cura 1/Crepúsculo. Sob `EmChamas`/`Quente`, derrete: sofre 1/Crepúsculo.
@@ -63,7 +63,7 @@ Anim: cachimbo de graveto, medalhas de tampinha; rearruma a própria cabeça | S
 "Três invernos de serviço. As cenouras foram perdidas em combate."
 
 #### 8. Pinguim Granadeiro
-Criatura · Gelados · C | Artilheiro · Ave · Gelo
+Tropa · Gelados · C | Artilheiro · Ave · Gelo
 2🍎 | ATQ 2 DEF 1 VIDA 3 VEL 2 ALC 3 PESO 2 ENE 1
 Instinto: — | Tags: Aquático, Adaptado(Frio)
 Passiva: suas bolas de neve deixam o alvo `Molhado` (prepara o `Congelado` de um Wisp — o combo-assinatura).
@@ -71,7 +71,7 @@ Anim: marcha bamboleante; catapulta a bola com a barriga | Som: "plof" molhado +
 "Artilharia de precisão com 40% de deboche."
 
 #### 9. Alce-Trenó
-Criatura · Gelados · I | Transporte · Cervídeo · Gelo
+Tropa · Gelados · I | Transporte · Cervídeo · Gelo
 2🍎 1🔨 | ATQ 2 DEF 2 VIDA 6 VEL 3 ALC 1 PESO 4 ENE 1
 Instinto: Ímpeto | Tags: Adaptado(Frio)
 Passiva: transporta 1 aliado Peso ≤ 2 (embarca/desembarca ao mover); em `Congelante`, VEL 4.
@@ -86,19 +86,19 @@ Hex vira **Geleira**: `Congelante` + `Elevado`; produz 1🔨; nativos `Adaptado(
 Bloqueia movimento e ALC 1–2. Derrete: sofre 1/Crepúsculo se adjacente a `EmChamas`/`Quente` (fraqueza impressa; Lei 1 às avessas). Anim: ergue-se em painéis translúcidos | Som: cristalização em acorde.
 "Transparente, para o inimigo ver exatamente o que o espera."
 
-#### 12. Despensa de Gelo — Relíquia · Gelados · R — 2🔨 1✨ (no Coração)
-Sua Comida não apodrece; 1×/rodada pode "congelar" 1 carta da mão (não conta no limite de mão; descongela quando quiser). Anim: cofre translúcido com a carta dentro | Som: "shhk" de selagem.
+#### 12. Despensa de Gelo — Construção · Gelados · R — 2🔨 1✨ | VIDA 4 DEF 1 · Fundada (construa adjacente ao Coração)
+Enquanto estiver de pé: sua Comida não apodrece; 1×/rodada pode "congelar" 1 carta da mão (não conta no limite de mão; descongela quando quiser). Anim: cofre translúcido com a carta dentro | Som: "shhk" de selagem.
 "A paciência precisa de despensa."
 
 #### 13. Nevasca — Clima · Gelados · R — 3✨ · 2 rodadas
 `Congelante` global; Lagos viram `Gelo` transitável; −1 VEL sem `Adaptado(Frio)` (Doc. 03 §3). Anim: o tabuleiro embranquece; entidades ganham cachecóis | Som: vento que abafa a trilha.
 "O grande igualador. Os Gelados só chegam primeiro."
 
-#### 14. Sopro do Zero — Evento · Gelados · R — 3✨ · Reflexo
+#### 14. Sopro do Zero — Feitiço · Gelados · R — 3✨ · Reflexo
 Congele um hex e seus adjacentes (`Congelante`; ocupantes `Molhado` ficam `Congelado`). Anim: flor de gelo se abre do impacto | Som: cristalização em cascata + silêncio súbito.
 "O zero absoluto é a opinião final do inverno."
 
-#### 15. Gelo Fino — Armadilha · Gelados · I — 1🔨 1✨ (em hex seu ou Geleira/Lago)
+#### 15. Gelo Fino — Feitiço (Armadilha) · Gelados · I — 1🔨 1✨ (em hex seu ou Geleira/Lago)
 Dispara quando inimigo termina movimento aqui: o hex "quebra" — ele fica `Molhado` + `Congelado` (perde a próxima Ordem). Anim: rachaduras em estrela sob os pés | Som: estalo seco + "glup".
 "A superfície era uma opinião."
 
@@ -107,7 +107,7 @@ Dispara quando inimigo termina movimento aqui: o hex "quebra" — ele fica `Molh
 # DOCES (15)
 
 #### 16. Marzia, Confeiteira-Marechala
-Herói · Doces · L | Comandante · Confeiteira · Doce
+Tropa Lendária · Doces · L | Comandante · Confeiteira · Doce
 **Condição de Lenda:** produza 10🍎 de hexes `Doce` na partida (+ Influência 7)
 Invocação 3🍎 2✨ | ATQ 3 DEF 2 VIDA 10 VEL 2 ALC 2 PESO 3 ENE 4
 Instinto: — | Tags: Doce
@@ -117,7 +117,7 @@ Anim: batedor de massa como cetro; o chapéu de chef tem plumas de marechal | So
 "A guerra é como um suflê: tudo depende do tempo."
 
 #### 17. Soldado de Biscoito
-Criatura · Doces · C | Infantaria · Biscoito · Doce
+Tropa · Doces · C | Infantaria · Biscoito · Doce
 1🍎 | ATQ 2 DEF 0 VIDA 2 VEL 2 ALC 1 PESO 1 ENE 0
 Instinto: Ímpeto | Tags: Doce, Inflamável
 Passiva: se `Molhado`, −1 DEF adicional e ATQ 1 (biscoito molhado é uma tragédia — Lei 5).
@@ -125,7 +125,7 @@ Anim: marcha com braços duros; perde farelos ao correr | Som: "croc" a cada pas
 "Assado para servir. Validade: uma guerra."
 
 #### 18. Cavalaria de Algodão-Doce
-Criatura · Doces · I | Cavalaria · Algodão · Doce
+Tropa · Doces · I | Cavalaria · Algodão · Doce
 2🍎 1✨ | ATQ 3 DEF 0 VIDA 3 VEL 4 ALC 1 PESO 1 ENE 1
 Instinto: Ímpeto | Tags: Doce, Inflamável, Voador (flutua baixinho)
 Passiva: Chuva a encolhe: −1 ATQ e perde `Voador` enquanto `Molhado` (Lei 5).
@@ -133,7 +133,7 @@ Anim: nuvem rosa galopante com cavaleiro-jujuba | Som: galope fofinho, quase sem
 "Rápida, doce e absolutamente inflamável. Como toda juventude."
 
 #### 19. Golem de Caramelo
-Criatura · Doces · R | Colosso · Caramelo · Doce
+Tropa · Doces · R | Colosso · Caramelo · Doce
 3🍎 1✨ | ATQ 4 DEF 2 VIDA 8 VEL 1 ALC 1 PESO 5 ENE 2
 Instinto: Guardião | Tags: Doce, Inflamável
 Passiva: quem o ataca em corpo-a-corpo fica **Grudado** (−1 VEL na próxima Ordem). Sob `Quente`, ele escorre: −1 DEF.
@@ -142,7 +142,7 @@ Anim: escorre devagar e se reagrupa; brilho de bala de vidro | Som: "schlop" esp
 "Abraça como uma avó. Solta como piche."
 
 #### 20. Urso de Goma
-Criatura · Doces · C | Tanque · Goma · Doce
+Tropa · Doces · C | Tanque · Goma · Doce
 2🍎 | ATQ 2 DEF 1 VIDA 5 VEL 2 ALC 1 PESO 3 ENE 1
 Instinto: Contra-ataque | Tags: Doce
 Passiva: elástico — reduz todo `Empurrar` a 0 e devolve 1 de dano a quem o empurrou (quica).
@@ -150,7 +150,7 @@ Anim: translúcido, balança como gelatina ao andar | Som: "boing" abafado
 "Bateram nele. Ele voltou. É o que gomas fazem."
 
 #### 21. Abelha de Açúcar
-Criatura · Doces · C | Operária · Inseto · Doce
+Tropa · Doces · C | Operária · Inseto · Doce
 1🍎 | ATQ 1 DEF 0 VIDA 1 VEL 3 ALC 1 PESO 1 ENE 1
 Instinto: Colheita | Tags: Doce, Voador, Guloso
 Passiva: hexes de Campo por onde passa ficam `Fértil` (polinização cristalizada).
@@ -158,7 +158,7 @@ Anim: listras de caramelo; deixa rastro de purpurina comestível | Som: zumbido 
 "A logística do reino, com asas e glicose."
 
 #### 22. Corredor de Chiclete
-Criatura · Doces · C | Batedor · Chiclete · Doce
+Tropa · Doces · C | Batedor · Chiclete · Doce
 1🍎 1✨ | ATQ 1 DEF 1 VIDA 3 VEL 4 ALC 1 PESO 1 ENE 2
 Instinto: Fuga | Tags: Doce
 Ativa (2⚡): "Ponte de Goma" — estica-se: até o fim da rodada, aliados atravessam o hex dele mesmo ocupado (vira passarela).
@@ -166,7 +166,7 @@ Anim: pernas que esticam como elástico em disparada | Som: "toing-toing" aceler
 "Chega antes do próprio eco. E gruda no recorde."
 
 #### 23. Pirulito Sentinela
-Criatura · Doces · I | Vigia · Constructo · Doce
+Tropa · Doces · I | Vigia · Constructo · Doce
 2🍎 | ATQ 2 DEF 2 VIDA 4 VEL 0 ALC 2 PESO 3 ENE 1
 Instinto: Sentinela | Tags: Doce, Elevado (é ALTO)
 Passiva: não se move (é plantado); enxerga por cima de muralhas (ALC ignora `Cobertura` adjacente).
@@ -189,14 +189,14 @@ Na Aurora: transforme até 2🍎 em Glacê 1 para uma criatura sua adjacente (a�
 Bloqueia movimento e ALC 1–2. Inimigos `Guloso` adjacentes MORDEM: causam 1 de dano/rodada nela sozinhos (fraqueza impressa, Lei 5). Anim: tijolos de bolacha com ameias de chantilly | Som: "croc" estrutural preocupante.
 "Deliciosa. Esse é o problema."
 
-#### 28. Rush de Açúcar — Evento · Doces · C — 1🍎 1✨
+#### 28. Rush de Açúcar — Feitiço · Doces · C — 1🍎 1✨
 Criatura sua ganha +2 VEL e Ímpeto nesta rodada; no Crepúsculo, fica `Exausta` (o crash). Anim: olhos em espiral + linhas de velocidade cor-de-rosa | Som: acelerando em pitch até o "fiuu... pof".
 "Energia emprestada do futuro. O futuro cobra à tarde."
 
-#### 29. Banho de Glacê — Evento · Doces · I — 2🍎 · Reflexo
+#### 29. Banho de Glacê — Feitiço · Doces · I — 2🍎 · Reflexo
 Aliado prestes a sofrer dano ganha Glacê 2 imediatamente. Anim: cascata de cobertura em câmera lenta | Som: despejo cremoso + "plim" de confeito.
 "Blindagem térmica, sabor baunilha."
 
-#### 30. Poça de Chiclete — Armadilha · Doces · I — 1🍎 1✨ (em hex seu)
+#### 30. Poça de Chiclete — Feitiço (Armadilha) · Doces · I — 1🍎 1✨ (em hex seu)
 Dispara quando inimigo entra: fica **Grudado** (perde o resto do movimento e a próxima Ordem de mover). Anim: o chão estica junto com o pé da vítima | Som: "schlep" constrangedor.
 "Ninguém nunca pisou em uma só vez."

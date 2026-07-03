@@ -6,7 +6,7 @@
 
 ## 1. Princípios inegociáveis
 
-1. **Nenhuma carta vence sozinha.** Toda carta L tem impacto condicionado a estado de tabuleiro construído (Heróis exigem Condição de Lenda + Influência 7 — poder é COLHEITA, nunca topdeck).
+1. **Nenhuma carta vence sozinha.** Toda carta L tem impacto condicionado a estado de tabuleiro construído (Tropas Lendárias exigem Condição de Lenda + Influência 7 — poder é COLHEITA, nunca topdeck).
 2. **Anti power creep estrutural:** o custo-mestre é uma fórmula pública interna; expansões adicionam **opções laterais** (novas combinações do Léxico), nunca números maiores. Meta de poder: carta nova ≤ 102% da eficiência média do slot que ocupa.
 3. **Toda estratégia tem ≥ 2 contra-estratégias em facções distintas** (matriz do Doc. 08 §13 + tech cards neutras).
 4. **Decisão > lista de forças:** se um deck vence "no piloto automático" (win rate alta com baixa variância de decisões), ele é nerfado mesmo com win rate global aceitável. Medimos **densidade de decisão** (nº de jogadas não-forçadas por partida) via telemetria.
