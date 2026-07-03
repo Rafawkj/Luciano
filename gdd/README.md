@@ -37,6 +37,7 @@ Jogo de cartas tático competitivo em tabuleiro de hexágonos: terrenos, clima e
 | [15](15-roadmap-riscos.md) | Roadmap, expansões, riscos e soluções |
 | [16](16-partidas-exemplo.md) | Duas partidas completas comentadas |
 | [17](17-glossario.md) | Glossário completo |
+| [18](18-identidade-visual.md) | **Bíblia de identidade visual: "O Diorama Vivo"** (+ [mockup navegável](mockups/identidade-visual.html)) |
 
 ## Os 3 diferenciais em uma linha cada
 1. **O tabuleiro é o reino** — economia territorial sem mana: recursos nascem de hexes que podem ser conquistados, queimados ou comidos.
