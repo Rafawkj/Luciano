@@ -1,6 +1,6 @@
 # TERRAVIVA — Glossário Completo
 
-> **Documento 17** · v0.2
+> **Documento 17** · v0.4
 
 ## Conceitos centrais
 - **Regente** — o jogador.
@@ -15,13 +15,13 @@
 - **Duplo Horizonte** — compra: revela 2, escolhe 1, a outra vai ao fundo.
 - **Iniciativa** — quem age primeiro; alterna por rodada.
 - **Território** — hexes conectados ao seu Coração com presença sua.
-- **Hex selvagem** — hex neutro rico do mapa da temporada (+1 produção; +1 Influência/Aurora).
+- **Hex selvagem** — hex neutro rico do mapa vigente (+1 produção; +1 Influência/Aurora).
 - **Influência** — trilha 0–15: destrava a Lenda (7) e Marcos (10+).
 - **Marcos de Domínio** — Abundância / Prosperidade / Equilíbrio; 3 = vitória alternativa.
-- **Condição de Lenda** — quest pública que libera a Tropa Lendária do baralho.
+- **Condição de Lenda** — condição pública que libera a Tropa Lendária do baralho.
 - **Reciclagem** — reembaralhar o descarte quando o deck acaba; −1 Vitalidade cumulativo.
-- **Aliança** — até 6 cartas de uma facção aliada no baralho (grafo no Doc. 08 §7).
-- **Mapa da temporada** — configuração trimestral dos hexes selvagens.
+- **Neutras** — cartas sem facção; até 8 por baralho (cartas/05).
+- **Mapa vigente** — configuração dos hexes selvagens da fila online (rotação mensal); livre em salas por código e offline.
 
 ## Recursos
 - **Comida 🍎** — sustenta criaturas; apodrece acima de 6 (exceção: Gelados).
@@ -66,8 +66,9 @@ Molhado · EmChamas · Inflamável · Congelante · Metálico · Venenoso · Fé
 **Tropa** (subtipo: Lendária) · **Construção** (subtipos: Muralha, Fundada) · **Terreno** · **Feitiço** (subtipos: Reflexo, Armadilha, Maldição, Formação, Pavio) · **Clima** (Doc. 07).
 - **Neutras** — cartas sem facção, até 8 por baralho (cartas/05).
 
-## Competitivo
-- **Ligas** — Semente → Broto → Copa → Anciã → Raiz-Mundo.
-- **Conquista Dupla** — formato BO3 que premia vitórias por Domínio.
+## Interface e estrutura
+- **Menu principal** — três opções: Criação de Deck · Jogar (offline/online) · Tutorial (Doc. 11).
+- **MMR oculto** — número invisível usado só para parear partidas online justas; não há ligas nem ranks visíveis.
+- **Partida Livre** — modo offline com desfazer ilimitado e dicas ativadas.
 - **Prever Crepúsculo** — UI que simula a contabilidade do fim da rodada.
 - **Códice do Regente** — compêndio in-game das leis do Léxico.

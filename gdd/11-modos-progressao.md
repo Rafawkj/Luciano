@@ -1,42 +1,71 @@
-# TERRAVIVA — Modos de Jogo e Progressão
+# TERRAVIVA — Estrutura do Jogo: Menu, Modos e Tutorial
 
-> **Documento 11 · Fase 6 — Camada Competitiva**
+> **Documento 11** · v0.4 — o jogo não tem quests, missões, campanhas, passes, conquistas nem progressão de conta. É um jogo de estratégia puro, como um tabuleiro digital: liga, monta, joga.
 
 ---
 
-## 1. Modos de jogo
+## 1. Menu principal (3 opções, nada mais)
 
-| Modo | Descrição | Papel no ecossistema |
+```
+┌─────────────────────────────┐
+│         TERRAVIVA           │
+│                             │
+│      ▶ CRIAÇÃO DE DECK      │
+│      ▶ JOGAR                │
+│      ▶ TUTORIAL             │
+└─────────────────────────────┘
+```
+
+## 2. CRIAÇÃO DE DECK
+
+- **Coleção completa liberada desde a instalação.** Todas as 115 cartas disponíveis para todos, sempre — sem desbloqueio, sem moeda, sem sorte. (Filosofia: xadrez não esconde as peças.)
+- **Editor:** filtros pelas 5 categorias (Tropas, Construções, Terrenos, Feitiços, Climas), por facção, por custo e por tag do Léxico; curva de custos visível; busca por texto.
+- **Validador em tempo real:** 40 cartas exatas · máx. 2 cópias · exatamente 1 Tropa Lendária · mínimo 5 Terrenos · máx. 8 Neutras.
+- **6 decks prontos** (um por facção, desenhados para ensinar o plano de jogo da facção) — editáveis como ponto de partida.
+- **Código de deck:** exportar/importar por string curta (compartilhamento fora do jogo).
+
+## 3. JOGAR
+
+Ao tocar em JOGAR, uma única escolha: **Offline** ou **Online**.
+
+### 3.1 Offline (contra IA)
+- Escolha seu deck, a facção da IA (ou aleatória) e a dificuldade — os 5 perfis do Doc. 12 (Brasa, Maré, Pedra, Espelho, Granulado) em 3 níveis cada.
+- Sem recompensas, sem contadores de vitória obrigatórios: é a mesa de treino.
+- Opção **Partida Livre**: desfazer ilimitado e dicas do Códice ativadas (o "modo aprender jogando").
+
+### 3.2 Online
+- **Partida rápida:** matchmaking automático por MMR oculto (ninguém vê número nenhum; só serve para parear jogos justos). Proteção de novato nas primeiras 20 partidas.
+- **Partida com amigo:** criar sala por código de 6 letras; quem tem o código entra. Sem ranking, sem consequência.
+- Mapa vigente: um mapa padrão para a fila rápida (rotação mensal para manter o meta fresco); em sala por código, os jogadores escolhem o mapa.
+
+## 4. TUTORIAL
+
+O tutorial substitui qualquer campanha: **4 lições de 3–5 minutos**, rejogáveis, direto do menu.
+
+| Lição | Ensina | Momento-assinatura |
 |---|---|---|
-| **Casual** | 1v1 sem perda de ranque; matchmaking por MMR oculto | Laboratório de decks sem custo emocional |
-| **Ranked** | 1v1, ligas (Semente → Broto → Copa → Anciã → Raiz-Mundo) + MMR contínuo no topo | Coluna vertebral competitiva; temporadas de 3 meses |
-| **Draft (Semeadura)** | Monte o deck escolhendo 1 de 3 cartas, 40 vezes, com direções de facção sugeridas | Habilidade pura de avaliação; entrada com moeda grátis semanal |
-| **Arena Selvagem** | Draft + mapa com regras mutantes semanais (ex.: "chove sempre") | Variedade caótica CONTROLADA (a mutação é pública e igual para todos) |
-| **Campanha** | 30 missões narrativas pelas 6 facções, com puzzles táticos e chefes com regras próprias | Tutorial disfarçado de aventura; ensina o Léxico lei por lei |
-| **Puzzle (Enigmas do Regente)** | "Vença nesta rodada" — xadrez-problema diário | Treino de leitura; conteúdo de creator/comunidade (editor incluso) |
-| **Cooperativo (Regência Dupla)** | 2 jogadores, 1 reino (fichas divididas 2+2, mãos separadas) vs chefe-IA | Social; onboarding por amigos ("duo queue de aprender") |
-| **Boss Battle** | Chefes assimétricos com regras exclusivas (ex.: o Dragão de Açúcar Queimado) | Evento sazonal PvE |
-| **Sandbox** | Tabuleiro livre, recursos infinitos, controle das duas mãos, desfazer livre | Ferramenta de teoria/creators; obrigatória para saúde competitiva |
-| **Custom Games** | Regras à la carte (mapa, clima fixo, banimentos, relógio) + torneios in-client | Base de torneios comunitários e eSports grassroots |
+| 1. O Reino | Fichas de ação, mover, atacar, o Coração | Primeira Ordem e primeira retaliação |
+| 2. O Território | Terrenos, produção, jogar cartas, Influência | "Este hex agora é seu e te alimenta" |
+| 3. As Leis | O Léxico na prática: fogo × chuva × açúcar | Apagar o incêndio inimigo com a chuva certa |
+| 4. A Partida | Jogo completo guiado contra IA Fofa, com Crepúsculo e Lenda | Invocar a primeira Tropa Lendária |
 
-## 2. Progressão — 100% cosmética, 0% pay-to-win
+- Ao fim da lição 4, o jogo sugere: "Monte seu deck ou jogue com um pronto" → leva ao menu.
+- As **Dicas do Códice** (1 linha na primeira vez que cada Lei dispara numa partida) continuam disponíveis fora do tutorial, desligáveis.
 
-**Aquisição de cartas:** coleção via jogo — vitórias dão Sementes (moeda), Sementes compram **exatamente a carta que você quer** (loja direta, sem raridade de sorteio; boosters existem só como opção acelerada e NUNCA são a única fonte). Todo o set competitivo é alcançável f2p em ~6 semanas de jogo casual; contas novas ganham 2 decks-facção completos à escolha.
+## 5. O que NÃO existe (por decisão de produto)
 
-- **Passe de temporada (2 trilhas):** grátis (cartas do mini-set, cosméticos básicos) e premium (SÓ cosméticos: skins, trilhas, tabuleiros). Nenhuma carta é exclusiva de passe pago.
-- **Conquistas:** por facção ("Vença com Marco do Equilíbrio sob Lua Vermelha"), por Léxico ("Afogue 10 unidades") — recompensam EXPLORAÇÃO de sistemas, com títulos e molduras.
-- **Skins:** de criatura (ex.: Boneco de Neve "Uniforme de Gala"), de Coração, de tabuleiro (bioma visual) e de clima. Regra dura: **silhueta e leitura jamais mudam** (aprovação competitiva obrigatória por skin).
-- **Avatares/Emotes:** regentes e criaturas do lore; emotes silenciáveis com 1 toque (higiene competitiva).
-- **Coleção viva:** cada carta tem página com lore, estatísticas pessoais de uso e "memórias" (conquistas por carta — a Ovelha lembra quantas vezes rolou).
+- ❌ Quests, missões diárias, campanhas, puzzles, chefes.
+- ❌ Passe de temporada, conquistas, níveis de conta, moedas.
+- ❌ Ligas e divisões visíveis (o MMR é oculto e serve só ao pareamento).
+- ❌ Desbloqueio de cartas — a coleção nasce completa.
+- Se houver monetização futura, será **apenas cosmética** (skins de tabuleiro/tropas numa loja simples), sem nunca tocar nesta lista.
 
-## 3. Onboarding (o funil dos 10 primeiros minutos)
-1. Partida-guiada de 5 min contra IA Fofa (vitória dirigida com UMA decisão real de Léxico no final — o "momento aha" é apagar o incêndio inimigo com a chuva certa).
-2. Campanha atos 1–3 destrava Casual; ato 5 destrava Ranked.
-3. "Dicas do Códice" contextuais: a primeira vez que cada Lei do Léxico dispara numa partida, um card de 1 linha explica (desligável).
+---
 
-## 4. REVISÃO CRÍTICA (Fase 6 — modos/progressão)
-- **Problema: loja direta reduz receita vs. loterias.** *Posição do estúdio:* decisão de identidade (Pilar anti-P2W do briefing) — compensada por catálogo cosmético profundo (skins de CLIMA e de tabuleiro são raras no gênero e altamente desejáveis) e retenção de longo prazo por confiança.
-- **Problema: 10 modos no lançamento é escopo demais.** *Correção de roadmap:* lançamento com 6 (Casual, Ranked, Draft, Campanha, Puzzle, Sandbox); Coop/Boss/Arena/Custom entram nos primeiros 2 trimestres (Doc. 16).
-- **Problema: Regência Dupla com fichas divididas pode gerar "backseat".* *Mitigação:* cada regente tem fichas PRÓPRIAS e mão secreta inclusive para o aliado — comunicação por pings, decisão individual.
+## 6. REVISÃO CRÍTICA (v0.4)
+1. **Risco: sem progressão, qual é a retenção?** A mesma do xadrez e do futebol: o próprio jogo. A aposta exige que o núcleo (Léxico + tabuleiro) carregue tudo — por isso os gates de diversão do roadmap (Doc. 15) são os mais importantes do projeto.
+2. **Risco: coleção completa de graça mata monetização.** Decisão consciente de identidade; cosmético-opcional é o único caminho compatível. Registrado como risco de negócio (Doc. 15, risco 7).
+3. **MMR oculto sem liga visível** pode frustrar quem quer "subir de rank". Contra-argumento: o público-alvo desta estrutura é quem cansou de ladder-grind. Se a demanda por ranking visível crescer, é adicionável sem tocar no resto (decisão reversível, registrada).
+4. **Tutorial de 4 lições vs campanha de 30 missões da v0.2:** perde-se profundidade de ensino do Léxico lei a lei; compensado pela Partida Livre com desfazer + Dicas do Códice (aprender jogando de verdade, não em missões).
 
-**Veredicto:** aprovado com corte de escopo registrado.
+**Veredicto:** aprovado.

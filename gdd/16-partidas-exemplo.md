@@ -7,7 +7,7 @@
 
 ## Partida 1 — Fogo (Rafa) × Doces (Lu) · "O caramelo e a fagulha"
 
-**Mapa da temporada:** Lago central (col. 5), 2 Ruínas selvagens (col. 4 e 6).
+**Mapa vigente:** Lago central (col. 5), 2 Ruínas selvagens (col. 4 e 6).
 
 - **R1** — Rafa (iniciativa): Diabrete de Cinza (#66, Ímpeto) já avança; Carvoeiro (#64) atrás. Lu: Campo de Açúcar (#24) colado ao Coração e Abelha de Açúcar (#21) polinizando. *Leitura: Fogo sinaliza corrida; Doces montam o boom.*
 - **R2** — Lu (iniciativa): Forno Real (#26) + Soldado de Biscoito (#17). Rafa: Falcão de Fagulha (#63) e Terra Queimada (#70) num Campo que Lu ia expandir. *Negação econômica na cara: o hex morreu para sempre.*

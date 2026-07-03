@@ -36,12 +36,12 @@
 ## 4. Narrativa (resumo do universo)
 
 - **O mundo:** o continente **Terraviva** é um ser adormecido; cada partida é um "sonho de regência" em que dois Regentes propõem reinos. Vitória por Conquista = o sonho mais feroz; por Domínio = o sonho mais harmonioso. (Elegante: justifica partidas infinitas, mapas mutáveis e a ausência de morte permanente — tudo é sonho da terra.)
-- **As 6 facções** são "humores" do continente (Doc. 08); a campanha conta a primeira Grande Regência em 30 missões, uma dor de cabeça diplomática por vez, com o humor vindo de personagens (a general-padeira, o conde anfitrião, a confeiteira-marechala) e NUNCA de quebra de quarta parede que barateie as apostas.
+- **As 6 facções** são "humores" do continente (Doc. 08). Não há campanha: **o lore vive inteiramente nas cartas** (flavor de 1 linha, nomes, animações e sons) e no tutorial — com o humor vindo de personagens (a general-padeira, o conde anfitrião, a confeiteira-marechala) e NUNCA de quebra de quarta parede que barateie as apostas.
 - **Tom de texto:** flavor de 1 linha, sempre com um sorriso de canto (ver as 90 cartas); nomes próprios pronunciáveis em PT/EN/ES (localização planejada desde o design).
 
 ## 5. REVISÃO CRÍTICA (Fase 6 — experiência)
 - **Conflito detectado: animação exagerada × higiene competitiva.** *Resolução:* orçamento de tempo por animação (abate ≤ 0.8 s no modo 2×), e TODA animação com consequência de regra termina antes do próximo input ser aceito.
 - **Risco: retrato mobile duplica trabalho de câmera/UI.** *Decisão:* mantido — o mercado-alvo o exige; cortado, em troca, o plano de tabuleiros 3D rotacionáveis (valor baixo, custo alto).
-- **Risco: "sonho da terra" soar descompromissado.** *Mitigação:* consequências persistem DENTRO da campanha (escolhas mudam missões seguintes); o frame onírico existe para o PvP, não para anular a campanha.
+- **Risco: lore só em flavor ser raso demais.** *Aceito:* sem campanha, a narrativa é ambiental por definição — a régua é "cada carta conta uma história em 1 linha", e a coleção inteira (aberta desde o início) é o livro do mundo.
 
 **Veredicto:** aprovado.

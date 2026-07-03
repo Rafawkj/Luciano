@@ -15,10 +15,10 @@ Dois cérebros compartilhando o mesmo motor:
 
 | Perfil | Viés do avaliador | Uso |
 |---|---|---|
-| **Agressiva ("Brasa")** | Peso alto em dano ao Coração e tempo; desconta valor de trocas futuras | Campanha Fogo/Sangrentos; treino anti-aggro |
+| **Agressiva ("Brasa")** | Peso alto em dano ao Coração e tempo; desconta valor de trocas futuras | Offline com decks Fogo/Sangrentos; treino anti-aggro |
 | **Controladora ("Maré")** | Peso em negação, remoção posicional e Influência; joga pelo late | Treino anti-controle |
 | **Defensiva ("Pedra")** | Peso em DEF do território e Marcos; raramente cruza o meio | Tutoriais de cerco |
-| **Adaptativa ("Espelho")** | Reavalia arquétipo do humano a cada 3 rodadas e escolhe a contra-postura da matriz do Doc. 08 | Sparring padrão de Ranked practice |
+| **Adaptativa ("Espelho")** | Reavalia arquétipo do humano a cada 3 rodadas e escolhe a contra-postura da matriz do Doc. 08 | Sparring padrão do modo Offline |
 | **Imprevisível ("Granulado")** | Amostra entre as 3 melhores jogadas (não a melhor) com temperatura alta; adora clima | Diversão casual; quebra de leitura |
 
 ## 3. Erros humanos deliberados (a regra do "quase")
@@ -31,7 +31,7 @@ Bots abaixo de MMR alto cometem erros CURADOS, nunca aleatórios burros:
 
 ## 4. Calibração e usos
 - Treinados/calibrados com replays humanos por faixa de MMR (imitação para abertura de partida + avaliador para o meio-fim).
-- Usos: campanha, preencher matchmaking em ligas novas (marcado como BOT — transparência total), sparring de deck (o Sandbox permite "jogar contra meu próprio deck pilotado pela IA Espelho"), e o simulador noturno de balance (Doc. 10).
+- Usos: todo o modo Offline (a metade inteira do botão JOGAR), preencher a fila online em horários vazios (marcado como BOT — transparência total), sparring de deck ("jogar contra meu próprio deck pilotado pela IA Espelho" na Partida Livre) e o simulador noturno de balance (Doc. 10).
 
 ## 5. REVISÃO CRÍTICA (Fase 6 — IA)
 - **Risco: bots não declarados destroem confiança.** Regra dura: bot é SEMPRE identificado. Sem exceções de growth.

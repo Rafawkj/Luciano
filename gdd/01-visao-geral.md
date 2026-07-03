@@ -28,8 +28,8 @@ Um mundo em miniatura carismático em cima da mesa, com regras levadas a sério 
 | Plataformas | PC, mobile (iOS/Android), cross-play e cross-progression |
 | Sessão-alvo | 12 a 20 minutos por partida |
 | Público-alvo | 12+, jogadores de estratégia e card games |
-| Modelo de negócio | Free-to-play, monetização **somente cosmética** |
-| Modo principal | 1v1 competitivo ranqueado |
+| Modelo de negócio | Coleção completa desde a instalação; sem quests, passes ou progressão; cosméticos opcionais |
+| Modo principal | 1v1 (offline contra IA ou online) · Menu: Criação de Deck · Jogar · Tutorial |
 | Direção visual | Cartoon estilizado, silhuetas fortes, animação exagerada |
 
 ## 4. Os três diferenciais
@@ -49,7 +49,7 @@ Sem dados, sem efeitos aleatórios, sem fases automáticas: toda ação da parti
 - **Vitória:** destruir o Coração inimigo **ou** completar 3 **Marcos de Domínio** (vitória territorial do construtor).
 - **Rodada:** **Aurora** (produção + compra) → **Ações alternadas** (3 fichas por jogador) → **Crepúsculo** (efeitos de estado resolvem: fogo espalha, veneno pinga, plantas crescem — tudo previsível e impresso nas regras).
 - **Cartas — exatamente 5 categorias:** **Tropas, Construções, Terrenos, Feitiços e Climas** (Doc. 07).
-- **Baralho:** 40 cartas, máx. 2 cópias, 1 Tropa Lendária com quest pública, até 8 Neutras.
+- **Baralho:** 40 cartas, máx. 2 cópias, 1 Tropa Lendária com condição pública, até 8 Neutras.
 - **Facções (6):** **Gelados · Doces · Sangrentos · Natureza · Fogo · Humanos** — cada uma muda estruturalmente a forma de jogar (Doc. 08).
 
 ## 6. Pilares de design (contrato inegociável)

@@ -24,7 +24,7 @@ Ler o mapa e o clima → Antecipar as leis do mundo → Agir → Reavaliar
 ## 2. Setup da partida
 
 1. Baralho de **40 cartas** (regras: §7).
-2. Tabuleiro 9×5: **Corações** nas colunas 1 e 9 (linha central); 6 hexes de Campo iniciais por jogador; **3 hexes selvagens** centrais definidos pelo mapa da temporada (públicos antes do matchmaking — zero sorte de mapa).
+2. Tabuleiro 9×5: **Corações** nas colunas 1 e 9 (linha central); 6 hexes de Campo iniciais por jogador; **3 hexes selvagens** centrais definidos pelo mapa vigente (públicos antes do matchmaking — zero sorte de mapa).
 3. Mulligan: olhe 4, devolva quantas quiser, compre substitutas (uma vez).
 4. Recursos iniciais: 2 Comida, 2 Matéria, 0 Essência.
 5. Sorteia-se só a **iniciativa da rodada 1** (alterna a cada rodada; o segundo ganha +1 Matéria).
@@ -83,13 +83,13 @@ Nenhuma criatura se move ou ataca aqui. O Crepúsculo nunca decide nada: só exe
 |---|---|---|
 | Tamanho | 40 exatas | Consistência (Pilar 3) |
 | Cópias | Máx. 2 | Adaptação > repetição |
-| Lendas | Exatamente 1 **Tropa Lendária** (entra por quest pública + Influência 7) | Identidade sem loteria |
+| Lendas | Exatamente 1 **Tropa Lendária** (entra por condição pública + Influência 7) | Identidade sem loteria |
 | Facções | 1 facção + até 8 cartas **Neutras** (cartas/05) | Identidade + espaço de tech |
 | Terrenos | Mínimo 5 cartas de Terreno | Todo deck participa da guerra de mapa |
 
 ## 8. Informação
 
-Ocultos: **mãos** e **Feitiços ocultos** (Armadilhas/Maldições; custo pago às claras; máx. 2 armados). Todo o resto é público — inclusive quests de Lenda e contagens.
+Ocultos: **mãos** e **Feitiços ocultos** (Armadilhas/Maldições; custo pago às claras; máx. 2 armados). Todo o resto é público — inclusive Condições de Lenda e contagens.
 
 ---
 

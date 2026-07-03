@@ -17,7 +17,7 @@
 ## 2. Subtipos (mecânicas, não categorias)
 
 **Tropa:**
-- **Lendária** — exatamente 1 por baralho; começa fora do deck e entra pela **Condição de Lenda** (quest pública visível aos dois jogadores desde o turno 1) + Influência 7; 1 retorno possível por +3✨.
+- **Lendária** — exatamente 1 por baralho; começa fora do deck e entra pela **Condição de Lenda** (condição pública visível aos dois jogadores desde o turno 1) + Influência 7; 1 retorno possível por +3✨.
 
 **Construção:**
 - **Muralha** — 3 segmentos; bloqueia movimento e ALC 1–2.

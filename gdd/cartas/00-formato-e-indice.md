@@ -27,7 +27,7 @@ Anim: sugestão | Som: sugestão
 "Flavor de 1 linha."
 ```
 
-Não-tropas usam o subconjunto aplicável. Tropas Lendárias incluem a **Condição de Lenda** (quest pública).
+Não-tropas usam o subconjunto aplicável. Tropas Lendárias incluem a **Condição de Lenda** (condição pública).
 
 ## Convenções
 - Custos: 🍎 Comida · 🔨 Matéria · ✨ Essência · **❤ VIDA** (Sangrentos) · **☠ Cadáver** (Sangrentos).

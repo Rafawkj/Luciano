@@ -34,7 +34,7 @@ A fórmula **orienta**, não decide: todo custo final passa por playtest. Distri
 
 ## 4. Processo de balance (operação viva)
 
-- **Cadência:** hotfix semanal (só emergências: WR > 57% em alto MMR), patch mensal (ajustes finos), temporada trimestral (rotação de mapa da temporada + 1 mini-set).
+- **Cadência:** hotfix semanal (só emergências: WR > 57% em alto MMR), patch mensal (ajustes finos + rotação do mapa vigente), mini-set trimestral.
 - **Ferramentas:** simulador headless (a resolução 100% determinística permite MILHÕES de partidas bot×bot por noite — vantagem direta da ausência de RNG); telemetria de win rate por facção/matchup/MMR; densidade de decisão; taxa de concessão antes da rodada 6 (proxy de frustração).
 - **Estilo de ajuste:** preferir **mudança de contexto** (tag, custo, posição na curva) a mudança de números de combate; nunca mais de 2 nerfs na mesma facção por patch (identidade > meta).
 - **Regra do espelho:** todo nerf publica junto o RACIOCÍNIO (nota de designer no cliente). Confiança da comunidade é ativo competitivo.
