@@ -31,7 +31,7 @@
 - **Preparar (Humano)** — ativa se você controla uma Construção.
 
 ## Tokens
-**Semente 0/1** · **Broto Vivo 1/2** (tokens oficiais de Natureza; os demais tokens serão definidos pelas listas oficiais restantes).
+**Semente 0/1** · **Broto Vivo 1/2** (Natureza) · **Soldado Humano 2/2** (Humano). Demais tokens virão com as listas restantes.
 
 ## Raridades
 Comum · Incomum · Rara · Épica · Lendária.
