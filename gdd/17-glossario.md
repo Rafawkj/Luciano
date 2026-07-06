@@ -27,11 +27,11 @@
 - **Chama Alta (Fogo)** — ativa se você causou dano ao jogador inimigo neste turno.
 - **Açúcar (Doce)** — gaste 2 marcadores para dar +1/+1 a uma Tropa sua; **uma vez por turno**, na sua fase de ação.
 - **Pacto X (Sangrento)** — perca X de Vida para ativar o efeito.
-- **Semente (Natureza)** — token 0/1; no início do seu turno, pode virar um Broto 1/2.
+- **Semente (Natureza)** — Tropa-token 0/1; no início do seu turno, você pode transformar UMA Semente sua em um **Broto Vivo 1/2**.
 - **Preparar (Humano)** — ativa se você controla uma Construção.
 
 ## Tokens
-**Semente 0/1** · **Broto 1/2** · **Ovo-Brasa 0/2** · **Esqueleto Lanceiro 2/1**.
+**Semente 0/1** · **Broto Vivo 1/2** (tokens oficiais de Natureza; os demais tokens serão definidos pelas listas oficiais restantes).
 
 ## Raridades
 Comum · Incomum · Rara · Épica · Lendária.

@@ -10,7 +10,7 @@
 | ❄ Gelo (Reino Glacial) | [gelo.md](gelo.md) | ✅ **OFICIAL** | 30 |
 | 🍬 Doce (Império Açucarado) | [doce.md](doce.md) | ✅ **OFICIAL** | 30 |
 | 🩸 Sangrento (Clã Rubro) | [sangrento.md](sangrento.md) | ✅ **OFICIAL** | 30 |
-| 🌿 Natureza (Bosque Vivo) | [natureza.md](natureza.md) | ⚠ provisória | 15 |
+| 🌿 Natureza (Bosque Vivo) | [natureza.md](natureza.md) | ✅ **OFICIAL** | 30 |
 | 🔥 Fogo (Chama Selvagem) | [fogo.md](fogo.md) | ⚠ provisória | 15 |
 | ⚔ Humano (Ordem dos Aventureiros) | [humano.md](humano.md) | ⚠ provisória | 15 |
 | 🎒 Neutras (Errantes de Terraviva) | [neutras.md](neutras.md) | ⚠ provisória | 25 |
