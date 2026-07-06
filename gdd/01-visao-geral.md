@@ -46,8 +46,8 @@ O jogo é engraçado de propósito: tropas com personalidade, flavors com piada,
 ## 5. Resumo do sistema
 
 - **Vida 30 · mão inicial 5 · Energia cresce +1/turno até 10.**
-- **Campo:** 4 Tropas + 2 Construções + 1 Terreno por jogador.
-- **Combate:** atacante escolhe alvo; defensora devolve dano; Guarda/Voador/Investida temperam.
+- **Campo:** 5 Tropas + 2 Construções + 1 Terreno por jogador + 1 Clima compartilhado.
+- **Combate:** atacante escolhe alvo e não sofre dano de volta (v0.5.1 — em reavaliação); Guarda/Voador/Investida temperam.
 - **Deck:** 40 cartas, máx. 2 cópias (1 se Lendária), até 2 facções + Neutras à vontade.
 - **Modos:** Normal, Rápido e Caos (eventos aleatórios divertidos) — todos dentro de "Jogar".
 
@@ -72,14 +72,14 @@ Ocupa o espaço "**Hearthstone de mesa de brinquedo**": mais simples e mais ráp
 
 ## 8. Universo e tom
 
-O mundo de **Terraviva** é um continente em miniatura onde seis reinos brigam pela regência: o **Reino Glacial**, a **Chama Selvagem**, o **Império Açucarado**, o **Clã Rubro**, o **Bosque Vivo** e a **Ordem dos Aventureiros** — cruzados pelos **Errantes de Terraviva** (as cartas Neutras: mercadores, monstros soltos e aventureiros sem bandeira). Tom: fantasia maluca, humor estranho, batalhas exageradas — e regras levadas a sério.
+O mundo de **Terraviva** é um continente em miniatura onde seis reinos brigam pela regência: o **Reino Glacial**, a **Chama Selvagem**, o **Império Açucarado**, o **Clã Rubro**, o **Bosque Vivo** e a **Ordem dos Aventureiros** — cruzados pelos **Errantes do Mundo Maluco** (as cartas Neutras: mercadores, monstros soltos e aventureiros sem bandeira). Tom: fantasia maluca, humor estranho, batalhas exageradas — e regras levadas a sério.
 
 ---
 
 ## 9. REVISÃO CRÍTICA (v0.5 — a grande simplificação)
 
 1. **O sistema de hexágonos/3 recursos/Léxico foi substituído** pelo manual "Guerra dos Reinos" escrito pelo diretor. Ganhos: tempo de aprendizado cai de ~40 para ~10 minutos; partidas mais curtas; produção MUITO mais barata; testável em papel imediatamente. Perdas assumidas: profundidade posicional e a assinatura "leis naturais" (parcialmente preservada nas mecânicas de facção — fogo ainda queima, gelo ainda congela, doce ainda gruda).
-2. **O que sobrevive de tudo que foi construído:** as 6 facções e suas identidades, o elenco de personagens (Vovó Amaruk, Marzia, Conde Vesperto, Raizena, Brasa-Rei Otavio, Capitã Odete), os flavors, a estrutura mínima de menu (v0.4) e a direção de arte "Diorama Vivo" (Doc. 18) — que casa ainda melhor com um campo compacto de 4 tropas.
-3. **Nomes oficializados:** jogo = **Guerra dos Reinos**; mundo = **Terraviva**; neutros = **Errantes de Terraviva** (nome-referência do rascunho substituído por original, conforme diretriz do próprio manual).
+2. **O que sobrevive de tudo que foi construído:** as 6 facções e suas identidades, o elenco de personagens (Vovó Amaruk, Marzia, Conde Vesperto, Raizena, Brasa-Rei Otavio, Capitã Odete), os flavors, a estrutura mínima de menu (v0.4) e a direção de arte "Diorama Vivo" (Doc. 18) — que casa ainda melhor com um campo compacto.
+3. **Nomes oficializados:** jogo = **Guerra dos Reinos**; mundo = **Terraviva**; neutros = **Errantes do Mundo Maluco** (nome final do diretor, v0.5.8).
 
 **Veredicto:** v0.5 aprovada. O jogo agora é jogável em papel HOJE.

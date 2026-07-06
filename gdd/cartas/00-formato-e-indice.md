@@ -13,7 +13,7 @@
 | 🌿 Natureza (Bosque Vivo) | [natureza.md](natureza.md) | ✅ **OFICIAL** | 30 |
 | 🔥 Fogo (Chama Selvagem) | [fogo.md](fogo.md) | ✅ **OFICIAL** | 30 |
 | ⚔ Humano (Ordem dos Aventureiros) | [humano.md](humano.md) | ✅ **OFICIAL** | 30 |
-| 🎒 Neutras (Errantes de Terraviva) | [neutras.md](neutras.md) | ⚠ provisória | 25 |
+| 🎒 Neutras (Errantes do Mundo Maluco) | [neutras.md](neutras.md) | ✅ **OFICIAL** | 40 |
 
 ## Formato oficial (o do diretor)
 

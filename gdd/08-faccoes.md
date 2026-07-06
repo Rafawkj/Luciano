@@ -53,7 +53,7 @@
 - **Visual:** retalhos costurados, couro e palha; retângulos firmes e remendos honestos.
 - **Lenda:** **Capitã Odete Pães-e-Lanças** — general e padeira; o exército dela marcha bem alimentado.
 
-## 🎒 NEUTROS — **Errantes de Terraviva**
+## 🎒 NEUTROS — **Errantes do Mundo Maluco**
 Mercadores, monstros soltos, aventureiros, artefatos e terrenos sem bandeira. Entram em **qualquer deck**, em qualquer quantidade — mas nunca são mais fortes que as cartas de facção: **completam** estratégias, não as substituem.
 
 ---
@@ -74,6 +74,6 @@ Mercadores, monstros soltos, aventureiros, artefatos e terrenos sem bandeira. En
 ## REVISÃO CRÍTICA (v0.5)
 1. As mecânicas especiais (Frio, Chama Alta, Açúcar, Pacto, Semente, Preparar) vêm do manual do diretor e **substituem** as mecânicas da era hex (Zero, Glacê, Reerguer, Estágios, Pavio, Formação) — várias sobrevivem como cartas individuais (Pavio virou "Explodir", Glacê virou "Escudo", Reerguer virou efeitos de ressurgir do descarte).
 2. **Decks de 2 facções** criam 15 pares possíveis — vigiar os pares Fogo+Sangrento (agressão dupla) e Doce+Gelo (defesa dupla) como candidatos a dominar o meta; as Neutras de contrajogo são a válvula.
-3. Nome dos Neutros oficializado: **Errantes de Terraviva**.
+3. Nome dos Neutros oficializado pelo diretor: **Errantes do Mundo Maluco** (v0.5.8; o provisório era "Errantes de Terraviva").
 
 **Veredicto:** aprovado.

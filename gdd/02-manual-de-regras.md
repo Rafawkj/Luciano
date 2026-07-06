@@ -175,7 +175,7 @@ Se algo ficar confuso, vale a opção **mais divertida, justa e simples**. Se um
 ## 19. REVISÃO CRÍTICA (adoção do manual — v0.5)
 1. **Origem:** este manual foi escrito pelo diretor do projeto (o "doc Guerra dos Reinos") e substitui integralmente o sistema anterior de hexágonos/3 recursos/Léxico. Registrado: o que sobrevive da era anterior é a **identidade** — as 6 facções, os personagens, o humor dos flavors e a direção visual "Diorama Vivo" (Doc. 18).
 2. **Climas** deixaram de ser um tipo de carta (o manual define 4 tipos). O papel de "modificador global" migrou para os **Terrenos** (1 ativo por jogador) e para os **Eventos Caóticos** do Modo Caos. Reversível se o diretor quiser Climas de volta como 5º tipo.
-3. **Nome da facção Neutra:** o rascunho usava um nome-referência a uma obra existente; oficializado como **"Errantes de Terraviva"** (a diretriz do próprio manual: só a inspiração, nunca a cópia).
+3. **Nome da facção Neutra:** o rascunho usava um nome-referência a uma obra existente; oficializado como **"Errantes do Mundo Maluco"** (nome final do diretor; a diretriz do manual: só a inspiração, nunca a cópia).
 4. **Ajuste fino adotado:** "Congelar" especificado como "não ataca no próximo turno DELA" (evita ambiguidade de contagem); Provocar e Guarda coexistem (Guarda protege; Provocar força).
 
 **Veredicto:** manual adotado como lei. Set de cartas reconstruído no novo formato.

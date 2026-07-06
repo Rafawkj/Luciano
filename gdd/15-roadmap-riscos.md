@@ -11,7 +11,7 @@
 | **P0 — Papel** | 6 sem. | Protótipo físico (print & play), 3 facções (Fogo, Gelo, Humano) | 20 partidas seguidas divertidas sem árbitro confuso |
 | **P1 — Protótipo digital** | 3 meses | Core Rust das regras + cliente feio jogável; Sandbox interno | Determinismo validado; ponte Rust↔engine provada |
 | **P2 — Vertical slice** | 4 meses | 3 facções com arte final, 60 cartas, Casual online, replay | "Momento aha" mensurado com 30 novatos (≥70% jogam sem ajuda após o tutorial) |
-| **P3 — Alpha fechado** | 4 meses | 6 facções, 115 cartas, fila online com MMR oculto, telemetria de balance | WR de facções 45–55%; retenção D7 ≥ 25% no grupo de teste |
+| **P3 — Alpha fechado** | 4 meses | 6 facções, 220 cartas oficiais, fila online com MMR oculto, telemetria de balance | WR de facções 45–55%; retenção D7 ≥ 25% no grupo de teste |
 | **P4 — Beta aberto** | 3 meses | Tutorial (4 lições), salas por código, replays, mobile | Estabilidade; ≥70% dos novatos completam o tutorial |
 | **Lançamento 1.0** | — | Menu final (Criação de Deck · Jogar · Tutorial), modos Normal/Rápido/Caos | — |
 | **Pós-lançamento** | contínuo | Trimestral: mini-set (35 cartas) + Eventos Caóticos novos; Anual: expansão grande | — |

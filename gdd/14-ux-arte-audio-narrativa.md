@@ -37,7 +37,7 @@
 
 - **O mundo:** o continente **Terraviva** é uma maquete-mundo onde seis reinos disputam a regência em duelos exagerados. Ninguém morre de verdade (as peças voltam para a caixa) — o que justifica partidas infinitas e o tom leve.
 - **As 6 facções** são "humores" do continente (Doc. 08). Não há campanha: **o lore vive inteiramente nas cartas** (flavor de 1 linha, nomes, animações e sons) e no tutorial — com o humor vindo de personagens (a general-padeira, o conde anfitrião, a confeiteira-marechala) e NUNCA de quebra de quarta parede que barateie as apostas.
-- **Tom de texto:** flavor de 1 linha, sempre com um sorriso de canto (ver as 115 cartas); nomes próprios pronunciáveis em PT/EN/ES (localização planejada desde o design).
+- **Tom de texto:** flavor de 1 linha, sempre com um sorriso de canto (ver as 220 cartas); nomes próprios pronunciáveis em PT/EN/ES (localização planejada desde o design).
 
 ## 5. REVISÃO CRÍTICA (Fase 6 — experiência)
 - **Conflito detectado: animação exagerada × higiene competitiva.** *Resolução:* orçamento de tempo por animação (abate ≤ 0.8 s no modo 2×), e TODA animação com consequência de regra termina antes do próximo input ser aceito.

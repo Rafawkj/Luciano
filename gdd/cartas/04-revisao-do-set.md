@@ -1,30 +1,50 @@
-# REVISÃO CRÍTICA — Set "Primeira Guerra" (v0.5)
+# REVISÃO FINAL — SET OFICIAL COMPLETO "Guerra dos Reinos" (v0.5.8)
 
-## Auditoria quantitativa
-- **Contagem:** 6 × 15 + 25 Neutras = **115 cartas** (1–115) ✔
-- **Só os 4 tipos do Manual:** Tropa (60), Feitiço (24, sendo 5 Armadilhas), Construção (15), Terreno (16) ✔
-- **Palavras-chave:** todas as 15 do Manual aparecem em ≥ 2 cartas; nenhuma carta inventa vocabulário ✔
-- **Editorial (Doc. 02 §13):** máx. 1 efeito + 1 palavra-chave por carta — 115/115 ✔ (Fênix e Rush de Açúcar são as mais longas; aprovadas como exceções icônicas de 2 frases)
-- **Curva de custo (Doc. 02 §12):** stats de Tropas auditados contra a tabela; cartas com efeito pagam ~1 ponto de stats ✔
+## 📦 O set base está completo: **220 cartas oficiais do diretor**
 
-## Migração v0.4 → v0.5 (o que aconteceu com cada mecânica)
-| Era hex | Virou |
-|---|---|
-| Glacê (Doces) | palavra-chave **Escudo** |
-| Pavio (Fogo) | palavra-chave **Explodir** (Touro, Bomba) |
-| Reerguer (Sangrentos) | efeitos de voltar do descarte + **Pacto** |
-| Estágios (Natureza) | **Crescer** + **Sementes/Brotos** |
-| Zero (Gelados) | **Frio Acumulado** (do Manual) |
-| Formação (Humanos) | **Preparar** (do Manual) |
-| Instintos Guardião/Sentinela/Ímpeto | **Guarda / Provocar / Investida** |
-| Léxico de terrenos/clima | Terrenos (1 ativo) + Eventos Caóticos do Modo Caos |
+| Facção | Cartas | Raridades (C/I/R/E/L) | Consistência com o resumo |
+|---|---|---|---|
+| ❄ Gelo | 30 | 11/5/7/5/2 | ✔ |
+| 🩸 Sangrento | 30 | 10/6/7/5/2 | ⚠ Guardião da Cripta (carta=Incomum, resumo=Comum) |
+| 🍬 Doce | 30 | 10/6/7/5/2 | ✔ |
+| 🌿 Natureza | 30 | 11/5/7/5/2 | ✔ |
+| 🔥 Fogo | 30 | 10/6/7/5/2 | ✔ |
+| ⚔ Humano | 30 | 10/6/7/5/2 | ✔ |
+| 🎒 Neutras | 40 | 16/10/8/4/2 | ✔ |
+| **TOTAL** | **220** | **78/44/50/34/14** | |
 
-## Decisões e watch-list
-1. **Personagens preservados 1:1** — as 6 Lendas e ~70% do elenco migraram com nome, personalidade e flavor. A identidade sobreviveu à troca de motor.
-2. **Encruzilhada e Planície Aberta** são terrenos simétricos (valem para os dois) — experimento de "infraestrutura de risco"; vigiar se confundem novatos.
-3. **Pacto Maior (1 de custo, compra 2 por 3 de Vida)** — a carta mais perigosa do set; primeiro candidato a nerf se Sangrento+Fogo dominar.
-4. **Urso-Monólito** (congelados não descongelam) — pode travar demais com Nevasca; watch nível 1.
-5. **Estátua do Fundador** (Lendárias −2) — vigiar decks de 2 Lendárias? Impossível: 1 cópia de CADA Lendária, mas pode ter Lendárias diferentes — ok, monitorar.
+- Cada facção: 18 Tropas · 4 Construções · 3 Terrenos · 5 Feitiços. Neutras: 24/6/4/6.
+- **14 Lendárias** (7 Tropas-clímax + 7 Feitiços-finalizadores de custo 7–8) — todas "ganham o jogo se você construiu a condição", nenhuma sozinha ✔ (pilar respeitado).
+- Padrões consistentes entre listas: gatilho "1×/turno com Feitiço da facção" (Gelo/Doce/Fogo), Terrenos simétricos que valem para os dois (Montanha da Nevasca, Pântano Rubro, Campo de Lava, Feira, Ponte, Ruínas), "primeira X por turno custa 1 a menos" em todas as facções.
 
-## Veredicto
-Set aprovado para print & play imediato (o formato novo é 100% testável em papel).
+## Tokens oficiais
+**Semente 0/1** e **Broto Vivo 1/2** (Natureza) · **Soldado Humano 2/2** (Humano). Estado novo: **Virada** (Ogro de Pijama).
+
+## ⚠ PENDÊNCIAS ABERTAS PARA O DIRETOR (consolidadas)
+
+1. **DANO DE VOLTA (a decisão mais importante):** removido na v0.5.1 a pedido do diretor, mas **4 cartas oficiais** pressupõem que ele existe:
+   - Urso Polar de Guerra (Gelo) — efeito fica sem função
+   - Lanceira da Muralha (Humano) — "dano contra atacantes"
+   - Campo de Treinamento (Humano) — "sobreviver a combate" fica forte demais
+   - Gnomo Reclamão (Neutra) — "quando bloqueia"
+   **Recomendação do estúdio:** restaurar como "a defensora devolve METADE do Ataque (arredondado para baixo)" — atacar continua bom, defender não é grátis, as 4 cartas funcionam.
+2. **"Bloquear"** (Gnomo Reclamão, Prisão de Cristal): verbo usado mas não definido no manual.
+3. **Guardião da Cripta** (Sangrento): Incomum ou Comum?
+4. **Semente Saltitante** (Natureza): conta como "Semente" para efeitos? (Interpretação atual: NÃO — só o token.)
+5. **Relógio Quebrado do Mago** (Neutra): "não pode atacar neste turno" num alvo escolhido no SEU turno — interpretação atual: vale até o início do seu próximo turno.
+6. **Estrada dos Aventureiros** (Neutra): o +1 ATQ "até o fim do turno" raramente tem efeito (tropas não atacam ao entrar) — sugerido "+1 permanente" ou "até o seu próximo turno".
+7. **Gigante de Magma Rachado** (Fogo): pode escolher a si mesmo como alvo do dano próprio? (Interpretação atual: sim.)
+8. **Clima:** o campo tem o espaço compartilhado, mas nenhuma lista trouxe cartas de Clima — aguardando definição (as cartas de Clima virão? ou o espaço vira só dos Eventos Caóticos do Modo Caos?).
+
+## Watch-list de balanceamento (consolidada das 7 auditorias)
+1. Pacto Apressado + motores de compra Sangrentos (par Doce+Sangrento no topo do meta teórico).
+2. Urso-Monólito*... *(substituído — era do set provisório)* → **Princesa da Aurora Quebrada + Laboratório da Neve** (congela 1/turno + compra 1/turno).
+3. Chuva de Faíscas → Colosso da Caldeira (a vassourada anti-Natureza).
+4. Estratégia Perfeita com Preparar (o finalizador mais forte no papel; cai com as Construções).
+5. Guardiã do Reino Açucarado (teto de 4 por ataque) × Cavaleiro Sem Reflexo/Erupção Final.
+6. Mestre das Feiras em decks de baixo custo (compra quase todo turno).
+
+## Próximos passos sugeridos
+1. Diretor responde as 8 pendências (a nº 1 destrava tudo).
+2. Print & play do set completo (o formato permite testar HOJE em papel).
+3. Atualizar o protótipo digital com as 7 listas oficiais (sob demanda do diretor).

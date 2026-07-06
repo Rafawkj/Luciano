@@ -15,7 +15,7 @@ Duelo 1v1 rápido e engraçado: 30 de Vida, Energia que cresce sozinha, campo co
 | 🩸 Sangrento | Clã Rubro | Risco alto, recompensa alta | **Pacto X** (pague Vida por poder) |
 | 🌿 Natureza | Bosque Vivo | Quantidade e crescimento | **Semente** (0/1 que vira Broto 1/2) |
 | ⚔ Humano | Ordem dos Aventureiros | Tática e versatilidade | **Preparar** (ativa com Construção em campo) |
-| 🎒 Neutros | Errantes de Terraviva | Completam qualquer deck | — |
+| 🎒 Neutros | Errantes do Mundo Maluco | Completam qualquer deck | — |
 
 ## Estrutura do GDD
 
@@ -24,7 +24,7 @@ Duelo 1v1 rápido e engraçado: 30 de Vida, Energia que cresce sozinha, campo co
 | [01](01-visao-geral.md) | Visão geral, pilares, posicionamento |
 | [02](02-manual-de-regras.md) | **MANUAL DE REGRAS COMPLETO** (o coração do projeto) |
 | [08](08-faccoes.md) | As 6 facções + contrajogo |
-| [cartas/](cartas/00-formato-e-indice.md) | **Set "Primeira Guerra": 115 cartas** (15 por facção + 25 neutras) |
+| [cartas/](cartas/00-formato-e-indice.md) | **SET OFICIAL COMPLETO: 220 cartas** (6 facções × 30 + 40 Neutras, todas do diretor) |
 | [10](10-balanceamento.md) | Balanceamento e watch-list |
 | [11](11-modos-progressao.md) | Menu (Criação de Deck · Jogar · Tutorial); sem quests nem progressão |
 | [12](12-ia-oponentes.md) | IA de oponentes (5 perfis, erros humanos) |

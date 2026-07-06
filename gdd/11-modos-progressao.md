@@ -18,7 +18,7 @@
 
 ## 2. CRIAÇÃO DE DECK
 
-- **Coleção completa liberada desde a instalação.** Todas as 115 cartas disponíveis para todos, sempre — sem desbloqueio, sem moeda, sem sorte. (Filosofia: xadrez não esconde as peças.)
+- **Coleção completa liberada desde a instalação.** Todas as **220 cartas** (6 facções × 30 + 40 Neutras) disponíveis para todos, sempre — sem desbloqueio, sem moeda, sem sorte. (Filosofia: xadrez não esconde as peças.)
 - **Editor:** filtros pelos 4 tipos (Tropas, Feitiços, Construções, Terrenos), por facção, por custo e por palavra-chave; curva de custos visível; busca por texto.
 - **Validador em tempo real:** 40 cartas · máx. 2 cópias (1 se Lendária) · até 2 facções principais · Neutras à vontade (Doc. 02 §3).
 - **6 decks prontos** (um por facção, desenhados para ensinar o plano de jogo da facção) — editáveis como ponto de partida.
