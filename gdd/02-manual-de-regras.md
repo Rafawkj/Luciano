@@ -49,13 +49,16 @@ Mudam as regras do campo. Apenas **1 Terreno ativo** por jogador; jogar um novo 
 
 ## 5. Campo de batalha
 
-Cada jogador possui:
 ```
-[ TERRENO ]  [ CONSTRUÇÃO ] [ CONSTRUÇÃO ]
-[ TROPA ] [ TROPA ] [ TROPA ] [ TROPA ]
+                [ ☁ CLIMA — compartilhado, no centro da mesa ]
+Cada jogador:
+[ CONSTRUÇÃO ] [ CONSTRUÇÃO ]
+[ TROPA ] [ TROPA ] [ TROPA ] [ TROPA ] [ TROPA ]
 [ DECK ]  [ DESCARTE ]
 ```
-Máximo de **4 Tropas em campo**. Campo cheio = espere uma Tropa sair para jogar outra.
+- Máximo de **5 Tropas em campo** por jogador. Campo cheio = espere uma Tropa sair.
+- **2 Construções** por jogador.
+- **1 espaço de Clima**, compartilhado no centro: só existe 1 Clima ativo por vez; jogar um novo substitui o anterior (e vale para os dois jogadores). *(As cartas de Clima entram com a nova lista de cartas do diretor.)*
 
 ## 6. Energia
 
@@ -82,7 +85,7 @@ Máximo de **4 Tropas em campo**. Campo cheio = espere uma Tropa sair para jogar
 
 - Cada Tropa ataca **uma vez por turno**, escolhendo: uma Tropa inimiga, ou o jogador inimigo **se não houver Tropas bloqueando**.
 - **Regra de bloqueio:** se o inimigo tem Tropas, ataque uma Tropa antes de atacar o jogador (algumas cartas ignoram isso).
-- **Dano:** atacante causa dano igual ao Ataque; a defensora **devolve** dano igual ao Ataque dela. Vida 0 = descarte.
+- **Dano:** o atacante causa dano igual ao seu Ataque. **A defensora NÃO devolve dano** — atacar é seguro, defender é escolher o que o inimigo é obrigado a bater (Guarda). Vida 0 = descarte.
 - **Dano no jogador:** ataque direto tira Vida igual ao Ataque da Tropa.
 - Tropas **não** podem atacar no turno em que entram (exceto com Investida).
 
@@ -136,7 +139,7 @@ Máximo por carta: **1 efeito principal + 1 palavra-chave + texto curto.**
 | Vida | 30 | 20 |
 | Deck | 40 | 30 |
 | Energia máx. | 10 | 8 |
-| Tropas em campo | 4 | 3 |
+| Tropas em campo | 5 | 4 |
 
 ### Modo Caos (opcional, para rir)
 No início de cada rodada, revele um **Evento Caótico** que vale para os dois:
@@ -163,7 +166,12 @@ Se algo ficar confuso, vale a opção **mais divertida, justa e simples**. Se um
 
 ---
 
-## 18. REVISÃO CRÍTICA (adoção do manual — v0.5)
+## 18. Registro de mudanças v0.5.1 (playtest do diretor no protótipo)
+1. **Campo ampliado:** 4 → **5 Tropas**; 2 Construções mantidas; **+1 espaço de Clima compartilhado** no centro da mesa.
+2. **Fim do dano de volta:** a regra original ("a defensora também causa dano de volta") foi removida após o playtest — o diretor considerou anti-intuitivo o atacante morrer atacando. Consequências de design absorvidas: **Guarda** e **Provocar** ficam mais valiosos (defender agora é redirecionar, não punir), efeitos "quando é atacada" (como o Cão Fumarento) viram a punição de defesa da qual o jogo precisa, e a remoção de tropas passa a depender mais de Feitiços. Watch-item: se o meta ficar agressivo demais, o plano B registrado é "defensora devolve METADE do Ataque" — só com novo pedido do diretor.
+3. **Cartas:** o set atual é provisório; a lista definitiva de cartas será fornecida pelo diretor.
+
+## 19. REVISÃO CRÍTICA (adoção do manual — v0.5)
 1. **Origem:** este manual foi escrito pelo diretor do projeto (o "doc Guerra dos Reinos") e substitui integralmente o sistema anterior de hexágonos/3 recursos/Léxico. Registrado: o que sobrevive da era anterior é a **identidade** — as 6 facções, os personagens, o humor dos flavors e a direção visual "Diorama Vivo" (Doc. 18).
 2. **Climas** deixaram de ser um tipo de carta (o manual define 4 tipos). O papel de "modificador global" migrou para os **Terrenos** (1 ativo por jogador) e para os **Eventos Caóticos** do Modo Caos. Reversível se o diretor quiser Climas de volta como 5º tipo.
 3. **Nome da facção Neutra:** o rascunho usava um nome-referência a uma obra existente; oficializado como **"Errantes de Terraviva"** (a diretriz do próprio manual: só a inspiração, nunca a cópia).
