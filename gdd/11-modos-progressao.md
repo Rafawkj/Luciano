@@ -8,7 +8,7 @@
 
 ```
 ┌─────────────────────────────┐
-│         TERRAVIVA           │
+│     GUERRA DOS REINOS       │
 │                             │
 │      ▶ CRIAÇÃO DE DECK      │
 │      ▶ JOGAR                │
