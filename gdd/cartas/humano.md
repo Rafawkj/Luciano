@@ -53,7 +53,7 @@ Preparar: quando entra em campo, compre 1 carta e descarte 1 carta.
 
 #### 10. Lanceira da Muralha — Tropa · Incomum
 Custo 3 | ATQ 2 / VIDA 4
-Enquanto você controla uma Construção, esta Tropa causa +1 de dano contra Tropas atacantes. *(⚠ ver nota nº 2)*
+Enquanto você controla uma Construção, esta Tropa causa +1 de dano contra Tropas atacantes. *(Regra oficial v0.5.9 — retaliadora única: quando é atacada com Construção sua em campo, devolve dano igual ao seu Ataque +1.)*
 
 #### 11. Capitão dos Aventureiros — Tropa · Rara
 Custo 4 | ATQ 3 / VIDA 5
@@ -113,7 +113,7 @@ A primeira Tropa Humana que você jogar a cada turno custa 1 a menos se você co
 
 #### 24. Campo de Treinamento — Terreno · Rara
 Custo 3
-Sempre que uma Tropa Humana sua sobreviver a um combate, ela recebe +1 de Ataque. *(⚠ ver nota nº 3)*
+Sempre que uma Tropa Humana sua sobreviver a um combate, ela recebe +1 de Ataque. *(Regra oficial v0.5.9: "sobreviver a um combate" = sobreviver a um combate em que ela foi ATACADA.)*
 
 #### 25. Reino das Torres Tortas — Terreno · Épica
 Custo 4
@@ -157,8 +157,8 @@ Humanos vencem **montando estrutura antes de atacar com força total**. Não sã
 ## Notas de integração do estúdio (v0.5.7)
 
 1. **Raridades auditadas:** 10 C · 6 I · 7 R · 5 E · 2 L = 30 ✔ — bate 100% com o resumo. Quarta lista seguida impecável.
-2. **⚠ Lanceira da Muralha** ("+1 de dano contra Tropas atacantes") — segunda carta que pressupõe combate defensivo. Sem dano de volta, "Tropa defendendo causar dano" não existe. **Interpretações possíveis:** (a) +1 de dano quando ELA ataca uma Tropa que atacou neste jogo/turno (vingança); (b) depende da volta do dano de volta (como o Urso Polar do Gelo). Agora são **duas cartas** esperando essa decisão do diretor — sinal de que talvez o dano de volta deva voltar.
-3. **⚠ Campo de Treinamento** ("sobreviver a um combate"): sem dano de volta, a atacante SEMPRE sobrevive → o terreno viraria "+1 ATQ por ataque", bem mais forte que o intencionado. Terceira carta sensível à mesma decisão. **Recomendação do estúdio subiu de tom: considerar restaurar o dano de volta** (ou defini-lo como "metade do Ataque, arredondado para baixo" como meio-termo).
+2. **✅ RESOLVIDO (v0.5.9):** o diretor decidiu — dano de volta só existe nas cartas que o mencionam. A **Lanceira da Muralha** é a retaliadora única dos Humanos: quando atacada com Construção em campo, devolve o Ataque +1.
+3. **✅ RESOLVIDO (v0.5.9):** **Campo de Treinamento** dispara ao sobreviver a um combate em que a Tropa foi ATACADA (não ao atacar).
 4. **Novo token:** **Soldado Humano 2/2** (Reforços Chegaram) — adicionado ao glossário.
 5. **Reino das Torres Tortas** é o primeiro Terreno que dobra regra estrutural (3 Construções em vez de 2) — precedente saudável para Terrenos Épicos; anotado como padrão.
 6. **Armadilhas formalizadas** com limite de 2 preparadas ✔ (bate com o manual). O Mestre das Armadilhas sugere que mais cartas de Armadilha virão nas Neutras — o ecossistema espera por elas.

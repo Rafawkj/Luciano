@@ -38,7 +38,7 @@ Quando causa dano ao jogador inimigo, olhe a carta do topo do deck inimigo.
 
 #### 8. Gnomo Reclamão — Tropa · Incomum · **Guarda**
 Custo 2 | ATQ 1 / VIDA 4
-Quando esta Tropa bloqueia ou é atacada, ela recebe +1 de Ataque até o fim do combate. *(⚠ ver nota nº 3)*
+Quando esta Tropa bloqueia ou é atacada, ela recebe +1 de Ataque até o fim do combate. *(Regra oficial v0.5.9 — retaliador único: quando atacado, ganha +1 de Ataque e devolve dano igual ao seu Ataque à atacante.)*
 
 #### 9. Porco de Batalha — Tropa · Comum
 Custo 3 | ATQ 3 / VIDA 3
@@ -134,7 +134,7 @@ No início do seu turno, escolha uma Tropa. Ela não pode atacar neste turno. De
 
 #### 31. Estrada dos Aventureiros — Terreno · Comum
 Custo 2
-A primeira Tropa Neutra que você jogar a cada turno recebe +1 de Ataque até o fim do turno. *(⚠ ver nota nº 5)*
+A primeira Tropa Neutra que você jogar a cada turno recebe +1 de Ataque **permanente**. *(Errata oficial v0.5.9 do diretor — era "até o fim do turno".)*
 
 #### 32. Feira no Meio do Nada — Terreno · Incomum
 Custo 3
@@ -190,9 +190,9 @@ Dar liberdade na criação de decks e **corrigir fraquezas**: Fogo usa Tartaruga
 
 1. **Raridades auditadas:** 16 C · 10 I · 8 R · 4 E · 2 L = 40 ✔ — bate 100% com o resumo do diretor.
 2. **Nome oficializado:** os Neutros passam de "Errantes de Terraviva" (nome provisório do estúdio) para **"Errantes do Mundo Maluco"** (nome do diretor). Atualizado no Doc. 08, glossário e índice.
-3. **⚠ Gnomo Reclamão** usa "quando esta Tropa **bloqueia**" — o verbo "bloquear" (também citado na Prisão de Cristal do Gelo) ainda não existe como ação nas regras. Funciona como "é atacada" na regra atual; se o diretor planeja uma mecânica de bloqueio, precisará definir no manual.
+3. **✅ RESOLVIDO (v0.5.9):** o Gnomo Reclamão é um **retaliador único** — quando atacado, ganha +1 de Ataque e devolve dano igual ao Ataque. "Bloquear" lê-se como "ser atacada" (o verbo segue sem mecânica própria; se o diretor criar uma, o Gnomo já está pronto).
 4. **⚠ Relógio Quebrado do Mago:** "escolha uma Tropa; ela não pode atacar NESTE turno" — no seu turno, Tropas inimigas não atacam de qualquer forma. **Interpretação adotada:** a Tropa escolhida não pode atacar **até o início do seu próximo turno** (ou seja, perde a próxima rodada de ataques dela). Confirmar.
-5. **⚠ Estrada dos Aventureiros:** o +1 de Ataque "até o fim do turno" raramente importa — Tropas não atacam no turno em que entram (a única Neutra com Investida é o Cavalo de Guerra Confuso). Sugestão ao diretor: "+1 de Ataque **permanente**" ou "até o seu próximo turno" para a carta ter função real.
+5. **✅ RESOLVIDO (v0.5.9):** errata do diretor — o +1 de Ataque da Estrada dos Aventureiros é **permanente**.
 6. **Novo estado definido:** **Virada** (Ogro de Pijama) — a Tropa entra indisponível e não pode atacar neste turno, nem com Investida. Adicionado ao glossário.
 7. **As Neutras entregam os contrajogos que o meta pedia:** Espantalho Vivo (anti-enxame de Sementes), Mímico de Baú (anti-aggro), Martelo Alugado (anti-Construção/anti-Preparar), Cavaleira Sem Reino (recompensa quem NÃO joga Construções — o espelho do Preparar), Ponte das Três Perguntas (anti-corrida). Cobertura de respostas: completa ✔.
 8. **📦 SET BASE COMPLETO: 6 × 30 + 40 = 220 cartas oficiais.** Pendências abertas para o diretor: (a) decisão do dano de volta (afeta Urso Polar, Lanceira da Muralha, Campo de Treinamento, Gnomo Reclamão); (b) raridade do Guardião da Cripta; (c) Semente Saltitante conta como Semente?; (d) itens 4 e 5 acima.

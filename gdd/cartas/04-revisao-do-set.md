@@ -20,21 +20,18 @@
 ## Tokens oficiais
 **Semente 0/1** e **Broto Vivo 1/2** (Natureza) · **Soldado Humano 2/2** (Humano). Estado novo: **Virada** (Ogro de Pijama).
 
-## ⚠ PENDÊNCIAS ABERTAS PARA O DIRETOR (consolidadas)
+## ✅ PENDÊNCIAS — placar final (decisões do diretor, v0.5.9)
 
-1. **DANO DE VOLTA (a decisão mais importante):** removido na v0.5.1 a pedido do diretor, mas **4 cartas oficiais** pressupõem que ele existe:
-   - Urso Polar de Guerra (Gelo) — efeito fica sem função
-   - Lanceira da Muralha (Humano) — "dano contra atacantes"
-   - Campo de Treinamento (Humano) — "sobreviver a combate" fica forte demais
-   - Gnomo Reclamão (Neutra) — "quando bloqueia"
-   **Recomendação do estúdio:** restaurar como "a defensora devolve METADE do Ataque (arredondado para baixo)" — atacar continua bom, defender não é grátis, as 4 cartas funcionam.
-2. **"Bloquear"** (Gnomo Reclamão, Prisão de Cristal): verbo usado mas não definido no manual.
-3. **Guardião da Cripta** (Sangrento): Incomum ou Comum?
-4. **Semente Saltitante** (Natureza): conta como "Semente" para efeitos? (Interpretação atual: NÃO — só o token.)
-5. **Relógio Quebrado do Mago** (Neutra): "não pode atacar neste turno" num alvo escolhido no SEU turno — interpretação atual: vale até o início do seu próximo turno.
-6. **Estrada dos Aventureiros** (Neutra): o +1 ATQ "até o fim do turno" raramente tem efeito (tropas não atacam ao entrar) — sugerido "+1 permanente" ou "até o seu próximo turno".
-7. **Gigante de Magma Rachado** (Fogo): pode escolher a si mesmo como alvo do dano próprio? (Interpretação atual: sim.)
-8. **Clima:** o campo tem o espaço compartilhado, mas nenhuma lista trouxe cartas de Clima — aguardando definição (as cartas de Clima virão? ou o espaço vira só dos Eventos Caóticos do Modo Caos?).
+1. **✅ DANO DE VOLTA:** não volta como regra geral — **existe apenas nas cartas que o mencionam, como efeito único delas** ("isso faz elas serem únicas"). Retaliadoras únicas do set: Mímico de Baú, Gnomo Reclamão, Lanceira da Muralha; o Urso Polar ignora punições de Congeladas. Regras exatas no Manual §18.
+2. **✅ "Bloquear":** lê-se como "ser atacada" (sem mecânica própria por ora).
+3. **⏳ ABERTA — Guardião da Cripta** (Sangrento): Incomum (carta) ou Comum (resumo)? Mantido Incomum até resposta.
+4. **✅ Semente Saltitante NÃO conta como Semente** — só o token 0/1 conta.
+5. **⏳ ABERTA — Relógio Quebrado do Mago:** interpretação vigente — o alvo não ataca até o início do seu próximo turno.
+6. **✅ Estrada dos Aventureiros:** errata — o +1 de Ataque é **permanente**.
+7. **✅ Gigante de Magma Rachado: não pode se auto-atingir** (exige outra Tropa sua; sem outra, a parte própria não acontece).
+8. **✅ Clima: EXCLUÍDO do jogo** — o espaço sai do campo; efeitos globais são papel dos Terrenos e dos Eventos Caóticos.
+
+Só restam as pendências 3 e 5 (miúdas, com interpretação vigente funcionando).
 
 ## Watch-list de balanceamento (consolidada das 7 auditorias)
 1. Pacto Apressado + motores de compra Sangrentos (par Doce+Sangrento no topo do meta teórico).

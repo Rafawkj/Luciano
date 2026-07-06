@@ -34,7 +34,7 @@
 | 4 | Meta resolvido rápido | Média | Alto | Mini-sets trimestrais; rotação mensal de Eventos Caóticos em destaque; 15 pares de facção |
 | 5 | Snowball de campo (quem domina o campo vence sempre) | Média | Médio | Feitiços de dano em área e Debandada; Guarda barata; teto de 4 Tropas |
 | 6 | Sangrento (Pacto) bimodal por habilidade | Média | Médio | Watch-list (Pacto Maior); curva de Vida auditada |
-| 7 | Monetização: coleção grátis + sem passes = receita só de cosméticos opcionais | Alta | Alto (negócio) | Skins de clima/tabuleiro/tropas em loja simples; preço justo de venda do jogo é o plano B (modelo "jogo de tabuleiro digital"); NUNCA reverter para P2W/quests |
+| 7 | Monetização: coleção grátis + sem passes = receita só de cosméticos opcionais | Alta | Alto (negócio) | Skins de tabuleiro/tropas/castelinhos em loja simples; preço justo de venda do jogo é o plano B (modelo "jogo de tabuleiro digital"); NUNCA reverter para P2W/quests |
 | 8 | Comparação injusta com a obra inspiradora ("é o jogo do desenho?") | Baixa | Médio | IP 100% original auditado (nomes, criaturas, termos); a inspiração é estrutural (tabuleiro vivo), não de conteúdo; revisão jurídica de todo o set antes do anúncio |
 | 9 | Escopo de 6 facções no lançamento | Baixa | Médio | Gate P3: se produção derrapar, lançar com 5 e entregar a 6ª no primeiro patch grande (decisão pré-autorizada) |
 | 10 | Animações artesanais estourarem orçamento | Alta | Médio | 6 shaders de material reutilizados em tudo; personalidade via timing e som (baratos), não frames únicos |

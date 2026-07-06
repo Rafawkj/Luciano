@@ -63,7 +63,7 @@ O menu principal NÃO é uma tela com botões: é **a mesa de trabalho do jogado
 | **Um livrinho de capa costurada** | TUTORIAL | Marca-páginas de tecido; hover = folheia sozinho |
 
 - **A mesa conta sua história sem números:** lascas de gelo se o último jogo foi contra Gelados, farelos de biscoito, uma mancha de fuligem. (Cosmético, zero mecânico, MUITA personalidade.)
-- Ao fundo, **uma janela** mostra o continente em miniatura — o clima lá fora é o clima da última partida.
+- Ao fundo, **uma janela** mostra o continente em miniatura — lá fora vê-se o reino da última facção enfrentada.
 - Sem moedas, sem badges, sem popups. **Silêncio bom de loja de brinquedos.**
 
 ## 5. O tabuleiro: **A MESA-DIORAMA**

@@ -66,7 +66,7 @@ Suas Tropas de Fogo com Investida recebem +1 de Ataque.
 
 #### 14. Gigante de Magma Rachado — Tropa · Rara
 Custo 5 | ATQ 6 / VIDA 4
-Quando entra em campo, cause 2 de dano a uma Tropa sua e 2 de dano a uma Tropa inimiga. *(ver nota nº 3)*
+Quando entra em campo, cause 2 de dano a uma Tropa sua e 2 de dano a uma Tropa inimiga. *(Regra oficial v0.5.9: NÃO pode se auto-atingir — exige OUTRA Tropa sua; se ele for sua única Tropa, essa parte não acontece.)*
 
 #### 15. Dragãozinho de Chaminé — Tropa · Épica · **Voador**
 Custo 5 | ATQ 4 / VIDA 4
@@ -155,7 +155,7 @@ Fogo vence **pressionando desde os primeiros turnos**: dano direto, Investida, Q
 
 1. **Raridades auditadas:** 10 C · 6 I · 7 R · 5 E · 2 L = 30 ✔ — bate 100% com o resumo do diretor.
 2. **Fênix de Bolso introduz "pagamento adiado"** (pagar 2 de Energia NO PRÓXIMO turno para devolvê-la à mão) — mecânica nova de timing; a UI precisará de um lembrete/pergunta no início do turno seguinte. Anotado para implementação.
-3. **Gigante de Magma Rachado** exige alvo próprio ("2 de dano a uma Tropa sua"): interpretação adotada — **pode escolher ele mesmo** se for sua única Tropa. Confirmar.
+3. **✅ RESOLVIDO (v0.5.9):** o diretor decidiu — o Gigante de Magma **não pode se auto-atingir**; o dano próprio exige outra Tropa sua (sem outra, essa parte não acontece).
 4. **A fraqueza histórica de Fogo foi corrigida pelo diretor:** agora há dano em área real (Chuva de Faíscas, Colosso da Caldeira, Erupção Final). O combo Chuva de Faíscas → Colosso (4 de dano em todas por 8 de Energia/2 cartas) é a resposta natural aos enxames de Natureza — entra na watch-list como o principal predador do Bosque Vivo.
 5. **Ciclo entre facções confirmado:** "1×/turno quando jogar um Feitiço de [facção]" agora existe em Gelo (Rei da Geladeira), Doce (Mago do Confeito) e Fogo (Arqueira, Caldeirão) — padrão consistente, ótimo para ensinar.
 6. **Sinergia interna auditada:** Rei Vulcânico + Faísca/Explosão Apressada = "toque na cara → vassourada de 1 em área" 1×/turno — forte mas limitado; Cão de Carvão + Gigante de Magma (bater no próprio Cão = 1 na cara + ativa Chama Alta) é o combo escondido mais esperto da lista. Sem loops infinitos (Superaquecimento se autolimita; Campo de Lava vale para os dois).

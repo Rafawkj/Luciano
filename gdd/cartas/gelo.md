@@ -39,7 +39,7 @@ Quando esta Tropa é destruída, coloque 1 marcador de Frio em todas as Tropas i
 
 #### 8. Urso Polar de Guerra — Tropa · Rara
 Custo 4 | ATQ 4 / VIDA 5
-Tropas inimigas Congeladas não causam dano de volta quando são atacadas por esta Tropa. *(⚠ ver nota de integração nº 1)*
+Tropas inimigas Congeladas não causam dano de volta quando são atacadas por esta Tropa. *(Regra oficial v0.5.9: ao atacar Congeladas, ele não sofre dano nem efeitos delas — retaliadoras e punições não disparam.)*
 
 #### 9. Bruxa da Geada — Tropa · Rara
 Custo 4 | ATQ 2 / VIDA 5
@@ -150,7 +150,7 @@ O Reino Glacial vence **controlando o ritmo da partida** — não destruindo rá
 
 ## Notas de integração do estúdio (v0.5.2)
 
-1. **⚠ Urso Polar de Guerra × regra atual:** o efeito dele ("Congeladas não causam dano de volta") pressupõe que **existe dano de volta** — mas a v0.5.1 removeu o dano de volta a pedido do diretor. **Decisão pendente do diretor:** (a) manter sem dano de volta (o Urso precisa de efeito novo) ou (b) trazer o dano de volta de volta ao jogo (o Urso e o Espadachim fazem sentido pleno). O protótipo segue SEM dano de volta por enquanto.
+1. **✅ RESOLVIDO (v0.5.9):** o diretor decidiu que o dano de volta existe **apenas nas cartas que o mencionam** — regra única delas. O Urso Polar ataca Congeladas sem sofrer dano nem efeitos (imune às retaliadoras únicas e a punições como o Caranguejo de Gelo inimigo).
 2. **Tribo Pinguim:** o General Pinguim Bigodudo cria a primeira sinergia tribal. Cartas Pinguim atuais: Pinguim Recruta, Pinguim Escudeiro (e o próprio General). Sugestão: marcar a espécie na linha de tipo das cartas.
 3. **Vocabulário novo detectado:** "bloquear" (Prisão de Cristal) e "habilidades ativadas" (Palácio Azul) ainda não existem nas regras — aguardando definição nas próximas listas ou no manual.
 4. **Montanha da Nevasca** aplica Frio nas SUAS próprias tropas também (cada jogador escolhe uma tropa SUA) — transcrito fielmente; confirmar se é intencional (auto-Frio como custo simétrico).

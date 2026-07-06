@@ -50,7 +50,6 @@ Mudam as regras do campo. Apenas **1 Terreno ativo** por jogador; jogar um novo 
 ## 5. Campo de batalha
 
 ```
-                [ ☁ CLIMA — compartilhado, no centro da mesa ]
 Cada jogador:
 [ TERRENO ]  [ CONSTRUÇÃO ] [ CONSTRUÇÃO ]
 [ TROPA ] [ TROPA ] [ TROPA ] [ TROPA ] [ TROPA ]
@@ -59,7 +58,7 @@ Cada jogador:
 - Máximo de **5 Tropas em campo** por jogador. Campo cheio = espere uma Tropa sair.
 - **2 Construções** por jogador.
 - **1 Terreno ativo** por jogador; jogar um novo descarta o antigo.
-- **1 espaço de Clima**, compartilhado no centro: só existe 1 Clima ativo por vez; jogar um novo substitui o anterior (e vale para os dois jogadores). *(As cartas de Clima entram com as listas oficiais do diretor.)*
+- *(O espaço de Clima foi excluído na v0.5.9 por decisão do diretor — o papel de "efeito global" fica com os Terrenos e com os Eventos Caóticos do Modo Caos.)*
 
 ## 6. Energia
 
@@ -86,7 +85,8 @@ Cada jogador:
 
 - Cada Tropa ataca **uma vez por turno**, escolhendo: uma Tropa inimiga, ou o jogador inimigo **se não houver Tropas bloqueando**.
 - **Regra de bloqueio:** se o inimigo tem Tropas, ataque uma Tropa antes de atacar o jogador (algumas cartas ignoram isso).
-- **Dano:** o atacante causa dano igual ao seu Ataque. **A defensora NÃO devolve dano** — atacar é seguro, defender é escolher o que o inimigo é obrigado a bater (Guarda). Vida 0 = descarte.
+- **Dano:** o atacante causa dano igual ao seu Ataque. **A defensora NÃO devolve dano** — atacar é seguro por padrão. Vida 0 = descarte.
+- **Retaliadoras únicas (decisão do diretor, v0.5.9):** o "dano de volta" só existe em cartas específicas que o mencionam — isso as torna únicas. No set base: **Mímico de Baú**, **Gnomo Reclamão** e **Lanceira da Muralha** punem quem as ataca; o **Urso Polar de Guerra** ignora punições de alvos Congelados.
 - **Dano no jogador:** ataque direto tira Vida igual ao Ataque da Tropa.
 - Tropas **não** podem atacar no turno em que entram (exceto com Investida).
 
@@ -167,7 +167,23 @@ Se algo ficar confuso, vale a opção **mais divertida, justa e simples**. Se um
 
 ---
 
-## 18. Registro de mudanças v0.5.1 (playtest do diretor no protótipo)
+## 18. Registro de mudanças
+
+### v0.5.9 — Decisões do diretor (rodada final de pendências)
+- **Clima: EXCLUÍDO do jogo.** O espaço compartilhado sai do campo; efeitos globais são papel dos Terrenos e dos Eventos Caóticos.
+- **Semente Saltitante (Natureza) NÃO conta como Semente** — é uma Tropa comum; o Despertar do Bosque Vivo não a transforma.
+- **Estrada dos Aventureiros (Neutra):** o +1 de Ataque da primeira Tropa Neutra do turno é **permanente** (não expira no fim do turno).
+- **Gigante de Magma Rachado (Fogo): não pode se auto-atingir** — o dano de 2 em "uma Tropa sua" exige OUTRA Tropa; se ele for sua única Tropa, essa parte não acontece.
+
+### v0.5.9 — Decisão do dano de volta (diretor)
+O dano de volta **não retorna como regra geral**. Ele existe **apenas nas cartas que o mencionam**, como efeito único ("isso faz elas serem únicas"). Regras oficiais das 4 cartas afetadas:
+- **Gnomo Reclamão** (Neutra): quando é atacada, ganha +1 de Ataque e **devolve dano igual ao seu Ataque** à atacante.
+- **Lanceira da Muralha** (Humano): enquanto você controla uma Construção, quando é atacada, **devolve dano igual ao seu Ataque +1** à atacante.
+- **Campo de Treinamento** (Humano): "sobreviver a um combate" = sobreviver a um combate em que ela foi **atacada**.
+- **Urso Polar de Guerra** (Gelo): ao atacar Tropas **Congeladas**, não sofre dano nem efeitos delas (retaliações e punições não disparam).
+(O Mímico de Baú já funcionava — o dano dele é "antes do combate", impresso.)
+
+### v0.5.1 — Playtest do diretor no protótipo
 1. **Campo ampliado:** 4 → **5 Tropas**; 2 Construções mantidas; **+1 espaço de Clima compartilhado** no centro da mesa.
 2. **Fim do dano de volta:** a regra original ("a defensora também causa dano de volta") foi removida após o playtest — o diretor considerou anti-intuitivo o atacante morrer atacando. Consequências de design absorvidas: **Guarda** e **Provocar** ficam mais valiosos (defender agora é redirecionar, não punir), efeitos "quando é atacada" (como o Cão Fumarento) viram a punição de defesa da qual o jogo precisa, e a remoção de tropas passa a depender mais de Feitiços. Watch-item: se o meta ficar agressivo demais, o plano B registrado é "defensora devolve METADE do Ataque" — só com novo pedido do diretor.
 3. **Cartas:** o set atual é provisório; a lista definitiva de cartas será fornecida pelo diretor.

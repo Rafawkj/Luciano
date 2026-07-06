@@ -46,7 +46,7 @@ O jogo é engraçado de propósito: tropas com personalidade, flavors com piada,
 ## 5. Resumo do sistema
 
 - **Vida 30 · mão inicial 5 · Energia cresce +1/turno até 10.**
-- **Campo:** 5 Tropas + 2 Construções + 1 Terreno por jogador + 1 Clima compartilhado.
+- **Campo:** 5 Tropas + 2 Construções + 1 Terreno por jogador.
 - **Combate:** atacante escolhe alvo e não sofre dano de volta (v0.5.1 — em reavaliação); Guarda/Voador/Investida temperam.
 - **Deck:** 40 cartas, máx. 2 cópias (1 se Lendária), até 2 facções + Neutras à vontade.
 - **Modos:** Normal, Rápido e Caos (eventos aleatórios divertidos) — todos dentro de "Jogar".

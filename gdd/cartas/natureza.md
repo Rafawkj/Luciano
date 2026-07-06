@@ -14,7 +14,7 @@ Algumas cartas criam **Sementes** — Tropas-token 0/1. No início do seu turno,
 
 #### 1. Semente Saltitante — Tropa · Comum
 Custo 1 | ATQ 0 / VIDA 2
-No início do seu turno, esta Tropa recebe +1 de Ataque. *(⚠ ver nota de integração nº 1)*
+No início do seu turno, esta Tropa recebe +1 de Ataque. *(Regra oficial v0.5.9: NÃO conta como "Semente" — é uma Tropa comum.)*
 
 #### 2. Esquilo Coletor — Tropa · Comum
 Custo 1 | ATQ 1 / VIDA 1
@@ -153,7 +153,7 @@ A Facção Natureza vence **ocupando o campo**: cria Tropas pequenas e as transf
 
 ## Notas de integração do estúdio (v0.5.5)
 
-1. **⚠ "Semente Saltitante" × token "Semente":** a carta nº 1 é uma Tropa normal chamada Semente, mas o token da mecânica também se chama Semente. **Interpretação adotada:** apenas o token 0/1 conta como "Semente" para efeitos (Broto Guerreiro, Casa na Árvore, Despertar etc.); a Semente Saltitante é uma Tropa comum e NÃO é transformada pelo Despertar (o que a protegeria de perder o próprio crescimento). Confirmar — se a intenção era ela contar como Semente, avisar que o Despertar a converteria em Broto Vivo 1/2.
+1. **✅ RESOLVIDO (v0.5.9):** o diretor confirmou — a Semente Saltitante **NÃO conta** como Semente. Apenas o token 0/1 conta para efeitos (Broto Guerreiro, Casa na Árvore, Despertar etc.).
 2. **Token renomeado no glossário:** "Broto" → **Broto Vivo 1/2** (nome oficial do diretor).
 3. **Javali de Cipó usa a mecânica Preparar** ("se você controla uma Construção") sem nomeá-la — primeira ponte mecânica entre facções (Natureza↔Humano). Ótimo para o par de deck; anotado.
 4. **Tensão de espaço confirmada como design:** Sementes ocupam os 5 espaços de Tropa — a facção compete consigo mesma por slots (Xamã/Viveiro checam "se tiver espaço"). É o freio natural da estratégia; nenhuma correção necessária.
