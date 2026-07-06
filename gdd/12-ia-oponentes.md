@@ -1,4 +1,4 @@
-# TERRAVIVA — IA de Oponentes
+# GUERRA DOS REINOS — IA de Oponentes
 
 > **Documento 12 · Fase 6 — Camada Competitiva**
 > (Não confundir com a IA das criaturas — Doc. 04 —, que é regra de jogo determinística. Aqui: os bots que jogam CONTRA você.)

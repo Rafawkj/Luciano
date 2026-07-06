@@ -1,51 +1,48 @@
-# TERRAVIVA — Game Design Document
+# GUERRA DOS REINOS — Game Design Document
 
-> **Card game estratégico de reinos vivos** · IP original · Documento mestre do estúdio · **v0.4**
-> *"Seu reino, suas ordens, um mundo que reage."*
+> **Jogo de cartas de fantasia maluca** · IP original · Mundo: Terraviva · **v0.5**
+> *"Fantasia maluca. Guerra de verdade."*
 
-Jogo de cartas tático competitivo em tabuleiro de hexágonos: terrenos, clima e leis naturais públicas (o **Léxico**) no lugar de mana e de centenas de keywords. Universo, nomes, regras e cartas 100% originais.
+Duelo 1v1 rápido e engraçado: 30 de Vida, Energia que cresce sozinha, campo com 4 Tropas + 2 Construções + 1 Terreno, 15 palavras-chave. Manual completo aprende-se em 10 minutos; a profundidade vem das 6 facções.
 
-## As 6 facções
+## As 6 facções (+ Neutros)
 
-| Facção | Identidade | Mecânica exclusiva |
-|---|---|---|
-| **Gelados** | Controle de ritmo, inverno paciente | Zero (congelamento cirúrgico) |
-| **Doces** | Boom econômico confeitado e frágil ao clima | Glacê + Rush de Açúcar |
-| **Sangrentos** | Vampiros, zumbis e esqueletos; a morte como recurso | Reerguer + Drenar (pagam em VIDA e Cadáveres) |
-| **Natureza** | Crescimento e inevitabilidade verde | Estágios (broto→copa→ancião) |
-| **Fogo** | Agressão com fatura | Sacrifício + Pavio |
-| **Humanos** | Versatilidade, muralhas e conversão | Formação + Milícia |
+| Facção | Reino | Estilo | Mecânica especial |
+|---|---|---|---|
+| ❄ Gelo | Reino Glacial | Defesa e controle | **Frio Acumulado** (3 marcadores = Congelada e −1 ATQ) |
+| 🔥 Fogo | Chama Selvagem | Agressivo e explosivo | **Chama Alta** (ativa se bateu na cara neste turno) |
+| 🍬 Doce | Império Açucarado | Suporte e combos fofos | **Açúcar** (2 marcadores = +1/+1) |
+| 🩸 Sangrento | Clã Rubro | Risco alto, recompensa alta | **Pacto X** (pague Vida por poder) |
+| 🌿 Natureza | Bosque Vivo | Quantidade e crescimento | **Semente** (0/1 que vira Broto 1/2) |
+| ⚔ Humano | Ordem dos Aventureiros | Tática e versatilidade | **Preparar** (ativa com Construção em campo) |
+| 🎒 Neutros | Errantes de Terraviva | Completam qualquer deck | — |
 
 ## Estrutura do GDD
 
 | Doc | Conteúdo |
 |---|---|
-| [01](01-visao-geral.md) | Visão geral, pilares, posicionamento de mercado |
-| [02](02-loop-fluxo-regras.md) | Loop, fluxo de partida, regras núcleo, vitória |
-| [03](03-tabuleiro-terrenos-clima.md) | Tabuleiro 9×5, 10 terrenos, 7 climas |
-| [04](04-lexico-natural-ia-criaturas.md) | **Léxico Natural** (14 tags, 10 leis) e **Instintos** (8 reações) |
-| [05](05-combate.md) | Combate determinístico |
-| [06](06-economia.md) | Economia territorial (Comida/Matéria/Essência + Influência) |
-| [07](07-categorias-de-cartas.md) | As **5 categorias** de cartas: Tropas, Construções, Terrenos, Feitiços, Climas |
-| [08](08-faccoes.md) | As 6 facções, cartas neutras e matriz de contrajogo |
-| [cartas/](cartas/00-formato-e-indice.md) | **Set "Primeira Regência": 115 cartas (15 por facção + 25 neutras)** |
-| [10](10-balanceamento.md) | Balanceamento (anti power creep) |
+| [01](01-visao-geral.md) | Visão geral, pilares, posicionamento |
+| [02](02-manual-de-regras.md) | **MANUAL DE REGRAS COMPLETO** (o coração do projeto) |
+| [08](08-faccoes.md) | As 6 facções + contrajogo |
+| [cartas/](cartas/00-formato-e-indice.md) | **Set "Primeira Guerra": 115 cartas** (15 por facção + 25 neutras) |
+| [10](10-balanceamento.md) | Balanceamento e watch-list |
 | [11](11-modos-progressao.md) | Menu (Criação de Deck · Jogar · Tutorial); sem quests nem progressão |
-| [12](12-ia-oponentes.md) | IA de oponentes (5 perfis, erros humanos deliberados) |
-| [13](13-multiplayer-arquitetura.md) | Multiplayer, eSports, anti-cheat, arquitetura técnica |
+| [12](12-ia-oponentes.md) | IA de oponentes (5 perfis, erros humanos) |
+| [13](13-multiplayer-arquitetura.md) | Online, anti-cheat, arquitetura |
 | [14](14-ux-arte-audio-narrativa.md) | UX/UI, arte, áudio, narrativa |
-| [15](15-roadmap-riscos.md) | Roadmap, expansões, riscos e soluções |
-| [16](16-partidas-exemplo.md) | Duas partidas completas comentadas |
+| [15](15-roadmap-riscos.md) | Roadmap, expansões, riscos |
+| [16](16-partidas-exemplo.md) | Partida completa comentada (Fogo × Gelo) |
 | [17](17-glossario.md) | Glossário completo |
-| [18](18-identidade-visual.md) | **Bíblia de identidade visual: "O Diorama Vivo"** (+ [mockup navegável](mockups/identidade-visual.html)) |
+| [18](18-identidade-visual.md) | **Identidade visual "O Diorama Vivo"** (+ [mockup](mockups/identidade-visual.html)) |
 
-## Os 3 diferenciais em uma linha cada
-1. **O tabuleiro é o reino** — economia territorial sem mana: recursos nascem de hexes que podem ser conquistados, queimados ou comidos.
-2. **Léxico Natural** — 10 leis públicas (água apaga fogo, doce atrai gulosos, o sagrado repele o profano...) substituem centenas de textos de carta; os combos emergem do mundo.
-3. **Zero sorte de resolução** — sem dados, sem RNG de efeitos, sem fases autônomas: cada ação é uma decisão de um jogador; o mundo apenas **reage** (Instintos e Crepúsculo, sempre previsíveis).
+## Identidade em 3 linhas
+1. **Regras de 10 minutos, profundidade de anos** — 4 tipos de carta, 15 palavras-chave, 6 facções que jogam completamente diferente.
+2. **Humor de verdade** — Regra da Diversão no manual, Modo Caos, flavors com piada, ovelhas táticas.
+3. **O Diorama Vivo** — visual de maquete artesanal: cada facção é um material real (lã, glacê, veludo, musgo, ferro, retalho).
 
 ## Histórico de direção
-- **v0.4 (atual)** — estrutura mínima: menu com só **Criação de Deck · Jogar (offline/online) · Tutorial**; sem quests, campanhas, passes, ligas ou progressão; coleção completa desde a instalação.
-- **v0.3** — categorias reduzidas a 5 (**Tropas, Construções, Terrenos, Feitiços, Climas**); Heróis viram Tropas Lendárias; Artefatos/Totens cortados; +25 cartas neutras (set: 115).
-- **v0.2** — Pulso removido (agência 100% do jogador; mundo reativo via Instintos + Crepúsculo); 6 facções (Gelados, Doces, Sangrentos, Natureza, Fogo, Humanos); 90 cartas.
-- **v0.1** — 12 facções, fase automática de ecossistema ("Pulso do Reino"), 150 cartas. Decisões registradas nas revisões críticas de cada documento.
+- **v0.5 (atual)** — adoção do manual "Guerra dos Reinos" do diretor: Energia única, campo de slots, 15 palavras-chave, modos Normal/Rápido/Caos. Personagens, facções e direção de arte preservados.
+- **v0.4** — menu mínimo (Criação de Deck · Jogar · Tutorial); sem quests/progressão.
+- **v0.3** — 5 categorias de carta; 25 neutras.
+- **v0.2** — fim da fase automática; 6 facções.
+- **v0.1** — conceito original (hexágonos, ecossistema, 12 facções, 150 cartas).

@@ -1,54 +1,32 @@
-# TERRAVIVA — Filosofia e Processo de Balanceamento
+# GUERRA DOS REINOS — Filosofia e Processo de Balanceamento
 
-> **Documento 10 · Fase 6 — Camada Competitiva**
+> **Documento 10** · v0.5
 
----
+## 1. Princípios (do Manual, Doc. 02 §12/§16)
+1. **Curva-mestra por custo** (1 = 1/1~2/1 … 6+ = muda o jogo, não vence sozinho). Efeito custa ~1 ponto de stats.
+2. **Nenhuma carta vence sozinha**; Lendárias são clímax, não loteria (máx. 1 cópia).
+3. **Regra da diversão como política de patch:** carta que vence sozinha é ajustada; carta que ninguém usa é fortalecida.
+4. **Neutras nunca superam facção** — completam, não substituem.
+5. **Anti power creep:** expansões adicionam OPÇÕES, nunca números maiores; meta de eficiência ≤ 102% do slot.
 
-## 1. Princípios inegociáveis
-
-1. **Nenhuma carta vence sozinha.** Toda carta L tem impacto condicionado a estado de tabuleiro construído (Tropas Lendárias exigem Condição de Lenda + Influência 7 — poder é COLHEITA, nunca topdeck).
-2. **Anti power creep estrutural:** o custo-mestre é uma fórmula pública interna; expansões adicionam **opções laterais** (novas combinações do Léxico), nunca números maiores. Meta de poder: carta nova ≤ 102% da eficiência média do slot que ocupa.
-3. **Toda estratégia tem ≥ 2 contra-estratégias em facções distintas** (matriz do Doc. 08 §13 + tech cards neutras).
-4. **Decisão > lista de forças:** se um deck vence "no piloto automático" (win rate alta com baixa variância de decisões), ele é nerfado mesmo com win rate global aceitável. Medimos **densidade de decisão** (nº de jogadas não-forçadas por partida) via telemetria.
-
-## 2. A curva-mestra de custo (interna)
-
-```
-CustoTotal ≈ (ATQ×1.0 + DEF×0.8 + VIDA×0.5 + VEL×0.5 + (ALC−1)×1.2 + ENE×0.3)/2.2
-  + Σ(tags fortes: Voador +0.5, Oculto +0.7, Venenoso +0.5, Metálico +0.3...)
-  − Σ(fraquezas impressas: comportamento sequestrável −0.5, Frágil −0.4, Fome −0.3/nível...)
-  ± modificador de comportamento (Predador +0.4, Presa −0.3, Enraizado −0.6 + valor dos estágios...)
-```
-A fórmula **orienta**, não decide: todo custo final passa por playtest. Distribuição da diferença fórmula×final é revisada por trimestre (drift = sinal de creep).
-
-## 3. Alavancas anti-degenerescência (já embutidas no design)
-
-| Degenerescência clássica | Válvula estrutural |
+## 2. Alavancas anti-degenerescência
+| Risco | Válvula |
 |---|---|
-| Tartaruga infinita | Reciclagem de deck com penalidade cumulativa; hexes ricos no centro; Marcos exigem expansão |
-| Aggro incontestável | Retaliação; muralhas baratas; Guardiões; distância física ao Coração (mín. 4 rodadas de corrida) |
-| Combo OTK | Sem "pilha" de efeitos; máx. 3 fichas/rodada; dano em uma rodada auditado (teto de projeto: 12 num cenário perfeito) |
-| Ramp exponencial | Teto de estoque 10; comida apodrece; pilhagem nega produção |
-| Controle de remoção total | Remoções são posicionais/condicionais; nenhuma remoção neutra "destrua alvo" incondicional existe no set |
-| Mill/atrito | Deck recicla; fim por atrito é impossível por regra |
+| Aggro incontestável | Guarda barata em 4 facções, Curar (Doce), Muralha de Pedra Velha |
+| Tartaruga infinita | Derrota por deck vazio (fadiga natural); dano direto de Fogo; Voador |
+| Combo OTK | Campo de 4 Tropas + Energia máx. 10 limitam o teto; auditoria de dano máx./turno (teto de projeto: 15) |
+| Pares de facção fortes demais | Watch: Fogo+Sangrento (agressão) e Doce+Gelo (muro duplo) |
+| Vantagem de iniciar | 1º jogador não compra no turno 1 (do Manual); medir WR por lado |
 
-## 4. Processo de balance (operação viva)
+## 3. Processo
+- **Cadência:** hotfix semanal (emergências WR > 57%), patch mensal, mini-set trimestral (+5 por facção, +5 neutras).
+- **Ferramentas:** simulador headless (regras simples = milhões de partidas bot×bot por noite), telemetria por facção/par/custo, taxa de concessão cedo (proxy de frustração).
+- **Print & play primeiro:** toda carta nova roda em papel antes de entrar no digital — o formato v0.5 permite.
+- **Nota de designer publicada** a cada mudança: confiança é ativo competitivo.
 
-- **Cadência:** hotfix semanal (só emergências: WR > 57% em alto MMR), patch mensal (ajustes finos + rotação do mapa vigente), mini-set trimestral.
-- **Ferramentas:** simulador headless (a resolução 100% determinística permite MILHÕES de partidas bot×bot por noite — vantagem direta da ausência de RNG); telemetria de win rate por facção/matchup/MMR; densidade de decisão; taxa de concessão antes da rodada 6 (proxy de frustração).
-- **Estilo de ajuste:** preferir **mudança de contexto** (tag, custo, posição na curva) a mudança de números de combate; nunca mais de 2 nerfs na mesma facção por patch (identidade > meta).
-- **Regra do espelho:** todo nerf publica junto o RACIOCÍNIO (nota de designer no cliente). Confiança da comunidade é ativo competitivo.
-
-## 5. Watch-list inicial (herdada das revisões de fase)
-
-1. Retaliação favorece defesa ~15% — monitorar WR de arquétipos aggro no MMR alto.
-2. Sangrentos: custo em VIDA do Coração — teto de 3❤/rodada pode precisar de ajuste contra aggro Fogo.
-3. Javali Teimoso (`Guloso`) vs Doces no early — a fraqueza estrutural deles não pode virar autoloss.
-4. Doces: dependência do clima — se Chuva/Seca estiverem em 40%+ dos decks do meta, ativar o plano B do Céu Limpo (Doc. cartas/04 §3).
-5. Humanos: taxa de inclusão como 2ª facção aliada (se > 70%, reprecificar as 6 vagas de aliança).
-
-## 6. REVISÃO CRÍTICA (Fase 6 — balanceamento)
-- **Risco identificado:** simulador bot×bot pode otimizar para um meta que humanos não jogam. *Mitigação:* bots calibrados com replays humanos por MMR (ver Doc. 12-IA); decisões de nerf exigem DUAS fontes (sim + telemetria humana).
-- **Risco:** teto de dano 12/rodada pode ser furado por expansões. *Mitigação:* o teto vira teste automatizado no pipeline de design de cartas (CI de game design: toda carta nova roda a suíte de cenários extremos antes de ir a playtest).
-
-**Veredicto:** aprovado.
+## 4. Watch-list inicial (da revisão do set)
+1. Pacto Maior (#43) — compra 2 por 1⚡ e 3 de Vida.
+2. Urso-Monólito (#9) + Nevasca (#12) — trava dupla.
+3. Rush de Açúcar (#26) como finisher barato.
+4. Estátua do Fundador (#111) com múltiplas Lendárias diferentes.
+5. WR do 1º × 2º jogador no Modo Rápido (menos turnos = iniciativa pesa mais).

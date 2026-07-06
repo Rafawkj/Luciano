@@ -1,74 +1,47 @@
-# TERRAVIVA — Glossário Completo
+# GUERRA DOS REINOS — Glossário Completo
 
-> **Documento 17** · v0.4
+> **Documento 17** · v0.5
 
 ## Conceitos centrais
 - **Regente** — o jogador.
-- **Coração do Reino** — base de cada jogador; Vitalidade 25; emite 1 Chamado/rodada.
-- **Aurora / Ações / Crepúsculo** — as 3 fases da rodada.
-- **Crepúsculo** — fase de contabilidade do fim da rodada (clima avança, fogo espalha, veneno pinga, crescimentos, Fome). Nenhuma criatura age nele.
-- **Léxico Natural** — conjunto fechado de 14 tags e 10 leis universais (Doc. 04).
-- **Instinto** — habilidade reativa de criatura com gatilho público (8 no set: Guardião, Sentinela, Contra-ataque, Colheita, Reparador, Médico, Fuga, Ímpeto).
-- **Ficha de Ação** — 1 de 3 por rodada: jogar carta, Ordem, Trabalhar ou Passar.
-- **Ordem** — comando a uma criatura: mover (até VEL), atacar ou usar a ativa.
-- **Trabalhar** — criatura ociosa coleta 1 recurso do hex (fica `Exausta`).
-- **Duplo Horizonte** — compra: revela 2, escolhe 1, a outra vai ao fundo.
-- **Iniciativa** — quem age primeiro; alterna por rodada.
-- **Território** — hexes conectados ao seu Coração com presença sua.
-- **Hex selvagem** — hex neutro rico do mapa vigente (+1 produção; +1 Influência/Aurora).
-- **Influência** — trilha 0–15: destrava a Lenda (7) e Marcos (10+).
-- **Marcos de Domínio** — Abundância / Prosperidade / Equilíbrio; 3 = vitória alternativa.
-- **Condição de Lenda** — condição pública que libera a Tropa Lendária do baralho.
-- **Reciclagem** — reembaralhar o descarte quando o deck acaba; −1 Vitalidade cumulativo.
-- **Neutras** — cartas sem facção; até 8 por baralho (cartas/05).
-- **Mapa vigente** — configuração dos hexes selvagens da fila online (rotação mensal); livre em salas por código e offline.
+- **Vida** — 30 no Modo Normal (20 no Rápido); 0 = derrota.
+- **Energia** — recurso único; máxima +1 por turno (até 10); recupera toda no início do turno.
+- **Campo** — por jogador: 4 espaços de Tropa, 2 de Construção, 1 de Terreno, deck e descarte.
+- **Regra de bloqueio** — com Tropas inimigas em campo, ataque Tropas antes do jogador (Voador ignora).
+- **Regra de ouro** — texto da carta vence o manual.
+- **Regra da diversão** — confusão se resolve pela opção mais divertida, justa e simples.
+- **Lendária** — máx. 1 cópia por deck.
+- **Mulligan** — troca de até 3 cartas da mão inicial, uma vez.
+- **Evento Caótico** — carta global do Modo Caos, revelada a cada rodada, vale para os dois.
 
-## Recursos
-- **Comida 🍎** — sustenta criaturas; apodrece acima de 6 (exceção: Gelados).
-- **Matéria 🔨** — construções, terrenos, artefatos.
-- **Essência ✨** — eventos, clima, maldições, habilidades.
-- **❤ (custo de sangue)** — Sangrentos pagam VIDA (máx. 3 do Coração/rodada).
-- **☠ Cadáver** — token deixado por criaturas mortas em hex `Profano`; combustível de Reerguer.
-- **Pilhagem** — terminar Ordem em hex produtivo inimigo: rouba 1 recurso e nega a próxima produção dele.
+## Tipos de carta (4)
+**Tropa** (Custo, ATQ, Vida, efeito) · **Feitiço** (efeito imediato; subtipo Armadilha fica oculto) · **Construção** (contínua; máx. 2 em campo) · **Terreno** (muda regras; 1 ativo, o novo descarta o antigo).
 
-## Combate e estados
-- **Retaliação** — defensor corpo-a-corpo sobrevivente devolve ⌊ATQ/2⌋ (ATQ cheio com Contra-ataque).
-- **Cercado** — sem hex livre adjacente na Aurora: −1 DEF.
-- **Empurrar(X)** — desloca X hexes; colisão = 1 dano a ambos.
-- **Exausta** — não retalia nem usa Instinto até o fim da rodada.
-- **Atolado / Grudado** — perde a próxima Ordem (pântano/Peso alto; caramelo e chiclete dos Doces).
-- **Congelado** — `Molhado`+`Congelante`: perde a próxima Ordem.
-- **Envenenado** — 1 dano/Crepúsculo por 2 rodadas.
-- **Faminto** — Fome não paga: −1 ATQ; pode comer plantações (qualquer dono).
-- **Chamado** — mini-ordem grátis do Coração (indisponível se ele sofreu dano na rodada).
-- **Farejar** — revela Feitiços ocultos (Armadilhas, Maldições) na área indicada.
+## As 15 palavras-chave
+**Investida** (ataca ao entrar) · **Guarda** (deve ser atacada antes) · **Congelar** (não ataca no próximo turno dela) · **Queimar** (1 de dano no fim de cada turno) · **Curar X** · **Drenar** (dano vira cura para seu jogador) · **Crescer** (+1/+1) · **Invocar** (cria Tropa) · **Sacrificar** (destrua algo seu por efeito) · **Escudo** (previne o próximo dano) · **Ataque Duplo** · **Voador** (ataca o jogador por cima; só Voador bloqueia Voador) · **Armadilha** (oculta, ativa por condição) · **Provocar** (força um inimigo a atacá-la) · **Explodir** (efeito ao morrer).
 
 ## Mecânicas de facção
-- **Zero (Gelados)** — congelamento cirúrgico; `Adaptado(Frio)` patina no gelo.
-- **Glacê (Doces)** — escudo que absorve antes da VIDA; é `Doce` (atrai `Guloso`).
-- **Rush de Açúcar (Doces)** — +2 VEL por 1 rodada; depois `Exausta` (o crash).
-- **Reerguer X (Sangrentos)** — retorna do descarte pagando X sobre um Cadáver.
-- **Drenar X (Sangrentos)** — cura X ao causar dano (funciona em `Profano`).
-- **Estágios (Natureza)** — `Enraizado` cresce no Crepúsculo: broto → copa → ancião.
-- **Sacrifício (Fogo)** — queimar carta da mão = 1🔨 ou 1✨; criatura sacrificada = dano em área.
-- **Pavio(X) (Fogo)** — contagem pública; fortalece a cada Crepúsculo; explode em 0.
-- **Formação (Humanos)** — carta anunciada que ativa na sua próxima rodada com efeito maior.
-- **Milícia (Humanos)** — camponeses +1 ATQ com invasor em território seu.
+- **Frio Acumulado (Gelo)** — 3 marcadores de Frio = Congelada e −1 de Ataque permanente.
+- **Chama Alta (Fogo)** — ativa se você causou dano ao jogador inimigo neste turno.
+- **Açúcar (Doce)** — gaste 2 marcadores para dar +1/+1 a uma Tropa.
+- **Pacto X (Sangrento)** — perca X de Vida para ativar o efeito.
+- **Semente (Natureza)** — token 0/1; no início do seu turno, pode virar um Broto 1/2.
+- **Preparar (Humano)** — ativa se você controla uma Construção.
 
-## Atributos (tropas)
-**ATQ** ataque · **DEF** redução fixa · **VIDA** pontos de vida · **VEL** hexes/Ordem · **ALC** alcance · **PESO** classe física 1–5 · **ENE** cargas de ativa (recarrega 1/Aurora).
+## Tokens
+**Semente 0/1** · **Broto 1/2** · **Ovo-Brasa 0/2** · **Esqueleto Lanceiro 2/1**.
 
-## Tags naturais (14)
-Molhado · EmChamas · Inflamável · Congelante · Metálico · Venenoso · Fértil · Doce · Profano · Sagrado · Elevado · Cobertura · Oculto · Adaptado(X). Tags estruturais: Voador, Aquático, Escalador, Silvestre, Ígneo, Ossudo, Guloso, Raízes, Frágil, Murado, Fundada, Enraizado.
-**Precedência:** fontes permanentes > clima > efeitos temporários (Doc. 04).
+## Raridades
+Comum · Incomum · Rara · Épica · Lendária.
 
-## Categorias de carta (5)
-**Tropa** (subtipo: Lendária) · **Construção** (subtipos: Muralha, Fundada) · **Terreno** · **Feitiço** (subtipos: Reflexo, Armadilha, Maldição, Formação, Pavio) · **Clima** (Doc. 07).
-- **Neutras** — cartas sem facção, até 8 por baralho (cartas/05).
+## Modos
+**Normal** (30 Vida, 40 cartas, 10 Energia, 4 Tropas) · **Rápido** (20/30/8/3) · **Caos** (Eventos Caóticos por rodada).
+
+## Facções (nomes oficiais)
+Reino Glacial (Gelo) · Chama Selvagem (Fogo) · Império Açucarado (Doce) · Clã Rubro (Sangrento) · Bosque Vivo (Natureza) · Ordem dos Aventureiros (Humano) · Errantes de Terraviva (Neutros).
 
 ## Interface e estrutura
-- **Menu principal** — três opções: Criação de Deck · Jogar (offline/online) · Tutorial (Doc. 11).
-- **MMR oculto** — número invisível usado só para parear partidas online justas; não há ligas nem ranks visíveis.
-- **Partida Livre** — modo offline com desfazer ilimitado e dicas ativadas.
-- **Prever Crepúsculo** — UI que simula a contabilidade do fim da rodada.
-- **Códice do Regente** — compêndio in-game das leis do Léxico.
+- **Menu principal** — Criação de Deck · Jogar (offline/online) · Tutorial (Doc. 11).
+- **MMR oculto** — só pareia partidas online justas; sem ligas nem ranks visíveis.
+- **Partida Livre** — offline com desfazer ilimitado e dicas ativadas.
+- **O Diorama Vivo** — direção de arte: o jogo é uma maquete artesanal viva (Doc. 18).

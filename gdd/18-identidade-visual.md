@@ -1,4 +1,4 @@
-# TERRAVIVA — Bíblia de Identidade Visual
+# GUERRA DOS REINOS — Bíblia de Identidade Visual
 
 > **Documento 18 · Identidade** · v0.4
 > Este documento define a "cara única" do jogo: o conceito que amarra personagens, menu, tabuleiro e cartas numa só ideia impossível de confundir com outro card game.
@@ -7,7 +7,7 @@
 
 ## 1. O conceito central: **O DIORAMA VIVO**
 
-TERRAVIVA não se passa "num mundo de fantasia". Ele se passa **numa maquete artesanal que ganhou vida em cima de uma mesa**.
+GUERRA DOS REINOS não se passa "num mundo de fantasia". Ele se passa **numa maquete artesanal que ganhou vida em cima de uma mesa**.
 
 - Tudo no jogo parece **feito à mão, com materiais reais**: feltro, madeira, cerâmica, vidro, veludo, lã.
 - A câmera é sempre a de alguém **debruçado sobre a mesa**: levemente de cima, íntima, quente.
@@ -48,9 +48,9 @@ Cada facção tem UM personagem-pôster (a Lenda), desenhado para virar mascote/
 
 ## 3. Logo e tipografia
 
-- **Wordmark "TERRAVIVA":** letras que parecem **recortadas de materiais diferentes** — o TERRA em madeira/musgo, o VIVA com brotinho vivo no segundo V. O logo respira (o broto balança) na tela inicial.
+- **Wordmark "GUERRA DOS REINOS":** letras que parecem **recortadas de materiais diferentes** — GUERRA em ferro com brasas, DOS em papel kraft, REINOS com uma letra no material de cada facção. O logo respira (o broto balança) na tela inicial.
 - **Tipografia de UI:** uma display arredondada e encorpada para títulos (sensação de carimbo de madeira) + uma humanista limpa para texto de regra (legibilidade acima de tudo — regra editorial de 2 linhas exige tipografia impecável).
-- **Ícones de recurso** (🍎🔨✨) desenhados como **peças de madeira pintada** — consistentes com fichas de ação (3 gemas = 3 botões de madeira).
+- **A Energia** é uma fileira de **botões de madeira pintada** que acendem; gastar = empurrar o botão para o centro da mesa.
 
 ## 4. O menu: **A MESA DO REGENTE**
 
@@ -68,10 +68,10 @@ O menu principal NÃO é uma tela com botões: é **a mesa de trabalho do jogado
 
 ## 5. O tabuleiro: **A MESA-DIORAMA**
 
-- Hexes são **peças encaixáveis de maquete** com espessura visível (3–4 mm); terraformar é literalmente **trocar a peça** (a mão gigante do Regente desce e encaixa — feedback físico delicioso).
-- **Vida ambiente sem regra:** borboletas de papel sobre `Fértil`, vapor sobre lava, peixinhos de celofane no Lago, um esquilo que atravessa quando nada acontece por 10 s. **Orçado: máx. 3 eventos ambientes simultâneos** — vida, não poluição.
-- **Clima é transformação física da mesa:** Chuva = fios de náilon brilhantes + tudo escurece 10%; Nevasca = algodão acumulando NAS BORDAS dos hexes; Lua de Sangue = a luminária da sala fica vermelha (a luz da MESA muda, não só do jogo).
-- **Os Corações do Reino** são as peças-capitais: um castelinho-maquete por facção (iglu de vidro fosco, bolo-fortaleza, mausoléu de veludo...) que **acende janelas** quando saudável e **perde pedacinhos** conforme a Vitalidade cai — o placar É a peça.
+- O campo é uma **mesa-arena**: 4 pedestais de Tropa + 2 lotes de Construção + 1 moldura de Terreno por lado, todos peças encaixáveis com espessura visível; jogar um Terreno **troca a moldura da mesa inteira** (a mão gigante do Regente desce e encaixa — feedback físico delicioso).
+- **Vida ambiente sem regra:** borboletas de papel, vapor sobre lava, peixinhos de celofane no Lago Congelado, um esquilo que atravessa quando nada acontece por 10 s. **Orçado: máx. 3 eventos ambientes simultâneos** — vida, não poluição.
+- **Terrenos e Eventos Caóticos transformam a mesa fisicamente:** Lago Congelado = a arena vira vidro fosco; Fissura Vulcânica = frestas de resina laranja acendem; Lua Rubra = a luminária da sala fica vermelha (a luz da MESA muda, não só do jogo).
+- **A Vida de cada jogador** é um castelinho-maquete da facção (iglu de vidro fosco, bolo-fortaleza, mausoléu de veludo...) que **acende janelas** quando saudável e **perde pedacinhos** conforme a Vida cai — o placar É a peça.
 
 ## 6. Design das cartas
 
@@ -91,10 +91,10 @@ Na mão, cada carta tem **idle sutil de 2–3 s** (o Pinguim ajeita a bola de ne
 3. Fichas de ação são 3 botões de madeira que você "gasta" empurrando para o centro.
 4. Tropas ociosas cochilam de verdade (zZz de linha bordada).
 5. Tropas adjacentes de facções aliadas interagem no idle (o zumbi acena para o esqueleto; o javali fareja o biscoito — presságio da Lei 5!).
-6. Dano ao Coração: a mesa TREME e um pedacinho da capital lasca.
+6. Dano ao jogador: a mesa TREME e um pedacinho do castelinho lasca.
 7. Vitória: a mão do vencedor guarda as peças na caixa com carinho; derrota: as peças se guardam sozinhas, desanimadas.
-8. Crepúsculo: a luz da mesa amanhece/anoitece em 2 s — o tempo é a iluminação.
-9. Instinto disparando: a peça reage ANTES do efeito (orelhas sobem, olho abre) — telegrafia charmosa.
+8. Fim de turno: a luz da mesa amanhece/anoitece em 2 s — o tempo é a iluminação.
+9. Guarda/Armadilha prestes a disparar: a peça reage ANTES do efeito (orelhas sobem, olho abre) — telegrafia charmosa.
 10. Card hover no editor: a miniatura da carta pula para a mesa em miniescala e faz a pose.
 
 ## 8. Som como assinatura (com Doc. 14)
@@ -113,6 +113,6 @@ Para calibrar SEM copiar: stop-motion artesanal (texturas de lã/madeira em movi
 1. **Risco: "artesanal" virar "infantil".** *Trava:* os materiais são fofos, mas a fotografia é séria (luz dramática, macro, profundidade de campo) e as regras são exibidas com precisão de relojoaria. Fofo no material, adulto no tratamento.
 2. **Risco: shader de materiais + física de brinquedo custarem caro.** *Mitigação:* biblioteca de 6 shaders (um por material-facção) reutilizada em TUDO (cartas, peças, UI); física fake por animação, não simulação.
 3. **Risco: arte-como-miniatura limitar poses épicas de carta.** *Aceito com orgulho:* a limitação É o estilo (dioramas contam épico com composição, não com dinamismo) — e garante coerência carta↔tabuleiro que nenhum concorrente tem.
-4. **Validação pendente:** protótipo visual de 1 hex + 1 carta + 1 personagem em 3 materiais diferentes antes de qualquer produção em massa (gate no roadmap P2).
+4. **Validação pendente:** protótipo visual de 1 pedestal + 1 carta + 1 personagem em 3 materiais diferentes antes da produção em massa (gate no roadmap P2).
 
 **Veredicto:** aprovado como direção-candidata; aguardando inspirações do Regente-chefe para calibrar. 😉

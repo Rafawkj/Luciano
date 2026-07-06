@@ -1,4 +1,4 @@
-# TERRAVIVA — Multiplayer Competitivo e Arquitetura Técnica
+# GUERRA DOS REINOS — Multiplayer Competitivo e Arquitetura Técnica
 
 > **Documento 13 · Fase 6 — Direção Técnica**
 
@@ -6,7 +6,7 @@
 
 ## 1. Fundamento: determinismo como superpoder técnico
 
-O jogo inteiro (incluindo o Crepúsculo e os Instintos) é uma **função pura**: `estado' = f(estado, ações_dos_jogadores)`. Zero RNG em resolução (a única entropia é a ordem inicial dos baralhos, semeada pelo servidor). Consequências:
+O jogo inteiro é uma **função pura**: `estado' = f(estado, ações_dos_jogadores)`. Toda aleatoriedade (ordem do baralho, alvos "aleatórios", Eventos Caóticos) vem de uma única seed do servidor. Consequências:
 
 - **Servidor autoritativo barato:** o servidor só valida ações e re-executa `f`; o cliente prevê localmente (rollback trivial, pois não há segredo na resolução).
 - **Replays = lista de ações** (kilobytes). Qualquer partida é reproduzível bit a bit para sempre (inclusive entre versões, com versionamento de regras).
@@ -27,20 +27,20 @@ O jogo inteiro (incluindo o Crepúsculo e os Instintos) é uma **função pura**
 
 - **Matchmaking:** MMR Glicko-2 **oculto** (só pareamento; sem ranks visíveis); proteção de novato (pool separado nas primeiras 20 partidas); salas por código de 6 letras para jogar com amigos.
 - **Reconexão:** estado completo reidratável do log de ações; 90 s de janela com relógio pausado 1×/partida; bot NÃO assume (princípio: ninguém perde para "seu próprio bot").
-- **Relógio:** 25 s/ficha + banco de 90 s por jogador (formato "xadrez rápido"); configurável em salas por código.
-- **Espectador:** delay de 2 min (anti-ghosting), overlay com zonas de Sentinela, alcances, recursos e Influência de ambos — o estado 100% aberto é *feito* para transmissão.
+- **Relógio:** 45 s por turno + banco de 60 s por jogador (formato "xadrez rápido"); configurável em salas por código.
+- **Espectador:** delay de 2 min (anti-ghosting), overlay com Energia, mãos contadas e Armadilhas marcadas (sem revelar) — o estado 100% aberto é *feito* para transmissão.
 - **Replay:** scrubbing por rodada, visão de qualquer lado, exportável e compartilhável por código curto.
 - **Anti-cheat comportamental:** detecção de conluio/win-trading por grafos de partidas; relatórios in-client com follow-up visível.
-- **Rotação de mapa:** o mapa vigente da fila rápida troca mensalmente (hexes selvagens novos = meta fresco sem tocar em cartas). Sem ligas, sem temporadas de recompensa — o MMR oculto só pareia jogos justos.
+- **Rotação de mapa:** o Evento Caótico em destaque e o Terreno neutro da vitrine trocam mensalmente (meta fresco sem tocar em cartas). Sem ligas, sem temporadas de recompensa — o MMR oculto só pareia jogos justos.
 
 ## 4. Competitivo de comunidade (sem infraestrutura de liga própria)
 - O jogo não tem torneios nem ligas oficiais in-client — mas as **salas por código + replays exportáveis + espectador** são deliberadamente suficientes para a comunidade organizar torneios por fora (o modelo do xadrez online).
 - API pública de replay/estatísticas para sites de comunidade.
-- Overlay de espectador com "linhas de ameaça" (alcances, Instintos armados e Pavios — mostra o que PODE acontecer).
+- Overlay de espectador com "linhas de ameaça" (dano letal disponível, Armadilhas armadas — mostra o que PODE acontecer).
 
 ## 5. REVISÃO CRÍTICA (Fase 6 — técnica)
-- **Risco: animações de Crepúsculo/Instintos somadas a rodadas longas.** *Mitigação:* velocidade 1×/2×/instantânea (online default 2×); animações paralelas, nunca sequenciais por entidade.
+- **Risco: animações de efeitos somadas a turnos longos.** *Mitigação:* velocidade 1×/2×/instantânea (online default 2×); animações paralelas, nunca sequenciais por entidade.
 - **Risco: core em Rust + cliente Unity = fricção de FFI.* *Decisão:* aceita; o custo é pago uma vez e o ganho (regras únicas, replays eternos, WASM para web/ferramentas de comunidade) define o produto. Protótipo da ponte na primeira sprint técnica (risco desce cedo).
-- **Risco: setas de intenção públicas podem poluir a tela no late game.** *Mitigação de UX:* setas agregadas por "história" (hover para detalhe), modo minimalista para MMR alto.
+- **Risco: leitura do campo com 4+4 Tropas, 2+2 Construções e efeitos:** hierarquia visual rígida (Doc. 14) e log de partida sempre acessível.
 
 **Veredicto:** aprovado.

@@ -1,4 +1,4 @@
-# TERRAVIVA — Estrutura do Jogo: Menu, Modos e Tutorial
+# GUERRA DOS REINOS — Estrutura do Jogo: Menu, Modos e Tutorial
 
 > **Documento 11** · v0.4 — o jogo não tem quests, missões, campanhas, passes, conquistas nem progressão de conta. É um jogo de estratégia puro, como um tabuleiro digital: liga, monta, joga.
 
@@ -19,8 +19,8 @@
 ## 2. CRIAÇÃO DE DECK
 
 - **Coleção completa liberada desde a instalação.** Todas as 115 cartas disponíveis para todos, sempre — sem desbloqueio, sem moeda, sem sorte. (Filosofia: xadrez não esconde as peças.)
-- **Editor:** filtros pelas 5 categorias (Tropas, Construções, Terrenos, Feitiços, Climas), por facção, por custo e por tag do Léxico; curva de custos visível; busca por texto.
-- **Validador em tempo real:** 40 cartas exatas · máx. 2 cópias · exatamente 1 Tropa Lendária · mínimo 5 Terrenos · máx. 8 Neutras.
+- **Editor:** filtros pelos 4 tipos (Tropas, Feitiços, Construções, Terrenos), por facção, por custo e por palavra-chave; curva de custos visível; busca por texto.
+- **Validador em tempo real:** 40 cartas · máx. 2 cópias (1 se Lendária) · até 2 facções principais · Neutras à vontade (Doc. 02 §3).
 - **6 decks prontos** (um por facção, desenhados para ensinar o plano de jogo da facção) — editáveis como ponto de partida.
 - **Código de deck:** exportar/importar por string curta (compartilhamento fora do jogo).
 
@@ -36,7 +36,7 @@ Ao tocar em JOGAR, uma única escolha: **Offline** ou **Online**.
 ### 3.2 Online
 - **Partida rápida:** matchmaking automático por MMR oculto (ninguém vê número nenhum; só serve para parear jogos justos). Proteção de novato nas primeiras 20 partidas.
 - **Partida com amigo:** criar sala por código de 6 letras; quem tem o código entra. Sem ranking, sem consequência.
-- Mapa vigente: um mapa padrão para a fila rápida (rotação mensal para manter o meta fresco); em sala por código, os jogadores escolhem o mapa.
+- **Modos dentro de Jogar:** Normal (padrão da fila), Rápido e Caos (disponíveis offline e em salas por código — Doc. 02 §14).
 
 ## 4. TUTORIAL
 
@@ -44,10 +44,10 @@ O tutorial substitui qualquer campanha: **4 lições de 3–5 minutos**, rejogá
 
 | Lição | Ensina | Momento-assinatura |
 |---|---|---|
-| 1. O Reino | Fichas de ação, mover, atacar, o Coração | Primeira Ordem e primeira retaliação |
-| 2. O Território | Terrenos, produção, jogar cartas, Influência | "Este hex agora é seu e te alimenta" |
-| 3. As Leis | O Léxico na prática: fogo × chuva × açúcar | Apagar o incêndio inimigo com a chuva certa |
-| 4. A Partida | Jogo completo guiado contra IA Fofa, com Crepúsculo e Lenda | Invocar a primeira Tropa Lendária |
+| 1. O Duelo | Energia, jogar Tropas, atacar, Vida | Primeiro ataque e primeiro dano de volta |
+| 2. O Campo | Guarda, Voador, bloqueio, Construções e Terrenos | "Ele não pode te atacar sem passar pelo urso" |
+| 3. As Facções | Palavras-chave e a mecânica da sua facção (Frio, Chama Alta, Açúcar...) | O primeiro combo de facção |
+| 4. A Partida | Jogo completo guiado contra IA Fofa, com Lendária no clímax | Invocar a primeira Lendária |
 
 - Ao fim da lição 4, o jogo sugere: "Monte seu deck ou jogue com um pronto" → leva ao menu.
 - As **Dicas do Códice** (1 linha na primeira vez que cada Lei dispara numa partida) continuam disponíveis fora do tutorial, desligáveis.

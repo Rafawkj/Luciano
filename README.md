@@ -1,5 +1,5 @@
 Odin-Recipes.
 
-## TERRAVIVA — Game Design Document
+## GUERRA DOS REINOS — Game Design Document
 
-GDD completo de um card game estratégico original de "reinos vivos": ver [gdd/README.md](gdd/README.md).
+GDD completo do card game **Guerra dos Reinos** (mundo Terraviva): ver [gdd/README.md](gdd/README.md).

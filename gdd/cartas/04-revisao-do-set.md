@@ -1,30 +1,30 @@
-# REVISÃO CRÍTICA — Set "Primeira Regência" (v0.3)
+# REVISÃO CRÍTICA — Set "Primeira Guerra" (v0.5)
 
 ## Auditoria quantitativa
-- **Contagem:** 6 × 15 + 25 neutras = **115 cartas** ✔ (numeradas 1–115).
-- **Só as 5 categorias existem:** Tropa (54 + 6 Lendárias = 60), Construção (14), Terreno (14), Feitiço (20), Clima (7) ✔.
-- **Instintos:** os 8 aparecem em ≥ 3 cartas cada ✔.
-- **Leis do Léxico:** todas as 10 têm ≥ 2 cartas que exploram e ≥ 2 que sofrem ✔.
-- **Regra editorial ≤ 2 linhas:** 115/115 ✔.
+- **Contagem:** 6 × 15 + 25 Neutras = **115 cartas** (1–115) ✔
+- **Só os 4 tipos do Manual:** Tropa (60), Feitiço (24, sendo 5 Armadilhas), Construção (15), Terreno (16) ✔
+- **Palavras-chave:** todas as 15 do Manual aparecem em ≥ 2 cartas; nenhuma carta inventa vocabulário ✔
+- **Editorial (Doc. 02 §13):** máx. 1 efeito + 1 palavra-chave por carta — 115/115 ✔ (Fênix e Rush de Açúcar são as mais longas; aprovadas como exceções icônicas de 2 frases)
+- **Curva de custo (Doc. 02 §12):** stats de Tropas auditados contra a tabela; cartas com efeito pagam ~1 ponto de stats ✔
 
-## Registro da simplificação v0.3 (de 11 para 5 categorias)
-| Categoria antiga | Destino |
+## Migração v0.4 → v0.5 (o que aconteceu com cada mecânica)
+| Era hex | Virou |
 |---|---|
-| Criatura | Renomeada **Tropa** |
-| Herói | **Tropa Lendária** (subtipo); a Condição de Lenda vira mecânica, não categoria |
-| Evento | Renomeado **Feitiço** |
-| Armadilha | **Feitiço (Armadilha)** — jogado oculto num hex, mesmas regras (limite de 2 ocultos) |
-| Maldição | **Feitiço (Maldição)** — anexo oculto, conta no limite de ocultos |
-| Relíquia | Convertida em **Construção** (Despensa de Gelo agora é construível e destrutível — mais contrajogo) |
-| Artefato / Totem | **Cortados do jogo** (não entram nem em expansão como categoria; efeitos equivalentes poderão existir como Construções ou Feitiços) |
+| Glacê (Doces) | palavra-chave **Escudo** |
+| Pavio (Fogo) | palavra-chave **Explodir** (Touro, Bomba) |
+| Reerguer (Sangrentos) | efeitos de voltar do descarte + **Pacto** |
+| Estágios (Natureza) | **Crescer** + **Sementes/Brotos** |
+| Zero (Gelados) | **Frio Acumulado** (do Manual) |
+| Formação (Humanos) | **Preparar** (do Manual) |
+| Instintos Guardião/Sentinela/Ímpeto | **Guarda / Provocar / Investida** |
+| Léxico de terrenos/clima | Terrenos (1 ativo) + Eventos Caóticos do Modo Caos |
 
-## Problemas e resoluções
-1. **Despensa de Gelo como Construção** ganhou VIDA/DEF e virou alvo — os Gelados perdem uma garantia absoluta, ganham uma decisão de proteção. Melhor design; watch de winrate.
-2. **Neutras reintroduzidas (25) substituem o sistema de alianças** — mais simples de ensinar, e o slot de 8 neutras é o mesmo espaço de tech. As alianças da v0.2 ficam arquivadas.
-3. **Mercenária Errante** (#99) tem custo crescente por cópia — experimento de "neutra que se autorregula"; vigiar a legibilidade da regra.
-4. **Céu Limpo permaneceu nos Humanos** (identidade diplomática); anti-clima neutro indireto existe via Tempestade/Neblina (sobrescrever). Plano B mantido: promover Céu Limpo a neutra no 1º patch se necessário.
-5. Combos auditados com as neutras novas: Enguia (#95) + Pinguim Gelado (`Molhado`) = condução dupla legítima; Encruzilhada (#105) acelera aggro dos DOIS lados — simétrica de verdade.
-6. **Trava anti-degenerescência (substitui a antiga proibição de aliança Doces×Sangrentos):** Glacê não pode ser aplicado a tropas com Reerguer (o açúcar não adere a osso — lore que vira regra). Sem isso, biscoitos-zumbis blindados reergueriam em loop com escudo.
+## Decisões e watch-list
+1. **Personagens preservados 1:1** — as 6 Lendas e ~70% do elenco migraram com nome, personalidade e flavor. A identidade sobreviveu à troca de motor.
+2. **Encruzilhada e Planície Aberta** são terrenos simétricos (valem para os dois) — experimento de "infraestrutura de risco"; vigiar se confundem novatos.
+3. **Pacto Maior (1 de custo, compra 2 por 3 de Vida)** — a carta mais perigosa do set; primeiro candidato a nerf se Sangrento+Fogo dominar.
+4. **Urso-Monólito** (congelados não descongelam) — pode travar demais com Nevasca; watch nível 1.
+5. **Estátua do Fundador** (Lendárias −2) — vigiar decks de 2 Lendárias? Impossível: 1 cópia de CADA Lendária, mas pode ter Lendárias diferentes — ok, monitorar.
 
 ## Veredicto
-Set v0.3 aprovado para print & play e simulação.
+Set aprovado para print & play imediato (o formato novo é 100% testável em papel).

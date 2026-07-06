@@ -1,94 +1,85 @@
-# TERRAVIVA — Documento de Visão Geral
+# GUERRA DOS REINOS — Documento de Visão Geral
 
-> **Documento 01 · Fundação** · Versão 0.2 (revisão de direção: sem fase automática; 6 facções)
+> **Documento 01 · Fundação** · v0.5
+> *Jogo de cartas de fantasia maluca* — ambientado no mundo de **Terraviva**.
 
 ---
 
 ## 1. Elevator Pitch
 
-**TERRAVIVA** é um jogo de cartas estratégico tático em que cada partida constrói um pequeno reino vivo sobre um tabuleiro de hexágonos. Você planta florestas, ergue muralhas, comanda criaturas — e o mundo **reage com lógica natural**: água apaga fogo, gelo congela lagos, doce atrai formigas, mortos-vivos se reerguem em solo profano. Nada acontece sozinho: **cada movimento é seu**. A profundidade vem do terreno, do clima e das leis do mundo, não de fases automáticas nem de sorte.
+**GUERRA DOS REINOS** é um jogo de cartas rápido, estratégico e divertido onde dois jogadores comandam facções mágicas numa batalha caótica. Você monta um deck com Tropas, Construções, Terrenos e Feitiços e reduz a Vida do inimigo a zero — no meio de congelamentos, biscoitos explosivos, pactos de sangue e ovelhas que rolam.
 
-> **Tagline:** *"Seu reino, suas ordens, um mundo que reage."*
+Estratégia de verdade + humor de verdade: efeitos exagerados, combos estranhos e seis facções que jogam de formas completamente diferentes.
+
+> **Tagline:** *"Fantasia maluca. Guerra de verdade."*
 
 ## 2. Fantasia central do jogador
 
-O jogador é um **Regente** — o comandante de um reino em miniatura:
-
-- *"Eu construí este canto do mapa e agora ele me alimenta."*
-- *"Eu ataquei com fogo a floresta dele no turno exato em que a seca chegou."*
-- *"O exército dele congelou no lago porque EU quebrei o gelo."*
-
-Um mundo em miniatura carismático em cima da mesa, com regras levadas a sério — e IP, nomes e universo 100% originais.
+Você é um **Regente** comandando um reino em miniatura sobre a mesa:
+- *"Congelei o exército dele inteiro e ele só pôde assistir."*
+- *"Sacrifiquei meu próprio diabrete em cima da tropa dele. Valeu cada lágrima."*
+- *"Venci com uma ovelha. UMA OVELHA."*
 
 ## 3. Ficha técnica
 
 | Campo | Definição |
 |---|---|
-| Gênero | Card game tático competitivo com tabuleiro |
-| Plataformas | PC, mobile (iOS/Android), cross-play e cross-progression |
-| Sessão-alvo | 12 a 20 minutos por partida |
-| Público-alvo | 12+, jogadores de estratégia e card games |
-| Modelo de negócio | Coleção completa desde a instalação; sem quests, passes ou progressão; cosméticos opcionais |
-| Modo principal | 1v1 (offline contra IA ou online) · Menu: Criação de Deck · Jogar · Tutorial |
-| Direção visual | Cartoon estilizado, silhuetas fortes, animação exagerada |
+| Gênero | Card game de duelo 1v1, rápido e tático |
+| Partida | 10–15 minutos (Modo Normal); ~8 (Modo Rápido) |
+| Plataformas | PC e mobile; também jogável em papel (print & play) |
+| Público | 10+, de casual a competitivo |
+| Modelo | Coleção completa desde a instalação; sem quests, passes ou progressão; cosméticos opcionais |
+| Estrutura | Menu: Criação de Deck · Jogar (offline/online) · Tutorial |
+| Visual | Cartoon artesanal — direção "O Diorama Vivo" (Doc. 18) |
 
 ## 4. Os três diferenciais
 
-### 4.1 O tabuleiro é o reino
-Grade de hexágonos compartilhada onde terreno, posição e território importam. Economia **é** tabuleiro: recursos nascem de hexes que podem ser conquistados, queimados ou comidos. Não existe mana.
+### 4.1 Regras que cabem na cabeça
+4 tipos de carta, 15 palavras-chave, Energia que cresce sozinha. O manual inteiro (Doc. 02) se aprende em 10 minutos — a profundidade vem das 6 facções e dos combos, não de regras empilhadas.
 
-### 4.2 Léxico Natural
-Um conjunto fechado e público de leis do mundo (água apaga fogo, metal conduz raio, doce gruda, o profano reergue os mortos). As cartas carregam tags; as leis fazem o resto. Combos **emergem** do mundo em vez de serem escritos carta a carta — fácil de aprender, fundo de dominar.
+### 4.2 Seis facções com alma (e uma mecânica própria cada)
+Gelo acumula **Frio**, Fogo cresce com **Chama Alta**, Doce fabrica **Açúcar**, Sangrento paga **Pacto** com a própria Vida, Natureza planta **Sementes**, Humano **Prepara** com Construções. Mudar de facção é mudar de jogo.
 
-### 4.3 Controle total, zero sorte de resolução
-Sem dados, sem efeitos aleatórios, sem fases automáticas: toda ação da partida é uma decisão de um jogador. A única aleatoriedade é a ordem do próprio baralho — mitigada pela compra "Duplo Horizonte" (veja 2, escolha 1) e pelo mulligan.
+### 4.3 Humor como identidade
+O jogo é engraçado de propósito: tropas com personalidade, flavors com piada, Modo Caos com eventos malucos ("Dia da Minhoca"), e a estética de maquete artesanal onde biscoitos soltam farelo e tropas derrotadas soltam algodão. **Regra da diversão** escrita no manual.
 
 ## 5. Resumo do sistema
 
-- **Tabuleiro:** hexes 9×5; **Coração do Reino** (base, 25 de Vitalidade) em extremos opostos; hexes selvagens ricos no centro.
-- **Vitória:** destruir o Coração inimigo **ou** completar 3 **Marcos de Domínio** (vitória territorial do construtor).
-- **Rodada:** **Aurora** (produção + compra) → **Ações alternadas** (3 fichas por jogador) → **Crepúsculo** (efeitos de estado resolvem: fogo espalha, veneno pinga, plantas crescem — tudo previsível e impresso nas regras).
-- **Cartas — exatamente 5 categorias:** **Tropas, Construções, Terrenos, Feitiços e Climas** (Doc. 07).
-- **Baralho:** 40 cartas, máx. 2 cópias, 1 Tropa Lendária com condição pública, até 8 Neutras.
-- **Facções (6):** **Gelados · Doces · Sangrentos · Natureza · Fogo · Humanos** — cada uma muda estruturalmente a forma de jogar (Doc. 08).
+- **Vida 30 · mão inicial 5 · Energia cresce +1/turno até 10.**
+- **Campo:** 4 Tropas + 2 Construções + 1 Terreno por jogador.
+- **Combate:** atacante escolhe alvo; defensora devolve dano; Guarda/Voador/Investida temperam.
+- **Deck:** 40 cartas, máx. 2 cópias (1 se Lendária), até 2 facções + Neutras à vontade.
+- **Modos:** Normal, Rápido e Caos (eventos aleatórios divertidos) — todos dentro de "Jogar".
 
-## 6. Pilares de design (contrato inegociável)
+## 6. Pilares de design
 
 | # | Pilar | Teste prático |
 |---|---|---|
-| 1 | Fácil de aprender | Carta entendida numa leitura; efeito previsível pela lógica natural |
-| 2 | Difícil de dominar | Toda carta tem decisão de posicionamento/tempo não-óbvia |
-| 3 | Baixa dependência de sorte | Zero dados; RNG só na ordem do baralho, mitigada |
-| 4 | Profundidade estratégica | Carta interage com terreno, clima ou leis — no mínimo dois |
-| 5 | Potencial competitivo | Estado 100% legível (informação oculta: só mão e armadilhas) |
-| 6 | Potencial para eSports | Espectador entende o lance assistindo |
-| 7 | Rejogabilidade | Mapa evolui diferente a cada partida |
-| 8 | Combos criativos | Sinergias emergem do Léxico, não de texto "peça A + peça B" |
-| 9 | Contrajogo universal | Toda estratégia tem ≥ 2 respostas em facções diferentes |
-| 10 | Diversão acima do realismo | A lógica serve à leitura e ao humor |
+| 1 | Fácil de aprender | Manual em 10 min; carta = 1 efeito + 1 palavra-chave |
+| 2 | Difícil de dominar | Toda facção tem decisões de tempo e risco próprias |
+| 3 | Sorte controlada | Sem dados; aleatoriedade só na compra (e no Modo Caos, que é opcional e simétrico) |
+| 4 | Profundidade | Combos emergem de palavras-chave + mecânicas de facção |
+| 5 | Competitivo | Estado legível; única informação oculta: mão e Armadilhas |
+| 6 | Contrajogo | Toda estratégia tem resposta em ≥ 2 facções + Neutras |
+| 7 | Rejogabilidade | 6 facções × pares de facção × 3 modos |
+| 8 | Nenhuma carta vence sozinha | Custo 6+ muda o jogo, não o encerra |
+| 9 | Regra de ouro | Texto da carta > manual |
+| 10 | Regra da diversão | Confusão se resolve pela opção mais divertida, justa e simples |
 
-## 7. Posicionamento competitivo
+## 7. Posicionamento
 
-| Concorrente | Onde TERRAVIVA se diferencia |
-|---|---|
-| Hearthstone | Sem RNG de efeitos; tabuleiro posicional com terreno |
-| MTG Arena | Regras emergem de leis naturais, não de centenas de keywords; partidas curtas |
-| Legends of Runeterra | Interação via território e terreno, não só pilha de respostas |
-| Marvel Snap | Profundidade tática; zero aleatoriedade de locais |
-| Faeria / Duelyst | Economia territorial + clima global + Léxico Natural |
-
-**Espaço em branco:** nenhum card game competitivo grande ocupa o quadrante *"tabuleiro-território com leis naturais públicas e zero RNG de resolução"*.
+Ocupa o espaço "**Hearthstone de mesa de brinquedo**": mais simples e mais rápido que MTG/LoR, mais tático que jogos de sorte, com uma identidade visual (maquete artesanal viva) que nenhum concorrente tem. Print & play como porta de entrada e ferramenta de playtest.
 
 ## 8. Universo e tom
 
-O continente **Terraviva** é uma terra viva onde seis grandes reinos disputam a regência: o inverno eterno dos **Gelados**, o reino confeitado dos **Doces**, a corte profana dos **Sangrentos**, o bosque sem dono da **Natureza**, as fornalhas do **Fogo** e as muralhas versáteis dos **Humanos**. Tom: aventura cartoon com sinceridade épica — engraçado nas bordas, sério nas regras.
+O mundo de **Terraviva** é um continente em miniatura onde seis reinos brigam pela regência: o **Reino Glacial**, a **Chama Selvagem**, o **Império Açucarado**, o **Clã Rubro**, o **Bosque Vivo** e a **Ordem dos Aventureiros** — cruzados pelos **Errantes de Terraviva** (as cartas Neutras: mercadores, monstros soltos e aventureiros sem bandeira). Tom: fantasia maluca, humor estranho, batalhas exageradas — e regras levadas a sério.
 
 ---
 
-## 9. REVISÃO CRÍTICA (registro da mudança de direção v0.2)
+## 9. REVISÃO CRÍTICA (v0.5 — a grande simplificação)
 
-1. **Corte do "Pulso do Reino"** (fase automática de ecossistema, v0.1): removido por decisão de produto — risco de o jogador sentir que "o jogo joga sozinho" e custo alto de leitura. **O que foi preservado:** a sensação de mundo vivo migra para (a) leis naturais passivas do Léxico, (b) efeitos de estado resolvidos no Crepúsculo de forma fixa e impressa, e (c) **Instintos** — habilidades reativas das criaturas que disparam em resposta a eventos (interceptar, contra-atacar, colher ao passar) sempre sob gatilhos públicos. Agência 100% do jogador.
-2. **Redução de 12 → 6 facções:** foco de produção e identidades mais fortes e arquetípicas (Gelo/Doce/Morte/Natureza/Fogo/Humano são legíveis instantaneamente por qualquer público). As 6 cortadas ficam arquivadas como candidatas de expansão.
-3. **Set inicial reduzido para 90 cartas (15 por facção):** menos vocabulário no lançamento, curadoria maior por carta, custo de coleção menor para o jogador novo.
+1. **O sistema de hexágonos/3 recursos/Léxico foi substituído** pelo manual "Guerra dos Reinos" escrito pelo diretor. Ganhos: tempo de aprendizado cai de ~40 para ~10 minutos; partidas mais curtas; produção MUITO mais barata; testável em papel imediatamente. Perdas assumidas: profundidade posicional e a assinatura "leis naturais" (parcialmente preservada nas mecânicas de facção — fogo ainda queima, gelo ainda congela, doce ainda gruda).
+2. **O que sobrevive de tudo que foi construído:** as 6 facções e suas identidades, o elenco de personagens (Vovó Amaruk, Marzia, Conde Vesperto, Raizena, Brasa-Rei Otavio, Capitã Odete), os flavors, a estrutura mínima de menu (v0.4) e a direção de arte "Diorama Vivo" (Doc. 18) — que casa ainda melhor com um campo compacto de 4 tropas.
+3. **Nomes oficializados:** jogo = **Guerra dos Reinos**; mundo = **Terraviva**; neutros = **Errantes de Terraviva** (nome-referência do rascunho substituído por original, conforme diretriz do próprio manual).
 
-**Veredicto:** direção v0.2 aprovada; documentos seguintes atualizados.
+**Veredicto:** v0.5 aprovada. O jogo agora é jogável em papel HOJE.
