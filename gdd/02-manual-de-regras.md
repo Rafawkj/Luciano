@@ -52,13 +52,14 @@ Mudam as regras do campo. Apenas **1 Terreno ativo** por jogador; jogar um novo 
 ```
                 [ ☁ CLIMA — compartilhado, no centro da mesa ]
 Cada jogador:
-[ CONSTRUÇÃO ] [ CONSTRUÇÃO ]
+[ TERRENO ]  [ CONSTRUÇÃO ] [ CONSTRUÇÃO ]
 [ TROPA ] [ TROPA ] [ TROPA ] [ TROPA ] [ TROPA ]
 [ DECK ]  [ DESCARTE ]
 ```
 - Máximo de **5 Tropas em campo** por jogador. Campo cheio = espere uma Tropa sair.
 - **2 Construções** por jogador.
-- **1 espaço de Clima**, compartilhado no centro: só existe 1 Clima ativo por vez; jogar um novo substitui o anterior (e vale para os dois jogadores). *(As cartas de Clima entram com a nova lista de cartas do diretor.)*
+- **1 Terreno ativo** por jogador; jogar um novo descarta o antigo.
+- **1 espaço de Clima**, compartilhado no centro: só existe 1 Clima ativo por vez; jogar um novo substitui o anterior (e vale para os dois jogadores). *(As cartas de Clima entram com as listas oficiais do diretor.)*
 
 ## 6. Energia
 

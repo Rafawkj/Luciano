@@ -1,3 +1,5 @@
+> ⚠️ **SET PROVISÓRIO** — será substituído pela lista oficial do diretor (como já ocorreu com Gelo).
+
 # PRIMEIRA GUERRA — Errantes de Terraviva (Neutras, 25)
 
 > Entram em qualquer deck, em qualquer quantidade. Nunca mais fortes que as cartas de facção: completam estratégias (Doc. 02 §14). 12 Tropas · 5 Feitiços · 4 Construções · 4 Terrenos.

@@ -1,29 +1,30 @@
-# Set Inicial "PRIMEIRA GUERRA" — Formato e Índice
+# Cartas de GUERRA DOS REINOS — Índice
 
-> **Documento 09 · Cartas** · v0.5 — 115 cartas no formato do Manual (Doc. 02).
-> **4 tipos:** Tropa · Feitiço · Construção · Terreno. **Raridades:** C · I · R · E · L.
+> **Documento 09 · Cartas** · v0.5.2
+> As listas oficiais estão sendo entregues pelo diretor, **uma facção por vez**. Cada lista oficial substitui integralmente o set provisório daquela facção.
 
-## Modelo de carta (Doc. 02 §13)
+## Status das facções
+
+| Facção | Arquivo | Status | Cartas |
+|---|---|---|---|
+| ❄ Gelo (Reino Glacial) | [gelo.md](gelo.md) | ✅ **OFICIAL** | 30 |
+| 🍬 Doce (Império Açucarado) | [doce.md](doce.md) | ⚠ provisória | 15 |
+| 🩸 Sangrento (Clã Rubro) | [sangrento.md](sangrento.md) | ⚠ provisória | 15 |
+| 🌿 Natureza (Bosque Vivo) | [natureza.md](natureza.md) | ⚠ provisória | 15 |
+| 🔥 Fogo (Chama Selvagem) | [fogo.md](fogo.md) | ⚠ provisória | 15 |
+| ⚔ Humano (Ordem dos Aventureiros) | [humano.md](humano.md) | ⚠ provisória | 15 |
+| 🎒 Neutras (Errantes de Terraviva) | [neutras.md](neutras.md) | ⚠ provisória | 25 |
+
+## Formato oficial (o do diretor)
 
 ```
-#### N. Nome — Tipo · Facção · Raridade
-Custo X | ATQ A / VIDA V   (apenas Tropas)
-Efeito: máx. 1 efeito principal + 1 palavra-chave, texto curto.
-"Flavor de 1 linha."
+## Nome da Carta
+Tipo: Tropa | Feitiço | Construção | Terreno
+Facção · Raridade (Comum/Incomum/Rara/Épica/Lendária) · Custo
+Ataque / Vida (se Tropa) · Palavra-chave (se houver)
+Efeito: 1 efeito principal, texto curto.
 ```
 
-- Palavras-chave: apenas as 15 do Manual (Doc. 02 §10).
-- Mecânicas de facção: Frio Acumulado · Chama Alta · Açúcar · Pacto · Semente · Preparar (Doc. 08).
-- Tokens (não vão no deck): **Semente 0/1** · **Broto 1/2** · **Ovo-Brasa 0/2** · **Esqueleto 2/1**.
-- Sugestões de animação/som por carta saem da ficha (texto curto!) e vivem na direção de arte (Docs. 14/18).
-
-## Índice (115)
-
-| Arquivo | Conteúdo | Qtde |
-|---|---|---|
-| 01-gelo-doce.md | Gelo (1–15) · Doce (16–30) | 30 |
-| 02-sangrento-natureza.md | Sangrento (31–45) · Natureza (46–60) | 30 |
-| 03-fogo-humano.md | Fogo (61–75) · Humano (76–90) | 30 |
-| 05-neutras.md | Errantes de Terraviva (91–115) | 25 |
-
-Distribuição típica por facção (15): 9 Tropas · 3–4 Feitiços · 1–2 Construções · 1 Terreno — espelhando a proporção recomendada de deck (Doc. 02 §3).
+- Composição-referência por facção (padrão Gelo): **18 Tropas · 4 Construções · 3 Terrenos · 5 Feitiços = 30**.
+- Palavras-chave: as 15 do Manual (Doc. 02 §10).
+- Cada lista oficial termina com a **estratégia da facção** (pontos fortes/fracos, parcerias, combo-assinatura) e **notas de integração** do estúdio.

@@ -157,7 +157,7 @@
 
 <div class="wrap">
   <div class="titulo"><h1><span class="g">GUERRA</span> <span class="d">DOS</span> <span class="r">REINOS</span></h1></div>
-  <div class="sub">Protótipo v2 · campo 5 Tropas + 2 Construções + Clima · atacar não sofre dano de volta</div>
+  <div class="sub">Protótipo v3 · Gelo com a LISTA OFICIAL do diretor (30 cartas) · campo 5 Tropas + Terreno + 2 Construções + Clima</div>
 
   <div class="tela ativa" id="telaEscolha">
     <div class="escolha">
@@ -166,11 +166,11 @@
         <p>Agressivo e explosivo. Queime, exploda e feche na cara com <b>Chama Alta</b>.</p>
       </button>
       <button class="fac-btn f-gelo" onclick="iniciar('gelo')">
-        <h2>❄ Reino Glacial</h2>
+        <h2>❄ Reino Glacial ★OFICIAL</h2>
         <p>Defesa e controle. Congele tudo e acumule <b>Frio</b> até o inimigo desistir.</p>
       </button>
     </div>
-    <p class="nota-demo">Demo do GDD v0.5.1 com as correções do playtest do diretor: 5 espaços de Tropa, 2 de Construção e 1 de Clima compartilhado; animações de ataque, impacto e morte; e o atacante <b>não sofre mais dano de volta</b>. As cartas atuais são provisórias — serão substituídas pela lista oficial do diretor. O espaço de Clima aguarda as novas cartas.</p>
+    <p class="nota-demo">Demo v0.5.2: o Reino Glacial usa a <b>lista oficial de 30 cartas do diretor</b> (deck singleton, Modo Rápido). Fogo segue provisório até a lista chegar. Efeitos de "escolha" viram aleatórios nesta demo; o Urso Polar aguarda a decisão sobre dano de volta. Terreno por jogador + Clima compartilhado no centro.</p>
   </div>
 
   <div class="tela" id="telaJogo">
@@ -231,23 +231,41 @@ const CARTAS = {
   incendio:{n:"Incêndio", f:"fogo", t:"feitico", c:4, mini:"🔥", kw:"TODAS as Tropas ficam Queimando", fx:(g,l)=>{ log(g,"🔥 INCÊNDIO! Todas as Tropas estão Queimando (fogo não escolhe lado)."); ["eu","ia"].forEach(ld=>g[ld].campo.forEach(p=>{if(p)p.queima=true;})); } },
   forja:{n:"Forja do Coração Ardente", f:"fogo", t:"constru", c:3, mini:"⚒️", kw:"Investida custa 1 a menos"},
   otavio:{n:"Brasa-Rei Otavio", f:"fogo", t:"tropa", c:6, a:5, v:5, investida:true, lend:true, mini:"👑", kw:"Investida · Chama Alta: Ataque Duplo"},
-  lebre:{n:"Lebre-Flecha", f:"gelo", t:"tropa", c:1, a:2, v:1, investida:true, mini:"🐇", kw:"Investida"},
-  pinguimesp:{n:"Pinguim Espadachim", f:"gelo", t:"tropa", c:2, a:2, v:3, mini:"🐧", kw:"Entra: congela inimigo (ATQ≤2)", onPlay:(g,l)=>{ const alvos=g[outro(l)].campo.filter(p=>p&&p.a<=2&&!p.congelada); if(alvos.length){const p=alvos[Math.floor(g.rnd()*alvos.length)]; congelar(g,p); log(g,`🗡️ O Pinguim Espadachim congela ${p.n}!`);} } },
-  wisp:{n:"Wisp Boreal", f:"gelo", t:"tropa", c:2, a:1, v:2, mini:"✨", kw:"Entra: 1 Frio num inimigo", onPlay:(g,l)=>{ const alvos=g[outro(l)].campo.filter(p=>p); if(alvos.length){const p=alvos[Math.floor(g.rnd()*alvos.length)]; darFrio(g,p,1); log(g,`❄ O Wisp sopra Frio em ${p.n}`);} } },
-  boneco:{n:"Boneco de Neve Veterano", f:"gelo", t:"tropa", c:2, a:1, v:4, guarda:true, mini:"⛄", kw:"Guarda"},
-  granadeiro:{n:"Pinguim Granadeiro", f:"gelo", t:"tropa", c:3, a:2, v:3, mini:"🐧", kw:"Ataques aplicam 1 Frio", frioAtaque:true},
-  coruja:{n:"Coruja-das-Neves", f:"gelo", t:"tropa", c:3, a:3, v:2, voador:true, mini:"🦉", kw:"Voador"},
-  morsa:{n:"Morsa Quebra-Gelo", f:"gelo", t:"tropa", c:4, a:3, v:5, mini:"🦭", kw:"Entra: congela um inimigo", onPlay:(g,l)=>{ const alvos=g[outro(l)].campo.filter(p=>p&&!p.congelada); if(alvos.length){const p=alvos.reduce((m,x)=>x.a>m.a?x:m); congelar(g,p); log(g,`🧊 A Morsa congela ${p.n}!`);} } },
-  alce:{n:"Alce-Trenó", f:"gelo", t:"tropa", c:4, a:4, v:4, investida:true, mini:"🫎", kw:"Investida"},
-  urso:{n:"Urso-Monólito", f:"gelo", t:"tropa", c:6, a:6, v:7, guarda:true, mini:"🐻‍❄️", kw:"Guarda · congeladas não descongelam", trava:true},
-  sopro:{n:"Sopro do Zero", f:"gelo", t:"feitico", c:2, mini:"🌬️", alvo:"tropaInimiga", kw:"Congela + 1 Frio", fx:(g,l,p)=>{ congelar(g,p); darFrio(g,p,1); log(g,`🌬️ Sopro do Zero congela ${p.n}!`); } },
-  nevasca:{n:"Nevasca", f:"gelo", t:"feitico", c:5, mini:"🌨️", kw:"Congela todas as inimigas", fx:(g,l)=>{ log(g,"🌨️ NEVASCA! Todas as Tropas inimigas congelam."); g[outro(l)].campo.forEach(p=>{ if(p) congelar(g,p); }); } },
-  despensa:{n:"Despensa de Gelo", f:"gelo", t:"constru", c:2, mini:"🧊", kw:"Início do turno: 1 Frio no inimigo mais forte", inicioTurno:(g,l)=>{ const alvos=g[outro(l)].campo.filter(p=>p); if(alvos.length){ const p=alvos.reduce((m,x)=>x.a>m.a?x:m); darFrio(g,p,1); log(g,`🧊 A Despensa acumula Frio em ${p.n}`);} } },
-  amaruk:{n:"Vovó Amaruk", f:"gelo", t:"tropa", c:7, a:4, v:8, guarda:true, lend:true, mini:"🐻", kw:"Guarda · fim do turno: Frio em todas", fimTurno:(g,l)=>{ let any=false; g[outro(l)].campo.forEach(p=>{ if(p){darFrio(g,p,1); any=true;} }); if(any) log(g,"🧶 Vovó Amaruk tricota o inverno: 1 Frio em todas as inimigas."); } },
+  // ---- GELO: LISTA OFICIAL DO DIRETOR (30 cartas) ----
+  recruta:{n:"Pinguim Recruta", f:"gelo", t:"tropa", c:1, a:1, v:2, pinguim:true, mini:"🐧", kw:"Entra: 1 Frio num inimigo", onPlay:(g,l)=>{ frioAleatorio(g,outro(l),1,"Pinguim Recruta"); } },
+  escudeiro:{n:"Pinguim Escudeiro", f:"gelo", t:"tropa", c:2, a:1, v:4, pinguim:true, guarda:true, mini:"🐧", kw:"Guarda · suas Tropas de Gelo +1 Vida", auraVidaGelo:true, onPlay:(g,l,self)=>{ g[l].campo.forEach(p=>{ if(p&&p!==self&&p.f==="gelo"){p.v++;} }); log(g,"🛡️ O Escudeiro reforça as Tropas de Gelo: +1 Vida"); } },
+  espadachim:{n:"Espadachim da Neve", f:"gelo", t:"tropa", c:2, a:2, v:3, mini:"⚔️", kw:"+1 ATQ ao atacar Congeladas", vsCongelada:1},
+  magonariz:{n:"Mago do Nariz Gelado", f:"gelo", t:"tropa", c:3, a:2, v:4, mini:"🧙", kw:"Entra: congela inimigo (ATQ≤2)", onPlay:(g,l)=>{ const alvos=g[outro(l)].campo.filter(p=>p&&p.a<=2&&!p.congelada); if(alvos.length){const p=alvos[Math.floor(g.rnd()*alvos.length)]; congelar(g,p); log(g,`🧙 O Mago do Nariz Gelado congela ${p.n}!`);} } },
+  cavfloco:{n:"Cavaleiro do Floco Azul", f:"gelo", t:"tropa", c:3, a:3, v:3, mini:"🐴", kw:"+1 Vida quando inimigo é Congelado", ganhaVidaAoCongelar:true},
+  corujainv:{n:"Coruja Invernal", f:"gelo", t:"tropa", c:3, a:2, v:2, voador:true, mini:"🦉", kw:"Voador · dano na cara: 1 Frio num inimigo", frioAoFace:true},
+  boneconervoso:{n:"Boneco de Neve Nervoso", f:"gelo", t:"tropa", c:2, a:2, v:2, mini:"⛄", kw:"Explodir: 1 Frio em TODAS as inimigas", explodir:(g,l)=>{ let n=0; g[outro(l)].campo.forEach(p=>{ if(p){darFrio(g,p,1); n++;} }); if(n) log(g,"💥⛄ O Boneco Nervoso explode: 1 Frio em todas as inimigas!"); } },
+  ursopolar:{n:"Urso Polar de Guerra", f:"gelo", t:"tropa", c:4, a:4, v:5, mini:"🐻‍❄️", kw:"(efeito aguarda decisão sobre dano de volta)"},
+  bruxa:{n:"Bruxa da Geada", f:"gelo", t:"tropa", c:4, a:2, v:5, mini:"🧹", kw:"Início do turno: 1 Frio num inimigo", inicioTurnoTropa:(g,l)=>{ frioAleatorio(g,outro(l),1,"Bruxa da Geada"); } },
+  gigante:{n:"Gigante de Cristal Frio", f:"gelo", t:"tropa", c:6, a:5, v:7, guarda:true, mini:"🗿", kw:"Guarda · Entra: congela até 2 inimigos", onPlay:(g,l)=>{ const alvos=g[outro(l)].campo.filter(p=>p&&!p.congelada).sort((a,b)=>b.a-a.a).slice(0,2); alvos.forEach(p=>{congelar(g,p); log(g,`🗿 O Gigante congela ${p.n}!`);}); } },
+  lobobranco:{n:"Lobo Branco Faminto", f:"gelo", t:"tropa", c:3, a:3, v:2, mini:"🐺", kw:"+2 ATQ contra alvos com Frio", vsFrio:2},
+  princesa:{n:"Princesa da Aurora Quebrada", f:"gelo", t:"tropa", c:7, a:4, v:8, lend:true, mini:"👸", kw:"Início: congela o inimigo mais forte · cura 1 por congelamento", curaAoCongelar:true, inicioTurnoTropa:(g,l)=>{ const alvos=g[outro(l)].campo.filter(p=>p&&!p.congelada); if(alvos.length){const p=alvos.reduce((m,x)=>x.a>m.a?x:m); congelar(g,p); log(g,`👸 A Princesa congela ${p.n}!`);} } },
+  generalping:{n:"General Pinguim Bigodudo", f:"gelo", t:"tropa", c:5, a:3, v:6, pinguim:true, mini:"🎖️", kw:"Suas Tropas Pinguim +1/+1", auraPinguim:true, onPlay:(g,l,self)=>{ g[l].campo.forEach(p=>{ if(p&&p!==self&&p.pinguim){p.a++;p.v++;} }); log(g,"🎖️ O General promove os Pinguins: +1/+1"); } },
+  caranguejo:{n:"Caranguejo de Gelo", f:"gelo", t:"tropa", c:2, a:1, v:3, guarda:true, mini:"🦀", kw:"Guarda · quem o fere ganha 1 Frio", frioAoSofrer:true},
+  dragaozinho:{n:"Dragãozinho de Granizo", f:"gelo", t:"tropa", c:5, a:4, v:4, voador:true, mini:"🐉", kw:"Voador · Entra: 2 de dano numa Congelada", onPlay:(g,l)=>{ const alvos=g[outro(l)].campo.filter(p=>p&&p.congelada); if(alvos.length){const p=alvos.reduce((m,x)=>x.a>m.a?x:m); ferirTropa(g,outro(l),p,2); flutuar(REG.get(p.id),"-2","#ff6a5e"); log(g,`🐉 O Dragãozinho cospe granizo em ${p.n}: 2!`); limparMortas(g);} } },
+  reigelad:{n:"Rei da Geladeira Antiga", f:"gelo", t:"tropa", c:6, a:4, v:6, mini:"🤴", kw:"1×/turno: Feitiço de Gelo → 1 Frio em todas", reiGeladeira:true},
+  fantasma:{n:"Fantasma da Nevasca", f:"gelo", t:"tropa", c:4, a:3, v:3, mini:"👻", kw:"Não pode ser atacada por Congeladas"},
+  mamute:{n:"Mamute de Gelo Fofo", f:"gelo", t:"tropa", c:7, a:6, v:8, mini:"🦣", kw:"Entra: inimigas −1 ATQ p/ sempre", onPlay:(g,l)=>{ let n=0; g[outro(l)].campo.forEach(p=>{ if(p){p.a=Math.max(0,p.a-1); n++;} }); if(n) log(g,"🦣 O Mamute Fofo intimida: −1 ATQ permanente em todas as inimigas!"); } },
+  castelo_esc:{n:"Castelo Escorregadio", f:"gelo", t:"constru", c:3, mini:"🏰", kw:"1º atacante inimigo do turno ganha 1 Frio", casteloEsc:true},
+  torresopro:{n:"Torre do Sopro Frio", f:"gelo", t:"constru", c:4, mini:"🗼", kw:"Início do turno: 1 Frio num inimigo aleatório", inicioTurno:(g,l)=>{ frioAleatorio(g,outro(l),1,"Torre do Sopro Frio"); } },
+  muralhacubos:{n:"Muralha de Cubos de Gelo", f:"gelo", t:"constru", c:2, mini:"🧱", kw:"−2 no 1º ataque direto sofrido por turno", muralhaCubos:true},
+  labneve:{n:"Laboratório da Neve Estranha", f:"gelo", t:"constru", c:5, mini:"🧪", kw:"Inimigo Congelado → compre 1 (1×/turno)", labNeve:true},
+  lago:{n:"Lago Congelado", f:"gelo", t:"terreno", c:2, mini:"🌊", kw:"Inimigas entram com −1 ATQ até o próximo turno"},
+  montanha:{n:"Montanha da Nevasca", f:"gelo", t:"terreno", c:3, mini:"⛰️", kw:"Início de cada turno: 1 tropa do jogador ganha Frio"},
+  palacio:{n:"Palácio Azul Abandonado", f:"gelo", t:"terreno", c:4, mini:"🏯", kw:"Suas Tropas de Gelo +1 Vida", onPlay:(g,l)=>{ g[l].campo.forEach(p=>{ if(p&&p.f==="gelo")p.v++; }); log(g,"🏯 O Palácio abriga as Tropas de Gelo: +1 Vida"); } },
+  raiocong:{n:"Raio Congelante", f:"gelo", t:"feitico", c:2, mini:"⚡", alvo:"tropaInimiga", kw:"Congela uma Tropa inimiga", fx:(g,l,p)=>{ congelar(g,p); log(g,`⚡ Raio Congelante em ${p.n}!`); } },
+  nevascarep:{n:"Nevasca Repentina", f:"gelo", t:"feitico", c:3, mini:"🌨️", kw:"1 Frio em todas; 1 de dano nas Congeladas", fx:(g,l)=>{ log(g,"🌨️ NEVASCA REPENTINA!"); g[outro(l)].campo.forEach(p=>{ if(p) darFrio(g,p,1); }); g[outro(l)].campo.forEach(p=>{ if(p&&p.congelada){ ferirTropa(g,outro(l),p,1); flutuar(REG.get(p.id),"-1","#a8d8ee"); } }); limparMortas(g); } },
+  prisao:{n:"Prisão de Cristal", f:"gelo", t:"feitico", c:4, mini:"💠", alvo:"tropaInimiga", kw:"Alvo não age até o fim do próximo turno", fx:(g,l,p)=>{ congelar(g,p); p.presa=true; log(g,`💠 ${p.n} está presa em cristal!`); } },
+  soproinv:{n:"Sopro do Inverno", f:"gelo", t:"feitico", c:1, mini:"🌬️", alvo:"tropaInimiga", kw:"Alvo −2 ATQ no turno; se tinha Frio, compre 1", fx:(g,l,p)=>{ const red=Math.min(2,p.a); p.a-=red; p.soproRestaura=(p.soproRestaura||0)+red; log(g,`🌬️ Sopro do Inverno: ${p.n} −2 ATQ neste turno`); if(p.frio>0){ comprar(l); log(g,"…e o Frio rende 1 carta!"); } } },
+  eraglacial:{n:"Era Glacial Maluca", f:"gelo", t:"feitico", c:8, lend:true, mini:"🌌", kw:"Congela TODAS; suas Gelo +1 ATQ por Congelada", fx:(g,l)=>{ log(g,"🌌 ERA GLACIAL MALUCA!!"); g[outro(l)].campo.forEach(p=>{ if(p) congelar(g,p); }); const n=g[outro(l)].campo.filter(p=>p&&p.congelada).length; if(n){ g[l].campo.forEach(p=>{ if(p&&p.f==="gelo"){p.a+=n;} }); log(g,`🌌 Suas Tropas de Gelo ganham +${n} de Ataque!`); } } },
 };
 const DECKS = {
   fogo:["diabrete","diabrete","diabrete","falcao","falcao","falcao","salamandra","salamandra","salamandra","cuspidor","cuspidor","cuspidor","caofum","caofum","caofum","touro","touro","fenix","fenix","bolafogo","bolafogo","bolafogo","lancachamas","lancachamas","lancachamas","incendio","incendio","forja","forja","otavio"],
-  gelo:["lebre","lebre","lebre","pinguimesp","pinguimesp","pinguimesp","wisp","wisp","wisp","boneco","boneco","boneco","granadeiro","granadeiro","granadeiro","coruja","coruja","coruja","morsa","morsa","alce","alce","urso","sopro","sopro","sopro","nevasca","nevasca","despensa","amaruk"]
+  gelo:["recruta","escudeiro","espadachim","magonariz","cavfloco","corujainv","boneconervoso","ursopolar","bruxa","gigante","lobobranco","princesa","generalping","caranguejo","dragaozinho","reigelad","fantasma","mamute","castelo_esc","torresopro","muralhacubos","labneve","lago","montanha","palacio","raiocong","nevascarep","prisao","soproinv","eraglacial"]
 };
 const EMJ={fogo:"🔥",gelo:"❄"};
 const N_TROPAS=5, N_CONSTR=2;
@@ -265,8 +283,8 @@ function atqDe(l,p){ return p.a + ((p.chamaAltaBonus && G[l].chamaAlta) ? p.cham
 function iniciar(facEu){
   const facIa = facEu==="fogo"?"gelo":"fogo";
   G={ seq:1, rnd:mulberry(Date.now()%100000), turno:0, vez:"eu", alvoModo:null, sel:null, busy:false,
-    eu:{fac:facEu, vida:20, en:0, enMax:0, deck:[], mao:[], campo:Array(N_TROPAS).fill(null), constr:Array(N_CONSTR).fill(null), chamaAlta:false},
-    ia:{fac:facIa, vida:20, en:0, enMax:0, deck:[], mao:[], campo:Array(N_TROPAS).fill(null), constr:Array(N_CONSTR).fill(null), chamaAlta:false} };
+    eu:{fac:facEu, vida:20, en:0, enMax:0, deck:[], mao:[], campo:Array(N_TROPAS).fill(null), constr:Array(N_CONSTR).fill(null), terreno:null, chamaAlta:false},
+    ia:{fac:facIa, vida:20, en:0, enMax:0, deck:[], mao:[], campo:Array(N_TROPAS).fill(null), constr:Array(N_CONSTR).fill(null), terreno:null, chamaAlta:false} };
   ["eu","ia"].forEach(l=>{
     G[l].deck = DECKS[G[l].fac].map(k=>novaCarta(k));
     for(let i=G[l].deck.length-1;i>0;i--){ const j=Math.floor(G.rnd()*(i+1)); [G[l].deck[i],G[l].deck[j]]=[G[l].deck[j],G[l].deck[i]]; }
@@ -290,10 +308,19 @@ function iniciarTurno(l, primeiro){
   const P=G[l];
   P.chamaAlta=false;
   P.enMax=Math.min(8,P.enMax+1); P.en=P.enMax;
+  // flags de "uma vez por turno" (dos dois lados)
+  ["eu","ia"].forEach(ld=>{ G[ld].labUsado=false; G[ld].reiUsado=false; G[ld].casteloUsado=false; G[ld].muralhaUsada=false; });
+  // Lago Congelado: devolve o ATQ das tropas que entraram sob o debuff
+  P.campo.forEach(p=>{ if(p&&p.lagoDebuff){ p.a+=p.lagoDebuff; p.lagoDebuff=0; } });
   P.campo.forEach((p,i)=>{ if(p&&p.renasce){ P.campo[i]={...novaCarta("fenix"), pronta:false}; log(G,"🐦‍🔥 A Fênix Jovem RENASCE das cinzas!"); } });
   const trava = G[outro(l)].campo.some(p=>p&&p.trava);
   P.campo.forEach(p=>{ if(p){ p.pronta = !p.congelada; if(p.congelada && !trava){ p.descongelaFim=true; } } });
   P.constr.forEach(c=>{ if(c&&c.inicioTurno) c.inicioTurno(G,l); });
+  P.campo.forEach(p=>{ if(p&&p.inicioTurnoTropa&&!p.congelada) p.inicioTurnoTropa(G,l); });
+  // Montanha da Nevasca (de qualquer dono): o jogador do turno dá Frio a uma tropa PRÓPRIA
+  if((G.eu.terreno&&G.eu.terreno.key==="montanha")||(G.ia.terreno&&G.ia.terreno.key==="montanha")){
+    frioAleatorio(G,l,1,"A Montanha da Nevasca");
+  }
   limparMortas(G);
   if(!primeiro) comprar(l);
   else if(l==="ia") comprar(l);
@@ -313,6 +340,8 @@ async function encerrarTurno(){
 
 async function fimDeTurno(l){
   const P=G[l];
+  // Sopro do Inverno: devolve o ATQ reduzido "até o fim do turno"
+  ["eu","ia"].forEach(ld=>{ G[ld].campo.forEach(p=>{ if(p&&p.soproRestaura){ p.a+=p.soproRestaura; p.soproRestaura=0; } }); });
   ["eu","ia"].forEach(ld=>{ G[ld].campo.forEach(p=>{ if(p&&p.queima){ ferirTropa(G,ld,p,1); flutuar(REG.get(p.id),"-1 🔥","#ff9a4d"); } }); });
   limparMortas(G);
   P.campo.forEach(p=>{ if(p&&p.fimTurno) p.fimTurno(G,l); });
@@ -333,8 +362,15 @@ function jogarCarta(l, idx, alvo){
     const slot=P.campo.findIndex(s=>!s); if(slot<0) return false;
     P.en-=cc; P.mao.splice(idx,1);
     const p={...c, pronta:!!c.investida, frio:0};
+    // auras ao entrar: Escudeiro (+1 Vida Gelo), General (+1/+1 Pinguim), Palácio (+1 Vida Gelo)
+    if(p.f==="gelo" && P.campo.some(q=>q&&q.auraVidaGelo)) p.v++;
+    if(p.pinguim && P.campo.some(q=>q&&q.auraPinguim)){ p.a++; p.v++; }
+    if(p.f==="gelo" && P.terreno && P.terreno.key==="palacio") p.v++;
+    // Lago Congelado do oponente: entra com −1 ATQ até o próximo turno
+    const terrInimigo=G[outro(l)].terreno;
+    if(terrInimigo && terrInimigo.key==="lago" && p.a>0){ p.a--; p.lagoDebuff=1; log(G,`🌊 ${p.n} escorrega no Lago Congelado: −1 ATQ até o próximo turno`); }
     P.campo[slot]=p;
-    log(G,`${l==="eu"?"🫵":"🤖"} ${nome(G,l)} joga <b>${c.n}</b> (${c.a}/${c.v})`);
+    log(G,`${l==="eu"?"🫵":"🤖"} ${nome(G,l)} joga <b>${c.n}</b> (${p.a}/${p.v})`);
     if(c.onPlay) c.onPlay(G,l,p);
     limparMortas(G);
     render();
@@ -345,7 +381,19 @@ function jogarCarta(l, idx, alvo){
     log(G,`${l==="eu"?"🫵":"🤖"} ${nome(G,l)} lança <b>${c.n}</b>`);
     animFeitico(c, alvo, l);
     c.fx(G,l,alvo);
+    // Rei da Geladeira Antiga: 1×/turno, Feitiço de Gelo → 1 Frio em todas as inimigas
+    if(c.f==="gelo" && !P.reiUsado && P.campo.some(q=>q&&q.reiGeladeira)){
+      P.reiUsado=true; let n=0; G[outro(l)].campo.forEach(q=>{ if(q){darFrio(G,q,1); n++;} });
+      if(n) log(G,"🤴 O Rei da Geladeira Antiga espalha Frio em todas as inimigas!");
+    }
     limparMortas(G);
+    render();
+  } else if(c.t==="terreno"){
+    P.en-=cc; P.mao.splice(idx,1);
+    if(P.terreno) log(G,`🗺️ ${P.terreno.n} é substituído`);
+    P.terreno={...c};
+    log(G,`${l==="eu"?"🫵":"🤖"} ${nome(G,l)} joga o Terreno <b>${c.n}</b>`);
+    if(c.onPlay) c.onPlay(G,l);
     render();
   } else if(c.t==="constru"){
     const slot=P.constr.findIndex(s=>!s); if(slot<0) return false;
@@ -373,7 +421,18 @@ function alvosDe(l, atacante){
 async function atacar(l, atacante, alvo){
   G.busy=true;
   atacante.pronta=false;
-  const dA=atqDe(l,atacante);
+  // Castelo Escorregadio do defensor: 1º atacante do turno ganha 1 Frio ANTES do combate
+  const D=G[outro(l)];
+  if(!D.casteloUsado && D.constr.some(c=>c&&c.casteloEsc)){
+    D.casteloUsado=true; darFrio(G,atacante,1); log(G,`🏰 O Castelo Escorregadio gela ${atacante.n} antes do golpe!`);
+    if(atacante.congelada){ log(G,`❄ ${atacante.n} congelou no meio do ataque!`); checarFim(); render(); G.busy=false; return; }
+  }
+  let dA=atqDe(l,atacante);
+  // bônus situacionais oficiais de Gelo
+  if(alvo!=="face" && alvo){
+    if(atacante.vsCongelada && alvo.congelada){ dA+=atacante.vsCongelada; log(G,`⚔️ ${atacante.n}: +${atacante.vsCongelada} ATQ contra Congelada`); }
+    if(atacante.vsFrio && alvo.frio>0){ dA+=atacante.vsFrio; log(G,`🐺 ${atacante.n}: +${atacante.vsFrio} ATQ contra alvo com Frio`); }
+  }
   const elA=REG.get(atacante.id);
   const elT = alvo==="face" ? document.getElementById(outro(l)+"Face") : REG.get(alvo&&alvo.id);
   // animação: avanço
@@ -391,16 +450,22 @@ async function atacar(l, atacante, alvo){
   }
   // dano (SEM dano de volta — v0.5.1)
   if(alvo==="face"){
-    flutuar(elT, "-"+dA, "#ff6a5e");
-    dano(G, outro(l), dA);
-    log(G,`⚔ <b>${atacante.n}</b> ataca ${nome(G,outro(l))} na cara: ${dA} de dano!`);
+    let dReal=dA;
+    // Muralha de Cubos de Gelo: −2 no primeiro ataque direto do turno
+    if(!D.muralhaUsada && D.constr.some(c=>c&&c.muralhaCubos)){ D.muralhaUsada=true; dReal=Math.max(0,dReal-2); log(G,"🧱 A Muralha de Cubos absorve 2 do ataque direto!"); }
+    flutuar(elT, "-"+dReal, "#ff6a5e");
+    dano(G, outro(l), dReal);
+    log(G,`⚔ <b>${atacante.n}</b> ataca ${nome(G,outro(l))} na cara: ${dReal} de dano!`);
     G[l].chamaAlta=true;
+    // Coruja Invernal: dano na cara → 1 Frio num inimigo
+    if(atacante.frioAoFace && dReal>0) frioAleatorio(G,outro(l),1,"A Coruja Invernal");
     if(atacante.key==="otavio" && !atacante.duploUsado){ atacante.pronta=true; atacante.duploUsado=true; log(G,"👑 CHAMA ALTA! Otavio pode atacar DE NOVO!"); }
   } else {
     flutuar(elT, "-"+dA, "#ff6a5e");
     log(G,`⚔ <b>${atacante.n}</b> ataca <b>${alvo.n}</b>: ${dA} de dano`);
     if(atacante.frioAtaque) darFrio(G,alvo,1);
     if(alvo.queimaAtacante && !atacante.queima){ atacante.queima=true; log(G,`🔥 ${atacante.n} pegou fogo ao tocar no ${alvo.n}!`); }
+    if(alvo.frioAoSofrer && dA>0){ darFrio(G,atacante,1); log(G,`🦀 O Caranguejo de Gelo gela ${atacante.n}!`); }
     ferirTropa(G,outro(l),alvo,dA);
     limparMortas(G);
   }
@@ -421,9 +486,21 @@ function limparMortas(g){
 function dano(g,l,d){ g[l].vida-=d; if(g.vez && l===outro(g.vez)) g[g.vez].chamaAlta=true;
   const el=document.getElementById(l+"Face"); if(el&&el.classList){ el.classList.add("impacto","flash-dano"); setTimeout(()=>el.classList.remove("impacto","flash-dano"),420); }
   checarFim(); }
-function congelar(g,p){ p.congelada=true; p.pronta=false; const el=REG.get(p.id); flutuar(el,"❄","#a8d8ee"); }
+function ladoDe(p){ if(G.eu.campo.includes(p)) return "eu"; if(G.ia.campo.includes(p)) return "ia"; return null; }
+function frioAleatorio(g,lado,n,fonte){ const alvos=g[lado].campo.filter(p=>p); if(!alvos.length) return; const p=alvos[Math.floor(g.rnd()*alvos.length)]; darFrio(g,p,n); log(g,`❄ ${fonte} aplica Frio em ${p.n}`); }
+function congelar(g,p){
+  const jaEstava=p.congelada;
+  p.congelada=true; p.pronta=false; const el=REG.get(p.id); flutuar(el,"❄","#a8d8ee");
+  if(jaEstava) return;
+  // gatilhos "quando uma Tropa inimiga for Congelada" (para o lado oposto ao da tropa congelada)
+  const dono=ladoDe(p); if(!dono) return;
+  const ben=outro(dono), B=g[ben];
+  B.campo.forEach(q=>{ if(q&&q.ganhaVidaAoCongelar){ q.v++; flutuar(REG.get(q.id),"+1❤","#7fd48a"); } });
+  if(B.campo.some(q=>q&&q.curaAoCongelar)){ B.vida++; log(g,`👸 A Princesa cura 1 de Vida de ${nome(g,ben)}`); }
+  if(!B.labUsado && B.constr.some(c=>c&&c.labNeve)){ B.labUsado=true; comprar(ben); log(g,"🧪 O Laboratório da Neve Estranha rende 1 carta!"); }
+}
 function darFrio(g,p,n){ p.frio=(p.frio||0)+n; const el=REG.get(p.id); flutuar(el,"+❄","#a8d8ee");
-  if(p.frio>=3){ p.frio=0; congelar(g,p); p.a=Math.max(0,p.a-1); log(g,`❄❄❄ <b>${p.n}</b>: 3 de Frio — Congelada e −1 ATQ permanente!`); } }
+  if(p.frio>=3){ p.frio=0; p.a=Math.max(0,p.a-1); congelar(g,p); log(g,`❄❄❄ <b>${p.n}</b>: 3 de Frio — Congelada e −1 ATQ permanente!`); } }
 
 // ============ efeitos visuais ============
 function flutuar(el, txt, cor){
@@ -483,14 +560,21 @@ async function turnoIA(){
   if(G.acabou) return;
   const l="ia", P=G.ia;
   let agiu=true, passos=0;
-  while(agiu && passos++<20 && !G.acabou){
+  while(agiu && passos++<24 && !G.acabou){
     agiu=false;
-    let i=P.mao.findIndex(c=>c.key==="nevasca" && P.en>=c.c);
-    if(i>=0 && G.eu.campo.filter(p=>p&&!p.congelada).length>=2){ jogarCarta(l,i); agiu=true; await sleep(420); continue; }
+    // feitiços de massa quando valem a pena
+    let i=P.mao.findIndex(c=>(c.key==="eraglacial") && P.en>=c.c);
+    if(i>=0 && G.eu.campo.filter(p=>p&&!p.congelada).length>=2){ jogarCarta(l,i); agiu=true; await sleep(460); continue; }
+    i=P.mao.findIndex(c=>(c.key==="nevascarep") && P.en>=c.c);
+    if(i>=0 && G.eu.campo.filter(p=>p).length>=2){ jogarCarta(l,i); agiu=true; await sleep(440); continue; }
+    // feitiço direcionado no inimigo mais forte
     i=P.mao.findIndex(c=>c.t==="feitico" && c.alvo && P.en>=c.c);
-    if(i>=0){ const alvos=G.eu.campo.filter(p=>p); if(alvos.length){ const forte=alvos.reduce((m,x)=>x.a>m.a?x:m); if(forte.a>=3 || (P.mao[i].key==="bolafogo"&&alvos.length)){ jogarCarta(l,i,forte); agiu=true; await sleep(460); continue; } } else if(P.mao[i].key==="lancachamas"){ jogarCarta(l,i,"face"); agiu=true; await sleep(460); continue; } }
+    if(i>=0){ const alvos=G.eu.campo.filter(p=>p&&(!p.congelada||P.mao[i].key==="soproinv")); if(alvos.length){ const forte=alvos.reduce((m,x)=>x.a>m.a?x:m); if(forte.a>=3 || P.mao[i].key==="bolafogo"){ jogarCarta(l,i,forte); agiu=true; await sleep(460); continue; } } else if(P.mao[i].key==="lancachamas"){ jogarCarta(l,i,"face"); agiu=true; await sleep(460); continue; } }
     i=P.mao.findIndex(c=>c.key==="incendio" && P.en>=c.c);
     if(i>=0 && G.eu.campo.filter(p=>p).length>=2){ jogarCarta(l,i); agiu=true; await sleep(420); continue; }
+    // terreno (se não tiver um)
+    i=P.mao.findIndex(c=>c.t==="terreno" && P.en>=c.c);
+    if(i>=0 && !P.terreno){ jogarCarta(l,i); agiu=true; await sleep(380); continue; }
     i=P.mao.findIndex(c=>c.t==="constru" && P.en>=c.c && P.constr.some(s=>!s));
     if(i>=0){ jogarCarta(l,i); agiu=true; await sleep(380); continue; }
     let melhor=-1, mc=-1;
@@ -553,6 +637,10 @@ function render(){
       campoEl.appendChild(d);
     });
     const cEl=document.getElementById(l+"Constr"); cEl.innerHTML="";
+    // terreno primeiro
+    if(!G[l].terreno){ const s=document.createElement("div"); s.className="slot constr-slot"; s.textContent="terreno"; s.style.borderRadius="24px"; cEl.appendChild(s); }
+    else { const c=G[l].terreno; const d=document.createElement("div"); d.className=`constru p-${c.f}`; d.style.borderRadius="24px";
+      d.innerHTML=`<span class="mini">${c.mini}</span><span>${c.n}<br><small>${c.kw}</small></span>`; cEl.appendChild(d); }
     G[l].constr.forEach(c=>{
       if(!c){ const s=document.createElement("div"); s.className="slot constr-slot"; s.textContent="construção"; cEl.appendChild(s); return; }
       const d=document.createElement("div"); d.className=`constru p-${c.f}`;
@@ -573,8 +661,9 @@ function render(){
     const jogavel = G.vez==="eu" && !G.busy && G.eu.en>=cc && !G.alvoModo && !G.sel &&
       (c.t!=="tropa"||G.eu.campo.some(s=>!s)) && (c.t!=="constru"||G.eu.constr.some(s=>!s));
     d.className=`carta p-${c.f}`+(jogavel?" jogavel":"")+((G.alvoModo&&G.alvoModo.idx===idx)?" aguarda-alvo":"");
+    const rotTipo = c.t==="feitico"?"FEITIÇO":(c.t==="terreno"?"TERRENO":"CONSTRUÇÃO");
     d.innerHTML=`<div class="custo">${cc}</div><div class="mini">${c.mini}</div><div class="nm">${c.n}</div>
-      <div class="fx">${c.kw||""}</div>${c.t==="tropa"?`<div class="st"><span style="color:#9c2c08">⚔${c.a}</span><span style="color:#16602c">❤${c.v}</span></div>`:`<div class="st" style="font-size:.52rem;letter-spacing:.08em">${c.t==="feitico"?"FEITIÇO":"CONSTRUÇÃO"}</div>`}`;
+      <div class="fx">${c.kw||""}</div>${c.t==="tropa"?`<div class="st"><span style="color:#9c2c08">⚔${c.a}</span><span style="color:#16602c">❤${c.v}</span></div>`:`<div class="st" style="font-size:.52rem;letter-spacing:.08em">${rotTipo}</div>`}`;
     if(jogavel){ d.onclick=()=>{
       if(G.busy) return;
       if(c.t==="feitico"&&c.alvo){
