@@ -24,7 +24,7 @@
 ## 🍬 DOCE — **Império Açucarado**
 - **Estilo:** suporte, defesa e combos fofos (e mortais).
 - **Usa:** Curar, Escudo, buffs, tropinhas que se ajudam, construções fofas.
-- **Mecânica especial — AÇÚCAR:** cartas geram marcadores de Açúcar; gaste **2 Açúcares** para dar **+1/+1** a uma Tropa.
+- **Mecânica especial — AÇÚCAR:** cartas geram marcadores de Açúcar; gaste **2 Açúcares** para dar **+1/+1** a uma Tropa — **uma vez por turno**, na sua fase de ação.
 - **Como vence:** resistência — cura mais do que o inimigo mata e vira gigantes de glacê.
 - **Visual:** cerâmica esmaltada e glacê de verdade; bordas de babado de bolo.
 - **Lenda:** **Marzia, Confeiteira-Marechala** — comanda fornadas como quem comanda batalhões.

@@ -8,7 +8,7 @@
 | Facção | Arquivo | Status | Cartas |
 |---|---|---|---|
 | ❄ Gelo (Reino Glacial) | [gelo.md](gelo.md) | ✅ **OFICIAL** | 30 |
-| 🍬 Doce (Império Açucarado) | [doce.md](doce.md) | ⚠ provisória | 15 |
+| 🍬 Doce (Império Açucarado) | [doce.md](doce.md) | ✅ **OFICIAL** | 30 |
 | 🩸 Sangrento (Clã Rubro) | [sangrento.md](sangrento.md) | ✅ **OFICIAL** | 30 |
 | 🌿 Natureza (Bosque Vivo) | [natureza.md](natureza.md) | ⚠ provisória | 15 |
 | 🔥 Fogo (Chama Selvagem) | [fogo.md](fogo.md) | ⚠ provisória | 15 |

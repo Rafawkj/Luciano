@@ -25,7 +25,7 @@
 ## Mecânicas de facção
 - **Frio Acumulado (Gelo)** — 3 marcadores de Frio = Congelada e −1 de Ataque permanente.
 - **Chama Alta (Fogo)** — ativa se você causou dano ao jogador inimigo neste turno.
-- **Açúcar (Doce)** — gaste 2 marcadores para dar +1/+1 a uma Tropa.
+- **Açúcar (Doce)** — gaste 2 marcadores para dar +1/+1 a uma Tropa sua; **uma vez por turno**, na sua fase de ação.
 - **Pacto X (Sangrento)** — perca X de Vida para ativar o efeito.
 - **Semente (Natureza)** — token 0/1; no início do seu turno, pode virar um Broto 1/2.
 - **Preparar (Humano)** — ativa se você controla uma Construção.
