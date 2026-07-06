@@ -11,7 +11,7 @@
 | 🍬 Doce (Império Açucarado) | [doce.md](doce.md) | ✅ **OFICIAL** | 30 |
 | 🩸 Sangrento (Clã Rubro) | [sangrento.md](sangrento.md) | ✅ **OFICIAL** | 30 |
 | 🌿 Natureza (Bosque Vivo) | [natureza.md](natureza.md) | ✅ **OFICIAL** | 30 |
-| 🔥 Fogo (Chama Selvagem) | [fogo.md](fogo.md) | ⚠ provisória | 15 |
+| 🔥 Fogo (Chama Selvagem) | [fogo.md](fogo.md) | ✅ **OFICIAL** | 30 |
 | ⚔ Humano (Ordem dos Aventureiros) | [humano.md](humano.md) | ⚠ provisória | 15 |
 | 🎒 Neutras (Errantes de Terraviva) | [neutras.md](neutras.md) | ⚠ provisória | 25 |
 
