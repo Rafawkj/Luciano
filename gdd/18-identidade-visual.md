@@ -139,6 +139,7 @@ Vista levemente inclinada (top-down ~15°), como um tabuleiro flutuando no céu 
 6. **Efeito de facção usa a paleta da facção** — dano de Fogo nunca é azul.
 7. **Épico/Lendário brilham nas BORDAS**, nunca sobre a arte ou o texto.
 8. **Nada de preto puro, cinza chapado ou caixa quadrada** em nenhuma tela.
+9. **Regra da dupla de emojis (v1.1, decisão do diretor):** a aparência provisória de toda carta é uma **dupla única de 2 emojis** — principal (quem é) + companheiro menor no canto inferior direito (o detalhe que a torna única). Nenhuma dupla se repete nas 220 cartas + tokens → não existem cartas de aparência idêntica. Tabela oficial: [cartas/05-aparencias-emoji.md](cartas/05-aparencias-emoji.md). A dupla também serve de briefing de 1 linha para a ilustração final.
 
 ---
 
