@@ -37,7 +37,7 @@
 Comum · Incomum · Rara · Épica · Lendária.
 
 ## Modos
-**Normal** (30 Vida, 40 cartas, 10 Energia, 5 Tropas) · **Rápido** (20/30/8/4) · **Caos** (Eventos Caóticos por rodada).
+**Normal** (30 Vida, 40 cartas, 10 Energia, 4 Tropas) · **Rápido** (20/30/8/4) · **Caos** (Eventos Caóticos por rodada).
 
 ## Facções (nomes oficiais)
 Reino Glacial (Gelo) · Chama Selvagem (Fogo) · Império Açucarado (Doce) · Clã Rubro (Sangrento) · Bosque Vivo (Natureza) · Ordem dos Aventureiros (Humano) · Errantes do Mundo Maluco (Neutros).

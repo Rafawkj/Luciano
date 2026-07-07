@@ -42,6 +42,6 @@ Só restam as pendências 3 e 5 (miúdas, com interpretação vigente funcionand
 6. Mestre das Feiras em decks de baixo custo (compra quase todo turno).
 
 ## Próximos passos sugeridos
-1. Diretor responde as 8 pendências (a nº 1 destrava tudo).
+1. Diretor responde as 2 pendências miúdas restantes (nº 3 e nº 5 acima).
 2. Print & play do set completo (o formato permite testar HOJE em papel).
-3. Atualizar o protótipo digital com as 7 listas oficiais (sob demanda do diretor).
+3. ✅ **v1.0 lançada:** protótipo digital refeito no estilo Encanto Vivo com campo de 4 Tropas e as listas oficiais de **Gelo e Fogo** completas (Urso Polar e Gigante de Magma já com as regras finais). As outras 5 listas entram no protótipo sob demanda do diretor.

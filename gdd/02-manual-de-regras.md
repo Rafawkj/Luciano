@@ -1,6 +1,6 @@
 # GUERRA DOS REINOS — Manual de Regras Oficial
 
-> **Documento 02 · Regras** · v0.5 — este manual É o jogo. Escrito para caber na cabeça de qualquer jogador em 10 minutos.
+> **Documento 02 · Regras** · **v1.0 — VERSÃO FINAL** — este manual É o jogo. Escrito para caber na cabeça de qualquer jogador em 10 minutos.
 > *Jogo de cartas de fantasia maluca, no mundo de Terraviva.*
 
 ---
@@ -52,10 +52,10 @@ Mudam as regras do campo. Apenas **1 Terreno ativo** por jogador; jogar um novo 
 ```
 Cada jogador:
 [ TERRENO ]  [ CONSTRUÇÃO ] [ CONSTRUÇÃO ]
-[ TROPA ] [ TROPA ] [ TROPA ] [ TROPA ] [ TROPA ]
+[ TROPA ]  [ TROPA ]  [ TROPA ]  [ TROPA ]
 [ DECK ]  [ DESCARTE ]
 ```
-- Máximo de **5 Tropas em campo** por jogador. Campo cheio = espere uma Tropa sair.
+- Máximo de **4 Tropas em campo** por jogador. Campo cheio = espere uma Tropa sair. *(Decisão final do diretor, v1.0.)*
 - **2 Construções** por jogador.
 - **1 Terreno ativo** por jogador; jogar um novo descarta o antigo.
 - *(O espaço de Clima foi excluído na v0.5.9 por decisão do diretor — o papel de "efeito global" fica com os Terrenos e com os Eventos Caóticos do Modo Caos.)*
@@ -140,7 +140,7 @@ Máximo por carta: **1 efeito principal + 1 palavra-chave + texto curto.**
 | Vida | 30 | 20 |
 | Deck | 40 | 30 |
 | Energia máx. | 10 | 8 |
-| Tropas em campo | 5 | 4 |
+| Tropas em campo | 4 | 4 |
 
 ### Modo Caos (opcional, para rir)
 No início de cada rodada, revele um **Evento Caótico** que vale para os dois:
@@ -168,6 +168,10 @@ Se algo ficar confuso, vale a opção **mais divertida, justa e simples**. Se um
 ---
 
 ## 18. Registro de mudanças
+
+### v1.0 — VERSÃO FINAL (decisão do diretor)
+- **Campo: 4 Tropas por jogador** (o diretor confirmou 4 ao aprovar a identidade visual v0.6; reverte a ampliação experimental da v0.5.1). Campo final: **4 Tropas + 2 Construções + 1 Terreno**. O Modo Rápido mantém 4 (os modos agora diferem só em Vida/deck/Energia).
+- Manual promovido a **v1.0** — regras congeladas para o lançamento; mudanças futuras viram erratas numeradas.
 
 ### v0.5.9 — Decisões do diretor (rodada final de pendências)
 - **Clima: EXCLUÍDO do jogo.** O espaço compartilhado sai do campo; efeitos globais são papel dos Terrenos e dos Eventos Caóticos.

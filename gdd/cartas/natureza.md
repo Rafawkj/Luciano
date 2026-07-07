@@ -156,7 +156,7 @@ A Facção Natureza vence **ocupando o campo**: cria Tropas pequenas e as transf
 1. **✅ RESOLVIDO (v0.5.9):** o diretor confirmou — a Semente Saltitante **NÃO conta** como Semente. Apenas o token 0/1 conta para efeitos (Broto Guerreiro, Casa na Árvore, Despertar etc.).
 2. **Token renomeado no glossário:** "Broto" → **Broto Vivo 1/2** (nome oficial do diretor).
 3. **Javali de Cipó usa a mecânica Preparar** ("se você controla uma Construção") sem nomeá-la — primeira ponte mecânica entre facções (Natureza↔Humano). Ótimo para o par de deck; anotado.
-4. **Tensão de espaço confirmada como design:** Sementes ocupam os 5 espaços de Tropa — a facção compete consigo mesma por slots (Xamã/Viveiro checam "se tiver espaço"). É o freio natural da estratégia; nenhuma correção necessária.
+4. **Tensão de espaço confirmada como design:** Sementes ocupam os 4 espaços de Tropa (v1.0) — a facção compete consigo mesma por slots (Xamã/Viveiro checam "se tiver espaço"). É o freio natural da estratégia; nenhuma correção necessária.
 5. **Auditoria de loops (aprovada):** Floresta dos Cogumelos (morte→Semente) + motores de sacrifício Sangrentos = fluxo infinito de combustível, MAS limitado por Energia e slots por turno — saudável e temático para o par Natureza+Sangrento. Druida limita a 1 compra/turno.
 6. **Raridades auditadas:** 11 C · 5 I · 7 R · 5 E · 2 L = 30 ✔ — bate 100% com o resumo do diretor.
 7. **Compatibilidade:** nenhuma referência a dano de volta ✔. Pendência única do jogo segue sendo o Urso Polar de Guerra (Gelo).

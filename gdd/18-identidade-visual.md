@@ -72,7 +72,7 @@ Molduras: **layout idêntico, alma diferente** — mesma grade, cada facção tr
 Vista levemente inclinada (top-down ~15°), como um tabuleiro flutuando no céu arcano.
 
 - **Material:** madeira encantada com veios que brilham de leve; **cristais nas bordas** que acendem no turno do dono; runas no aro externo; 2 pequenos portais de energia (deck = portal de entrada; descarte = portal que "arquiva" a carta em luz).
-- **Espaços de Tropa:** círculos rúnicos no chão que pulsam quando vazios-jogáveis e **acendem em glow suave** ao receber a peça. *(Nota do estúdio: o briefing cita 4 espaços; o Manual v0.5.1 define **5** — mantivemos 5 e o layout comporta ambos; ver pendência.)*
+- **Espaços de Tropa:** **4 círculos rúnicos** por lado (decisão final do diretor, v1.0) que pulsam quando vazios-jogáveis e **acendem em glow suave** ao receber a peça.
 - **Espaço de Terreno:** pedestal maior e ornamentado à esquerda de cada lado. **Terreno ativo transforma a arena**: Gelo congela as bordas · Fogo abre rachaduras de lava · Doce cobre de confeitos e brilho · Sangrento sobe névoa rubra · Natureza cresce cipós e folhas · Humano ergue bandeirolas e torres.
 - **Construções:** nas laterais, como **estruturas em miniatura** de verdade (torre, altar, fornalha) e não cartas deitadas; emitem partículas quando o efeito dispara.
 - **Vida do jogador:** grande **orbe-coração de cristal** com número enorme, moldura da facção.
@@ -144,6 +144,6 @@ Vista levemente inclinada (top-down ~15°), como um tabuleiro flutuando no céu 
 
 ## REVISÃO CRÍTICA (v0.6)
 1. **Direção "Diorama Vivo" arquivada** por briefing do diretor — substituída por "Encanto Vivo" (fantasia mágica cartoon premium). O que sobrevive da direção antiga: proporção-brinquedo dos personagens, silhueta-primeiro, humor sutil, leitura em miniatura e o princípio "o tabuleiro é vivo".
-2. **⚠ Pendência — espaços de Tropa:** o briefing cita 4; o Manual v0.5.1 define 5. Mantido **5** (regra vence arte) até o diretor confirmar.
+2. **✅ RESOLVIDA (v1.0) — espaços de Tropa: 4.** O diretor confirmou os 4 do briefing; Manual promovido a v1.0, arena/mockups/protótipo atualizados para 4 círculos rúnicos.
 3. **⚠ Pendência — "Loja ou Pacotes":** se houver pacotes de cartas, a decisão v0.4 (coleção completa, sem P2W) muda. Implementado como Loja cosmética até confirmação.
 4. Mockup navegável refeito no estilo novo (mesma URL de sempre).

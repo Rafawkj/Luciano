@@ -1,104 +1,110 @@
-<title>Guerra dos Reinos — Protótipo Jogável v2</title>
+<title>Guerra dos Reinos — v1.0</title>
 <style>
   :root{
-    --tinta:#f4ead8; --suave:#cbb593;
-    --fogo:#ff8a3d; --fogo-esc:#a03415; --gelo:#a8d8ee; --gelo-esc:#3f7wda;
-    --ok:#9fd45e; --ouro:#ffd76a; --ruim:#ff6a5e;
+    --marfim:#f6efdd; --suave:#b9a9e0;
+    --turquesa:#39d8d8; --ouro:#ffcf5c; --ouro-esc:#c98b1e;
+    --fogo:#ff8a3d; --gelo:#7fd4f0;
+    --ok:#8be07a; --ruim:#ff6a5e;
+    --noite:#1d1440; --violeta:#2c1e5c;
   }
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none}
   html,body{margin:0}
   body{
-    color:var(--tinta); font-family:'Trebuchet MS','Segoe UI',sans-serif; min-height:100vh;
+    color:var(--marfim); font-family:'Trebuchet MS','Segoe UI',sans-serif; min-height:100vh;
     background:
-      radial-gradient(ellipse at 50% -10%, rgba(255,214,140,.10), transparent 55%),
-      radial-gradient(ellipse at 50% 115%, rgba(0,0,0,.55), transparent 60%),
-      repeating-linear-gradient(91deg, rgba(0,0,0,.14) 0 3px, transparent 3px 96px),
-      linear-gradient(180deg,#241708,#33210f 40%,#241708);
+      radial-gradient(ellipse at 18% 8%, rgba(57,216,216,.10), transparent 45%),
+      radial-gradient(ellipse at 84% 4%, rgba(255,207,92,.08), transparent 40%),
+      radial-gradient(ellipse at 50% 118%, rgba(0,0,0,.5), transparent 60%),
+      linear-gradient(180deg,#161033,#1d1440 42%,#2c1e5c);
   }
   .wrap{max-width:980px; margin:0 auto; padding:10px 10px 46px}
 
   /* título */
-  .titulo{display:flex; align-items:baseline; justify-content:center; gap:10px; margin:6px 0 2px}
-  .titulo h1{font-size:clamp(1.15rem,3.6vw,1.7rem); margin:0; letter-spacing:.06em; font-weight:900}
-  .titulo h1 .g{color:#ff9a4d; text-shadow:0 0 14px rgba(255,120,40,.5), 0 2px 0 #000}
-  .titulo h1 .d{color:#d9c39a; text-shadow:0 2px 0 #000}
-  .titulo h1 .r{color:#a8d8ee; text-shadow:0 0 10px rgba(140,200,240,.4), 0 2px 0 #000}
+  .titulo{display:flex; align-items:baseline; justify-content:center; gap:10px; margin:8px 0 2px}
+  .titulo h1{font-size:clamp(1.15rem,3.6vw,1.75rem); margin:0; letter-spacing:.08em; font-weight:900}
+  .titulo h1 .g{color:var(--ouro); text-shadow:0 0 16px rgba(255,207,92,.55), 0 2px 0 #14102e}
+  .titulo h1 .d{color:var(--marfim); text-shadow:0 2px 0 #14102e}
+  .titulo h1 .r{color:var(--turquesa); text-shadow:0 0 14px rgba(57,216,216,.5), 0 2px 0 #14102e}
   .sub{text-align:center; color:var(--suave); font-size:.74rem; margin-bottom:8px; font-style:italic}
 
   .tela{display:none} .tela.ativa{display:block}
 
   /* escolha de facção */
   .escolha{display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin-top:26px}
-  .fac-btn{width:260px; padding:22px 20px; border-radius:16px; cursor:pointer; color:#fff; font-family:inherit;
+  .fac-btn{width:270px; padding:22px 20px; border-radius:18px; cursor:pointer; color:#fff; font-family:inherit;
     text-align:left; transition:transform .2s, box-shadow .2s; position:relative; overflow:hidden}
   .fac-btn::after{content:""; position:absolute; inset:0; background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.14) 45%, transparent 60%)}
   .fac-btn:hover{transform:translateY(-5px) scale(1.02)}
   .fac-btn h2{margin:0 0 6px; font-size:1.25rem}
   .fac-btn p{margin:0; font-size:.8rem; opacity:.92; line-height:1.45}
-  .f-fogo{background:linear-gradient(155deg,#a23a15,#571a09); border:3px solid #ff8a3d; box-shadow:0 10px 26px rgba(255,110,40,.25)}
-  .f-gelo{background:linear-gradient(155deg,#39708c,#17364a); border:3px solid #a8d8ee; box-shadow:0 10px 26px rgba(120,190,230,.22)}
-  .nota-demo{max-width:600px; margin:20px auto 0; font-size:.76rem; color:var(--suave); text-align:center; line-height:1.55}
+  .f-fogo{background:linear-gradient(155deg,#7a2410,#3d1206); border:3px solid var(--fogo); box-shadow:0 10px 26px rgba(255,110,40,.3), inset 0 0 30px rgba(255,138,61,.12)}
+  .f-gelo{background:linear-gradient(155deg,#1f4a66,#122a44); border:3px solid var(--gelo); box-shadow:0 10px 26px rgba(127,212,240,.28), inset 0 0 30px rgba(127,212,240,.10)}
+  .nota-demo{max-width:640px; margin:20px auto 0; font-size:.76rem; color:var(--suave); text-align:center; line-height:1.55}
 
   /* placar */
   .placar{display:flex; justify-content:space-between; align-items:center; gap:8px; margin:5px 2px}
-  .castelo{display:flex; align-items:center; gap:9px; background:linear-gradient(180deg,#4a3521,#33220f);
-    border:2px solid #6b4d2a; border-radius:12px; padding:6px 14px; box-shadow:0 5px 14px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.08); position:relative}
+  .castelo{display:flex; align-items:center; gap:9px; background:linear-gradient(180deg,#332465,#221847);
+    border:2px solid rgba(57,216,216,.45); border-radius:14px; padding:6px 14px;
+    box-shadow:0 5px 14px rgba(0,0,0,.5), 0 0 14px rgba(57,216,216,.15), inset 0 1px 0 rgba(255,255,255,.08); position:relative}
   .castelo .emj{font-size:1.7rem; filter:drop-shadow(0 2px 2px rgba(0,0,0,.5))}
-  .vida{font-size:1.45rem; font-weight:900; font-variant-numeric:tabular-nums; text-shadow:0 2px 0 #000}
+  .vida{font-size:1.45rem; font-weight:900; font-variant-numeric:tabular-nums; color:var(--ouro); text-shadow:0 0 10px rgba(255,207,92,.4), 0 2px 0 #14102e}
   .rot{font-size:.6rem; text-transform:uppercase; letter-spacing:.1em; color:var(--suave)}
-  .energia{display:flex; gap:4px; align-items:center; flex-wrap:wrap; max-width:280px}
-  .botao-en{width:17px; height:17px; border-radius:50%; background:#4a3823; box-shadow:inset 0 2px 4px rgba(0,0,0,.6); border:1px solid #2c1f10}
-  .botao-en.on{background:radial-gradient(circle at 34% 28%, #fff3c4, #ffcf4d 55%, #c98b1e); box-shadow:0 0 9px rgba(255,205,80,.65), inset 0 1px 1px rgba(255,255,255,.6)}
+  .energia{display:flex; gap:4px; align-items:center; flex-wrap:wrap; max-width:300px}
+  .botao-en{width:15px; height:15px; background:#241a4d; border:1px solid #3a2b70;
+    clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+  .botao-en.on{background:radial-gradient(circle at 38% 30%, #d8fbff, var(--turquesa) 55%, #1a7f8a); border-color:#9ff0f0;
+    filter:drop-shadow(0 0 5px rgba(57,216,216,.8))}
   .deckinfo{font-size:.66rem; color:var(--suave); text-align:right; line-height:1.5}
 
-  /* arena */
-  .arena{border-radius:18px; padding:10px 8px; margin:4px 0; position:relative;
-    border:6px solid #4a3019;
+  /* arena arcana */
+  .arena{border-radius:20px; padding:10px 8px; margin:4px 0; position:relative;
+    border:3px solid rgba(57,216,216,.4);
     background:
-      radial-gradient(ellipse at 50% 50%, rgba(255,225,170,.06), transparent 70%),
-      repeating-linear-gradient(0deg, rgba(0,0,0,.06) 0 2px, transparent 2px 5px),
-      linear-gradient(180deg,#3d5a2e,#2c421f 50%,#3d5a2e);
-    box-shadow:0 16px 36px rgba(0,0,0,.55), inset 0 0 60px rgba(0,0,0,.4)}
-  .fileira{display:flex; gap:7px; justify-content:center; margin:6px 0; min-height:126px}
+      radial-gradient(ellipse at 50% 50%, rgba(57,216,216,.07), transparent 70%),
+      radial-gradient(ellipse at 50% -20%, rgba(255,207,92,.06), transparent 55%),
+      linear-gradient(180deg,#251a52,#1c1340 50%,#251a52);
+    box-shadow:0 16px 36px rgba(0,0,0,.55), 0 0 26px rgba(57,216,216,.12), inset 0 0 60px rgba(10,6,28,.6)}
+  .fileira{display:flex; gap:9px; justify-content:center; margin:6px 0; min-height:126px}
   .fileira.constr{min-height:56px}
-  .slot{width:92px; height:124px; border-radius:12px;
-    background:radial-gradient(ellipse at 50% 45%, rgba(0,0,0,.28), rgba(0,0,0,.14));
-    box-shadow:inset 0 3px 8px rgba(0,0,0,.5), inset 0 -1px 0 rgba(255,255,255,.06);
-    display:flex; align-items:center; justify-content:center; font-size:.58rem; color:rgba(255,255,255,.28); letter-spacing:.08em; text-transform:uppercase}
-  .slot.constr-slot{width:128px; height:50px}
-  .centro{display:flex; align-items:center; justify-content:center; gap:14px; margin:6px 0; position:relative}
-  .linha-centro{flex:1; height:3px; border-radius:3px; background:linear-gradient(90deg, transparent, rgba(255,235,190,.25), transparent)}
-  .clima-slot{width:150px; height:46px; border-radius:24px; border:2px dashed rgba(190,220,255,.35);
-    background:radial-gradient(ellipse at 50% 0%, rgba(160,200,255,.10), rgba(0,0,0,.22));
-    display:flex; align-items:center; justify-content:center; gap:6px; font-size:.62rem; color:rgba(210,230,255,.55);
-    letter-spacing:.08em; text-transform:uppercase; box-shadow:inset 0 2px 8px rgba(0,0,0,.4)}
-  .turno-ind{position:absolute; right:8px; font-size:.62rem; color:var(--ouro); letter-spacing:.08em; text-transform:uppercase; font-weight:800; text-shadow:0 1px 0 #000}
+  .slot{width:92px; height:124px; border-radius:16px;
+    border:2px dashed rgba(57,216,216,.35);
+    background:radial-gradient(ellipse at 50% 45%, rgba(57,216,216,.06), rgba(0,0,0,.28));
+    box-shadow:inset 0 3px 10px rgba(0,0,0,.5);
+    display:flex; align-items:center; justify-content:center; font-size:.56rem; color:rgba(57,216,216,.5);
+    letter-spacing:.1em; text-transform:uppercase; animation:runa 2.6s ease-in-out infinite}
+  @keyframes runa{0%,100%{border-color:rgba(57,216,216,.25)}50%{border-color:rgba(57,216,216,.55)}}
+  .slot.constr-slot{width:128px; height:50px; border-radius:12px}
+  .centro{display:flex; align-items:center; justify-content:center; gap:14px; margin:8px 0; position:relative}
+  .linha-centro{flex:1; height:2px; border-radius:3px; background:linear-gradient(90deg, transparent, rgba(57,216,216,.5), transparent);
+    box-shadow:0 0 8px rgba(57,216,216,.4)}
+  .selo-centro{font-size:.62rem; color:var(--turquesa); letter-spacing:.3em; text-transform:uppercase; text-shadow:0 0 10px rgba(57,216,216,.6)}
+  .turno-ind{position:absolute; right:8px; font-size:.62rem; color:var(--ouro); letter-spacing:.08em; text-transform:uppercase; font-weight:800; text-shadow:0 1px 0 #14102e}
 
   /* peças (tropas em campo) */
-  .peca{width:92px; height:124px; border-radius:12px; padding:5px 5px 4px; position:relative; cursor:default;
+  .peca{width:92px; height:124px; border-radius:14px; padding:5px 5px 4px; position:relative; cursor:default;
     display:flex; flex-direction:column; align-items:center; font-size:.6rem; color:#241a10;
     box-shadow:0 7px 14px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.35);
     transition:transform .22s ease, box-shadow .22s ease}
-  .peca::after{content:""; position:absolute; inset:0; border-radius:12px; pointer-events:none;
+  .peca::after{content:""; position:absolute; inset:0; border-radius:14px; pointer-events:none;
     background:linear-gradient(160deg, rgba(255,255,255,.30), transparent 34%)}
   .peca .mini{font-size:2.15rem; line-height:1.1; filter:drop-shadow(0 4px 3px rgba(0,0,0,.4))}
   .peca .nm{font-weight:800; text-align:center; line-height:1.05; height:2.1em; display:flex; align-items:center; font-size:.58rem}
   .peca .kw{font-size:.5rem; opacity:.8; text-align:center; line-height:1.1}
   .peca .st{display:flex; gap:8px; font-weight:900; font-size:.86rem; margin-top:auto; font-variant-numeric:tabular-nums}
   .peca .st .a{color:#9c2c08; text-shadow:0 1px 0 rgba(255,255,255,.5)} .peca .st .v{color:#16602c; text-shadow:0 1px 0 rgba(255,255,255,.5)}
-  .p-fogo{background:linear-gradient(180deg,#f6bd7a,#dd8f3f 60%,#c97a2e); border:3px solid #8f2b16}
-  .p-gelo{background:linear-gradient(180deg,#eaf6fc,#bfdcec 60%,#a5cadd); border:3px solid #5f9dbd}
-  .peca.pode-atacar{box-shadow:0 0 0 3px var(--ok), 0 0 16px rgba(160,215,90,.45), 0 7px 14px rgba(0,0,0,.5); cursor:pointer; animation:pulsa 1.6s ease-in-out infinite}
+  .p-fogo{background:linear-gradient(180deg,#ffd9a6,#f0a352 60%,#d97f2e); border:3px solid #b0330f; box-shadow:0 7px 14px rgba(0,0,0,.5), 0 0 12px rgba(255,120,40,.35), inset 0 1px 0 rgba(255,255,255,.35)}
+  .p-gelo{background:linear-gradient(180deg,#f0fbff,#c4e4f2 60%,#a5cfe2); border:3px solid #4f9dc4; box-shadow:0 7px 14px rgba(0,0,0,.5), 0 0 12px rgba(127,212,240,.35), inset 0 1px 0 rgba(255,255,255,.35)}
+  .peca.pode-atacar{box-shadow:0 0 0 3px var(--ok), 0 0 16px rgba(139,224,122,.5), 0 7px 14px rgba(0,0,0,.5); cursor:pointer; animation:pulsa 1.6s ease-in-out infinite}
   @keyframes pulsa{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
-  .peca.selecionada{transform:translateY(-8px) scale(1.04); box-shadow:0 0 0 3px var(--ouro), 0 0 22px rgba(255,215,106,.5), 0 12px 20px rgba(0,0,0,.55); animation:none; z-index:5}
+  .peca.selecionada{transform:translateY(-8px) scale(1.04); box-shadow:0 0 0 3px var(--ouro), 0 0 22px rgba(255,207,92,.55), 0 12px 20px rgba(0,0,0,.55); animation:none; z-index:5}
   .peca.alvo{box-shadow:0 0 0 3px var(--ruim), 0 0 18px rgba(255,90,80,.5), 0 7px 14px rgba(0,0,0,.5); cursor:crosshair}
   .peca.congelada .mini{filter:grayscale(.4) brightness(1.1) drop-shadow(0 4px 3px rgba(0,0,0,.4))}
   .peca.congelada::before{content:"❄"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:2;
-    font-size:2.8rem; background:linear-gradient(180deg, rgba(190,230,250,.5), rgba(140,200,235,.38)); border-radius:9px; text-shadow:0 0 12px #fff}
+    font-size:2.8rem; background:linear-gradient(180deg, rgba(190,230,250,.5), rgba(140,200,235,.38)); border-radius:11px; text-shadow:0 0 12px #fff}
   .badges{position:absolute; top:2px; left:4px; right:4px; display:flex; justify-content:space-between; font-size:.72rem; z-index:3}
   .frio-dots{position:absolute; bottom:24px; left:5px; display:flex; gap:2px; z-index:3}
   .frio-dots i{width:9px; height:9px; border-radius:50%; background:radial-gradient(circle at 35% 30%, #d8f2ff, #6fb6da); border:1px solid #2d5a70; display:block; box-shadow:0 0 5px rgba(140,210,240,.7)}
-  .constru{width:128px; height:50px; border-radius:10px; display:flex; align-items:center; gap:7px; padding:4px 9px;
+  .constru{width:128px; height:50px; border-radius:12px; display:flex; align-items:center; gap:7px; padding:4px 9px;
     font-size:.56rem; font-weight:700; color:#241a10; box-shadow:0 5px 12px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.35)}
   .constru .mini{font-size:1.5rem}
 
@@ -108,74 +114,81 @@
   @keyframes treme{0%,100%{transform:translate(0,0) rotate(0)}20%{transform:translate(-5px,2px) rotate(-3deg)}40%{transform:translate(5px,-2px) rotate(3deg)}60%{transform:translate(-4px,0) rotate(-2deg)}80%{transform:translate(3px,1px) rotate(1deg)}}
   .morrendo{transition:transform .55s ease-in, opacity .55s ease-in !important; transform:rotate(78deg) translateY(26px) scale(.85) !important; opacity:0 !important}
   .flutua{position:fixed; z-index:60; font-weight:900; font-size:1.5rem; pointer-events:none;
-    text-shadow:0 2px 0 #000, 0 0 10px rgba(0,0,0,.5); animation:sobe 1s ease-out forwards}
+    text-shadow:0 2px 0 #14102e, 0 0 10px rgba(0,0,0,.5); animation:sobe 1s ease-out forwards}
   @keyframes sobe{0%{transform:translateY(0) scale(.8); opacity:0}15%{opacity:1; transform:translateY(-8px) scale(1.15)}100%{transform:translateY(-46px) scale(1); opacity:0}}
   .puff{position:fixed; z-index:55; font-size:2rem; pointer-events:none; animation:puff .7s ease-out forwards}
   @keyframes puff{0%{transform:scale(.4); opacity:.95}100%{transform:scale(1.9); opacity:0}}
-  .projetil{position:fixed; z-index:58; font-size:1.8rem; pointer-events:none; filter:drop-shadow(0 0 8px rgba(255,180,80,.8))}
+  .projetil{position:fixed; z-index:58; font-size:1.8rem; pointer-events:none; filter:drop-shadow(0 0 8px rgba(57,216,216,.8))}
   .flash-dano{animation:flashd .4s ease}
   @keyframes flashd{0%{box-shadow:0 0 0 4px rgba(255,90,70,.9), 0 0 30px rgba(255,90,70,.7)}100%{box-shadow:0 5px 14px rgba(0,0,0,.5)}}
   @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important} }
 
   /* mão */
   .mao{display:flex; gap:7px; justify-content:center; flex-wrap:wrap; margin-top:10px; min-height:134px}
-  .carta{width:94px; height:130px; border-radius:11px; padding:5px; display:flex; flex-direction:column; align-items:center;
+  .carta{width:94px; height:130px; border-radius:12px; padding:5px; display:flex; flex-direction:column; align-items:center;
     font-size:.58rem; color:#241a10; box-shadow:0 6px 12px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.35); cursor:default; position:relative;
     transition:transform .18s ease, box-shadow .18s ease}
-  .carta::after{content:""; position:absolute; inset:0; border-radius:11px; pointer-events:none;
+  .carta::after{content:""; position:absolute; inset:0; border-radius:12px; pointer-events:none;
     background:linear-gradient(160deg, rgba(255,255,255,.28), transparent 32%)}
-  .carta .custo{position:absolute; top:-7px; left:-7px; width:24px; height:24px; border-radius:50%; z-index:4;
-    background:radial-gradient(circle at 34% 28%, #fff3c4, #ffcf4d 55%, #c98b1e); color:#3a2a08; font-weight:900;
-    display:flex; align-items:center; justify-content:center; font-size:.85rem; box-shadow:0 3px 6px rgba(0,0,0,.5)}
+  .carta .custo{position:absolute; top:-8px; left:-8px; width:27px; height:27px; z-index:4;
+    clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+    color:#fff; font-weight:900; display:flex; align-items:center; justify-content:center; font-size:.85rem;
+    text-shadow:0 1px 2px rgba(0,0,0,.8)}
+  .p-gelo .custo{background:radial-gradient(circle at 38% 30%, #eaffff, #6fd0f0 55%, #1d5c8a)}
+  .p-fogo .custo{background:radial-gradient(circle at 38% 30%, #ffd27a, #ff5a2a 55%, #7a1c08)}
   .carta .mini{font-size:1.85rem; margin-top:3px; filter:drop-shadow(0 3px 2px rgba(0,0,0,.3))}
   .carta .nm{font-weight:800; text-align:center; line-height:1.05; height:2em; display:flex; align-items:center}
   .carta .fx{font-size:.49rem; text-align:center; line-height:1.15; opacity:.88; flex:1; display:flex; align-items:center}
   .carta .st{font-weight:900; font-size:.76rem; display:flex; gap:7px}
-  .carta.jogavel{box-shadow:0 0 0 2.5px var(--ok), 0 0 14px rgba(160,215,90,.4), 0 6px 12px rgba(0,0,0,.5); cursor:pointer}
+  .carta.jogavel{box-shadow:0 0 0 2.5px var(--ok), 0 0 14px rgba(139,224,122,.45), 0 6px 12px rgba(0,0,0,.5); cursor:pointer}
   .carta.jogavel:hover{transform:translateY(-10px) scale(1.05); z-index:6}
-  .carta.aguarda-alvo{box-shadow:0 0 0 3px var(--ouro), 0 0 18px rgba(255,215,106,.55); transform:translateY(-6px)}
+  .carta.aguarda-alvo{box-shadow:0 0 0 3px var(--ouro), 0 0 18px rgba(255,207,92,.6); transform:translateY(-6px)}
 
   .controles{display:flex; gap:10px; justify-content:center; align-items:center; margin:12px 0 8px}
   button.acao{font-family:inherit; font-weight:900; font-size:.92rem; padding:11px 26px; border-radius:26px; border:none; letter-spacing:.03em;
-    cursor:pointer; background:linear-gradient(180deg,#a8d36e,#5a8f3c); color:#1c2b10; box-shadow:0 5px 0 #3c611f, 0 8px 16px rgba(0,0,0,.4); transition:transform .1s}
-  button.acao:active{transform:translateY(3px); box-shadow:0 2px 0 #3c611f}
+    cursor:pointer; background:linear-gradient(180deg,#ffe28a,#d99a2b); color:#3a2508;
+    box-shadow:0 5px 0 #9a6a14, 0 8px 20px rgba(255,207,92,.25), 0 8px 16px rgba(0,0,0,.4); transition:transform .1s}
+  button.acao:active{transform:translateY(3px); box-shadow:0 2px 0 #9a6a14}
   button.acao:disabled{opacity:.4; cursor:default}
-  button.sec{background:linear-gradient(180deg,#c4a36a,#8a6a3c); box-shadow:0 5px 0 #5e4523, 0 8px 16px rgba(0,0,0,.4); color:#2b1f0e}
-  .aviso{text-align:center; min-height:1.3em; font-size:.84rem; color:var(--ouro); font-weight:800; text-shadow:0 1px 0 #000}
-  .log{background:rgba(0,0,0,.35); border:1px solid rgba(255,235,190,.15); border-radius:10px; padding:8px 12px; font-size:.72rem; line-height:1.55;
+  button.sec{background:linear-gradient(180deg,#6fd0d0,#2a8f8f); box-shadow:0 5px 0 #1a5c5c, 0 8px 16px rgba(0,0,0,.4); color:#0e2b2b}
+  .aviso{text-align:center; min-height:1.3em; font-size:.84rem; color:var(--ouro); font-weight:800; text-shadow:0 1px 0 #14102e}
+  .log{background:rgba(10,6,28,.5); border:1px solid rgba(57,216,216,.25); border-radius:12px; padding:8px 12px; font-size:.72rem; line-height:1.55;
     max-height:110px; overflow-y:auto; box-shadow:inset 0 2px 8px rgba(0,0,0,.4)}
   .log b{color:var(--fogo)} .log i{color:var(--gelo); font-style:normal}
 
-  .fim{position:fixed; inset:0; background:rgba(14,8,3,.86); display:none; align-items:center; justify-content:center; z-index:80}
+  .fim{position:fixed; inset:0; background:rgba(14,10,34,.88); display:none; align-items:center; justify-content:center; z-index:80}
   .fim.mostra{display:flex}
-  .fim .cx{background:linear-gradient(180deg,#4a3521,#2c1d0e); border:3px solid #8a6a3c; border-radius:18px; padding:34px 46px; text-align:center; box-shadow:0 24px 60px rgba(0,0,0,.7)}
-  .fim h2{margin:0 0 8px; font-size:1.9rem; text-shadow:0 3px 0 #000}
+  .fim .cx{background:linear-gradient(180deg,#332465,#1d1440); border:3px solid rgba(255,207,92,.6); border-radius:20px; padding:34px 46px; text-align:center;
+    box-shadow:0 24px 60px rgba(0,0,0,.7), 0 0 40px rgba(255,207,92,.15)}
+  .fim h2{margin:0 0 8px; font-size:1.9rem; text-shadow:0 3px 0 #14102e}
   .fim p{color:var(--suave)}
-  @media (max-width:640px){ .slot,.peca{width:64px; height:100px} .peca .mini{font-size:1.5rem} .peca .kw{display:none}
-    .carta{width:78px; height:114px} .slot.constr-slot,.constru{width:96px} .clima-slot{width:110px} }
+  @media (max-width:640px){ .slot,.peca{width:70px; height:104px} .peca .mini{font-size:1.5rem} .peca .kw{display:none}
+    .carta{width:78px; height:114px} .slot.constr-slot,.constru{width:96px} }
 </style>
 
 <div class="wrap">
   <div class="titulo"><h1><span class="g">GUERRA</span> <span class="d">DOS</span> <span class="r">REINOS</span></h1></div>
-  <div class="sub">Protótipo v3 · Gelo com a LISTA OFICIAL do diretor (30 cartas) · campo 5 Tropas + Terreno + 2 Construções + Clima</div>
+  <div class="sub">✦ VERSÃO 1.0 · Modo Normal (30 Vida · deck 40 · Energia até 10) · campo 4 Tropas + 2 Construções + 1 Terreno · listas oficiais ✦</div>
 
   <div class="tela ativa" id="telaEscolha">
     <div class="escolha">
       <button class="fac-btn f-fogo" onclick="iniciar('fogo')">
         <h2>🔥 Chama Selvagem</h2>
-        <p>Agressivo e explosivo. Queime, exploda e feche na cara com <b>Chama Alta</b>.</p>
+        <p>Agressão, dano direto e explosões. Cause dano todos os turnos para manter a <b>Chama Alta</b> acesa — e feche com a Erupção Final.</p>
       </button>
       <button class="fac-btn f-gelo" onclick="iniciar('gelo')">
-        <h2>❄ Reino Glacial ★OFICIAL</h2>
-        <p>Defesa e controle. Congele tudo e acumule <b>Frio</b> até o inimigo desistir.</p>
+        <h2>❄ Reino Glacial</h2>
+        <p>Defesa e controle. Acumule <b>Frio</b>, congele o campo inteiro e vença a partida longa com a Era Glacial Maluca.</p>
       </button>
     </div>
-    <p class="nota-demo">Demo v0.5.2: o Reino Glacial usa a <b>lista oficial de 30 cartas do diretor</b> (deck singleton, Modo Rápido). Fogo segue provisório até a lista chegar. Efeitos de "escolha" viram aleatórios nesta demo; o Urso Polar aguarda a decisão sobre dano de volta. Terreno por jogador + Clima compartilhado no centro.</p>
+    <p class="nota-demo"><b>v1.0:</b> as DUAS facções usam as listas oficiais do diretor (30 cartas + 10 segundas cópias = deck de 40).
+      Simplificações da demo: efeitos de "escolha" miram automaticamente; a Fênix de Bolso volta sozinha se houver 2 de Energia no turno seguinte;
+      o Reino das Brasas Eternas dá Investida na entrada da Tropa. Regras v1.0: sem dano de volta (só retaliadoras únicas), Clima excluído, 4 Tropas por lado.</p>
   </div>
 
   <div class="tela" id="telaJogo">
     <div class="placar">
-      <div class="castelo" id="iaFace"><span class="emj" id="iaEmj">❄</span><div><div class="vida" id="iaVida">20</div><div class="rot">IA</div></div></div>
+      <div class="castelo" id="iaFace"><span class="emj" id="iaEmj">❄</span><div><div class="vida" id="iaVida">30</div><div class="rot">IA</div></div></div>
       <div class="energia" id="iaEnergia"></div>
       <div class="deckinfo">deck <span id="iaDeck">?</span> · mão <span id="iaMao">?</span></div>
     </div>
@@ -185,7 +198,7 @@
       <div class="fileira" id="iaCampo"></div>
       <div class="centro">
         <div class="linha-centro"></div>
-        <div class="clima-slot" id="climaSlot">☁ clima</div>
+        <div class="selo-centro">✦ arena arcana ✦</div>
         <div class="linha-centro"></div>
         <div class="turno-ind" id="turnoInd"></div>
       </div>
@@ -194,7 +207,7 @@
     </div>
 
     <div class="placar">
-      <div class="castelo" id="euFace"><span class="emj" id="euEmj">🔥</span><div><div class="vida" id="euVida">20</div><div class="rot">Você</div></div></div>
+      <div class="castelo" id="euFace"><span class="emj" id="euEmj">🔥</span><div><div class="vida" id="euVida">30</div><div class="rot">Você</div></div></div>
       <div class="energia" id="euEnergia"></div>
       <div class="deckinfo">deck <span id="euDeck">?</span></div>
     </div>
@@ -216,22 +229,9 @@
 
 <script>
 "use strict";
-// ============ Cartas (set provisório — lista oficial do diretor virá depois) ============
+// ================= CARTAS OFICIAIS (Gelo 30 + Fogo 30) =================
 const CARTAS = {
-  diabrete:{n:"Diabrete de Cinza", f:"fogo", t:"tropa", c:1, a:2, v:1, mini:"😈", kw:"Explodir: 1 na cara", explodir:(g,l)=>{ dano(g, outro(l), 1); log(g,`💥 Diabrete explode: 1 de dano em ${nome(g,outro(l))}`);} },
-  falcao:{n:"Falcão de Fagulha", f:"fogo", t:"tropa", c:2, a:2, v:1, voador:true, mini:"🦅", kw:"Voador"},
-  salamandra:{n:"Salamandra-Forja", f:"fogo", t:"tropa", c:2, a:2, v:2, mini:"🦎", kw:"Entra: +1 ATQ a aliada", onPlay:(g,l,self)=>{ const alvos=g[l].campo.filter(p=>p&&p!==self); if(alvos.length){const p=alvos[Math.floor(g.rnd()*alvos.length)]; p.a++; log(g,`🔨 Salamandra tempera ${p.n}: +1 ATQ`);} } },
-  cuspidor:{n:"Cuspidor de Fagulhas", f:"fogo", t:"tropa", c:3, a:3, v:2, mini:"🐲", kw:"Chama Alta: +1 ATQ", chamaAltaBonus:1},
-  caofum:{n:"Cão Fumarento", f:"fogo", t:"tropa", c:3, a:3, v:3, guarda:true, mini:"🐕", kw:"Guarda · queima atacantes", queimaAtacante:true},
-  touro:{n:"Touro de Magma", f:"fogo", t:"tropa", c:5, a:5, v:4, investida:true, mini:"🐂", kw:"Investida · Explodir: 2 em TODAS", explodir:(g,l)=>{ log(g,"💥 O Touro de Magma EXPLODE: 2 em todas as Tropas!"); ["eu","ia"].forEach(ld=>{ g[ld].campo.forEach(p=>{ if(p) ferirTropa(g,ld,p,2); }); }); limparMortas(g); } },
-  fenix:{n:"Fênix Jovem", f:"fogo", t:"tropa", c:4, a:3, v:2, voador:true, mini:"🐦‍🔥", kw:"Voador · renasce do ovo", explodir:(g,l)=>{ const i=g[l].campo.findIndex(p=>!p); if(i>=0){ g[l].campo[i]={...CARTAS.ovo, id:g.seq++, pronta:false, frio:0}; log(g,"🥚 Um Ovo-Brasa pulsa no campo...");} } },
-  ovo:{n:"Ovo-Brasa", f:"fogo", t:"tropa", c:0, a:0, v:2, token:true, mini:"🥚", kw:"Renasce no próximo turno", renasce:true},
-  bolafogo:{n:"Bola de Fogo Descontrolada", f:"fogo", t:"feitico", c:3, mini:"☄️", alvo:"tropaInimiga", kw:"4 de dano; se matar, 1 na cara", fx:(g,l,p)=>{ log(g,`☄️ Bola de Fogo em ${p.n}!`); const morreu = ferirTropa(g,outro(l),p,4); limparMortas(g); if(morreu){ dano(g,outro(l),1); log(g,"…e a fagulha sobra na cara: 1 de dano!"); } } },
-  lancachamas:{n:"Lança-Chamas de Bolso", f:"fogo", t:"feitico", c:2, mini:"🔫", alvo:"qualquer", kw:"2 de dano (3 com Chama Alta)", fx:(g,l,p)=>{ const d = g[l].chamaAlta?3:2; if(p==="face"){ dano(g,outro(l),d); log(g,`🔫 Lança-Chamas na cara: ${d}!`);} else { log(g,`🔫 Lança-Chamas em ${p.n}: ${d}`); ferirTropa(g,outro(l),p,d); limparMortas(g);} } },
-  incendio:{n:"Incêndio", f:"fogo", t:"feitico", c:4, mini:"🔥", kw:"TODAS as Tropas ficam Queimando", fx:(g,l)=>{ log(g,"🔥 INCÊNDIO! Todas as Tropas estão Queimando (fogo não escolhe lado)."); ["eu","ia"].forEach(ld=>g[ld].campo.forEach(p=>{if(p)p.queima=true;})); } },
-  forja:{n:"Forja do Coração Ardente", f:"fogo", t:"constru", c:3, mini:"⚒️", kw:"Investida custa 1 a menos"},
-  otavio:{n:"Brasa-Rei Otavio", f:"fogo", t:"tropa", c:6, a:5, v:5, investida:true, lend:true, mini:"👑", kw:"Investida · Chama Alta: Ataque Duplo"},
-  // ---- GELO: LISTA OFICIAL DO DIRETOR (30 cartas) ----
+  // ---- GELO: LISTA OFICIAL DO DIRETOR ----
   recruta:{n:"Pinguim Recruta", f:"gelo", t:"tropa", c:1, a:1, v:2, pinguim:true, mini:"🐧", kw:"Entra: 1 Frio num inimigo", onPlay:(g,l)=>{ frioAleatorio(g,outro(l),1,"Pinguim Recruta"); } },
   escudeiro:{n:"Pinguim Escudeiro", f:"gelo", t:"tropa", c:2, a:1, v:4, pinguim:true, guarda:true, mini:"🐧", kw:"Guarda · suas Tropas de Gelo +1 Vida", auraVidaGelo:true, onPlay:(g,l,self)=>{ g[l].campo.forEach(p=>{ if(p&&p!==self&&p.f==="gelo"){p.v++;} }); log(g,"🛡️ O Escudeiro reforça as Tropas de Gelo: +1 Vida"); } },
   espadachim:{n:"Espadachim da Neve", f:"gelo", t:"tropa", c:2, a:2, v:3, mini:"⚔️", kw:"+1 ATQ ao atacar Congeladas", vsCongelada:1},
@@ -239,7 +239,7 @@ const CARTAS = {
   cavfloco:{n:"Cavaleiro do Floco Azul", f:"gelo", t:"tropa", c:3, a:3, v:3, mini:"🐴", kw:"+1 Vida quando inimigo é Congelado", ganhaVidaAoCongelar:true},
   corujainv:{n:"Coruja Invernal", f:"gelo", t:"tropa", c:3, a:2, v:2, voador:true, mini:"🦉", kw:"Voador · dano na cara: 1 Frio num inimigo", frioAoFace:true},
   boneconervoso:{n:"Boneco de Neve Nervoso", f:"gelo", t:"tropa", c:2, a:2, v:2, mini:"⛄", kw:"Explodir: 1 Frio em TODAS as inimigas", explodir:(g,l)=>{ let n=0; g[outro(l)].campo.forEach(p=>{ if(p){darFrio(g,p,1); n++;} }); if(n) log(g,"💥⛄ O Boneco Nervoso explode: 1 Frio em todas as inimigas!"); } },
-  ursopolar:{n:"Urso Polar de Guerra", f:"gelo", t:"tropa", c:4, a:4, v:5, mini:"🐻‍❄️", kw:"(efeito aguarda decisão sobre dano de volta)"},
+  ursopolar:{n:"Urso Polar de Guerra", f:"gelo", t:"tropa", c:4, a:4, v:5, mini:"🐻‍❄️", kw:"Imune a punições de Congeladas (oficial v1.0)"},
   bruxa:{n:"Bruxa da Geada", f:"gelo", t:"tropa", c:4, a:2, v:5, mini:"🧹", kw:"Início do turno: 1 Frio num inimigo", inicioTurnoTropa:(g,l)=>{ frioAleatorio(g,outro(l),1,"Bruxa da Geada"); } },
   gigante:{n:"Gigante de Cristal Frio", f:"gelo", t:"tropa", c:6, a:5, v:7, guarda:true, mini:"🗿", kw:"Guarda · Entra: congela até 2 inimigos", onPlay:(g,l)=>{ const alvos=g[outro(l)].campo.filter(p=>p&&!p.congelada).sort((a,b)=>b.a-a.a).slice(0,2); alvos.forEach(p=>{congelar(g,p); log(g,`🗿 O Gigante congela ${p.n}!`);}); } },
   lobobranco:{n:"Lobo Branco Faminto", f:"gelo", t:"tropa", c:3, a:3, v:2, mini:"🐺", kw:"+2 ATQ contra alvos com Frio", vsFrio:2},
@@ -260,17 +260,50 @@ const CARTAS = {
   raiocong:{n:"Raio Congelante", f:"gelo", t:"feitico", c:2, mini:"⚡", alvo:"tropaInimiga", kw:"Congela uma Tropa inimiga", fx:(g,l,p)=>{ congelar(g,p); log(g,`⚡ Raio Congelante em ${p.n}!`); } },
   nevascarep:{n:"Nevasca Repentina", f:"gelo", t:"feitico", c:3, mini:"🌨️", kw:"1 Frio em todas; 1 de dano nas Congeladas", fx:(g,l)=>{ log(g,"🌨️ NEVASCA REPENTINA!"); g[outro(l)].campo.forEach(p=>{ if(p) darFrio(g,p,1); }); g[outro(l)].campo.forEach(p=>{ if(p&&p.congelada){ ferirTropa(g,outro(l),p,1); flutuar(REG.get(p.id),"-1","#a8d8ee"); } }); limparMortas(g); } },
   prisao:{n:"Prisão de Cristal", f:"gelo", t:"feitico", c:4, mini:"💠", alvo:"tropaInimiga", kw:"Alvo não age até o fim do próximo turno", fx:(g,l,p)=>{ congelar(g,p); p.presa=true; log(g,`💠 ${p.n} está presa em cristal!`); } },
-  soproinv:{n:"Sopro do Inverno", f:"gelo", t:"feitico", c:1, mini:"🌬️", alvo:"tropaInimiga", kw:"Alvo −2 ATQ no turno; se tinha Frio, compre 1", fx:(g,l,p)=>{ const red=Math.min(2,p.a); p.a-=red; p.soproRestaura=(p.soproRestaura||0)+red; log(g,`🌬️ Sopro do Inverno: ${p.n} −2 ATQ neste turno`); if(p.frio>0){ comprar(l); log(g,"…e o Frio rende 1 carta!"); } } },
+  soproinv:{n:"Sopro do Inverno", f:"gelo", t:"feitico", c:1, mini:"🌬️", alvo:"tropaInimiga", kw:"Alvo −2 ATQ no turno; se tinha Frio, compre 1", fx:(g,l,p)=>{ const red=Math.min(2,p.a); p.a-=red; p.fimAjuste=(p.fimAjuste||0)+red; log(g,`🌬️ Sopro do Inverno: ${p.n} −2 ATQ neste turno`); if(p.frio>0){ comprar(l); log(g,"…e o Frio rende 1 carta!"); } } },
   eraglacial:{n:"Era Glacial Maluca", f:"gelo", t:"feitico", c:8, lend:true, mini:"🌌", kw:"Congela TODAS; suas Gelo +1 ATQ por Congelada", fx:(g,l)=>{ log(g,"🌌 ERA GLACIAL MALUCA!!"); g[outro(l)].campo.forEach(p=>{ if(p) congelar(g,p); }); const n=g[outro(l)].campo.filter(p=>p&&p.congelada).length; if(n){ g[l].campo.forEach(p=>{ if(p&&p.f==="gelo"){p.a+=n;} }); log(g,`🌌 Suas Tropas de Gelo ganham +${n} de Ataque!`); } } },
+  // ---- FOGO: LISTA OFICIAL DO DIRETOR ----
+  faisca:{n:"Faísca Saltadora", f:"fogo", t:"tropa", c:1, a:1, v:1, investida:true, mini:"✨", kw:"Investida · Entra: 1 na cara se inimigo sem Tropas", onPlay:(g,l)=>{ if(!g[outro(l)].campo.some(p=>p)){ dano(g,outro(l),1); log(g,"✨ A Faísca salta na cara: 1 de dano!"); } } },
+  goblinbrasa:{n:"Goblin de Brasa", f:"fogo", t:"tropa", c:1, a:2, v:1, mini:"👺", kw:"Explodir: 1 de dano em inimiga aleatória", explodir:(g,l)=>{ const alvos=g[outro(l)].campo.filter(p=>p); if(alvos.length){ const p=alvos[Math.floor(g.rnd()*alvos.length)]; ferirTropa(g,outro(l),p,1); log(g,`💥👺 O Goblin de Brasa estoura em ${p.n}: 1 de dano`);} } },
+  soldadotocha:{n:"Soldado da Tocha", f:"fogo", t:"tropa", c:2, a:3, v:2, mini:"🕯️", kw:"Chama Alta: entra com +1 ATQ no turno", onPlay:(g,l,self)=>{ if(g[l].chamaAlta){ buffTemp(g,self,1); log(g,"🕯️ Chama Alta! O Soldado da Tocha entra com +1 ATQ"); } } },
+  lagarto:{n:"Lagarto de Lava", f:"fogo", t:"tropa", c:2, a:2, v:3, mini:"🦎", kw:"Quando ataca: Queimar na atacada", queimaAtaque:true},
+  espadachimfl:{n:"Espadachim Flamejante", f:"fogo", t:"tropa", c:2, a:2, v:2, investida:true, mini:"🤺", kw:"Investida · ataca a cara: +1 ATQ no turno"},
+  salamandrapc:{n:"Salamandra Pavio-Curto", f:"fogo", t:"tropa", c:3, a:3, v:3, mini:"🦎", kw:"Explodir: 2 de dano na inimiga com menor Vida", explodir:(g,l)=>{ const alvos=g[outro(l)].campo.filter(p=>p); if(alvos.length){ const p=alvos.reduce((m,x)=>x.v<m.v?x:m); ferirTropa(g,outro(l),p,2); log(g,`💥🦎 A Salamandra explode em ${p.n}: 2 de dano`);} } },
+  arqueira:{n:"Arqueira de Fogo Azul", f:"fogo", t:"tropa", c:3, a:2, v:3, mini:"🏹", kw:"1×/turno: Feitiço de Fogo → 1 na cara", arqueiraAzul:true},
+  cavvulc:{n:"Cavaleiro Vulcânico", f:"fogo", t:"tropa", c:3, a:4, v:3, mini:"🏇", kw:"Chama Alta: ganha Investida", onPlay:(g,l,self)=>{ if(g[l].chamaAlta&&!self.pronta){ self.pronta=true; log(g,"🏇 Chama Alta! O Cavaleiro Vulcânico avança com Investida"); } } },
+  caocarvao:{n:"Cão de Carvão", f:"fogo", t:"tropa", c:3, a:4, v:2, mini:"🐕", kw:"Quando sofre dano: 1 na cara inimiga"},
+  magofaisca:{n:"Mago da Faísca Torta", f:"fogo", t:"tropa", c:4, a:2, v:5, mini:"🧙‍♂️", kw:"Inimiga recebe Queimar → 1 de dano nela"},
+  brutofornalha:{n:"Bruto da Fornalha", f:"fogo", t:"tropa", c:4, a:5, v:3, mini:"🦍", kw:"+1 de dano contra Tropas com Queimar", vsQueimar:1},
+  fenixbolso:{n:"Fênix de Bolso", f:"fogo", t:"tropa", c:4, a:3, v:3, voador:true, mini:"🐦‍🔥", kw:"Voador · morta: volta à mão por 2 no próx. turno"},
+  generalbrasa:{n:"General da Brasa", f:"fogo", t:"tropa", c:5, a:4, v:5, mini:"🎖️", kw:"Suas Fogo com Investida +1 ATQ", auraBrasa:true},
+  gigmagma:{n:"Gigante de Magma Rachado", f:"fogo", t:"tropa", c:5, a:6, v:4, mini:"🌋", kw:"Entra: 2 em OUTRA sua e 2 numa inimiga", onPlay:(g,l,self)=>{ const minhas=g[l].campo.filter(p=>p&&p!==self); if(minhas.length){ const p=minhas[Math.floor(g.rnd()*minhas.length)]; ferirTropa(g,l,p,2); log(g,`🌋 O Gigante racha e atinge ${p.n}: 2 de dano`);} else log(g,"🌋 Sem outra Tropa sua — o Gigante não se auto-atinge (regra oficial)"); const inim=g[outro(l)].campo.filter(p=>p); if(inim.length){ const q=inim[Math.floor(g.rnd()*inim.length)]; ferirTropa(g,outro(l),q,2); log(g,`🌋 …e arremessa magma em ${q.n}: 2 de dano`);} limparMortas(g); } },
+  dragchamine:{n:"Dragãozinho de Chaminé", f:"fogo", t:"tropa", c:5, a:4, v:4, voador:true, mini:"🐲", kw:"Voador · Chama Alta: entra com 3 de dano numa inimiga", onPlay:(g,l)=>{ if(g[l].chamaAlta){ const alvos=g[outro(l)].campo.filter(p=>p); if(alvos.length){ const p=alvos.reduce((m,x)=>x.a>m.a?x:m); ferirTropa(g,outro(l),p,3); log(g,`🐲 Chama Alta! O Dragãozinho cospe fogo em ${p.n}: 3 de dano`); limparMortas(g);} } } },
+  bruxapimenta:{n:"Bruxa da Pimenta", f:"fogo", t:"tropa", c:4, a:3, v:4, mini:"🌶️", kw:"Fim do turno: se feriu o jogador, Queimar numa inimiga", bruxaPimenta:true},
+  reivulc:{n:"Rei Vulcânico Birrento", f:"fogo", t:"tropa", c:7, a:6, v:7, lend:true, mini:"👑", kw:"Feriu o jogador → 1 em todas as inimigas (1×/turno)"},
+  colosso:{n:"Colosso da Caldeira", f:"fogo", t:"tropa", c:6, a:7, v:5, mini:"🗿", kw:"Entra: 3 de dano em TODAS com Queimar", onPlay:(g,l)=>{ let n=0; ["eu","ia"].forEach(ld=>{ g[ld].campo.forEach(p=>{ if(p&&p.queima){ ferirTropa(g,ld,p,3); n++; } }); }); if(n){ log(g,`🗿 O Colosso da Caldeira pisa forte: 3 de dano em ${n} Tropa(s) com Queimar!`); limparMortas(g);} } },
+  fornalha:{n:"Fornalha Maluca", f:"fogo", t:"constru", c:2, mini:"⚒️", kw:"1ª Tropa de Fogo do turno: +1 ATQ no turno", fornalhaMaluca:true},
+  torrelanca:{n:"Torre do Lança-Chamas", f:"fogo", t:"constru", c:4, mini:"🗼", kw:"Início do turno: 1 de dano em inimiga aleatória", inicioTurno:(g,l)=>{ const alvos=g[outro(l)].campo.filter(p=>p); if(alvos.length){ const p=alvos[Math.floor(g.rnd()*alvos.length)]; ferirTropa(g,outro(l),p,1); flutuar(REG.get(p.id),"-1 🔥","#ff9a4d"); log(g,`🗼 A Torre do Lança-Chamas queima ${p.n}: 1 de dano`); limparMortas(g);} } },
+  arenacinzas:{n:"Arena de Cinzas", f:"fogo", t:"constru", c:3, mini:"🏟️", kw:"Investida ataca: +1 ATQ no combate", arenaCinzas:true},
+  caldeirao:{n:"Caldeirão de Lava", f:"fogo", t:"constru", c:5, mini:"🍯", kw:"1×/turno: Feitiço de Fogo → 1 na cara e 1 numa inimiga", caldeiraoLava:true},
+  campolava:{n:"Campo de Lava Fina", f:"fogo", t:"terreno", c:2, mini:"🌋", kw:"Fim de cada turno: Queimar dói 1 a mais (nos dois)"},
+  montvulc:{n:"Montanha Vulcânica", f:"fogo", t:"terreno", c:3, mini:"⛰️", kw:"1º dano na cara/turno: uma Fogo sua +1 ATQ no turno"},
+  reinobrasas:{n:"Reino das Brasas Eternas", f:"fogo", t:"terreno", c:4, mini:"🏜️", kw:"Suas Fogo com ≤3 Vida têm Investida"},
+  bolafogo:{n:"Bola de Fogo Descontrolada", f:"fogo", t:"feitico", c:2, mini:"☄️", alvo:"tropaInimiga", kw:"3 de dano numa Tropa inimiga", fx:(g,l,p)=>{ log(g,`☄️ Bola de Fogo em ${p.n}: 3 de dano!`); ferirTropa(g,outro(l),p,3); limparMortas(g); } },
+  chuvafaiscas:{n:"Chuva de Faíscas", f:"fogo", t:"feitico", c:2, mini:"🎆", kw:"1 de dano em todas as inimigas + Queimar", fx:(g,l)=>{ log(g,"🎆 CHUVA DE FAÍSCAS!"); g[outro(l)].campo.forEach(p=>{ if(p){ ferirTropa(g,outro(l),p,1); if(p.v>0) darQueimar(g,outro(l),p); } }); limparMortas(g); } },
+  explosaoapr:{n:"Explosão Apressada", f:"fogo", t:"feitico", c:3, mini:"💥", kw:"2 na cara · Chama Alta: compre 1", fx:(g,l)=>{ const ca=g[l].chamaAlta; dano(g,outro(l),2); log(g,"💥 Explosão Apressada: 2 na cara!"); if(ca){ comprar(l); log(g,"…Chama Alta rende 1 carta!"); } } },
+  superaquec:{n:"Superaquecimento", f:"fogo", t:"feitico", c:4, mini:"🌡️", alvo:"tropaAliada", kw:"Sua Tropa +4 ATQ no turno; fim: 2 de dano nela", fx:(g,l,p)=>{ buffTemp(g,p,4); p.superDano=(p.superDano||0)+2; log(g,`🌡️ ${p.n} SUPERAQUECE: +4 ATQ até o fim do turno!`); } },
+  erupcao:{n:"Erupção Final", f:"fogo", t:"feitico", c:8, lend:true, mini:"🌋", kw:"5 na cara + 3 em todas · Chama Alta: Fogo +1 ATQ", fx:(g,l)=>{ const ca=g[l].chamaAlta; log(g,"🌋 ERUPÇÃO FINAL!!"); dano(g,outro(l),5); g[outro(l)].campo.forEach(p=>{ if(p) ferirTropa(g,outro(l),p,3); }); limparMortas(g); if(ca){ g[l].campo.forEach(p=>{ if(p&&p.f==="fogo") buffTemp(g,p,1); }); log(g,"🌋 Chama Alta: suas Tropas de Fogo +1 ATQ!"); } } },
 };
 const DECKS = {
-  fogo:["diabrete","diabrete","diabrete","falcao","falcao","falcao","salamandra","salamandra","salamandra","cuspidor","cuspidor","cuspidor","caofum","caofum","caofum","touro","touro","fenix","fenix","bolafogo","bolafogo","bolafogo","lancachamas","lancachamas","lancachamas","incendio","incendio","forja","forja","otavio"],
-  gelo:["recruta","escudeiro","espadachim","magonariz","cavfloco","corujainv","boneconervoso","ursopolar","bruxa","gigante","lobobranco","princesa","generalping","caranguejo","dragaozinho","reigelad","fantasma","mamute","castelo_esc","torresopro","muralhacubos","labneve","lago","montanha","palacio","raiocong","nevascarep","prisao","soproinv","eraglacial"]
+  gelo:["recruta","escudeiro","espadachim","magonariz","cavfloco","corujainv","boneconervoso","ursopolar","bruxa","gigante","lobobranco","princesa","generalping","caranguejo","dragaozinho","reigelad","fantasma","mamute","castelo_esc","torresopro","muralhacubos","labneve","lago","montanha","palacio","raiocong","nevascarep","prisao","soproinv","eraglacial",
+    "recruta","escudeiro","espadachim","magonariz","boneconervoso","caranguejo","lobobranco","raiocong","soproinv","nevascarep"],
+  fogo:["faisca","goblinbrasa","soldadotocha","lagarto","espadachimfl","salamandrapc","arqueira","cavvulc","caocarvao","magofaisca","brutofornalha","fenixbolso","generalbrasa","gigmagma","dragchamine","bruxapimenta","reivulc","colosso","fornalha","torrelanca","arenacinzas","caldeirao","campolava","montvulc","reinobrasas","bolafogo","chuvafaiscas","explosaoapr","superaquec","erupcao",
+    "faisca","goblinbrasa","soldadotocha","lagarto","espadachimfl","salamandrapc","caocarvao","bolafogo","chuvafaiscas","explosaoapr"]
 };
 const EMJ={fogo:"🔥",gelo:"❄"};
-const N_TROPAS=5, N_CONSTR=2;
+const N_TROPAS=4, N_CONSTR=2, VIDA_INI=30, EN_TOPO=10;
 
-// ============ Estado ============
+// ================= Estado =================
 let G=null;
 const REG=new Map(); // id -> elemento em campo
 function outro(l){return l==="eu"?"ia":"eu"}
@@ -278,13 +311,17 @@ function nome(g,l){return l==="eu"?"VOCÊ":"a IA"}
 function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
 function mulberry(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 function novaCarta(id){ const b=CARTAS[id]; return {...b, id:(G?G.seq++:Math.random()), key:id}; }
-function atqDe(l,p){ return p.a + ((p.chamaAltaBonus && G[l].chamaAlta) ? p.chamaAltaBonus : 0); }
+function atqDe(l,p){
+  let a=p.a;
+  if(p.f==="fogo" && p.investida && G[l].campo.some(q=>q&&q.auraBrasa&&q!==p)) a++;
+  return a;
+}
 
 function iniciar(facEu){
   const facIa = facEu==="fogo"?"gelo":"fogo";
   G={ seq:1, rnd:mulberry(Date.now()%100000), turno:0, vez:"eu", alvoModo:null, sel:null, busy:false,
-    eu:{fac:facEu, vida:20, en:0, enMax:0, deck:[], mao:[], campo:Array(N_TROPAS).fill(null), constr:Array(N_CONSTR).fill(null), terreno:null, chamaAlta:false},
-    ia:{fac:facIa, vida:20, en:0, enMax:0, deck:[], mao:[], campo:Array(N_TROPAS).fill(null), constr:Array(N_CONSTR).fill(null), terreno:null, chamaAlta:false} };
+    eu:{fac:facEu, vida:VIDA_INI, en:0, enMax:0, deck:[], mao:[], campo:Array(N_TROPAS).fill(null), constr:Array(N_CONSTR).fill(null), terreno:null, chamaAlta:false, fenixPend:0},
+    ia:{fac:facIa, vida:VIDA_INI, en:0, enMax:0, deck:[], mao:[], campo:Array(N_TROPAS).fill(null), constr:Array(N_CONSTR).fill(null), terreno:null, chamaAlta:false, fenixPend:0} };
   ["eu","ia"].forEach(l=>{
     G[l].deck = DECKS[G[l].fac].map(k=>novaCarta(k));
     for(let i=G[l].deck.length-1;i>0;i--){ const j=Math.floor(G.rnd()*(i+1)); [G[l].deck[i],G[l].deck[j]]=[G[l].deck[j],G[l].deck[i]]; }
@@ -294,7 +331,7 @@ function iniciar(facEu){
   document.getElementById("telaJogo").classList.add("ativa");
   document.getElementById("euEmj").textContent=EMJ[facEu];
   document.getElementById("iaEmj").textContent=EMJ[facIa];
-  log(G,`⚔ Guerra dos Reinos! Você é ${facEu==="fogo"?"a Chama Selvagem 🔥":"o Reino Glacial ❄"}. Você começa (sem compra no 1º turno).`);
+  log(G,`⚔ Guerra dos Reinos v1.0! Você é ${facEu==="fogo"?"a Chama Selvagem 🔥":"o Reino Glacial ❄"}. Você começa (sem compra no 1º turno).`);
   iniciarTurno("eu", true);
 }
 
@@ -307,14 +344,19 @@ function iniciarTurno(l, primeiro){
   G.vez=l; G.turno++;
   const P=G[l];
   P.chamaAlta=false;
-  P.enMax=Math.min(8,P.enMax+1); P.en=P.enMax;
-  // flags de "uma vez por turno" (dos dois lados)
-  ["eu","ia"].forEach(ld=>{ G[ld].labUsado=false; G[ld].reiUsado=false; G[ld].casteloUsado=false; G[ld].muralhaUsada=false; });
+  P.enMax=Math.min(EN_TOPO,P.enMax+1); P.en=P.enMax;
+  // flags "uma vez por turno" (dos dois lados)
+  ["eu","ia"].forEach(ld=>{ const Q=G[ld]; Q.labUsado=false; Q.reiUsado=false; Q.casteloUsado=false; Q.muralhaUsada=false;
+    Q.arqueiraUsada=false; Q.caldeiraoUsado=false; Q.fornalhaUsada=false; Q.reiVulcUsado=false; Q.montUsada=false; });
+  // Fênix de Bolso: paga 2 e volta à mão (automático na demo); senão, perde a chance
+  while(P.fenixPend>0){
+    if(P.en>=2){ P.en-=2; P.mao.push(novaCarta("fenixbolso")); log(G,`🐦‍🔥 ${nome(G,l)} paga 2 de Energia — a Fênix de Bolso volta à mão!`); }
+    else log(G,"🐦‍🔥 Sem Energia para a Fênix de Bolso — ela vira cinzas de vez.");
+    P.fenixPend--;
+  }
   // Lago Congelado: devolve o ATQ das tropas que entraram sob o debuff
   P.campo.forEach(p=>{ if(p&&p.lagoDebuff){ p.a+=p.lagoDebuff; p.lagoDebuff=0; } });
-  P.campo.forEach((p,i)=>{ if(p&&p.renasce){ P.campo[i]={...novaCarta("fenix"), pronta:false}; log(G,"🐦‍🔥 A Fênix Jovem RENASCE das cinzas!"); } });
-  const trava = G[outro(l)].campo.some(p=>p&&p.trava);
-  P.campo.forEach(p=>{ if(p){ p.pronta = !p.congelada; if(p.congelada && !trava){ p.descongelaFim=true; } } });
+  P.campo.forEach(p=>{ if(p){ p.pronta = !p.congelada; if(p.congelada){ if(p.presa){ p.presa=false; } else { p.descongelaFim=true; } } } });
   P.constr.forEach(c=>{ if(c&&c.inicioTurno) c.inicioTurno(G,l); });
   P.campo.forEach(p=>{ if(p&&p.inicioTurnoTropa&&!p.congelada) p.inicioTurnoTropa(G,l); });
   // Montanha da Nevasca (de qualquer dono): o jogador do turno dá Frio a uma tropa PRÓPRIA
@@ -340,10 +382,21 @@ async function encerrarTurno(){
 
 async function fimDeTurno(l){
   const P=G[l];
-  // Sopro do Inverno: devolve o ATQ reduzido "até o fim do turno"
-  ["eu","ia"].forEach(ld=>{ G[ld].campo.forEach(p=>{ if(p&&p.soproRestaura){ p.a+=p.soproRestaura; p.soproRestaura=0; } }); });
-  ["eu","ia"].forEach(ld=>{ G[ld].campo.forEach(p=>{ if(p&&p.queima){ ferirTropa(G,ld,p,1); flutuar(REG.get(p.id),"-1 🔥","#ff9a4d"); } }); });
+  // Bruxa da Pimenta: se o dono causou dano ao jogador neste turno, Queimar numa inimiga
+  if(P.chamaAlta && P.campo.some(p=>p&&p.bruxaPimenta)){
+    const alvos=G[outro(l)].campo.filter(p=>p&&!p.queima);
+    if(alvos.length){ const p=alvos[Math.floor(G.rnd()*alvos.length)]; darQueimar(G,outro(l),p); log(G,`🌶️ A Bruxa da Pimenta apimenta ${p.n}: Queimar!`); }
+  }
+  // Queimar: 1 de dano no fim de cada turno (+1 com Campo de Lava Fina em jogo)
+  const lavaFina=(G.eu.terreno&&G.eu.terreno.key==="campolava")||(G.ia.terreno&&G.ia.terreno.key==="campolava");
+  const tickQ=lavaFina?2:1;
+  ["eu","ia"].forEach(ld=>{ G[ld].campo.forEach(p=>{ if(p&&p.queima){ ferirTropa(G,ld,p,tickQ); flutuar(REG.get(p.id),`-${tickQ} 🔥`,"#ff9a4d"); } }); });
   limparMortas(G);
+  // Superaquecimento: 2 de dano no fim do turno
+  ["eu","ia"].forEach(ld=>{ G[ld].campo.forEach(p=>{ if(p&&p.superDano){ ferirTropa(G,ld,p,p.superDano); flutuar(REG.get(p.id),"-"+p.superDano+" 🌡️","#ff9a4d"); p.superDano=0; } }); });
+  limparMortas(G);
+  // efeitos "até o fim do turno" (buffs e reduções)
+  ["eu","ia"].forEach(ld=>{ G[ld].campo.forEach(p=>{ if(p&&p.fimAjuste){ p.a=Math.max(0,p.a+p.fimAjuste); p.fimAjuste=0; } }); });
   P.campo.forEach(p=>{ if(p&&p.fimTurno) p.fimTurno(G,l); });
   P.campo.forEach(p=>{ if(p&&p.descongelaFim){ p.congelada=false; p.descongelaFim=false; } });
   limparMortas(G);
@@ -351,21 +404,23 @@ async function fimDeTurno(l){
   render(); await sleep(320);
 }
 
-// ============ jogadas ============
-function custoDe(l,c){ let cc=c.c; if(c.investida && G[l].constr.some(k=>k&&k.key==="forja")) cc=Math.max(0,cc-1); return cc; }
-
+// ================= jogadas =================
 function jogarCarta(l, idx, alvo){
   const P=G[l]; const c=P.mao[idx]; if(!c) return false;
-  const cc=custoDe(l,c);
+  const cc=c.c;
   if(P.en<cc) return false;
   if(c.t==="tropa"){
     const slot=P.campo.findIndex(s=>!s); if(slot<0) return false;
     P.en-=cc; P.mao.splice(idx,1);
     const p={...c, pronta:!!c.investida, frio:0};
+    // Reino das Brasas Eternas: Fogo com ≤3 Vida ganha Investida (na entrada, nesta demo)
+    if(!p.pronta && p.f==="fogo" && p.v<=3 && P.terreno && P.terreno.key==="reinobrasas"){ p.pronta=true; log(G,`🏜️ As Brasas Eternas dão Investida a ${p.n}!`); }
     // auras ao entrar: Escudeiro (+1 Vida Gelo), General (+1/+1 Pinguim), Palácio (+1 Vida Gelo)
     if(p.f==="gelo" && P.campo.some(q=>q&&q.auraVidaGelo)) p.v++;
     if(p.pinguim && P.campo.some(q=>q&&q.auraPinguim)){ p.a++; p.v++; }
     if(p.f==="gelo" && P.terreno && P.terreno.key==="palacio") p.v++;
+    // Fornalha Maluca: primeira Tropa de Fogo do turno +1 ATQ até o fim do turno
+    if(p.f==="fogo" && !P.fornalhaUsada && P.constr.some(k=>k&&k.fornalhaMaluca)){ P.fornalhaUsada=true; buffTemp(G,p,1); log(G,`⚒️ A Fornalha Maluca tempera ${p.n}: +1 ATQ no turno`); }
     // Lago Congelado do oponente: entra com −1 ATQ até o próximo turno
     const terrInimigo=G[outro(l)].terreno;
     if(terrInimigo && terrInimigo.key==="lago" && p.a>0){ p.a--; p.lagoDebuff=1; log(G,`🌊 ${p.n} escorrega no Lago Congelado: −1 ATQ até o próximo turno`); }
@@ -385,6 +440,17 @@ function jogarCarta(l, idx, alvo){
     if(c.f==="gelo" && !P.reiUsado && P.campo.some(q=>q&&q.reiGeladeira)){
       P.reiUsado=true; let n=0; G[outro(l)].campo.forEach(q=>{ if(q){darFrio(G,q,1); n++;} });
       if(n) log(G,"🤴 O Rei da Geladeira Antiga espalha Frio em todas as inimigas!");
+    }
+    // Arqueira de Fogo Azul: 1×/turno, Feitiço de Fogo → 1 na cara
+    if(c.f==="fogo" && !P.arqueiraUsada && P.campo.some(q=>q&&q.arqueiraAzul)){
+      P.arqueiraUsada=true; dano(G,outro(l),1); log(G,"🏹 A Arqueira de Fogo Azul aproveita o Feitiço: 1 na cara!");
+    }
+    // Caldeirão de Lava: 1×/turno, Feitiço de Fogo → 1 na cara + 1 numa inimiga
+    if(c.f==="fogo" && !P.caldeiraoUsado && P.constr.some(k=>k&&k.caldeiraoLava)){
+      P.caldeiraoUsado=true; dano(G,outro(l),1);
+      const alvos=G[outro(l)].campo.filter(q=>q);
+      if(alvos.length){ const q=alvos[Math.floor(G.rnd()*alvos.length)]; ferirTropa(G,outro(l),q,1); log(G,`🍯 O Caldeirão de Lava borbulha: 1 na cara e 1 em ${q.n}!`); }
+      else log(G,"🍯 O Caldeirão de Lava borbulha: 1 na cara!");
     }
     limparMortas(G);
     render();
@@ -428,11 +494,14 @@ async function atacar(l, atacante, alvo){
     if(atacante.congelada){ log(G,`❄ ${atacante.n} congelou no meio do ataque!`); checarFim(); render(); G.busy=false; return; }
   }
   let dA=atqDe(l,atacante);
-  // bônus situacionais oficiais de Gelo
+  // bônus situacionais oficiais
   if(alvo!=="face" && alvo){
     if(atacante.vsCongelada && alvo.congelada){ dA+=atacante.vsCongelada; log(G,`⚔️ ${atacante.n}: +${atacante.vsCongelada} ATQ contra Congelada`); }
     if(atacante.vsFrio && alvo.frio>0){ dA+=atacante.vsFrio; log(G,`🐺 ${atacante.n}: +${atacante.vsFrio} ATQ contra alvo com Frio`); }
+    if(atacante.vsQueimar && alvo.queima){ dA+=atacante.vsQueimar; log(G,`🦍 ${atacante.n}: +${atacante.vsQueimar} de dano contra Queimando`); }
   }
+  // Arena de Cinzas: Investida atacando ganha +1 ATQ no combate
+  if(atacante.investida && G[l].constr.some(c=>c&&c.arenaCinzas)){ dA+=1; log(G,`🏟️ A Arena de Cinzas empurra ${atacante.n}: +1 ATQ no combate`); }
   const elA=REG.get(atacante.id);
   const elT = alvo==="face" ? document.getElementById(outro(l)+"Face") : REG.get(alvo&&alvo.id);
   // animação: avanço
@@ -448,25 +517,28 @@ async function atacar(l, atacante, alvo){
     elA.style.transition="transform .28s ease"; elA.style.transform="";
     setTimeout(()=>{ elA.classList.remove("atacando"); elA.style.transition=""; elT.classList.remove("impacto","flash-dano"); },300);
   }
-  // dano (SEM dano de volta — v0.5.1)
+  // dano (sem dano de volta — regra v1.0; retaliadoras únicas têm efeito impresso)
   if(alvo==="face"){
     let dReal=dA;
     // Muralha de Cubos de Gelo: −2 no primeiro ataque direto do turno
     if(!D.muralhaUsada && D.constr.some(c=>c&&c.muralhaCubos)){ D.muralhaUsada=true; dReal=Math.max(0,dReal-2); log(G,"🧱 A Muralha de Cubos absorve 2 do ataque direto!"); }
     flutuar(elT, "-"+dReal, "#ff6a5e");
-    dano(G, outro(l), dReal);
     log(G,`⚔ <b>${atacante.n}</b> ataca ${nome(G,outro(l))} na cara: ${dReal} de dano!`);
-    G[l].chamaAlta=true;
+    dano(G, outro(l), dReal);
+    // Espadachim Flamejante: atacou a cara → +1 ATQ até o fim do turno
+    if(atacante.key==="espadachimfl"){ buffTemp(G,atacante,1); log(G,"🤺 O Espadachim Flamejante se empolga: +1 ATQ no turno!"); }
     // Coruja Invernal: dano na cara → 1 Frio num inimigo
     if(atacante.frioAoFace && dReal>0) frioAleatorio(G,outro(l),1,"A Coruja Invernal");
-    if(atacante.key==="otavio" && !atacante.duploUsado){ atacante.pronta=true; atacante.duploUsado=true; log(G,"👑 CHAMA ALTA! Otavio pode atacar DE NOVO!"); }
   } else {
+    // Urso Polar de Guerra (oficial v1.0): atacando Congeladas, ignora punições delas
+    const ursoImune = atacante.key==="ursopolar" && alvo.congelada;
+    if(ursoImune) log(G,"🐻‍❄️ O Urso Polar esmaga a Congelada sem sofrer nada (regra oficial)");
     flutuar(elT, "-"+dA, "#ff6a5e");
     log(G,`⚔ <b>${atacante.n}</b> ataca <b>${alvo.n}</b>: ${dA} de dano`);
-    if(atacante.frioAtaque) darFrio(G,alvo,1);
-    if(alvo.queimaAtacante && !atacante.queima){ atacante.queima=true; log(G,`🔥 ${atacante.n} pegou fogo ao tocar no ${alvo.n}!`); }
-    if(alvo.frioAoSofrer && dA>0){ darFrio(G,atacante,1); log(G,`🦀 O Caranguejo de Gelo gela ${atacante.n}!`); }
+    if(alvo.frioAoSofrer && dA>0 && !ursoImune){ darFrio(G,atacante,1); log(G,`🦀 O Caranguejo de Gelo gela ${atacante.n}!`); }
     ferirTropa(G,outro(l),alvo,dA);
+    // Lagarto de Lava: quando ataca, Queimar na atacada
+    if(atacante.queimaAtaque && alvo.v>0){ darQueimar(G,outro(l),alvo); log(G,`🦎 ${alvo.n} pega fogo: Queimar!`); }
     limparMortas(G);
   }
   checarFim(); render();
@@ -475,24 +547,49 @@ async function atacar(l, atacante, alvo){
   render();
 }
 
-function ferirTropa(g,l,p,d){ p.v-=d; return p.v<=0; }
+function ferirTropa(g,l,p,d){
+  if(d<=0) return p.v<=0;
+  p.v-=d;
+  // Cão de Carvão: quando sofre dano, 1 na cara inimiga
+  if(p.key==="caocarvao" && !g.acabou){ dano(g,outro(l),1); log(g,"🐕 O Cão de Carvão late brasas: 1 na cara inimiga!"); }
+  return p.v<=0;
+}
 function limparMortas(g){
   for(let pass=0;pass<3;pass++){
     let houve=false;
-    ["eu","ia"].forEach(l=>{ g[l].campo.forEach((p,i)=>{ if(p&&p.v<=0){ houve=true; g[l].campo[i]=null; morteVisual(p); log(g,`☠ <b>${p.n}</b> foi destruída`); if(p.explodir) p.explodir(g,l); } }); });
+    ["eu","ia"].forEach(l=>{ g[l].campo.forEach((p,i)=>{ if(p&&p.v<=0){ houve=true; g[l].campo[i]=null; morteVisual(p); log(g,`☠ <b>${p.n}</b> foi destruída`);
+      if(p.key==="fenixbolso"){ g[l].fenixPend=(g[l].fenixPend||0)+1; log(g,"🐦‍🔥 A Fênix de Bolso pode renascer por 2 de Energia no próximo turno…"); }
+      if(p.explodir) p.explodir(g,l); } }); });
     if(!houve) break;
   }
 }
-function dano(g,l,d){ g[l].vida-=d; if(g.vez && l===outro(g.vez)) g[g.vez].chamaAlta=true;
+function dano(g,l,d){
+  if(d<=0) return;
+  g[l].vida-=d;
+  const ben=outro(l), B=g[ben];
+  B.chamaAlta=true;
+  // Rei Vulcânico Birrento: feriu o jogador → 1 em todas as inimigas (1×/turno)
+  if(!B.reiVulcUsado && B.campo.some(p=>p&&p.key==="reivulc")){
+    B.reiVulcUsado=true; log(g,"👑 O Rei Vulcânico faz birra: 1 de dano em TODAS as Tropas inimigas!");
+    g[l].campo.forEach(p=>{ if(p) ferirTropa(g,l,p,1); });
+    limparMortas(g);
+  }
+  // Montanha Vulcânica: 1º dano na cara por turno → uma Fogo sua +1 ATQ no turno
+  if(!B.montUsada && B.terreno && B.terreno.key==="montvulc"){
+    B.montUsada=true;
+    const fs=B.campo.filter(p=>p&&p.f==="fogo");
+    if(fs.length){ const p=fs[Math.floor(g.rnd()*fs.length)]; buffTemp(g,p,1); log(g,`⛰️ A Montanha Vulcânica inflama ${p.n}: +1 ATQ no turno`); }
+  }
   const el=document.getElementById(l+"Face"); if(el&&el.classList){ el.classList.add("impacto","flash-dano"); setTimeout(()=>el.classList.remove("impacto","flash-dano"),420); }
-  checarFim(); }
+  checarFim();
+}
+function buffTemp(g,p,n){ p.a+=n; p.fimAjuste=(p.fimAjuste||0)-n; }
 function ladoDe(p){ if(G.eu.campo.includes(p)) return "eu"; if(G.ia.campo.includes(p)) return "ia"; return null; }
 function frioAleatorio(g,lado,n,fonte){ const alvos=g[lado].campo.filter(p=>p); if(!alvos.length) return; const p=alvos[Math.floor(g.rnd()*alvos.length)]; darFrio(g,p,n); log(g,`❄ ${fonte} aplica Frio em ${p.n}`); }
 function congelar(g,p){
   const jaEstava=p.congelada;
   p.congelada=true; p.pronta=false; const el=REG.get(p.id); flutuar(el,"❄","#a8d8ee");
   if(jaEstava) return;
-  // gatilhos "quando uma Tropa inimiga for Congelada" (para o lado oposto ao da tropa congelada)
   const dono=ladoDe(p); if(!dono) return;
   const ben=outro(dono), B=g[ben];
   B.campo.forEach(q=>{ if(q&&q.ganhaVidaAoCongelar){ q.v++; flutuar(REG.get(q.id),"+1❤","#7fd48a"); } });
@@ -501,8 +598,17 @@ function congelar(g,p){
 }
 function darFrio(g,p,n){ p.frio=(p.frio||0)+n; const el=REG.get(p.id); flutuar(el,"+❄","#a8d8ee");
   if(p.frio>=3){ p.frio=0; p.a=Math.max(0,p.a-1); congelar(g,p); log(g,`❄❄❄ <b>${p.n}</b>: 3 de Frio — Congelada e −1 ATQ permanente!`); } }
+function darQueimar(g,ladoDono,p){
+  p.queima=true; flutuar(REG.get(p.id),"🔥","#ff9a4d");
+  // Mago da Faísca Torta (do lado oposto ao da tropa): inimiga recebe Queimar → 1 de dano nela
+  const B=g[outro(ladoDono)];
+  if(B.campo.some(q=>q&&q.key==="magofaisca") && p.v>0){
+    ferirTropa(g,ladoDono,p,1);
+    log(g,`🧙‍♂️ O Mago da Faísca Torta pune ${p.n}: 1 de dano imediato!`);
+  }
+}
 
-// ============ efeitos visuais ============
+// ================= efeitos visuais =================
 function flutuar(el, txt, cor){
   if(!el||!el.getBoundingClientRect||!document.body) return;
   try{ const r=el.getBoundingClientRect();
@@ -555,33 +661,43 @@ function fimDeJogo(v, txt){
   document.getElementById("fim").classList.add("mostra");
 }
 
-// ============ IA ============
+// ================= IA =================
 async function turnoIA(){
   if(G.acabou) return;
   const l="ia", P=G.ia;
   let agiu=true, passos=0;
-  while(agiu && passos++<24 && !G.acabou){
+  while(agiu && passos++<28 && !G.acabou){
     agiu=false;
-    // feitiços de massa quando valem a pena
-    let i=P.mao.findIndex(c=>(c.key==="eraglacial") && P.en>=c.c);
+    // finalizadores lendários
+    let i=P.mao.findIndex(c=>c.key==="erupcao" && P.en>=c.c);
+    if(i>=0){ jogarCarta(l,i); agiu=true; await sleep(460); continue; }
+    i=P.mao.findIndex(c=>c.key==="eraglacial" && P.en>=c.c);
     if(i>=0 && G.eu.campo.filter(p=>p&&!p.congelada).length>=2){ jogarCarta(l,i); agiu=true; await sleep(460); continue; }
-    i=P.mao.findIndex(c=>(c.key==="nevascarep") && P.en>=c.c);
+    // feitiços de massa
+    i=P.mao.findIndex(c=>c.key==="nevascarep" && P.en>=c.c);
+    if(i>=0 && G.eu.campo.filter(p=>p).length>=2){ jogarCarta(l,i); agiu=true; await sleep(440); continue; }
+    i=P.mao.findIndex(c=>c.key==="chuvafaiscas" && P.en>=c.c);
     if(i>=0 && G.eu.campo.filter(p=>p).length>=2){ jogarCarta(l,i); agiu=true; await sleep(440); continue; }
     // feitiço direcionado no inimigo mais forte
-    i=P.mao.findIndex(c=>c.t==="feitico" && c.alvo && P.en>=c.c);
-    if(i>=0){ const alvos=G.eu.campo.filter(p=>p&&(!p.congelada||P.mao[i].key==="soproinv")); if(alvos.length){ const forte=alvos.reduce((m,x)=>x.a>m.a?x:m); if(forte.a>=3 || P.mao[i].key==="bolafogo"){ jogarCarta(l,i,forte); agiu=true; await sleep(460); continue; } } else if(P.mao[i].key==="lancachamas"){ jogarCarta(l,i,"face"); agiu=true; await sleep(460); continue; } }
-    i=P.mao.findIndex(c=>c.key==="incendio" && P.en>=c.c);
-    if(i>=0 && G.eu.campo.filter(p=>p).length>=2){ jogarCarta(l,i); agiu=true; await sleep(420); continue; }
+    i=P.mao.findIndex(c=>c.t==="feitico" && c.alvo==="tropaInimiga" && P.en>=c.c);
+    if(i>=0){ const alvos=G.eu.campo.filter(p=>p&&(!p.congelada||P.mao[i].key==="soproinv"||P.mao[i].key==="bolafogo"));
+      if(alvos.length){ const forte=alvos.reduce((m,x)=>x.a>m.a?x:m); if(forte.a>=3 || P.mao[i].key==="bolafogo"){ jogarCarta(l,i,forte); agiu=true; await sleep(460); continue; } } }
+    // Superaquecimento na própria tropa pronta mais forte
+    i=P.mao.findIndex(c=>c.key==="superaquec" && P.en>=c.c);
+    if(i>=0){ const prontas=P.campo.filter(p=>p&&p.pronta&&!p.congelada&&p.a>0); if(prontas.length){ const forte=prontas.reduce((m,x)=>x.a>m.a?x:m); jogarCarta(l,i,forte); agiu=true; await sleep(440); continue; } }
+    // Explosão Apressada: dano garantido na cara
+    i=P.mao.findIndex(c=>c.key==="explosaoapr" && P.en>=c.c);
+    if(i>=0){ jogarCarta(l,i); agiu=true; await sleep(420); continue; }
     // terreno (se não tiver um)
     i=P.mao.findIndex(c=>c.t==="terreno" && P.en>=c.c);
     if(i>=0 && !P.terreno){ jogarCarta(l,i); agiu=true; await sleep(380); continue; }
     i=P.mao.findIndex(c=>c.t==="constru" && P.en>=c.c && P.constr.some(s=>!s));
     if(i>=0){ jogarCarta(l,i); agiu=true; await sleep(380); continue; }
     let melhor=-1, mc=-1;
-    P.mao.forEach((c,idx)=>{ if(c.t==="tropa" && P.en>=custoDe(l,c) && P.campo.some(s=>!s) && c.c>mc){ mc=c.c; melhor=idx; } });
+    P.mao.forEach((c,idx)=>{ if(c.t==="tropa" && P.en>=c.c && P.campo.some(s=>!s) && c.c>mc){ mc=c.c; melhor=idx; } });
     if(melhor>=0){ jogarCarta(l,melhor); agiu=true; await sleep(420); continue; }
   }
-  // ataques (sem dano de volta: trocar é sempre bom — IA mata a maior ameaça que conseguir, senão vai na cara)
+  // ataques: mata a maior ameaça que conseguir, senão vai na cara
   let seg=0;
   while(seg++<12 && !G.acabou){
     const atk=G.ia.campo.find(p=>p&&p.pronta&&!p.congelada&&atqDe("ia",p)>0);
@@ -600,7 +716,7 @@ async function turnoIA(){
   if(!G.acabou) iniciarTurno("eu");
 }
 
-// ============ UI ============
+// ================= UI =================
 function aviso(t){ const e=document.getElementById("aviso"); if(e) e.textContent=t||""; }
 function log(g,msg){ const el=document.getElementById("log"); if(el) el.innerHTML = `<div>· ${msg}</div>`+el.innerHTML; }
 
@@ -617,7 +733,7 @@ function render(){
     for(let i=0;i<G[l].enMax;i++){ const b=document.createElement("span"); b.className="botao-en"+(i<G[l].en?" on":""); en.appendChild(b); }
     const campoEl=document.getElementById(l+"Campo"); campoEl.innerHTML="";
     G[l].campo.forEach((p)=>{
-      if(!p){ const s=document.createElement("div"); s.className="slot"; s.textContent="tropa"; campoEl.appendChild(s); return; }
+      if(!p){ const s=document.createElement("div"); s.className="slot"; s.textContent="✦"; campoEl.appendChild(s); return; }
       const d=document.createElement("div");
       d.className=`peca p-${p.f}`+(p.congelada?" congelada":"");
       const atqShow=atqDe(l,p);
@@ -632,8 +748,11 @@ function render(){
           d.onclick=()=>{ if(G.busy) return; G.sel = (G.sel===p? null : p); render(); if(G.sel){ const {tropas,face}=alvosDe("eu",p); aviso(tropas.length||face? "Escolha o alvo do ataque":"Sem alvos válidos"); } else aviso(""); };
         }
       }
+      if(l==="eu" && G.alvoModo && !G.busy && G.alvoModo.carta.alvo==="tropaAliada"){
+        d.classList.add("alvo"); d.onclick=()=>{ if(G.busy) return; const m=G.alvoModo; G.alvoModo=null; aviso(""); jogarCarta("eu",m.idx,p); };
+      }
       if(l==="ia" && G.sel && !G.busy){ const {tropas}=alvosDe("eu",G.sel); if(tropas.includes(p)){ d.classList.add("alvo"); d.onclick=()=>{ if(G.busy) return; const a=G.sel; G.sel=null; aviso(""); atacar("eu",a,p); }; } }
-      if(l==="ia" && G.alvoModo && !G.busy){ const c=G.alvoModo.carta; if(c.alvo==="tropaInimiga"||c.alvo==="qualquer"){ d.classList.add("alvo"); d.onclick=()=>{ const m=G.alvoModo; G.alvoModo=null; aviso(""); jogarCarta("eu",m.idx,p); }; } }
+      if(l==="ia" && G.alvoModo && !G.busy){ const c=G.alvoModo.carta; if(c.alvo==="tropaInimiga"){ d.classList.add("alvo"); d.onclick=()=>{ const m=G.alvoModo; G.alvoModo=null; aviso(""); jogarCarta("eu",m.idx,p); }; } }
       campoEl.appendChild(d);
     });
     const cEl=document.getElementById(l+"Constr"); cEl.innerHTML="";
@@ -652,11 +771,10 @@ function render(){
   const faceIa=document.getElementById("iaFace");
   faceIa.classList.remove("alvo"); faceIa.style.cursor=""; faceIa.onclick=null;
   if(!G.busy && G.sel && alvosDe("eu",G.sel).face){ faceIa.classList.add("alvo"); faceIa.style.cursor="crosshair"; faceIa.onclick=()=>{ if(G.busy) return; const a=G.sel; G.sel=null; aviso(""); atacar("eu",a,"face"); }; }
-  if(!G.busy && G.alvoModo && G.alvoModo.carta.alvo==="qualquer"){ faceIa.classList.add("alvo"); faceIa.style.cursor="crosshair"; faceIa.onclick=()=>{ const m=G.alvoModo; G.alvoModo=null; aviso(""); jogarCarta("eu",m.idx,"face"); }; }
   // mão
   const maoEl=document.getElementById("mao"); maoEl.innerHTML="";
   G.eu.mao.forEach((c,idx)=>{
-    const cc=custoDe("eu",c);
+    const cc=c.c;
     const d=document.createElement("div");
     const jogavel = G.vez==="eu" && !G.busy && G.eu.en>=cc && !G.alvoModo && !G.sel &&
       (c.t!=="tropa"||G.eu.campo.some(s=>!s)) && (c.t!=="constru"||G.eu.constr.some(s=>!s));
@@ -667,9 +785,9 @@ function render(){
     if(jogavel){ d.onclick=()=>{
       if(G.busy) return;
       if(c.t==="feitico"&&c.alvo){
-        const temAlvo = G.ia.campo.some(p=>p) || c.alvo==="qualquer";
+        const temAlvo = c.alvo==="tropaInimiga"? G.ia.campo.some(p=>p) : G.eu.campo.some(p=>p);
         if(!temAlvo){ aviso("Sem alvos para este feitiço."); return; }
-        G.alvoModo={idx, carta:c}; aviso(`Escolha o alvo de ${c.n} (clique numa tropa inimiga${c.alvo==="qualquer"?" ou na cara":""})`); render();
+        G.alvoModo={idx, carta:c}; aviso(`Escolha o alvo de ${c.n} (clique numa Tropa ${c.alvo==="tropaAliada"?"SUA":"inimiga"})`); render();
       } else jogarCarta("eu",idx);
     }; }
     maoEl.appendChild(d);
