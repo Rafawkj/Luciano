@@ -1,365 +1,432 @@
-<title>TERRAVIVA — Conceito Visual: O Diorama Vivo</title>
+<title>Guerra dos Reinos — Identidade Visual: Encanto Vivo</title>
 <style>
+  /* ====== ENCANTO VIVO — mundo único: céu arcano (tema deliberadamente committed) ====== */
   :root{
-    --mesa:#efe4d3; --mesa-veio:#e3d4bd; --tinta:#33261a; --tinta-suave:#6b573f;
-    --broto:#5a8f3c; --broto-claro:#7fb347;
-    --cartao:#faf3e6; --sombra:rgba(60,40,20,.25);
-    --etiqueta:#8a6d4a;
-    --gelo:#bfe0ee; --gelo-fundo:#e7f3f8;
-    --glace:#f2a7c3; --biscoito:#d9a05e; --doce-fundo:#fdeef3;
-    --veludo:#6e2337; --veludo-escuro:#471526; --latao:#c9a55a;
-    --musgo:#6f9e4a; --madeira:#8a6437;
-    --brasa:#e2662a; --carvao:#5c3325;
-    --retalho:#c9913f; --palha:#e8d9a8;
+    --ceu1:#1d1440; --ceu2:#2c1e5c; --ceu3:#171033;
+    --marfim:#f6efdd; --suave:#c9bfe8; --turquesa:#39d8d8; --ouro:#ffcf5c;
+    --tinta:#3a2b1a; --pergaminho:#f3e7c9;
+    --gelo1:#bfe6f7; --gelo2:#5fb6dd; --gelo3:#2e6f96; --geloRoxo:#8f7fd4;
+    --fogo1:#ffb84d; --fogo2:#ff7a2e; --fogo3:#c23a12; --carvao:#3a1d16;
+    --doce1:#ffb9d9; --doce2:#e88bc0; --doce3:#a75c93; --lilas:#c9a6f0;
+    --rubi1:#e04a5f; --rubi2:#8f1f3a; --vinho:#4a1028; --ouroVelho:#c9a55a;
+    --nat1:#9fd45e; --nat2:#4f9642; --nat3:#2e5c2a; --madeira:#7a5230;
+    --hum1:#e0b36a; --hum2:#a97b42; --aco:#5b7fa6; --bandeira:#c04a3a;
+    --neu1:#d8cdb4; --neu2:#a89a7e; --bronze:#a97e4f;
   }
-  @media (prefers-color-scheme: dark){
-    :root{
-      --mesa:#2a1d12; --mesa-veio:#33251707; --tinta:#f0e6d6; --tinta-suave:#c9b394;
-      --cartao:#3a2c1d; --sombra:rgba(0,0,0,.5);
-      --etiqueta:#d8b98a;
-      --gelo-fundo:#274552; --doce-fundo:#4a2a38;
-      --mesa-veio:#231810;
-    }
-  }
-  :root[data-theme="dark"]{
-    --mesa:#2a1d12; --mesa-veio:#231810; --tinta:#f0e6d6; --tinta-suave:#c9b394;
-    --cartao:#3a2c1d; --sombra:rgba(0,0,0,.5); --etiqueta:#d8b98a;
-    --gelo-fundo:#274552; --doce-fundo:#4a2a38;
-  }
-  :root[data-theme="light"]{
-    --mesa:#efe4d3; --mesa-veio:#e3d4bd; --tinta:#33261a; --tinta-suave:#6b573f;
-    --cartao:#faf3e6; --sombra:rgba(60,40,20,.25); --etiqueta:#8a6d4a;
-    --gelo-fundo:#e7f3f8; --doce-fundo:#fdeef3;
-  }
-
-  *{box-sizing:border-box}
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
   body{
-    margin:0; color:var(--tinta);
+    margin:0; color:var(--marfim); font-family:'Trebuchet MS','Segoe UI',sans-serif; line-height:1.55;
     background:
-      repeating-linear-gradient(92deg, transparent 0 90px, var(--mesa-veio) 90px 92px),
-      var(--mesa);
-    font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
-    line-height:1.6;
+      radial-gradient(ellipse 60% 40% at 20% 8%, rgba(57,216,216,.14), transparent 60%),
+      radial-gradient(ellipse 50% 35% at 85% 20%, rgba(255,207,92,.10), transparent 60%),
+      radial-gradient(ellipse at 50% 120%, #0e0a22 20%, transparent 60%),
+      linear-gradient(180deg, var(--ceu3), var(--ceu1) 30%, var(--ceu2) 70%, var(--ceu3));
+    background-attachment: fixed;
   }
-  .pagina{max-width:1060px; margin:0 auto; padding:48px 24px 96px}
-  h1,h2,h3,.display{
-    font-family: ui-rounded, 'Arial Rounded MT Bold', 'Trebuchet MS', 'Segoe UI', sans-serif;
-    line-height:1.15; text-wrap:balance; margin:0;
-  }
-  p{max-width:62ch}
-  .etiqueta{
-    font-family:'Trebuchet MS','Segoe UI',sans-serif; font-size:.72rem; font-weight:700;
-    text-transform:uppercase; letter-spacing:.14em; color:var(--etiqueta);
-  }
-  section{margin-top:72px}
-  .sec-head{display:flex; align-items:baseline; gap:14px; border-bottom:3px solid var(--tinta); padding-bottom:8px; margin-bottom:22px}
-  .sec-head h2{font-size:1.6rem}
-  a{color:var(--broto)}
-  :focus-visible{outline:3px solid var(--broto-claro); outline-offset:3px; border-radius:6px}
-
-  /* ---------- HERO: wordmark de materiais ---------- */
-  header{text-align:center; padding:24px 0 8px}
-  .wordmark{font-size:clamp(2.6rem,7.5vw,4.8rem); letter-spacing:.02em; display:inline-block}
-  .wordmark span{display:inline-block; padding:0 .02em}
-  .m-madeira{color:var(--madeira); text-shadow:0 3px 0 rgba(0,0,0,.25)}
-  .m-musgo{color:var(--musgo); text-shadow:0 3px 0 rgba(0,0,0,.2)}
-  .m-gelo{color:#7ab8d4; text-shadow:0 3px 0 rgba(0,0,0,.15)}
-  .m-glace{color:var(--glace); text-shadow:0 3px 0 rgba(0,0,0,.15)}
-  .m-brasa{color:var(--brasa); text-shadow:0 0 12px rgba(226,102,42,.55), 0 3px 0 rgba(0,0,0,.2)}
-  .m-veludo{color:var(--veludo); text-shadow:0 3px 0 rgba(0,0,0,.2)}
-  :root[data-theme="dark"] .m-veludo{color:#b0546e}
-  @media (prefers-color-scheme: dark){ .m-veludo{color:#b0546e} }
-  :root[data-theme="light"] .m-veludo{color:var(--veludo)}
-  .broto-v{position:relative}
-  .broto-v::after{
-    content:"🌱"; position:absolute; top:-.55em; left:50%; transform:translateX(-50%);
-    font-size:.4em; animation:balanca 3.4s ease-in-out infinite;
-  }
-  @keyframes balanca{0%,100%{transform:translateX(-50%) rotate(-8deg)}50%{transform:translateX(-50%) rotate(8deg)}}
+  /* estrelinhas */
+  body::before{content:""; position:fixed; inset:0; pointer-events:none; opacity:.5;
+    background-image:radial-gradient(2px 2px at 12% 22%, #fff8, transparent 60%),
+      radial-gradient(1.5px 1.5px at 78% 12%, #fff7, transparent 60%),
+      radial-gradient(2px 2px at 55% 34%, #ffe9b066, transparent 60%),
+      radial-gradient(1.5px 1.5px at 32% 64%, #9fe8ff55, transparent 60%),
+      radial-gradient(2px 2px at 88% 72%, #fff5, transparent 60%),
+      radial-gradient(1.5px 1.5px at 8% 86%, #ffd76a55, transparent 60%)}
+  .wrap{max-width:1080px; margin:0 auto; padding:36px 18px 90px; position:relative}
+  h1,h2,h3{line-height:1.15; margin:0}
+  .rotulo{font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.16em; color:var(--turquesa)}
+  section{margin-top:64px}
+  .sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:18px}
+  .sec-head h2{font-size:1.5rem; text-shadow:0 0 18px rgba(57,216,216,.35), 0 2px 0 #0006}
+  .sec-head::after{content:""; flex:1; height:2px; border-radius:2px;
+    background:linear-gradient(90deg, rgba(57,216,216,.5), transparent)}
+  p{max-width:66ch}
+  :focus-visible{outline:3px solid var(--turquesa); outline-offset:3px; border-radius:8px}
   @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important} }
-  .tagline{font-style:italic; color:var(--tinta-suave); margin-top:10px; font-size:1.05rem}
-  .subt{margin-top:4px}
 
-  /* ---------- Conceito ---------- */
-  .conceito{display:grid; grid-template-columns:1fr 1fr; gap:28px}
-  @media (max-width:760px){ .conceito{grid-template-columns:1fr} }
-  .regra-ouro{
-    background:var(--cartao); border:2px dashed var(--etiqueta); border-radius:14px;
-    padding:20px 22px; box-shadow:0 6px 16px var(--sombra); align-self:start;
-  }
-  .regra-ouro .display{font-size:1.15rem}
+  /* ====== HERO: logo ====== */
+  header{text-align:center; padding:12px 0 0}
+  .logo{display:inline-block; font-weight:900; letter-spacing:.04em; line-height:.95;
+    filter:drop-shadow(0 6px 0 #0e0a22) drop-shadow(0 0 26px rgba(255,207,92,.25))}
+  .logo .l1{font-size:clamp(2rem,6vw,3.4rem); color:var(--ouro);
+    text-shadow:0 3px 0 #7a4a12, 0 0 22px rgba(255,207,92,.55)}
+  .logo .l2{font-size:clamp(1.1rem,3vw,1.7rem); color:var(--suave); letter-spacing:.5em; text-indent:.5em}
+  .logo .l3{font-size:clamp(2.2rem,7vw,3.9rem);
+    background:linear-gradient(90deg, var(--gelo2), var(--fogo2), var(--doce2), var(--rubi1), var(--nat2), var(--hum1));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    text-shadow:none; filter:drop-shadow(0 3px 0 #0e0a22)}
+  .tagline{color:var(--suave); font-style:italic; margin-top:10px}
+  .float{animation:flutua 5s ease-in-out infinite}
+  @keyframes flutua{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 
-  /* ---------- Mesa do Regente (menu) ---------- */
-  .mesa{
+  /* ====== CARTAS ====== */
+  .fileira-cartas{display:flex; gap:22px; flex-wrap:wrap; justify-content:center; perspective:1200px}
+  .carta{width:225px; height:325px; border-radius:16px; position:relative; padding:44px 10px 10px;
+    display:flex; flex-direction:column; color:var(--tinta);
+    box-shadow:0 14px 30px #0e0a22cc, inset 0 1px 0 rgba(255,255,255,.35);
+    transition:transform .25s ease, box-shadow .25s ease}
+  .carta:hover{transform:translateY(-10px) rotateX(4deg) rotateY(-3deg) scale(1.03); z-index:5}
+  /* placa do nome */
+  .placa{position:absolute; top:8px; left:44px; right:12px; height:30px; border-radius:15px;
+    display:flex; align-items:center; justify-content:center; font-weight:900; font-size:.72rem; letter-spacing:.02em;
+    color:#fff; text-shadow:0 1px 2px #0009; box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 2px 5px #0007}
+  /* gema de custo */
+  .gema{position:absolute; top:-8px; left:-8px; width:42px; height:42px; z-index:6;
+    display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.25rem; color:#fff;
+    text-shadow:0 2px 3px #000a; border-radius:12px; transform:rotate(45deg);
+    box-shadow:0 4px 10px #0009, inset 0 2px 3px rgba(255,255,255,.55)}
+  .gema span{transform:rotate(-45deg)}
+  .gema.redonda{border-radius:50%; transform:none}
+  .gema.redonda span{transform:none}
+  /* arte */
+  .arte{flex:1; border-radius:10px; margin-bottom:6px; position:relative; overflow:hidden;
+    display:flex; align-items:flex-end; justify-content:center;
+    box-shadow:inset 0 -18px 26px #0005, inset 0 2px 6px #0004}
+  .arte .png{font-size:4.6rem; line-height:1; transform:translateY(8px);
+    filter:drop-shadow(0 8px 6px #0007) drop-shadow(0 0 14px rgba(255,255,255,.18))}
+  .tipo-linha{display:flex; justify-content:space-between; align-items:center;
+    font-size:.58rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; padding:2px 4px 4px; color:#fff;
+    text-shadow:0 1px 2px #0008}
+  .rarid{font-size:.72rem}
+  /* caixa de texto pergaminho */
+  .pergaminho{background:linear-gradient(180deg, var(--pergaminho), #e8d9b4); border-radius:9px;
+    min-height:64px; padding:7px 9px; font-size:.62rem; line-height:1.4; font-weight:600;
+    box-shadow:inset 0 0 0 2px #c9b184, inset 0 2px 4px #0003}
+  .pergaminho .kw{font-weight:900}
+  /* medalhões ATQ/VIDA */
+  .stats{position:absolute; bottom:-13px; left:0; right:0; display:flex; justify-content:space-between; padding:0 6px}
+  .med{width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-weight:900; font-size:1.15rem; color:#fff; text-shadow:0 2px 3px #000b; position:relative;
+    box-shadow:0 5px 10px #000a, inset 0 2px 3px rgba(255,255,255,.5)}
+  .med small{position:absolute; top:-14px; font-size:.85rem; text-shadow:0 2px 3px #000}
+  .med.atq{background:radial-gradient(circle at 32% 28%, #ff9a5e, #c23a12 70%); clip-path:polygon(50% 0%, 92% 20%, 100% 62%, 72% 100%, 28% 100%, 0% 62%, 8% 20%)}
+  .med.vid{background:radial-gradient(circle at 32% 28%, #7fe08a, #1f7a3a 70%)}
+  /* molduras por facção */
+  .f-gelo{background:linear-gradient(165deg, var(--gelo1), var(--gelo2) 55%, var(--gelo3));
+    border:3px solid #e8f7ff; outline:2px solid var(--gelo3)}
+  .f-gelo .placa{background:linear-gradient(180deg, var(--gelo3), #1d4a66)}
+  .f-gelo .gema{background:radial-gradient(circle at 35% 28%, #eafaff, var(--gelo2) 55%, var(--gelo3))}
+  .f-gelo .arte{background:linear-gradient(180deg, #163a52, #2e6f96 60%, #9fd7ee)}
+  .f-gelo::after{content:"❄"; position:absolute; top:40px; right:8px; color:#ffffffcc; font-size:1rem; text-shadow:0 0 8px #9fe8ff}
+  .f-gelo::before{content:"❄"; position:absolute; bottom:46px; left:8px; color:#ffffff99; font-size:.8rem; z-index:2}
+  .f-fogo{background:linear-gradient(165deg, var(--fogo1), var(--fogo2) 55%, var(--fogo3));
+    border:3px solid #ffdf9e; outline:2px solid var(--carvao)}
+  .f-fogo .placa{background:linear-gradient(180deg, var(--carvao), #6e2a12)}
+  .f-fogo .gema{background:radial-gradient(circle at 35% 28%, #ffe9a8, var(--fogo2) 55%, var(--carvao)); border-radius:8px}
+  .f-fogo .arte{background:linear-gradient(180deg, #3a1d16, #c23a12 65%, #ff9a3d)}
+  .f-fogo::after{content:"🔥"; position:absolute; top:40px; right:8px; font-size:.9rem; filter:drop-shadow(0 0 8px #ff7a2e)}
+  .f-doce{background:linear-gradient(165deg, #fff0f8, var(--doce1) 45%, var(--doce2));
+    border:3px solid #fff; outline:2px solid var(--doce3)}
+  .f-doce .placa{background:linear-gradient(180deg, var(--doce3), #7d3f6e)}
+  .f-doce .gema{background:radial-gradient(circle at 35% 28%, #fff, var(--doce1) 50%, var(--doce3)); border-radius:50%; transform:none}
+  .f-doce .gema span{transform:none}
+  .f-doce .arte{background:linear-gradient(180deg, #7d3f6e, #c980b3 60%, #ffd9ec)}
+  .f-doce::after{content:"✦"; position:absolute; top:42px; right:10px; color:#fff; text-shadow:0 0 8px #ffb9d9}
+  .f-sang{background:linear-gradient(165deg, var(--rubi1), var(--rubi2) 55%, var(--vinho));
+    border:3px solid var(--ouroVelho); outline:2px solid var(--vinho)}
+  .f-sang .placa{background:linear-gradient(180deg, var(--vinho), #6e1830); box-shadow:inset 0 0 0 1px var(--ouroVelho), 0 2px 5px #0007}
+  .f-sang .gema{background:radial-gradient(circle at 35% 28%, #ff8fa0, var(--rubi1) 50%, var(--vinho))}
+  .f-sang .arte{background:radial-gradient(ellipse at 50% 0%, #b3233c33 0 30%, transparent 55%), linear-gradient(180deg, #2c0a1a, #4a1028 60%, #8f1f3a)}
+  .f-sang::after{content:"🦇"; position:absolute; top:40px; right:8px; font-size:.85rem; filter:drop-shadow(0 0 6px #e04a5f)}
+  .f-nat{background:linear-gradient(165deg, var(--nat1), var(--nat2) 55%, var(--nat3));
+    border:3px solid #d9f0b4; outline:2px solid var(--madeira)}
+  .f-nat .placa{background:linear-gradient(180deg, var(--madeira), #573a1f)}
+  .f-nat .gema{background:radial-gradient(circle at 35% 28%, #eaffc4, var(--nat1) 50%, var(--nat3)); border-radius:50% 50% 50% 12px}
+  .f-nat .arte{background:linear-gradient(180deg, #234a20, #4f9642 65%, #b8e08a)}
+  .f-nat::after{content:"🍃"; position:absolute; top:40px; right:8px; font-size:.85rem}
+  .f-hum{background:linear-gradient(165deg, var(--hum1), var(--hum2) 60%, #6e4a24);
+    border:3px solid #f0d9a8; outline:2px solid #57381a}
+  .f-hum .placa{background:linear-gradient(180deg, var(--aco), #3a5470)}
+  .f-hum .gema{background:radial-gradient(circle at 35% 28%, #ffe9b8, var(--bronze) 55%, #6e4a24); border-radius:50%; transform:none}
+  .f-hum .gema span{transform:none}
+  .f-hum .arte{background:linear-gradient(180deg, #3a5470, #7a94ad 60%, #e8d9b8)}
+  .f-hum::after{content:"🛡️"; position:absolute; top:40px; right:8px; font-size:.8rem}
+  .legenda{font-size:.8rem; color:var(--suave); text-align:center; margin-top:22px; font-style:italic; max-width:none}
+  /* raridade lendária: partículas */
+  .lendaria{animation:aura 3s ease-in-out infinite}
+  @keyframes aura{0%,100%{box-shadow:0 14px 30px #0e0a22cc, 0 0 18px 2px rgba(255,207,92,.35)}50%{box-shadow:0 14px 30px #0e0a22cc, 0 0 30px 6px rgba(255,207,92,.55)}}
+  .particula{position:absolute; font-size:.7rem; animation:orbita 4s linear infinite; pointer-events:none; z-index:7}
+  @keyframes orbita{0%{transform:rotate(0) translateX(118px) rotate(0)}100%{transform:rotate(360deg) translateX(118px) rotate(-360deg)}}
+
+  /* ====== GEMAS DE CUSTO (linha demonstrativa) ====== */
+  .gemas-demo{display:flex; gap:18px; flex-wrap:wrap; justify-content:center; margin-top:8px}
+  .gema-item{text-align:center; width:96px}
+  .gema-item .g{width:52px; height:52px; margin:0 auto 8px; display:flex; align-items:center; justify-content:center;
+    font-weight:900; font-size:1.3rem; color:#fff; text-shadow:0 2px 3px #000a;
+    box-shadow:0 5px 12px #000a, inset 0 2px 3px rgba(255,255,255,.55)}
+  .gema-item small{font-size:.66rem; color:var(--suave); display:block; line-height:1.3}
+
+  /* ====== MESA ====== */
+  .mesa{border-radius:22px; padding:18px 14px 14px; position:relative; transform:perspective(900px) rotateX(6deg);
     background:
-      repeating-linear-gradient(90deg, rgba(0,0,0,.06) 0 3px, transparent 3px 74px),
-      linear-gradient(180deg, #7a5230, #5f3f24);
-    border-radius:18px; border:6px solid #4a3019;
-    padding:38px 26px 30px; box-shadow:0 14px 34px var(--sombra), inset 0 0 60px rgba(0,0,0,.25);
-    display:flex; gap:24px; justify-content:center; flex-wrap:wrap;
-  }
-  .objeto{
-    width:240px; border:none; cursor:pointer; text-align:center; padding:0;
-    background:transparent; color:#f5ead6; font-family:inherit;
-    transition:transform .25s ease;
-  }
-  .objeto:hover{transform:translateY(-8px)}
-  .objeto .peca{
-    height:150px; border-radius:12px; display:flex; align-items:center; justify-content:center;
-    font-size:3.2rem; box-shadow:0 10px 18px rgba(0,0,0,.4), inset 0 2px 0 rgba(255,255,255,.18);
-    margin-bottom:12px;
-  }
-  .caixa-deck .peca{background:linear-gradient(180deg,#a5773f,#7d5527); border:3px solid #5e3d1a}
-  .tab-dobravel .peca{
+      radial-gradient(ellipse at 50% 45%, rgba(57,216,216,.08), transparent 70%),
+      repeating-linear-gradient(90deg, rgba(255,235,190,.05) 0 3px, transparent 3px 60px),
+      linear-gradient(180deg, #4a3562, #3a2a52 50%, #4a3562);
+    border:5px solid #6e5a94; outline:3px solid #2c1e5c;
+    box-shadow:0 24px 50px #0e0a22, inset 0 0 60px #1d144088}
+  .mesa::before,.mesa::after{content:"◆"; position:absolute; top:-14px; color:var(--turquesa); font-size:1.2rem; text-shadow:0 0 12px var(--turquesa)}
+  .mesa::before{left:24px} .mesa::after{right:24px}
+  .runa-aro{position:absolute; inset:6px; border-radius:16px; border:1.5px dashed rgba(57,216,216,.3); pointer-events:none}
+  .lado{display:flex; gap:8px; align-items:center; justify-content:center; margin:8px 0}
+  .slot-tropa{width:74px; height:74px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:1.8rem; background:radial-gradient(circle, rgba(57,216,216,.14), rgba(0,0,0,.28) 75%);
+    box-shadow:inset 0 3px 10px #000a, 0 0 0 2px rgba(57,216,216,.28);
+    animation:pulso-slot 2.6s ease-in-out infinite}
+  @keyframes pulso-slot{0%,100%{box-shadow:inset 0 3px 10px #000a, 0 0 0 2px rgba(57,216,216,.22)}50%{box-shadow:inset 0 3px 10px #000a, 0 0 10px 3px rgba(57,216,216,.35)}}
+  .slot-tropa.ocupado{animation:none; background:radial-gradient(circle at 40% 30%, #ffffff22, rgba(0,0,0,.3));
+    box-shadow:inset 0 3px 10px #0009, 0 0 14px 3px rgba(255,207,92,.4)}
+  .pedestal{width:96px; height:60px; border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    font-size:.55rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:var(--suave); gap:2px;
+    background:linear-gradient(180deg, rgba(159,212,94,.2), rgba(0,0,0,.3)); box-shadow:inset 0 2px 8px #000a, 0 0 0 2px rgba(159,212,94,.35)}
+  .pedestal.constr{background:linear-gradient(180deg, rgba(255,207,92,.15), rgba(0,0,0,.3)); box-shadow:inset 0 2px 8px #000a, 0 0 0 2px rgba(255,207,92,.3)}
+  .pedestal .mini{font-size:1.3rem}
+  .hud{display:flex; justify-content:space-between; align-items:center; margin:6px 4px}
+  .orbe-vida{width:68px; height:68px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-weight:900; font-size:1.5rem; color:#fff; text-shadow:0 2px 3px #000b;
+    background:radial-gradient(circle at 35% 28%, #ff9aa8, #c23a5a 60%, #6e1830);
+    box-shadow:0 6px 14px #000b, inset 0 3px 5px rgba(255,255,255,.5), 0 0 18px rgba(224,74,95,.45)}
+  .cristais-energia{display:flex; gap:5px}
+  .cristal{width:16px; height:24px; clip-path:polygon(50% 0, 100% 30%, 80% 100%, 20% 100%, 0 30%);
+    background:linear-gradient(180deg,#2c2a4a,#1d1c38); box-shadow:inset 0 2px 3px #0008}
+  .cristal.on{background:linear-gradient(180deg,#c4f6ff,#39d8d8 55%,#1a8f9e); box-shadow:0 0 10px rgba(57,216,216,.8)}
+  .portais{display:flex; flex-direction:column; gap:6px; font-size:.6rem; color:var(--suave); text-align:center}
+  .portal{width:52px; height:38px; border-radius:50%; background:radial-gradient(ellipse at center, rgba(57,216,216,.4), rgba(57,216,216,.05) 70%);
+    box-shadow:0 0 14px rgba(57,216,216,.4); display:flex; align-items:center; justify-content:center}
+
+  /* ====== TELA PRINCIPAL ====== */
+  .menu-mock{border-radius:20px; overflow:hidden; position:relative; min-height:380px; display:flex; align-items:center; justify-content:center;
+    border:4px solid #6e5a94; box-shadow:0 20px 44px #0e0a22}
+  .panorama{position:absolute; inset:0;
     background:
-      radial-gradient(circle at 30% 40%, rgba(255,255,255,.12) 0 18%, transparent 19%),
-      linear-gradient(180deg,#5d7c3c,#43602a);
-    border:3px solid #33481f;
-  }
-  .livrinho .peca{background:linear-gradient(180deg,#9c4a3c,#6f3129); border:3px solid #542018}
-  .objeto .display{font-size:1.05rem; letter-spacing:.04em}
-  .objeto .dica{font-size:.85rem; color:#e0cba4; font-style:italic}
+      radial-gradient(circle 34px at 82% 16%, #f6efdd, #c9bfe8 60%, transparent 62%),
+      radial-gradient(circle 16px at 72% 26%, #ffd9ec, #c9a6f0 60%, transparent 62%),
+      linear-gradient(180deg, #171033 0%, #2c1e5c 45%, #4a3562 75%, #1d1440 100%)}
+  .reinos{position:absolute; left:0; right:0; bottom:0; height:46%; display:flex; align-items:flex-end; justify-content:space-around; font-size:2.3rem; padding:0 4%;
+    filter:drop-shadow(0 -4px 12px #0e0a22)}
+  .reinos span{transform:translateY(12%)}
+  .reinos .r{font-size:3.1rem}
+  .menu-ui{position:relative; z-index:2; text-align:center; padding:26px 0}
+  .menu-botoes{display:flex; flex-direction:column; gap:10px; margin-top:18px; align-items:center}
+  .btn-magico{font-family:inherit; font-weight:900; letter-spacing:.06em; border:none; cursor:pointer; color:#3a2b1a;
+    padding:12px 54px; border-radius:28px; font-size:1rem;
+    background:linear-gradient(180deg, #ffe9a8, var(--ouro) 55%, #d99a2e);
+    box-shadow:0 5px 0 #8a5c14, 0 10px 22px #0e0a22cc, inset 0 2px 2px rgba(255,255,255,.7); transition:transform .12s}
+  .btn-magico:active{transform:translateY(4px); box-shadow:0 1px 0 #8a5c14, 0 6px 14px #0e0a22cc}
+  .btn-magico.sec{background:linear-gradient(180deg, #d9ccff, #9c86e0 60%, #6e5a94); color:#241a44; padding:9px 40px; font-size:.85rem;
+    box-shadow:0 4px 0 #443172, 0 8px 18px #0e0a22cc, inset 0 2px 2px rgba(255,255,255,.6)}
 
-  /* ---------- Cartas ---------- */
-  .fileira-cartas{display:flex; gap:26px; flex-wrap:wrap; justify-content:center}
-  .carta{
-    width:280px; border-radius:16px; padding:12px; position:relative;
-    box-shadow:0 12px 26px var(--sombra);
-    font-family:'Trebuchet MS','Segoe UI',sans-serif; color:#2c2116;
-    transition:transform .25s ease;
-  }
-  .carta:hover{transform:translateY(-6px) rotate(-.5deg)}
-  .carta .topo{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px}
-  .custo{display:flex; gap:4px; font-size:1.05rem;
-    background:rgba(255,255,255,.75); border-radius:20px; padding:2px 10px; box-shadow:inset 0 0 0 2px rgba(0,0,0,.15)}
-  .raro{font-size:.7rem; font-weight:800; letter-spacing:.12em; background:rgba(0,0,0,.55); color:#ffe9b0; border-radius:6px; padding:3px 8px}
-  .arte{height:170px; border-radius:10px; display:flex; align-items:flex-end; justify-content:center;
-    font-size:4.4rem; overflow:hidden; box-shadow:inset 0 -14px 22px rgba(0,0,0,.22)}
-  .arte .mini{transform:translateY(6px); filter:drop-shadow(0 10px 6px rgba(0,0,0,.35))}
-  .nome{font-size:1.12rem; margin:10px 2px 0}
-  .linha-cat{font-size:.72rem; text-transform:uppercase; letter-spacing:.1em; opacity:.75; margin:2px 2px 8px}
-  .stats{display:flex; gap:6px; flex-wrap:wrap; font-size:.78rem; font-weight:700; font-variant-numeric:tabular-nums}
-  .stats span{background:rgba(255,255,255,.7); border-radius:6px; padding:2px 7px; box-shadow:inset 0 0 0 1.5px rgba(0,0,0,.12)}
-  .chips{display:flex; gap:6px; margin-top:8px; flex-wrap:wrap}
-  .chips span{font-size:.7rem; font-weight:700; border-radius:20px; padding:3px 9px; background:rgba(0,0,0,.12)}
-  .regra{font-size:.83rem; margin:10px 2px 0; line-height:1.45}
-  .flavor{font-family:Georgia,serif; font-style:italic; font-size:.8rem; opacity:.8; margin:8px 2px 2px}
+  /* ====== paletas ====== */
+  .paletas{display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:16px}
+  .paleta{border-radius:16px; padding:14px 16px; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.22));
+    box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.14), 0 8px 20px #0e0a2299}
+  .paleta h3{font-size:1rem; display:flex; gap:8px; align-items:center}
+  .paleta .senso{font-size:.72rem; color:var(--suave); font-style:italic; margin:2px 0 8px}
+  .sw{display:flex; gap:6px}
+  .sw i{flex:1; height:30px; border-radius:8px; box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.25), inset 0 -6px 10px #0004}
 
-  /* moldura GELADOS: vidro fosco + cantos de tricô */
-  .c-gelados{background:linear-gradient(180deg, #ddeef6, #bfdcea); border:5px solid rgba(255,255,255,.85)}
-  .c-gelados .arte{background:linear-gradient(180deg,#9cc9e0 0%, #d7ecf5 70%, #f4fbff 100%)}
-  .c-gelados::before, .c-gelados::after{
-    content:"〰"; position:absolute; font-size:1.1rem; color:#7ab8d4; top:-4px;
-  }
-  .c-gelados::before{left:10px} .c-gelados::after{right:10px}
-  /* moldura DOCES: biscoito + babado de glacê */
-  .c-doces{background:linear-gradient(180deg,#e9b97b,#d9a05e); border:5px solid #c88f4e}
-  .c-doces .babado{
-    position:absolute; top:-9px; left:14px; right:14px; height:16px;
-    background:radial-gradient(circle at 8px 8px, var(--glace) 0 7px, transparent 8px);
-    background-size:16px 16px; background-repeat:repeat-x;
-  }
-  .c-doces .arte{background:linear-gradient(180deg,#f8cfe0 0%, #fdeef3 75%, #fff 100%)}
-  /* moldura SANGRENTOS: veludo + filete de latão + arco de vitral */
-  .c-sangrentos{background:linear-gradient(180deg,#5d1e30,#3f1422); border:3px solid var(--latao); outline:3px solid var(--veludo-escuro); color:#f3dfe2}
-  .c-sangrentos .custo{background:rgba(0,0,0,.45); color:#ffd9de}
-  .c-sangrentos .arte{background:
-      radial-gradient(ellipse at 50% 0%, rgba(255,190,120,.35) 0 30%, transparent 55%),
-      linear-gradient(180deg,#301022, #1c0a14)}
-  .c-sangrentos .stats span{background:rgba(255,255,255,.14); box-shadow:inset 0 0 0 1.5px rgba(201,165,90,.5)}
-  .c-sangrentos .chips span{background:rgba(201,165,90,.25)}
-  .c-sangrentos .regra, .c-sangrentos .flavor{color:#f3dfe2}
-
-  .legenda-cartas{font-size:.85rem; color:var(--tinta-suave); text-align:center; margin-top:14px; font-style:italic}
-
-  /* ---------- Tabuleiro: faixa de hexes ---------- */
-  .faixa-hexes{display:flex; gap:6px; flex-wrap:wrap; justify-content:center; padding:26px 12px;
-    background:linear-gradient(180deg,#6b4a2b,#54371e); border-radius:16px; border:5px solid #432c17;
-    box-shadow:0 12px 26px var(--sombra), inset 0 0 40px rgba(0,0,0,.3)}
-  .hex{
-    width:104px; height:118px; clip-path:polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
-    font-size:1.9rem; color:#fff; text-shadow:0 2px 3px rgba(0,0,0,.4);
-    box-shadow:inset 0 -8px 0 rgba(0,0,0,.25);
-  }
-  .hex small{font-family:'Trebuchet MS',sans-serif; font-size:.58rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase}
-  .h-floresta{background:linear-gradient(180deg,#5f8c3f,#47702c)}
-  .h-campo{background:linear-gradient(180deg,#b9a34e,#9c8438)}
-  .h-lago{background:linear-gradient(180deg,#4f93b8,#356f90)}
-  .h-acucar{background:linear-gradient(180deg,#eeb7cd,#dd93b3)}
-  .h-vulcao{background:linear-gradient(180deg,#8f4a2d,#5c2c18), }
-  .h-vulcao{background:linear-gradient(180deg,#8f4a2d,#5c2c18)}
-  .h-geleira{background:linear-gradient(180deg,#bfe0ee,#8fc2da)}
-  .h-pantano{background:linear-gradient(180deg,#5e6b3a,#454f28)}
-  .h-coracao{background:linear-gradient(180deg,#c9913f,#a06f28)}
-  .nota-hex{font-size:.85rem; color:var(--tinta-suave); text-align:center; margin-top:12px; font-style:italic}
-
-  /* ---------- Paletas ---------- */
-  .paletas{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px}
-  .paleta{background:var(--cartao); border-radius:14px; padding:16px 18px; box-shadow:0 8px 18px var(--sombra)}
-  .paleta h3{font-size:1.02rem; margin-bottom:2px}
-  .paleta .mat{font-size:.8rem; color:var(--tinta-suave); font-style:italic}
-  .swatches{display:flex; gap:8px; margin-top:10px}
-  .sw{flex:1; height:40px; border-radius:8px; box-shadow:inset 0 0 0 2px rgba(0,0,0,.12)}
-  .paleta .forma{font-size:.78rem; margin-top:10px; color:var(--tinta-suave)}
-
-  /* ---------- Pedido de inspirações ---------- */
-  .pedido{background:var(--cartao); border-radius:16px; padding:26px 28px; box-shadow:0 10px 22px var(--sombra); border-top:8px solid var(--broto)}
-  .pedido ol{margin:12px 0 0; padding-left:22px}
-  .pedido li{margin-bottom:10px; max-width:70ch}
-  .pedido li strong{font-family:'Trebuchet MS','Segoe UI',sans-serif}
+  /* animações demo */
+  .anim-lista{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:10px}
+  .anim-item{background:rgba(0,0,0,.24); border-radius:12px; padding:10px 12px; font-size:.78rem;
+    box-shadow:inset 0 0 0 1.5px rgba(57,216,216,.18)}
+  .anim-item b{color:var(--ouro)}
+  @media (max-width:640px){ .carta{width:186px; height:272px} .carta .arte .png{font-size:3.6rem} .slot-tropa{width:54px;height:54px;font-size:1.3rem} }
 </style>
 
-<div class="pagina">
+<div class="wrap">
 
   <header>
-    <div class="etiqueta">Proposta de identidade visual · v0.4</div>
-    <h1 class="wordmark" aria-label="TERRAVIVA">
-      <span class="m-madeira">T</span><span class="m-madeira">E</span><span class="m-musgo">R</span><span class="m-musgo">R</span><span class="m-madeira">A</span><span class="m-gelo">V</span><span class="m-brasa">I</span><span class="m-veludo">V</span><span class="m-glace broto-v">A</span>
-    </h1>
-    <p class="tagline" style="margin-inline:auto">"Se não dá para imaginar de que material foi feito, está errado."</p>
-    <p class="subt" style="margin-inline:auto; max-width:56ch">O conceito: <strong>O Diorama Vivo</strong> — o jogo inteiro é uma maquete artesanal que ganhou vida em cima de uma mesa. Cada letra do logo é recortada do material de uma facção.</p>
+    <div class="rotulo">Proposta de identidade visual · v0.6 · direção "Encanto Vivo"</div>
+    <div class="logo float" role="img" aria-label="Guerra dos Reinos">
+      <div class="l1">GUERRA</div>
+      <div class="l2">DOS</div>
+      <div class="l3">REINOS</div>
+    </div>
+    <p class="tagline" style="margin-inline:auto">Cada carta é um portal. Cada moldura deixa o reino vazar. A mesa é a arena onde os reinos se encontram.</p>
   </header>
 
+  <!-- CARTAS -->
   <section>
-    <div class="sec-head"><span class="etiqueta">01</span><h2>Por que "maquete viva"</h2></div>
-    <div class="conceito">
-      <p>A câmera é a de alguém <strong>debruçado sobre a mesa</strong>. A grama é feltro recortado, a neve é algodão, a lava é resina com luz dentro. Quando uma tropa morre, a costura abre e sai algodão — nunca sangue. É fofo no material e <strong>adulto no tratamento</strong>: luz dramática, fotografia macro, regras exibidas com precisão de relojoaria.</p>
-      <div class="regra-ouro">
-        <div class="etiqueta">Identidade em 1 frase</div>
-        <p class="display" style="margin-top:6px">Hearthstone é taverna. Runeterra é ilustração épica. Snap é comic. <em>Terraviva é a única maquete artesanal viva do gênero</em> — reconhecível em 64 pixels.</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head"><span class="etiqueta">02</span><h2>O menu: a Mesa do Regente</h2></div>
-    <p style="margin-bottom:18px">Sem botões flutuantes. O menu é a sua mesa de trabalho com <strong>exatamente três objetos</strong> — passe o mouse:</p>
-    <div class="mesa">
-      <button class="objeto caixa-deck" type="button">
-        <div class="peca">🗃️🂠</div>
-        <div class="display">CRIAÇÃO DE DECK</div>
-        <div class="dica">a caixa de madeira range e abre</div>
-      </button>
-      <button class="objeto tab-dobravel" type="button">
-        <div class="peca">🗺️♟️</div>
-        <div class="display">JOGAR</div>
-        <div class="dica">as miniaturas acenam quando você chega perto</div>
-      </button>
-      <button class="objeto livrinho" type="button">
-        <div class="peca">📕</div>
-        <div class="display">TUTORIAL</div>
-        <div class="dica">o livrinho de capa costurada se folheia sozinho</div>
-      </button>
-    </div>
-    <p class="nota-hex">A mesa guarda vestígios da última partida: farelos de biscoito, uma lasca de gelo, fuligem. Na janela ao fundo, o clima do último jogo.</p>
-  </section>
-
-  <section>
-    <div class="sec-head"><span class="etiqueta">03</span><h2>As cartas: molduras feitas do material da facção</h2></div>
+    <div class="sec-head"><span class="rotulo">01</span><h2>As cartas — molduras-portal por facção</h2></div>
     <div class="fileira-cartas">
 
-      <div class="carta c-gelados">
-        <div class="topo"><span class="custo">🍎🍎</span><span class="raro">COMUM</span></div>
-        <div class="arte"><span class="mini">🐧</span></div>
-        <h3 class="nome">Pinguim Granadeiro</h3>
-        <div class="linha-cat">Tropa · Gelados · Artilheiro</div>
-        <div class="stats"><span>⚔ 2</span><span>🛡 1</span><span>❤ 3</span><span>👣 2</span><span>🎯 3</span><span>⚖ 2</span></div>
-        <div class="chips"><span>Aquático</span><span>Adaptado(Frio)</span></div>
-        <p class="regra">Suas bolas de neve deixam o alvo <strong>Molhado</strong> — prontinho para o sopro de um Wisp.</p>
-        <p class="flavor">"Artilharia de precisão com 40% de deboche."</p>
+      <div class="carta f-gelo">
+        <div class="gema"><span>2</span></div>
+        <div class="placa">PINGUIM ESPADACHIM</div>
+        <div class="arte"><span class="png">🐧</span></div>
+        <div class="tipo-linha"><span>Tropa · Gelo</span><span class="rarid">◇ comum</span></div>
+        <div class="pergaminho">Quando entra em campo, <span class="kw">❄ Congele</span> uma Tropa inimiga com 2 ou menos de Ataque.</div>
+        <div class="stats"><div class="med atq"><small>⚔</small>2</div><div class="med vid"><small>♥</small>3</div></div>
       </div>
 
-      <div class="carta c-doces">
-        <div class="babado"></div>
-        <div class="topo"><span class="custo">🍎</span><span class="raro">COMUM</span></div>
-        <div class="arte"><span class="mini">🍪</span></div>
-        <h3 class="nome">Soldado de Biscoito</h3>
-        <div class="linha-cat">Tropa · Doces · Infantaria</div>
-        <div class="stats"><span>⚔ 2</span><span>🛡 0</span><span>❤ 2</span><span>👣 2</span><span>🎯 1</span><span>⚖ 1</span></div>
-        <div class="chips"><span>Ímpeto</span><span>Doce</span><span>Inflamável</span></div>
-        <p class="regra">Se <strong>Molhado</strong>: −1 DEF e ATQ 1. Biscoito molhado é uma tragédia.</p>
-        <p class="flavor">"Assado para servir. Validade: uma guerra."</p>
+      <div class="carta f-fogo">
+        <div class="gema"><span>5</span></div>
+        <div class="placa">DRAGÃOZINHO DE CHAMINÉ</div>
+        <div class="arte"><span class="png">🐉</span></div>
+        <div class="tipo-linha"><span>Tropa · Fogo</span><span class="rarid">✦ épica</span></div>
+        <div class="pergaminho"><span class="kw">🪽 Voador.</span> <span class="kw">Chama Alta:</span> quando entra em campo, cause 3 de dano a uma Tropa inimiga.</div>
+        <div class="stats"><div class="med atq"><small>⚔</small>4</div><div class="med vid"><small>♥</small>4</div></div>
       </div>
 
-      <div class="carta c-sangrentos">
-        <div class="topo"><span class="custo">❤❤❤ ✨✨</span><span class="raro">LENDÁRIA</span></div>
-        <div class="arte"><span class="mini">🦇</span></div>
-        <h3 class="nome">Conde Vesperto, o Anfitrião</h3>
-        <div class="linha-cat">Tropa Lendária · Sangrentos · Patriarca</div>
-        <div class="stats"><span>⚔ 5</span><span>🛡 1</span><span>❤ 10</span><span>👣 3</span><span>🎯 1</span><span>⚖ 3</span></div>
-        <div class="chips"><span>Contra-ataque</span><span>Voador</span><span>Profano</span></div>
-        <p class="regra"><strong>Drenar 3.</strong> Ativa: "Convite" — puxa um inimigo a 2 hexes para adjacente a ele.</p>
-        <p class="flavor">"Ninguém recusa o convite. Tecnicamente, alguns tentaram."</p>
+      <div class="carta f-doce lendaria">
+        <span class="particula" style="top:50%; left:50%">✦</span>
+        <span class="particula" style="top:50%; left:50%; animation-delay:-2s">✨</span>
+        <div class="gema redonda"><span>7</span></div>
+        <div class="placa">RAINHA GLACÊ-CORAÇÃO</div>
+        <div class="arte"><span class="png">👑</span></div>
+        <div class="tipo-linha"><span>Tropa · Doce</span><span class="rarid">★ lendária</span></div>
+        <div class="pergaminho">No início do seu turno, ganhe 2 <span class="kw">🍬 Açúcares</span>. Sempre que gastar Açúcar, cure 2 e dê <span class="kw">🛡 Escudo</span> a uma Tropa Doce.</div>
+        <div class="stats"><div class="med atq"><small>⚔</small>4</div><div class="med vid"><small>♥</small>9</div></div>
+      </div>
+
+      <div class="carta f-sang">
+        <div class="gema"><span>3</span></div>
+        <div class="placa">BRUXO DO CÁLICE</div>
+        <div class="arte"><span class="png">🧛</span></div>
+        <div class="tipo-linha"><span>Tropa · Sangrento</span><span class="rarid">◆ rara</span></div>
+        <div class="pergaminho">1×/turno, quando uma Tropa sua for <span class="kw">🗡 Sacrificada</span>, cause 1 de dano ao jogador inimigo e cure 1 de Vida.</div>
+        <div class="stats"><div class="med atq"><small>⚔</small>2</div><div class="med vid"><small>♥</small>4</div></div>
+      </div>
+
+      <div class="carta f-nat">
+        <div class="gema"><span>4</span></div>
+        <div class="placa">XAMÃ DAS RAÍZES</div>
+        <div class="arte"><span class="png">🦝</span></div>
+        <div class="tipo-linha"><span>Tropa · Natureza</span><span class="rarid">◆ rara</span></div>
+        <div class="pergaminho">No início do seu turno, <span class="kw">🌱 Invoque</span> uma Semente 0/1 se você tiver espaço no campo.</div>
+        <div class="stats"><div class="med atq"><small>⚔</small>2</div><div class="med vid"><small>♥</small>5</div></div>
+      </div>
+
+      <div class="carta f-hum">
+        <div class="gema"><span>8</span></div>
+        <div class="placa">ESTRATÉGIA PERFEITA</div>
+        <div class="arte"><span class="png">📜</span></div>
+        <div class="tipo-linha"><span>Feitiço · Humano</span><span class="rarid">★ lendária</span></div>
+        <div class="pergaminho">Compre 3 cartas. Suas Tropas Humanas recebem +1/+1. <span class="kw">🏰 Preparar:</span> elas podem atacar novamente neste turno.</div>
       </div>
 
     </div>
-    <p class="legenda-cartas">Raridade = acabamento do material (a moldura Lendária está <em>viva</em>: o veludo respira, o latão reluz). Os emojis são stand-ins — a arte final é a <strong>foto da miniatura real</strong> que anda no tabuleiro.</p>
+    <p class="legenda">Mesma grade em todas — muda o material, o ornamento e a luz. Lendárias ganham aura e partículas SÓ nas bordas. Emojis são stand-ins da arte final (cartoon de contorno limpo, poses dinâmicas).</p>
   </section>
 
+  <!-- GEMAS -->
   <section>
-    <div class="sec-head"><span class="etiqueta">04</span><h2>O tabuleiro: peças encaixáveis com espessura</h2></div>
-    <div class="faixa-hexes">
-      <div class="hex h-geleira">🧊<small>Geleira</small></div>
-      <div class="hex h-floresta">🌲<small>Floresta</small></div>
-      <div class="hex h-campo">🌾<small>Campo</small></div>
-      <div class="hex h-coracao">🏰<small>Coração</small></div>
-      <div class="hex h-acucar">🍬<small>Açúcar</small></div>
-      <div class="hex h-lago">🐟<small>Lago</small></div>
-      <div class="hex h-pantano">🫧<small>Pântano</small></div>
-      <div class="hex h-vulcao">🌋<small>Vulcão</small></div>
+    <div class="sec-head"><span class="rotulo">02</span><h2>Ícones — as 7 gemas de custo + ataque e vida</h2></div>
+    <div class="gemas-demo">
+      <div class="gema-item"><div class="g" style="border-radius:12px; transform:rotate(45deg); background:radial-gradient(circle at 35% 28%, #eafaff, #5fb6dd 55%, #2e6f96)"><span style="transform:rotate(-45deg)">3</span></div><small>Gelo<br>cristal lapidado</small></div>
+      <div class="gema-item"><div class="g" style="border-radius:10px; background:radial-gradient(circle at 35% 28%, #ffe9a8, #ff7a2e 55%, #3a1d16)">3</div><small>Fogo<br>pedra de lava</small></div>
+      <div class="gema-item"><div class="g" style="border-radius:50%; background:radial-gradient(circle at 35% 28%, #fff, #ffb9d9 50%, #a75c93)">3</div><small>Doce<br>bala cristalizada</small></div>
+      <div class="gema-item"><div class="g" style="border-radius:12px; transform:rotate(45deg); background:radial-gradient(circle at 35% 28%, #ff8fa0, #e04a5f 50%, #4a1028)"><span style="transform:rotate(-45deg)">3</span></div><small>Sangrento<br>rubi</small></div>
+      <div class="gema-item"><div class="g" style="border-radius:50% 50% 50% 12px; background:radial-gradient(circle at 35% 28%, #eaffc4, #9fd45e 50%, #2e5c2a)">3</div><small>Natureza<br>semente luminosa</small></div>
+      <div class="gema-item"><div class="g" style="border-radius:50%; background:radial-gradient(circle at 35% 28%, #ffe9b8, #a97e4f 55%, #6e4a24)">3</div><small>Humano<br>medalhão de bronze</small></div>
+      <div class="gema-item"><div class="g" style="border-radius:50%; background:radial-gradient(circle at 35% 28%, #f0e8d4, #a89a7e 55%, #57503c)">3</div><small>Neutra<br>moeda antiga</small></div>
+      <div class="gema-item"><div class="g med atq" style="width:52px;height:52px">4</div><small>Ataque<br>espada-explosão</small></div>
+      <div class="gema-item"><div class="g med vid" style="width:52px;height:52px;border-radius:50%">6</div><small>Vida<br>coração-cristal</small></div>
     </div>
-    <p class="nota-hex">Terraformar = a mão gigante do Regente troca a peça, com "toc" de encaixe. O Coração é um castelinho-maquete que acende janelas quando saudável e perde pedacinhos conforme apanha — <strong>o placar é a própria peça</strong>.</p>
   </section>
 
+  <!-- MESA -->
   <section>
-    <div class="sec-head"><span class="etiqueta">05</span><h2>Materiais e formas das 6 facções</h2></div>
+    <div class="sec-head"><span class="rotulo">03</span><h2>A mesa — Arena Arcana</h2></div>
+    <div class="mesa">
+      <div class="runa-aro"></div>
+      <div class="hud">
+        <div class="orbe-vida">18</div>
+        <div class="cristais-energia"><i class="cristal on"></i><i class="cristal on"></i><i class="cristal on"></i><i class="cristal on"></i><i class="cristal on"></i><i class="cristal"></i><i class="cristal"></i><i class="cristal"></i><i class="cristal"></i><i class="cristal"></i></div>
+        <div class="portais"><div class="portal">🌀</div>deck</div>
+      </div>
+      <div class="lado">
+        <div class="pedestal"><span class="mini">⛰️</span>terreno</div>
+        <div class="slot-tropa ocupado">🐧</div><div class="slot-tropa ocupado">⛄</div><div class="slot-tropa">·</div><div class="slot-tropa">·</div><div class="slot-tropa">·</div>
+        <div class="pedestal constr"><span class="mini">🗼</span>construções</div>
+      </div>
+      <div style="text-align:center; color:var(--turquesa); font-size:.7rem; letter-spacing:.3em; text-shadow:0 0 10px var(--turquesa)">✦ ARENA ✦</div>
+      <div class="lado">
+        <div class="pedestal"><span class="mini">🌋</span>terreno</div>
+        <div class="slot-tropa ocupado">🐉</div><div class="slot-tropa">·</div><div class="slot-tropa">·</div><div class="slot-tropa">·</div><div class="slot-tropa">·</div>
+        <div class="pedestal constr"><span class="mini">⚒️</span>construções</div>
+      </div>
+      <div class="hud">
+        <div class="orbe-vida" style="background:radial-gradient(circle at 35% 28%, #9fe8ff, #39a8d8 60%, #1d5c7a); box-shadow:0 6px 14px #000b, inset 0 3px 5px rgba(255,255,255,.5), 0 0 18px rgba(57,216,216,.45)">20</div>
+        <div class="cristais-energia"><i class="cristal on"></i><i class="cristal on"></i><i class="cristal on"></i><i class="cristal on"></i><i class="cristal on"></i><i class="cristal on"></i><i class="cristal"></i><i class="cristal"></i><i class="cristal"></i><i class="cristal"></i></div>
+        <div class="portais"><div class="portal" style="filter:hue-rotate(60deg)">🌀</div>descarte</div>
+      </div>
+    </div>
+    <p class="legenda">Madeira encantada, cristais nas bordas, círculos rúnicos que pulsam quando jogáveis e acendem ao receber a peça. O Terreno ativo transforma a arena inteira (gelo congela as bordas; lava racha o chão; confeitos chovem…).</p>
+  </section>
+
+  <!-- TELA PRINCIPAL -->
+  <section>
+    <div class="sec-head"><span class="rotulo">04</span><h2>Tela principal — os reinos no horizonte</h2></div>
+    <div class="menu-mock">
+      <div class="panorama"></div>
+      <div class="reinos" aria-hidden="true">
+        <span>🏔️</span><span class="r">🌋</span><span>🏰</span><span class="r">🌳</span><span>🏯</span><span class="r">⛺</span>
+      </div>
+      <div class="menu-ui">
+        <div class="logo" style="font-size:.55em">
+          <div class="l1">GUERRA</div><div class="l2">DOS</div><div class="l3">REINOS</div>
+        </div>
+        <div class="menu-botoes">
+          <button class="btn-magico" type="button">▶ JOGAR</button>
+          <button class="btn-magico sec" type="button">🃏 COLEÇÃO</button>
+          <button class="btn-magico sec" type="button">📖 MONTAR DECK</button>
+          <button class="btn-magico sec" type="button">💎 LOJA</button>
+          <button class="btn-magico sec" type="button" style="padding:7px 30px; font-size:.75rem">⚙ CONFIGURAÇÕES</button>
+        </div>
+      </div>
+    </div>
+    <p class="legenda">Um só mundo: montanhas geladas, vulcão, castelo doce, floresta viva, castelo rubro e vila humana sob o mesmo céu arcano de duas luas. Botões-placa arredondados; JOGAR sempre maior e dourado.</p>
+  </section>
+
+  <!-- PALETAS -->
+  <section>
+    <div class="sec-head"><span class="rotulo">05</span><h2>Paletas oficiais por facção</h2></div>
     <div class="paletas">
-      <div class="paleta">
-        <h3>Gelados</h3><div class="mat">vidro fosco · lã tricotada · algodão</div>
-        <div class="swatches"><div class="sw" style="background:#bfe0ee"></div><div class="sw" style="background:#8fc2da"></div><div class="sw" style="background:#e7f3f8"></div><div class="sw" style="background:#f6b8c8"></div></div>
-        <div class="forma">Forma-base: círculos empilhados, contornos macios. Frio que aconchega.</div>
-      </div>
-      <div class="paleta">
-        <h3>Doces</h3><div class="mat">cerâmica esmaltada · glacê real · celofane</div>
-        <div class="swatches"><div class="sw" style="background:#f2a7c3"></div><div class="sw" style="background:#d9a05e"></div><div class="sw" style="background:#a8dcd0"></div><div class="sw" style="background:#fdeef3"></div></div>
-        <div class="forma">Forma-base: bordas onduladas de bolo, corações, espirais. Dá vontade de morder.</div>
-      </div>
-      <div class="paleta">
-        <h3>Sangrentos</h3><div class="mat">veludo · vitral · renda preta · latão velho</div>
-        <div class="swatches"><div class="sw" style="background:#6e2337"></div><div class="sw" style="background:#c9a55a"></div><div class="sw" style="background:#3a2a4a"></div><div class="sw" style="background:#1c0a14"></div></div>
-        <div class="forma">Forma-base: verticais finas, crescentes, pontas elegantes. Luxo empoeirado.</div>
-      </div>
-      <div class="paleta">
-        <h3>Natureza</h3><div class="mat">madeira viva · musgo · papel-semente</div>
-        <div class="swatches"><div class="sw" style="background:#6f9e4a"></div><div class="sw" style="background:#8a6437"></div><div class="sw" style="background:#c4d6a0"></div><div class="sw" style="background:#e0a93d"></div></div>
-        <div class="forma">Forma-base: assimetria orgânica, espirais de crescimento. Casca e orvalho.</div>
-      </div>
-      <div class="paleta">
-        <h3>Fogo</h3><div class="mat">ferro forjado · carvão com brasas · cerâmica rachada</div>
-        <div class="swatches"><div class="sw" style="background:#e2662a"></div><div class="sw" style="background:#5c3325"></div><div class="sw" style="background:#f4a93c"></div><div class="sw" style="background:#2b1815"></div></div>
-        <div class="forma">Forma-base: triângulos e zigue-zagues. Calor que pulsa nas frestas.</div>
-      </div>
-      <div class="paleta">
-        <h3>Humanos</h3><div class="mat">retalhos costurados · couro · palha · estandarte</div>
-        <div class="swatches"><div class="sw" style="background:#c9913f"></div><div class="sw" style="background:#4a6b8a"></div><div class="sw" style="background:#e8d9a8"></div><div class="sw" style="background:#7a5230"></div></div>
-        <div class="forma">Forma-base: retângulos firmes, remendos visíveis. Feito para durar.</div>
-      </div>
+      <div class="paleta"><h3>❄ Gelo — Reino Glacial</h3><div class="senso">elegante · frio · misterioso · defensivo</div>
+        <div class="sw"><i style="background:#bfe6f7"></i><i style="background:#ffffff"></i><i style="background:#39c4dd"></i><i style="background:#c9d4e0"></i><i style="background:#8f7fd4"></i></div></div>
+      <div class="paleta"><h3>🔥 Fogo — Chama Selvagem</h3><div class="senso">agressiva · energética · explosiva · divertida</div>
+        <div class="sw"><i style="background:#e04a2e"></i><i style="background:#ff7a2e"></i><i style="background:#ffcf5c"></i><i style="background:#3a1d16"></i><i style="background:#d9942e"></i></div></div>
+      <div class="paleta"><h3>🍬 Doce — Império Açucarado</h3><div class="senso">fofa · alegre · protetora · encantada</div>
+        <div class="sw"><i style="background:#ffb9d9"></i><i style="background:#c9a6f0"></i><i style="background:#a8d8f0"></i><i style="background:#ffe9c4"></i><i style="background:#fff5fa"></i></div></div>
+      <div class="paleta"><h3>🩸 Sangrento — Clã Rubro</h3><div class="senso">misteriosa · vampírica · elegante · teatral</div>
+        <div class="sw"><i style="background:#e04a5f"></i><i style="background:#8f1f3a"></i><i style="background:#241018"></i><i style="background:#4a2260"></i><i style="background:#c9a55a"></i></div></div>
+      <div class="paleta"><h3>🌿 Natureza — Bosque Vivo</h3><div class="senso">viva · orgânica · acolhedora · crescente</div>
+        <div class="sw"><i style="background:#9fd45e"></i><i style="background:#4f7a3a"></i><i style="background:#7a5230"></i><i style="background:#ffd94d"></i><i style="background:#a8d8f0"></i></div></div>
+      <div class="paleta"><h3>⚔ Humano — Ordem dos Aventureiros</h3><div class="senso">tática · aventureira · heroica · organizada</div>
+        <div class="sw"><i style="background:#8a6437"></i><i style="background:#e0b36a"></i><i style="background:#5b7fa6"></i><i style="background:#e8d9b8"></i><i style="background:#c04a3a"></i></div></div>
+      <div class="paleta"><h3>🎒 Neutras — Errantes do Mundo Maluco</h3><div class="senso">flexível · viajante · curiosa · útil</div>
+        <div class="sw"><i style="background:#d8cdb4"></i><i style="background:#9a9186"></i><i style="background:#a97e4f"></i><i style="background:#9ab4c9"></i><i style="background:#8a9670"></i></div></div>
     </div>
   </section>
 
+  <!-- ANIMAÇÕES -->
   <section>
-    <div class="sec-head"><span class="etiqueta">06</span><h2>O que me mandar para eu absorver as SUAS inspirações</h2></div>
-    <div class="pedido">
-      <p>Este conceito é uma proposta-candidata. Para calibrar (ou trocar tudo), qualquer um destes ajuda — em qualquer formato, até lista solta:</p>
-      <ol>
-        <li><strong>3 a 5 jogos, desenhos ou filmes cujo VISUAL você ama</strong> — não precisa ser card game. É a fonte mais valiosa.</li>
-        <li><strong>Prints ou fotos</strong> de qualquer coisa com a "vibe" certa (pode arrastar imagens no chat): cenários, brinquedos, embalagens, tabuleiros.</li>
-        <li><strong>3 adjetivos</strong> para o jogo dos sonhos (ex.: "aconchegante, engraçado, tático" vs "sombrio, elegante, competitivo").</li>
-        <li><strong>O ponteiro fofo ↔ épico:</strong> de 0 (Animal Crossing) a 10 (Dark Souls), onde o Terraviva vive?</li>
-        <li><strong>Uma facção favorita</strong> — eu aprofundo o visual dela primeiro, como régua para as outras.</li>
-        <li><strong>Veredito sobre esta página:</strong> o que manter, o que jogar fora do conceito "Diorama Vivo".</li>
-      </ol>
+    <div class="sec-head"><span class="rotulo">06</span><h2>Animações-assinatura (≤ 0,6 s cada)</h2></div>
+    <div class="anim-lista">
+      <div class="anim-item"><b>Jogar carta</b> — flash de portal + ondulação rúnica no slot</div>
+      <div class="anim-item"><b>Ataque</b> — avanço curto + impacto da facção (lasca de gelo, fagulha, respingo de calda)</div>
+      <div class="anim-item"><b>Dano</b> — número flutuante grande com contorno</div>
+      <div class="anim-item"><b>Congelar</b> — gelo cartoon cresce sobre a peça com craquelado</div>
+      <div class="anim-item"><b>Queimar</b> — chaminha persistente no canto da peça</div>
+      <div class="anim-item"><b>Drenar</b> — filete rubro voa do alvo até o orbe de Vida</div>
+      <div class="anim-item"><b>Crescer</b> — folhas e luz verde sobem; números "pulam"</div>
+      <div class="anim-item"><b>Escudo</b> — bolha mágica com reflexo, "pop"</div>
+      <div class="anim-item"><b>Açúcar</b> — estrelinhas e confeitos orbitam o marcador</div>
+      <div class="anim-item"><b>Cura</b> — brilho ascendente dourado/rosa/verde</div>
+      <div class="anim-item"><b>Pacto</b> — selo rúnico vermelho pisca sobre a sua Vida</div>
+      <div class="anim-item"><b>Armadilha</b> — a carta virada treme quando a condição chega perto</div>
+    </div>
+  </section>
+
+  <!-- CONSISTÊNCIA -->
+  <section>
+    <div class="sec-head"><span class="rotulo">07</span><h2>Regras de consistência</h2></div>
+    <div class="anim-lista">
+      <div class="anim-item">Mesma grade de carta em todas as facções — muda material, ornamento e luz.</div>
+      <div class="anim-item">Sombras sempre coloridas; contorno limpo; cantos arredondados. Nada de preto puro nem caixa quadrada.</div>
+      <div class="anim-item">Brilho = interatividade. Só brilha o que pode ser clicado/jogado.</div>
+      <div class="anim-item">1 piada visual por carta, no máximo — humor tempera, não domina.</div>
+      <div class="anim-item">Teste de miniatura: toda carta legível a 64 px; toda silhueta única em preto.</div>
+      <div class="anim-item">Épico/Lendário brilham nas bordas — nunca sobre a arte ou o texto.</div>
     </div>
   </section>
 

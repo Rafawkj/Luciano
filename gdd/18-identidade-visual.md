@@ -1,118 +1,149 @@
 # GUERRA DOS REINOS — Bíblia de Identidade Visual
 
-> **Documento 18 · Identidade** · v0.4
-> Este documento define a "cara única" do jogo: o conceito que amarra personagens, menu, tabuleiro e cartas numa só ideia impossível de confundir com outro card game.
+> **Documento 18 · Identidade** · v0.6 — **REDESIGN COMPLETO por briefing do diretor**
+> Direção anterior ("Diorama Vivo", maquete artesanal) arquivada. Nova direção: **fantasia mágica cartoon premium**.
+> Mockup navegável: [mockups/identidade-visual.html](mockups/identidade-visual.html)
 
 ---
 
-## 1. O conceito central: **O DIORAMA VIVO**
+## 1. O estilo artístico final: **ENCANTO VIVO**
 
-GUERRA DOS REINOS não se passa "num mundo de fantasia". Ele se passa **numa maquete artesanal que ganhou vida em cima de uma mesa**.
+**Conceito-mestre: cada carta é um PORTAL para o reino dela.** A moldura não é uma borda — é uma janela de cristal encantado que deixa o reino "vazar": o frio embaça o vidro da carta de Gelo, faíscas escapam da carta de Fogo, calda escorre da carta Doce. A mesa é a **arena arcana onde os reinos se encontram** — e o Terreno ativo literalmente puxa a arena para dentro do reino dele.
 
-- Tudo no jogo parece **feito à mão, com materiais reais**: feltro, madeira, cerâmica, vidro, veludo, lã.
-- A câmera é sempre a de alguém **debruçado sobre a mesa**: levemente de cima, íntima, quente.
-- Nada é "renderizado épico"; tudo é **tátil**. A grama é feltro recortado. A neve é algodão. A lava é resina laranja com luz dentro.
-- Quando algo acontece (fogo espalha, tropa morre), a reação é **física de maquete**: peças que tombam com "toc", poeira de serragem, costuras que se desfazem.
+A receita do estilo (em ordem de prioridade):
+1. **Fantasia mágica** — runas, cristais, energia luminosa em tudo que é interativo;
+2. **Cartoon moderno** — contorno limpo, formas arredondadas, poses dinâmicas, olhos expressivos;
+3. **Aventura colorida** — saturação alta com sombras COLORIDAS (nunca cinza/preto puro);
+4. **UI polida de jogo digital** — placas mágicas, botões-gema arredondados, brilho como affordance;
+5. **Humor visual sutil** — uma piada por carta (pose, adereço, expressão), nunca ao custo da leitura.
 
-**Por que isso é único:** nenhum concorrente ocupa a estética "miniatura artesanal viva". Hearthstone é taverna pintada; LoR é ilustração épica; Snap é comic. Uma maquete viva fotografa diferente em QUALQUER thumbnail — identidade instantânea em 64 pixels.
+**Proibições da direção:** realismo, dark-fantasy pesado, menus cinzas quadrados, molduras metálicas genéricas, texto pequeno, poluição visual, cara de template.
 
-**Regra de ouro da direção:** *"Se não dá para imaginar de que material foi feito, está errado."*
+**Regra de ouro da direção:** *"Se não brilha, não convida; se não é redondo, não é nosso; se não dá para ler em miniatura, volta."*
 
-## 2. Materiais e linguagem de formas por facção
+## 2. Paleta de cores geral
 
-Cada facção é feita de um MATERIAL e desenhada com uma FORMA-BASE. Silhueta + material = leitura instantânea, mesmo sem cor.
+- **Base do mundo (UI global):** índigo-noite encantado `#1d1440` → violeta profundo `#2c1e5c` (o "céu arcano" onde tudo flutua), com névoa mágica turquesa `#39d8d8` e dourado-feitiço `#ffcf5c` como acentos universais.
+- **Luz:** toda luz do jogo tem cor — dourado para o precioso, turquesa para o arcano, e a cor da facção para tudo que é dela.
+- **Sombras:** roxo-azulado translúcido, nunca preto chapado.
+- **Texto:** marfim `#f6efdd` sobre placas escuras; tinta `#3a2b1a` sobre pergaminho claro.
+- **Contraste mínimo:** AA em qualquer tamanho de carta; números de ATQ/VIDA legíveis a 64 px.
 
-| Facção | Material da maquete | Forma-base | Sensação tátil |
-|---|---|---|---|
-| **Gelados** | Vidro fosco, lã tricotada, algodão | Círculos empilhados, contornos macios | Frio que aconchega |
-| **Doces** | Cerâmica esmaltada, glacê real, celofane | Bordas onduladas (babado de bolo), corações e espirais | Vontade de morder |
-| **Sangrentos** | Veludo, vitral, renda preta, latão envelhecido | Verticais finas, crescentes, pontas elegantes | Luxo empoeirado |
-| **Natureza** | Madeira viva, musgo, papel-semente | Assimetria orgânica, espirais de crescimento | Casca e orvalho |
-| **Fogo** | Ferro forjado, carvão com brasas nas frestas, cerâmica rachada | Triângulos e zigue-zagues | Calor que pulsa |
-| **Humanos** | Retalhos costurados, couro, palha, tinta de estandarte | Retângulos firmes, remendos visíveis | Feito para durar |
+## 3. Identidade visual por facção (paletas oficiais do diretor)
 
-### 2.1 Personagens — as regras de desenho
-1. **Proporção brinquedo:** cabeça grande, corpo compacto (2–2,5 cabeças) — legível pequeno, carismático grande.
-2. **Um adereço narrativo por personagem** (o "botão de história"): a Vovó Amaruk tricota; o Conde segura a taça; a Capitã Odete tem o pão no contrapeso da lança. O adereço aparece na carta, no idle e na animação de vitória.
-3. **Olhos = 80% da atuação.** Todos os materiais têm olhos expressivos (botões, contas de vidro, brasas) — até muralhas e construções têm um "rosto discreto" opcional (janelas que piscam).
-4. **Costuras e imperfeições são features:** um remendo no Boneco de Neve Veterano conta 3 invernos de serviço. Perfeição é proibida.
+| Facção | Paleta | Elementos da moldura | Sensação | A carta parece… |
+|---|---|---|---|---|
+| ❄ **Gelo** | azul claro · branco · ciano · prata · roxo frio | cristais de gelo nos cantos, flocos mágicos, névoa congelante, runas azuladas, borda translúcida | elegante, fria, misteriosa, defensiva | …feita de cristal encantado |
+| 🔥 **Fogo** | vermelho · laranja · amarelo · preto carvão · dourado quente | brasas, rachaduras brilhantes, fumaça cartoon, faíscas subindo, chamas estilizadas nos cantos | agressiva, energética, explosiva, divertida | …quente e prestes a explodir |
+| 🍬 **Doce** | rosa · lilás · azul bebê · amarelo creme · branco glacê | confeitos, glacê escorrendo no topo, açúcar cristalizado, corações e estrelinhas, calda mágica | fofa, alegre, protetora, encantada | …bonita e mágica, sem ser infantil |
+| 🩸 **Sangrento** | vermelho rubi · vinho · preto · roxo escuro · dourado envelhecido | rubis, lua vermelha, morcegos estilizados, névoa escura, símbolos de pacto, ornamento gótico cartoon | misteriosa, vampírica, elegante, teatral | …sombria e estilosa, ainda cartoon |
+| 🌿 **Natureza** | verde · verde musgo · marrom madeira · amarelo solar · azul claro | folhas e cipós crescendo pela borda, sementes, flores mágicas, cogumelos, luz de vaga-lume | viva, orgânica, acolhedora, crescente | …formada por madeira viva e energia natural |
+| ⚔ **Humano** | marrom couro · dourado · azul aço · bege · vermelho bandeira | escudos, mapas, engrenagens simples, bandeirolas, torres, ferramentas de aventureiro | tática, aventureira, heroica, organizada | …feita por aventureiros inteligentes |
+| 🎒 **Neutra** | bege · cinza · bronze · azul suave · verde apagado | mapas, mochilas, moedas, placas de estrada, pergaminhos, símbolos de viagem | flexível, viajante, curiosa, útil | …de quem já passou por todos os reinos |
 
-### 2.2 Elenco-vitrine (os 6 rostos do jogo)
-Cada facção tem UM personagem-pôster (a Lenda), desenhado para virar mascote/marketing:
-- **Vovó Amaruk** (Gelados) — ursa-avó colossal de lã, cachecol infinito, lampião-fogueira.
-- **Marzia** (Doces) — confeiteira-marechala de cerâmica, chapéu chef+plumas, batedor-cetro.
-- **Conde Vesperto** (Sangrentos) — morcego de veludo com gola de vitral, taça eterna, sorriso de anfitrião.
-- **Raizena** (Natureza) — árvore-anciã de madeira polida, pássaros morando nos ombros.
-- **Brasa-Rei Otavio** (Fogo) — salamandra-ferreiro, coroa que derrete sem acabar.
-- **Capitã Odete** (Humanos) — general-padeira de retalhos, avental sobre armadura.
+Molduras: **layout idêntico, alma diferente** — mesma grade, cada facção troca material, ornamento de canto e cor de brilho. Neutras nunca mais chamativas que facções.
 
-## 3. Logo e tipografia
+## 4. Layout da carta (formato vertical, proporção ~2:2.8)
 
-- **Wordmark "GUERRA DOS REINOS":** letras que parecem **recortadas de materiais diferentes** — GUERRA em ferro com brasas, DOS em papel kraft, REINOS com uma letra no material de cada facção. O logo respira (o broto balança) na tela inicial.
-- **Tipografia de UI:** uma display arredondada e encorpada para títulos (sensação de carimbo de madeira) + uma humanista limpa para texto de regra (legibilidade acima de tudo — regra editorial de 2 linhas exige tipografia impecável).
-- **A Energia** é uma fileira de **botões de madeira pintada** que acendem; gastar = empurrar o botão para o centro da mesa.
+```
+┌──────────────────────┐
+│ [GEMA]  NOME NA PLACA│  ← placa mágica no topo; gema de custo no canto sup. esquerdo
+│ ┌──────────────────┐ │
+│ │                  │ │
+│ │   ARTE CENTRAL   │ │  ← ~55% da carta; personagem com silhueta clara,
+│ │  (o "portal")    │ │    pose dinâmica, fundo simples do reino
+│ └──────────────────┘ │
+│  Tipo · Facção  ◆rar │  ← linha fina; gema de raridade à direita
+│ ┌──────────────────┐ │
+│ │ caixa-pergaminho │ │  ← habilidade, com ícones de palavra-chave
+│ └──────────────────┘ │
+│ [⚔ATQ]        [♥VIDA]│  ← medalhões grandes na base (só Tropas)
+└──────────────────────┘
+```
 
-## 4. O menu: **A MESA DO REGENTE**
+- **Nome:** placa encantada com leve arco; tipografia display arredondada, alta legibilidade.
+- **Gema de custo por facção:** Gelo = cristal azul lapidado · Fogo = pedra de lava com brasas · Doce = bala cristalizada · Sangrento = rubi · Natureza = semente luminosa · Humano = medalhão de bronze · Neutra = moeda antiga. Número grande, branco com contorno.
+- **Caixa de texto:** pergaminho mágico claro, textura mínima, ícones pequenos antes de palavras-chave (❄ Congelar, 🔥 Queimar, 🛡 Guarda, 🪽 Voador, 💥 Explodir, ⚡ Investida…).
+- **Ataque:** medalhão-espada/garra com fundo explosivo (agressivo). **Vida:** coração-cristal com aro-escudo (protetor). Ambos com número grande.
+- **Raridade** (especial ≠ poluído): Comum = moldura simples · Incomum = brilho leve na placa do nome · Rara = gema pequena incrustada · Épica = aura animada suave na borda · Lendária = moldura elaborada + partículas mágicas orbitando (contidas nas bordas — a arte continua limpa).
 
-O menu principal NÃO é uma tela com botões: é **a mesa de trabalho do jogador**, filmada de cima, com exatamente 3 objetos (Doc. 11):
+## 5. A mesa: **ARENA ARCANA**
 
-| Objeto na mesa | Opção | Comportamento vivo |
-|---|---|---|
-| **Caixa de deck de madeira** (aberta, cartas à mostra) | CRIAÇÃO DE DECK | Cartas respiram; a caixa mostra o deck ativo; hover = a tampa range e abre mais |
-| **O tabuleiro dobrável** (com miniaturas em cima) | JOGAR | Miniaturas da última partida em idle; hover = elas acenam/se posicionam |
-| **Um livrinho de capa costurada** | TUTORIAL | Marca-páginas de tecido; hover = folheia sozinho |
+Vista levemente inclinada (top-down ~15°), como um tabuleiro flutuando no céu arcano.
 
-- **A mesa conta sua história sem números:** lascas de gelo se o último jogo foi contra Gelados, farelos de biscoito, uma mancha de fuligem. (Cosmético, zero mecânico, MUITA personalidade.)
-- Ao fundo, **uma janela** mostra o continente em miniatura — lá fora vê-se o reino da última facção enfrentada.
-- Sem moedas, sem badges, sem popups. **Silêncio bom de loja de brinquedos.**
+- **Material:** madeira encantada com veios que brilham de leve; **cristais nas bordas** que acendem no turno do dono; runas no aro externo; 2 pequenos portais de energia (deck = portal de entrada; descarte = portal que "arquiva" a carta em luz).
+- **Espaços de Tropa:** círculos rúnicos no chão que pulsam quando vazios-jogáveis e **acendem em glow suave** ao receber a peça. *(Nota do estúdio: o briefing cita 4 espaços; o Manual v0.5.1 define **5** — mantivemos 5 e o layout comporta ambos; ver pendência.)*
+- **Espaço de Terreno:** pedestal maior e ornamentado à esquerda de cada lado. **Terreno ativo transforma a arena**: Gelo congela as bordas · Fogo abre rachaduras de lava · Doce cobre de confeitos e brilho · Sangrento sobe névoa rubra · Natureza cresce cipós e folhas · Humano ergue bandeirolas e torres.
+- **Construções:** nas laterais, como **estruturas em miniatura** de verdade (torre, altar, fornalha) e não cartas deitadas; emitem partículas quando o efeito dispara.
+- **Vida do jogador:** grande **orbe-coração de cristal** com número enorme, moldura da facção.
+- **Energia:** fileira de **cristais que acendem** (5/10 = 5 acesos de 10); o cristal gasto apaga com um "puff" de pó mágico.
+- **Mão:** leque na base com as cartas "respirando"; carta jogável tem a moldura acesa por dentro.
 
-## 5. O tabuleiro: **A MESA-DIORAMA**
+## 6. Animações (rápidas, claras, satisfatórias — ≤ 0,6 s cada)
 
-- O campo é uma **mesa-arena**: 4 pedestais de Tropa + 2 lotes de Construção + 1 moldura de Terreno por lado, todos peças encaixáveis com espessura visível; jogar um Terreno **troca a moldura da mesa inteira** (a mão gigante do Regente desce e encaixa — feedback físico delicioso).
-- **Vida ambiente sem regra:** borboletas de papel, vapor sobre lava, peixinhos de celofane no Lago Congelado, um esquilo que atravessa quando nada acontece por 10 s. **Orçado: máx. 3 eventos ambientes simultâneos** — vida, não poluição.
-- **Terrenos e Eventos Caóticos transformam a mesa fisicamente:** Lago Congelado = a arena vira vidro fosco; Fissura Vulcânica = frestas de resina laranja acendem; Lua Rubra = a luminária da sala fica vermelha (a luz da MESA muda, não só do jogo).
-- **A Vida de cada jogador** é um castelinho-maquete da facção (iglu de vidro fosco, bolo-fortaleza, mausoléu de veludo...) que **acende janelas** quando saudável e **perde pedacinhos** conforme a Vida cai — o placar É a peça.
+| Evento | Animação |
+|---|---|
+| Jogar carta | flash de portal + impacto suave com ondulação rúnica no slot |
+| Ataque | avanço curto + efeito da facção no impacto (lasca de gelo, fagulha, respingo de calda…) |
+| Dano | número flutuante grande com contorno |
+| Cura | brilho ascendente dourado/rosa/verde conforme a fonte |
+| Congelar | camada de gelo cartoon "cresce" sobre a peça com craquelado |
+| Queimar | chaminha cartoon persistente no canto da peça |
+| Drenar | filete de energia rubra voa do alvo até o orbe de Vida |
+| Crescer / +1/+1 | folhas e luz verde sobem; os números "pulam" |
+| Escudo | bolha mágica com reflexo aparece com "pop" |
+| Açúcar | estrelinhas e confeitos orbitam o marcador |
+| Frio acumulado | flocos empilham como contas visíveis ao lado da peça |
+| Pacto | selo rúnico vermelho pisca sobre o orbe de Vida do próprio jogador |
+| Armadilha | a carta virada treme de leve quando a condição chega perto (teaser!) |
 
-## 6. Design das cartas
+## 7. Ícones (kit mínimo consistente)
 
-### 6.1 Anatomia (compatível com Doc. 07)
-- **A arte ocupa 60%** e é a FOTO de uma miniatura artesanal (render 3D com shader de material real), não ilustração 2D — o personagem da carta é O MESMO objeto que anda no tabuleiro. Carta → peça, sem tradução.
-- **Moldura por facção, feita do material da facção:** Gelados = vidro fosco com cantos de tricô; Doces = borda de glacê aplicado (relevo real); Sangrentos = veludo com filete de latão; Natureza = madeira com musgo no canto inferior; Fogo = ferro rebitado com brasas nas frestas; Humanos = costura de retalhos com etiqueta de pano para o nome. Neutras = papel kraft honesto.
-- **Raridade = acabamento do material, não cor de borda:** C: material simples · I: com detalhe pintado à mão · R: com incrustação (vidrinho, latão) · L: **a moldura está viva** (o glacê escorre, o gelo cresce, o musgo floresce em loop lento).
-- **Verso da carta:** o continente Terraviva bordado em tecido, com as 6 texturas de facção costuradas como retalhos de um mapa só — o verso conta o mundo.
+- **Custo:** as 7 gemas de facção (§4).
+- **ATQ/VIDA:** espada-explosão / coração-escudo.
+- **Palavras-chave:** 15 ícones monocromáticos de traço grosso (legíveis a 16 px), sempre acompanhados da palavra na caixa de texto.
+- **Marcadores no campo:** Frio = floco-conta · Açúcar = confeito-estrela · Queimar = chaminha · Escudo = bolha · Virada = zzz de vapor.
+- **Tipos:** Tropa = elmo · Feitiço = estrela cadente · Construção = torre · Terreno = montinho com bandeira.
 
-### 6.2 A carta "respira"
-Na mão, cada carta tem **idle sutil de 2–3 s** (o Pinguim ajeita a bola de neve; o biscoito solta um farelo). Ao ficar jogável (recursos suficientes), a moldura **acende por dentro** conforme o material (brasa nas frestas, glacê brilha, gelo refrata) — affordance linda E funcional.
+## 8. Tela principal
 
-## 7. Microinterações que fazem o jogo parecer vivo (top 10, ordenadas por custo-benefício)
+- **Fundo:** panorama pintado dos reinos ao longe, todos no mesmo mundo — montanhas geladas, vulcão, castelo doce, floresta viva, castelo rubro e vila humana sob o mesmo céu arcano com duas luas; partículas suaves.
+- **Logo provisório:** "GUERRA DOS REINOS" em letras cartoon empilhadas com contorno grosso, gemas das 6 facções incrustadas na palavra REINOS; balanço sutil.
+- **Botões (placas mágicas arredondadas, empilhadas):** **JOGAR** (maior, dourado) · **COLEÇÃO** · **MONTAR DECK** · **LOJA** · **CONFIGURAÇÕES** (ícone-engrenagem discreto).
+- *(Nota do estúdio: o briefing pede "Loja ou Pacotes" — se "Pacotes" significar aquisição de CARTAS, isso muda a decisão v0.4 de coleção completa desde a instalação. Implementado como LOJA de cosméticos até o diretor confirmar; ver pendência.)*
 
-1. Peças tombam com física de brinquedo ao morrer (sem gore: costura abre, recheio de algodão).
-2. A mão gigante do Regente (a SUA mão) posiciona cartas/peças — presença física do jogador.
-3. Fichas de ação são 3 botões de madeira que você "gasta" empurrando para o centro.
-4. Tropas ociosas cochilam de verdade (zZz de linha bordada).
-5. Tropas adjacentes de facções aliadas interagem no idle (o zumbi acena para o esqueleto; o javali fareja o biscoito — presságio da Lei 5!).
-6. Dano ao jogador: a mesa TREME e um pedacinho do castelinho lasca.
-7. Vitória: a mão do vencedor guarda as peças na caixa com carinho; derrota: as peças se guardam sozinhas, desanimadas.
-8. Fim de turno: a luz da mesa amanhece/anoitece em 2 s — o tempo é a iluminação.
-9. Guarda/Armadilha prestes a disparar: a peça reage ANTES do efeito (orelhas sobem, olho abre) — telegrafia charmosa.
-10. Card hover no editor: a miniatura da carta pula para a mesa em miniescala e faz a pose.
+## 9. Tela de coleção
 
-## 8. Som como assinatura (com Doc. 14)
+- Grade de cartas com **filtros-gema** no topo: facção (7 gemas clicáveis), tipo, custo (régua 1–8+), raridade, busca por nome.
+- Hover/toque: a carta **cresce com tilt 3D suave** e mostra detalhes + palavras-chave explicadas.
+- Cartas legíveis mesmo pequenas (o layout do §4 garante); as que faltam aparecem como silhueta rúnica.
+- Fundo: estante-grimório do reino da facção filtrada.
 
-- **Materiais soam como são:** biscoito quebra "croc", gelo "tlim", veludo abafa, madeira "toc". A mixagem é ASMR de maquete — íntima, próxima, sem épico bombástico.
-- **A trilha é tocada por instrumentos de brinquedo:** pianinho, caixinha de música, flauta doce, percussão de dedal — cresce em arranjo (não em volume) quando a partida esquenta.
-- **Cada facção tem 1 instrumento-assinatura:** Gelados = celesta; Doces = glockenspiel; Sangrentos = cravo; Natureza = kalimba; Fogo = bigorna afinada; Humanos = violão caipira.
+## 10. Tela de montagem de deck
 
-## 9. Referências a coletar (pauta de moodboard do estúdio)
+- **Esquerda:** coleção filtrável. **Direita:** o deck como um grimório de lombada da facção.
+- Painel vivo de equilíbrio: **curva de custo** em barras-cristal, contagem por tipo (Tropas/Feitiços/Construções/Terrenos) contra a proporção recomendada do Manual (§3), gemas das 2 facções escolhidas, alerta amigável quando algo foge do recomendado ("Seu grimório está com fome de Tropas!").
+- Validador: 40 cartas · máx. 2 cópias (1 Lendária) · até 2 facções + Neutras — sempre visível como selos que acendem.
 
-Para calibrar SEM copiar: stop-motion artesanal (texturas de lã/madeira em movimento), dioramas e miniaturas reais (fotografia macro), jogos de tabuleiro premium (acabamento de componentes), vitrines de confeitaria e vitrais (Doces/Sangrentos), tricô e cerâmica esmaltada. **Nunca** referenciar diretamente outros card games digitais — a identidade nasce de materiais do mundo real, não do gênero.
+## 11. Exemplo canônico de carta (referência de arte)
+
+> **Pinguim Espadachim (Gelo, Comum, custo 2, 2/3).** Moldura de cristal azul com flocos nos cantos e névoa sutil na base; gema de custo = cristal lapidado com "2"; arte: pinguim rechonchudo em pose de esgrima, espada-agulha de gelo erguida, cachecol esvoaçante, olhos determinados e ligeiramente ridículos (o humor), fundo de fiorde simplificado com aurora; placa do nome em prata gelada; caixa-pergaminho: "Quando entra em campo, ❄ Congele uma Tropa inimiga com 2 ou menos de Ataque."; medalhões ⚔2 / ♥3. Limpa, engraçada, congelante.
+
+## 12. Regras de consistência (para tudo continuar UM jogo)
+
+1. **Mesma grade de carta para todas as facções** — só material/ornamento/cor mudam.
+2. **Sombras sempre coloridas**; contorno sempre limpo; cantos sempre arredondados.
+3. **Brilho = interatividade** (nunca decorar com glow o que não é clicável/jogável).
+4. **1 piada visual por carta, máximo** — o humor tempera, não domina.
+5. **Teste de miniatura:** toda carta aprovada a 64 px de altura; toda silhueta única em preto.
+6. **Efeito de facção usa a paleta da facção** — dano de Fogo nunca é azul.
+7. **Épico/Lendário brilham nas BORDAS**, nunca sobre a arte ou o texto.
+8. **Nada de preto puro, cinza chapado ou caixa quadrada** em nenhuma tela.
 
 ---
 
-## 10. REVISÃO CRÍTICA (identidade)
-1. **Risco: "artesanal" virar "infantil".** *Trava:* os materiais são fofos, mas a fotografia é séria (luz dramática, macro, profundidade de campo) e as regras são exibidas com precisão de relojoaria. Fofo no material, adulto no tratamento.
-2. **Risco: shader de materiais + física de brinquedo custarem caro.** *Mitigação:* biblioteca de 6 shaders (um por material-facção) reutilizada em TUDO (cartas, peças, UI); física fake por animação, não simulação.
-3. **Risco: arte-como-miniatura limitar poses épicas de carta.** *Aceito com orgulho:* a limitação É o estilo (dioramas contam épico com composição, não com dinamismo) — e garante coerência carta↔tabuleiro que nenhum concorrente tem.
-4. **Validação pendente:** protótipo visual de 1 pedestal + 1 carta + 1 personagem em 3 materiais diferentes antes da produção em massa (gate no roadmap P2).
-
-**Veredicto:** aprovado como direção-candidata; aguardando inspirações do Regente-chefe para calibrar. 😉
+## REVISÃO CRÍTICA (v0.6)
+1. **Direção "Diorama Vivo" arquivada** por briefing do diretor — substituída por "Encanto Vivo" (fantasia mágica cartoon premium). O que sobrevive da direção antiga: proporção-brinquedo dos personagens, silhueta-primeiro, humor sutil, leitura em miniatura e o princípio "o tabuleiro é vivo".
+2. **⚠ Pendência — espaços de Tropa:** o briefing cita 4; o Manual v0.5.1 define 5. Mantido **5** (regra vence arte) até o diretor confirmar.
+3. **⚠ Pendência — "Loja ou Pacotes":** se houver pacotes de cartas, a decisão v0.4 (coleção completa, sem P2W) muda. Implementado como Loja cosmética até confirmação.
+4. Mockup navegável refeito no estilo novo (mesma URL de sempre).
